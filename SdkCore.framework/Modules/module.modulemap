@@ -1,0 +1,6 @@
+framework module SdkCore {
+  umbrella header "SdkCore.h"
+
+  export *
+  module * { export * }
+}
