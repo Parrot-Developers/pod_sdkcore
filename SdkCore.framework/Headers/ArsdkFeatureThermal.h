@@ -149,6 +149,24 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureThermalRange) {
 };
 #define ArsdkFeatureThermalRangeCnt 2
 
+/** Thermal shutter trigger mode */
+typedef NS_ENUM(NSInteger, ArsdkFeatureThermalShutterTrigger) {
+    /**
+     Unknown value from SdkCore.
+     Only used if the received value cannot be matched with a declared value.
+     This might occur when the drone or rc has a different sdk base from the controller.
+     */
+    ArsdkFeatureThermalShutterTriggerSdkCoreUnknown = -1,
+
+    /** Automatic trigger */
+    ArsdkFeatureThermalShutterTriggerAuto = 0,
+
+    /** Manual trigger */
+    ArsdkFeatureThermalShutterTriggerManual = 1,
+
+};
+#define ArsdkFeatureThermalShutterTriggerCnt 2
+
 @protocol ArsdkFeatureThermalCallback<NSObject>
 
 @optional
@@ -231,6 +249,14 @@ NS_SWIFT_NAME(onBackgroundTemperature(backgroundTemperature:));
 */
 - (void)onSensitivity:(ArsdkFeatureThermalRange)currentRange
 NS_SWIFT_NAME(onSensitivity(currentRange:));
+
+/**
+ Thermal cam shutter trigger mode. 
+
+ - parameter current_trigger: Current shutter trigger mode of the thermal sensor
+*/
+- (void)onShutterMode:(ArsdkFeatureThermalShutterTrigger)currentTrigger
+NS_SWIFT_NAME(onShutterMode(currentTrigger:));
 
 
 @end
@@ -321,6 +347,23 @@ NS_SWIFT_NAME(setBackgroundTemperatureEncoder(backgroundTemperature:));
 */
 + (int (^)(struct arsdk_cmd *))setSensitivityEncoder:(ArsdkFeatureThermalRange)range
 NS_SWIFT_NAME(setSensitivityEncoder(range:));
+
+/**
+ Set the thermal camera shutter mode. 
+
+ - parameter trigger: Desired shutter trigger mode of the thermal sensor
+ - returns: a block that encodes the command
+*/
++ (int (^)(struct arsdk_cmd *))setShutterModeEncoder:(ArsdkFeatureThermalShutterTrigger)trigger
+NS_SWIFT_NAME(setShutterModeEncoder(trigger:));
+
+/**
+ Trigg the thermal cam shutter. 
+
+ - returns: a block that encodes the command
+*/
++ (int (^)(struct arsdk_cmd *))triggShutterEncoder
+NS_SWIFT_NAME(triggShutterEncoder());
 
 @end
 

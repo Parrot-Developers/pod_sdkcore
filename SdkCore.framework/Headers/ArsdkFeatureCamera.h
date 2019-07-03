@@ -809,8 +809,11 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureCameraResolution) {
     /** 1440x1080 pixels (SD). */
     ArsdkFeatureCameraResolutionRes1080pSd = 6,
 
+    /** 960x720 pixels (SD). */
+    ArsdkFeatureCameraResolutionRes720pSd = 7,
+
 };
-#define ArsdkFeatureCameraResolutionCnt 7
+#define ArsdkFeatureCameraResolutionCnt 8
 
 @interface ArsdkFeatureCameraResolutionBitField : NSObject
 

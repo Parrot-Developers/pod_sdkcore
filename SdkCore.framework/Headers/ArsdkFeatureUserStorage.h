@@ -27,8 +27,11 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureUserStoragePhyState) {
     /** The removable media is detected. */
     ArsdkFeatureUserStoragePhyStateAvailable = 3,
 
+    /** The removable media is used by mass-storage gadget. */
+    ArsdkFeatureUserStoragePhyStateUsbMassStorage = 4,
+
 };
-#define ArsdkFeatureUserStoragePhyStateCnt 4
+#define ArsdkFeatureUserStoragePhyStateCnt 5
 
 /**  */
 typedef NS_ENUM(NSInteger, ArsdkFeatureUserStorageFsState) {
