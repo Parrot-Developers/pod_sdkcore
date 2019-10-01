@@ -334,6 +334,27 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureArdrone3PilotingstateWindstatechangedStat
 };
 #define ArsdkFeatureArdrone3PilotingstateWindstatechangedStateCnt 3
 
+/** Drone vibration level */
+typedef NS_ENUM(NSInteger, ArsdkFeatureArdrone3PilotingstateVibrationlevelchangedState) {
+    /**
+     Unknown value from SdkCore.
+     Only used if the received value cannot be matched with a declared value.
+     This might occur when the drone or rc has a different sdk base from the controller.
+     */
+    ArsdkFeatureArdrone3PilotingstateVibrationlevelchangedStateSdkCoreUnknown = -1,
+
+    /** The level of vibration can be handled properly by the drone. */
+    ArsdkFeatureArdrone3PilotingstateVibrationlevelchangedStateOk = 0,
+
+    /** The level of vibration begins to be too strong for the drone to fly correctly. */
+    ArsdkFeatureArdrone3PilotingstateVibrationlevelchangedStateWarning = 1,
+
+    /** The level of vibration is too strong for the drone to fly correctly. */
+    ArsdkFeatureArdrone3PilotingstateVibrationlevelchangedStateCritical = 2,
+
+};
+#define ArsdkFeatureArdrone3PilotingstateVibrationlevelchangedStateCnt 3
+
 @protocol ArsdkFeatureArdrone3PilotingstateCallback<NSObject>
 
 @optional
@@ -541,6 +562,14 @@ NS_SWIFT_NAME(onForcedLandingAutoTrigger(reason:delay:));
 */
 - (void)onWindStateChanged:(ArsdkFeatureArdrone3PilotingstateWindstatechangedState)state
 NS_SWIFT_NAME(onWindStateChanged(state:));
+
+/**
+ Vibration level. 
+
+ - parameter state: 
+*/
+- (void)onVibrationLevelChanged:(ArsdkFeatureArdrone3PilotingstateVibrationlevelchangedState)state
+NS_SWIFT_NAME(onVibrationLevelChanged(state:));
 
 
 @end

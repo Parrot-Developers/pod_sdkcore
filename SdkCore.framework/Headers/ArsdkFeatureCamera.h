@@ -1539,6 +1539,23 @@ In gps_lapse photo_mode: remaining distance in meters before next photo
 - (void)onNextPhotoDelay:(ArsdkFeatureCameraPhotoMode)mode remaining:(float)remaining
 NS_SWIFT_NAME(onNextPhotoDelay(mode:remaining:));
 
+/**
+  
+
+ - parameter cam_id: Id of the camera.
+ - parameter min_bound_yaw: Lower bound of the alignment offset that can be set on the yaw axis, in degrees
+ - parameter max_bound_yaw: Upper bound of the alignment offset that can be set on the yaw axis, in degrees
+ - parameter current_yaw: Current alignment offset applied to the yaw axis, in degrees
+ - parameter min_bound_pitch: Lower bound of the alignment offset that can be set on the pitch axis, in degrees
+ - parameter max_bound_pitch: Upper bound of the alignment offset that can be set on the pitch axis, in degrees
+ - parameter current_pitch: Current alignment offset applied to the pitch axis, in degrees
+ - parameter min_bound_roll: Lower bound of the alignment offset that can be set on the roll axis, in degrees
+ - parameter max_bound_roll: Upper bound of the alignment offset that can be set on the roll axis, in degrees
+ - parameter current_roll: Current alignment offset applied to the roll axis, in degrees
+*/
+- (void)onAlignmentOffsets:(NSUInteger)camId minBoundYaw:(float)minBoundYaw maxBoundYaw:(float)maxBoundYaw currentYaw:(float)currentYaw minBoundPitch:(float)minBoundPitch maxBoundPitch:(float)maxBoundPitch currentPitch:(float)currentPitch minBoundRoll:(float)minBoundRoll maxBoundRoll:(float)maxBoundRoll currentRoll:(float)currentRoll
+NS_SWIFT_NAME(onAlignmentOffsets(camId:minBoundYaw:maxBoundYaw:currentYaw:minBoundPitch:maxBoundPitch:currentPitch:minBoundRoll:maxBoundRoll:currentRoll:));
+
 
 @end
 
@@ -1803,6 +1820,30 @@ NS_SWIFT_NAME(resetZoomEncoder(camId:));
 */
 + (int (^)(struct arsdk_cmd *))stopPhotoEncoder:(NSUInteger)camId
 NS_SWIFT_NAME(stopPhotoEncoder(camId:));
+
+/**
+  
+
+ - parameter cam_id: Id of the camera.
+ - parameter yaw: Alignment offset, in degrees, that should be applied to the yaw axis.
+This value will be clamped between [alignment_offsets](#143-52) min_bound_yaw and max_bound_yaw
+ - parameter pitch: Alignment offset, in degrees, that should be applied to the pitch axis.
+This value will be clamped between [alignment_offsets](#143-52) min_bound_pitch and max_bound_pitch
+ - parameter roll: Alignment offset, in degrees, that should be applied to the roll axis.
+This value will be clamped between [alignment_offsets](#143-52) min_bound_roll and max_bound_roll
+ - returns: a block that encodes the command
+*/
++ (int (^)(struct arsdk_cmd *))setAlignmentOffsetsEncoder:(NSUInteger)camId yaw:(float)yaw pitch:(float)pitch roll:(float)roll
+NS_SWIFT_NAME(setAlignmentOffsetsEncoder(camId:yaw:pitch:roll:));
+
+/**
+  
+
+ - parameter cam_id: Id of the camera.
+ - returns: a block that encodes the command
+*/
++ (int (^)(struct arsdk_cmd *))resetAlignmentOffsetsEncoder:(NSUInteger)camId
+NS_SWIFT_NAME(resetAlignmentOffsetsEncoder(camId:));
 
 @end
 

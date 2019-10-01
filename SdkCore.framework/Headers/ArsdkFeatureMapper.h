@@ -349,6 +349,15 @@ NS_SWIFT_NAME(onInvertedMapItem(uid:product:axis:inverted:listFlagsBitField:));
 - (void)onActiveProduct:(NSUInteger)product
 NS_SWIFT_NAME(onActiveProduct(product:));
 
+/**
+ Volatile mapping state 
+
+ - parameter active: 0 : Volatile mapping is not active.
+1 : Volatile mapping is active.
+*/
+- (void)onVolatileMappingState:(NSUInteger)active
+NS_SWIFT_NAME(onVolatileMappingState(active:));
+
 
 @end
 
@@ -429,6 +438,23 @@ Set to 0 to apply to all products
 */
 + (int (^)(struct arsdk_cmd *))setInvertedEncoder:(NSUInteger)product axis:(NSInteger)axis inverted:(NSUInteger)inverted
 NS_SWIFT_NAME(setInvertedEncoder(product:axis:inverted:));
+
+/**
+ All mappings in this mode will disappear when exit will be called or when device is unplugged. 
+
+ - returns: a block that encodes the command
+*/
++ (int (^)(struct arsdk_cmd *))enterVolatileMappingEncoder
+NS_SWIFT_NAME(enterVolatileMappingEncoder());
+
+/**
+ Destroy volatile mapping.
+Any current action is canceled, for example PCMD will become null even if PCMD axis are pushed, the user has to release the axis to recover PCMD control. 
+
+ - returns: a block that encodes the command
+*/
++ (int (^)(struct arsdk_cmd *))exitVolatileMappingEncoder
+NS_SWIFT_NAME(exitVolatileMappingEncoder());
 
 @end
 

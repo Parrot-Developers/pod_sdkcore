@@ -177,3 +177,4 @@
 #include "ArsdkFeaturePreciseHome.h"
 #include "ArsdkFeatureThermal.h"
 #include "ArsdkFeatureLeds.h"
+#include "ArsdkFeaturePilotingStyle.h"
