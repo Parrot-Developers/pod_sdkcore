@@ -571,6 +571,14 @@ NS_SWIFT_NAME(onWindStateChanged(state:));
 - (void)onVibrationLevelChanged:(ArsdkFeatureArdrone3PilotingstateVibrationlevelchangedState)state
 NS_SWIFT_NAME(onVibrationLevelChanged(state:));
 
+/**
+ Drone's altitude above ground changed. 
+
+ - parameter altitude: Altitude in meters
+*/
+- (void)onAltitudeAboveGroundChanged:(float)altitude
+NS_SWIFT_NAME(onAltitudeAboveGroundChanged(altitude:));
+
 
 @end
 

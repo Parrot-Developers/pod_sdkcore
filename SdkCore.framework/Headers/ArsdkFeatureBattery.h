@@ -70,6 +70,14 @@ NS_SWIFT_NAME(onAlert(alert:level:listFlagsBitField:));
 - (void)onHealth:(NSUInteger)stateOfHealth
 NS_SWIFT_NAME(onHealth(stateOfHealth:));
 
+/**
+ Battery voltage. 
+
+ - parameter voltage: Battery voltage in mV
+*/
+- (void)onVoltage:(NSUInteger)voltage
+NS_SWIFT_NAME(onVoltage(voltage:));
+
 
 @end
 
