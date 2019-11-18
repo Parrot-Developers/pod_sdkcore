@@ -51,6 +51,24 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureArdrone3PilotingMovetoOrientationMode) {
 };
 #define ArsdkFeatureArdrone3PilotingMovetoOrientationModeCnt 4
 
+/** POI mode */
+typedef NS_ENUM(NSInteger, ArsdkFeatureArdrone3PilotingStartpilotedpoiv2Mode) {
+    /**
+     Unknown value from SdkCore.
+     Only used if the received value cannot be matched with a declared value.
+     This might occur when the drone or rc has a different sdk base from the controller.
+     */
+    ArsdkFeatureArdrone3PilotingStartpilotedpoiv2ModeSdkCoreUnknown = -1,
+
+    /** Gimbal is locked on the POI */
+    ArsdkFeatureArdrone3PilotingStartpilotedpoiv2ModeLockedGimbal = 0,
+
+    /** Gimbal is freely controllable */
+    ArsdkFeatureArdrone3PilotingStartpilotedpoiv2ModeFreeGimbal = 1,
+
+};
+#define ArsdkFeatureArdrone3PilotingStartpilotedpoiv2ModeCnt 2
+
 @interface ArsdkFeatureArdrone3Piloting : NSObject
 
 /**
@@ -208,7 +226,7 @@ However, the yaw value can be used.
 
  - parameter latitude: Latitude of the location (in degrees) to reach
  - parameter longitude: Longitude of the location (in degrees) to reach
- - parameter altitude: Altitude above sea level (in m) to reach
+ - parameter altitude: Altitude above take off point (in m) to reach
  - parameter orientation_mode: 
  - parameter heading: Heading (relative to the North in degrees).
 This value is only used if the orientation mode is HEADING_START or HEADING_DURING
@@ -233,15 +251,15 @@ Ignored if [PilotedPOI](#1-4-14) state is UNAVAILABLE.
 
  - parameter latitude: Latitude of the location (in degrees) to look at
  - parameter longitude: Longitude of the location (in degrees) to look at
- - parameter altitude: Altitude above sea level (in m) to look at
+ - parameter altitude: Altitude above take off point (in m) to look at
  - returns: a block that encodes the command
 */
 + (int (^)(struct arsdk_cmd *))startPilotedPOIEncoder:(double)latitude longitude:(double)longitude altitude:(double)altitude
 NS_SWIFT_NAME(startPilotedPOIEncoder(latitude:longitude:altitude:));
 
 /**
- Stop the piloted Point Of Interest.
-If [PilotedPOI](#1-4-14) state is RUNNING or PENDING, stop it. 
+ Stop the piloted Point Of Interest (with or without gimbal control).
+If [PilotedPOI](#1-4-14) or [PilotedPOIV2](#1-4-22) state is RUNNING or PENDING, stop it. 
 
  - returns: a block that encodes the command
 */
@@ -256,6 +274,22 @@ If there is no current relative move, this command has no effect.
 */
 + (int (^)(struct arsdk_cmd *))cancelMoveByEncoder
 NS_SWIFT_NAME(cancelMoveByEncoder());
+
+/**
+ Start a piloted Point Of Interest.
+During a piloted POI, the drone always points towards the given POI but can be piloted normally. However, yaw value is ignored. The gimbal behavior depends on the mode argument:
+- in locked gimbal mode, the gimbal always looks at the POI, and gimbal control command is ignored by the drone,
+- in free gimbal mode, the gimbal initially looks at the POI, and is then freely controllable by the gimbal command.
+Ignored if [PilotedPOIV2](#1-4-22) state is UNAVAILABLE. 
+
+ - parameter latitude: Latitude of the location (in degrees) to look at
+ - parameter longitude: Longitude of the location (in degrees) to look at
+ - parameter altitude: Altitude above take off point (in m) to look at
+ - parameter mode: 
+ - returns: a block that encodes the command
+*/
++ (int (^)(struct arsdk_cmd *))startPilotedPOIV2Encoder:(double)latitude longitude:(double)longitude altitude:(double)altitude mode:(ArsdkFeatureArdrone3PilotingStartpilotedpoiv2Mode)mode
+NS_SWIFT_NAME(startPilotedPOIV2Encoder(latitude:longitude:altitude:mode:));
 
 @end
 

@@ -244,6 +244,49 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureArdrone3PilotingstatePilotedpoiStatus) {
 };
 #define ArsdkFeatureArdrone3PilotingstatePilotedpoiStatusCnt 4
 
+/** POI mode.
+This information is only valid when the state is pending or running. */
+typedef NS_ENUM(NSInteger, ArsdkFeatureArdrone3PilotingstatePilotedpoiv2Mode) {
+    /**
+     Unknown value from SdkCore.
+     Only used if the received value cannot be matched with a declared value.
+     This might occur when the drone or rc has a different sdk base from the controller.
+     */
+    ArsdkFeatureArdrone3PilotingstatePilotedpoiv2ModeSdkCoreUnknown = -1,
+
+    /** Gimbal is locked on the POI */
+    ArsdkFeatureArdrone3PilotingstatePilotedpoiv2ModeLockedGimbal = 0,
+
+    /** Gimbal is freely controllable */
+    ArsdkFeatureArdrone3PilotingstatePilotedpoiv2ModeFreeGimbal = 1,
+
+};
+#define ArsdkFeatureArdrone3PilotingstatePilotedpoiv2ModeCnt 2
+
+/** Status of the Piloted POI */
+typedef NS_ENUM(NSInteger, ArsdkFeatureArdrone3PilotingstatePilotedpoiv2Status) {
+    /**
+     Unknown value from SdkCore.
+     Only used if the received value cannot be matched with a declared value.
+     This might occur when the drone or rc has a different sdk base from the controller.
+     */
+    ArsdkFeatureArdrone3PilotingstatePilotedpoiv2StatusSdkCoreUnknown = -1,
+
+    /** The piloted POI is not available */
+    ArsdkFeatureArdrone3PilotingstatePilotedpoiv2StatusUnavailable = 0,
+
+    /** The piloted POI is available */
+    ArsdkFeatureArdrone3PilotingstatePilotedpoiv2StatusAvailable = 1,
+
+    /** Piloted POI has been requested. Waiting to be in state that allows the piloted POI to start */
+    ArsdkFeatureArdrone3PilotingstatePilotedpoiv2StatusPending = 2,
+
+    /** Piloted POI is running */
+    ArsdkFeatureArdrone3PilotingstatePilotedpoiv2StatusRunning = 3,
+
+};
+#define ArsdkFeatureArdrone3PilotingstatePilotedpoiv2StatusCnt 4
+
 /** Status of battery to return home */
 typedef NS_ENUM(NSInteger, ArsdkFeatureArdrone3PilotingstateReturnhomebatterycapacityStatus) {
     /**
@@ -475,7 +518,7 @@ NS_SWIFT_NAME(onAirSpeedChanged(airspeed:));
 
  - parameter latitude: Latitude of the location (in degrees) to reach
  - parameter longitude: Longitude of the location (in degrees) to reach
- - parameter altitude: Altitude above sea level (in m) to reach
+ - parameter altitude: Altitude above take off point (in m) to reach
  - parameter orientation_mode: 
  - parameter heading: Heading (relative to the North in degrees).
 This value is only used if the orientation mode is HEADING_START or HEADING_DURING
@@ -501,7 +544,7 @@ NS_SWIFT_NAME(onMotionState(state:));
 This information is only valid when the state is pending or running.
  - parameter longitude: Longitude of the location (in degrees) to look at.
 This information is only valid when the state is pending or running.
- - parameter altitude: Altitude above sea level (in m) to look at.
+ - parameter altitude: Altitude above take off point (in m) to look at.
 This information is only valid when the state is pending or running.
  - parameter status: 
 */
@@ -578,6 +621,21 @@ NS_SWIFT_NAME(onVibrationLevelChanged(state:));
 */
 - (void)onAltitudeAboveGroundChanged:(float)altitude
 NS_SWIFT_NAME(onAltitudeAboveGroundChanged(altitude:));
+
+/**
+ Piloted POI state. 
+
+ - parameter latitude: Latitude of the location (in degrees) to look at.
+This information is only valid when the state is pending or running.
+ - parameter longitude: Longitude of the location (in degrees) to look at.
+This information is only valid when the state is pending or running.
+ - parameter altitude: Altitude above take off point (in m) to look at.
+This information is only valid when the state is pending or running.
+ - parameter mode: 
+ - parameter status: 
+*/
+- (void)onPilotedPOIV2:(double)latitude longitude:(double)longitude altitude:(double)altitude mode:(ArsdkFeatureArdrone3PilotingstatePilotedpoiv2Mode)mode status:(ArsdkFeatureArdrone3PilotingstatePilotedpoiv2Status)status
+NS_SWIFT_NAME(onPilotedPOIV2(latitude:longitude:altitude:mode:status:));
 
 
 @end
