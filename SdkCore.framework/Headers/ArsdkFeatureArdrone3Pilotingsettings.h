@@ -105,56 +105,6 @@ For fixed wings: the distance is computed from the take off position.
 NS_SWIFT_NAME(noFlyOverMaxDistanceEncoder(shouldnotflyover:));
 
 /**
- Set autonomous flight max horizontal speed.
-This will only be used during autonomous flights such as moveBy. 
-
- - parameter value: maximum horizontal speed [m/s]
- - returns: a block that encodes the command
-*/
-+ (int (^)(struct arsdk_cmd *))setAutonomousFlightMaxHorizontalSpeedEncoder:(float)value
-NS_SWIFT_NAME(setAutonomousFlightMaxHorizontalSpeedEncoder(value:));
-
-/**
- Set autonomous flight max vertical speed.
-This will only be used during autonomous flights such as moveBy. 
-
- - parameter value: maximum vertical speed [m/s]
- - returns: a block that encodes the command
-*/
-+ (int (^)(struct arsdk_cmd *))setAutonomousFlightMaxVerticalSpeedEncoder:(float)value
-NS_SWIFT_NAME(setAutonomousFlightMaxVerticalSpeedEncoder(value:));
-
-/**
- Set autonomous flight max horizontal acceleration.
-This will only be used during autonomous flights such as moveBy. 
-
- - parameter value: maximum horizontal acceleration [m/s2]
- - returns: a block that encodes the command
-*/
-+ (int (^)(struct arsdk_cmd *))setAutonomousFlightMaxHorizontalAccelerationEncoder:(float)value
-NS_SWIFT_NAME(setAutonomousFlightMaxHorizontalAccelerationEncoder(value:));
-
-/**
- Set autonomous flight max vertical acceleration.
-This will only be used during autonomous flights such as moveBy. 
-
- - parameter value: maximum vertical acceleration [m/s2]
- - returns: a block that encodes the command
-*/
-+ (int (^)(struct arsdk_cmd *))setAutonomousFlightMaxVerticalAccelerationEncoder:(float)value
-NS_SWIFT_NAME(setAutonomousFlightMaxVerticalAccelerationEncoder(value:));
-
-/**
- Set autonomous flight max rotation speed.
-This will only be used during autonomous flights such as moveBy. 
-
- - parameter value: maximum yaw rotation speed [deg/s]
- - returns: a block that encodes the command
-*/
-+ (int (^)(struct arsdk_cmd *))setAutonomousFlightMaxRotationSpeedEncoder:(float)value
-NS_SWIFT_NAME(setAutonomousFlightMaxRotationSpeedEncoder(value:));
-
-/**
  Set banked turn mode.
 When banked turn mode is enabled, the drone will use yaw values from the piloting command to infer with roll and pitch on the drone when its horizontal speed is not null. 
 

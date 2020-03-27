@@ -75,8 +75,11 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureArdrone3PilotingstateAlertstatechangedSta
     /** The angle of the drone is too high */
     ArsdkFeatureArdrone3PilotingstateAlertstatechangedStateTooMuchAngle = 5,
 
+    /** Almost empty battery alert */
+    ArsdkFeatureArdrone3PilotingstateAlertstatechangedStateAlmostEmptyBattery = 6,
+
 };
-#define ArsdkFeatureArdrone3PilotingstateAlertstatechangedStateCnt 6
+#define ArsdkFeatureArdrone3PilotingstateAlertstatechangedStateCnt 7
 
 /** State of navigate home */
 typedef NS_ENUM(NSInteger, ArsdkFeatureArdrone3PilotingstateNavigatehomestatechangedState) {
@@ -458,14 +461,6 @@ NS_SWIFT_NAME(onSpeedChanged(speedx:speedy:speedz:));
 */
 - (void)onAttitudeChanged:(float)roll pitch:(float)pitch yaw:(float)yaw
 NS_SWIFT_NAME(onAttitudeChanged(roll:pitch:yaw:));
-
-/**
- Auto takeoff mode 
-
- - parameter state: State of automatic take off mode (1 if enabled)
-*/
-- (void)onAutoTakeOffModeChanged:(NSUInteger)state
-NS_SWIFT_NAME(onAutoTakeOffModeChanged(state:));
 
 /**
  Drone's altitude changed.

@@ -178,3 +178,4 @@
 #include "ArsdkFeatureThermal.h"
 #include "ArsdkFeatureLeds.h"
 #include "ArsdkFeaturePilotingStyle.h"
+#include "ArsdkFeatureGaugeFwUpdater.h"

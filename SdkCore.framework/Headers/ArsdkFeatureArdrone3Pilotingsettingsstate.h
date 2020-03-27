@@ -99,46 +99,6 @@ If set, the drone won't fly over the [MaxDistance](#1-6-3).
 NS_SWIFT_NAME(onNoFlyOverMaxDistanceChanged(shouldnotflyover:));
 
 /**
- Autonomous flight max horizontal speed. 
-
- - parameter value: maximum horizontal speed [m/s]
-*/
-- (void)onAutonomousFlightMaxHorizontalSpeed:(float)value
-NS_SWIFT_NAME(onAutonomousFlightMaxHorizontalSpeed(value:));
-
-/**
- Autonomous flight max vertical speed. 
-
- - parameter value: maximum vertical speed [m/s]
-*/
-- (void)onAutonomousFlightMaxVerticalSpeed:(float)value
-NS_SWIFT_NAME(onAutonomousFlightMaxVerticalSpeed(value:));
-
-/**
- Autonomous flight max horizontal acceleration. 
-
- - parameter value: maximum horizontal acceleration [m/s2]
-*/
-- (void)onAutonomousFlightMaxHorizontalAcceleration:(float)value
-NS_SWIFT_NAME(onAutonomousFlightMaxHorizontalAcceleration(value:));
-
-/**
- Autonomous flight max vertical acceleration. 
-
- - parameter value: maximum vertical acceleration [m/s2]
-*/
-- (void)onAutonomousFlightMaxVerticalAcceleration:(float)value
-NS_SWIFT_NAME(onAutonomousFlightMaxVerticalAcceleration(value:));
-
-/**
- Autonomous flight max rotation speed. 
-
- - parameter value: maximum yaw rotation speed [deg/s]
-*/
-- (void)onAutonomousFlightMaxRotationSpeed:(float)value
-NS_SWIFT_NAME(onAutonomousFlightMaxRotationSpeed(value:));
-
-/**
  Banked Turn mode.
 If banked turn mode is enabled, the drone will use yaw values from the piloting command to infer with roll and pitch on the drone when its horizontal speed is not null. 
 

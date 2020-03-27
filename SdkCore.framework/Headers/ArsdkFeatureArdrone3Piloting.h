@@ -170,15 +170,6 @@ Please note that the drone will wait to be hovering to start its return home. Th
 NS_SWIFT_NAME(navigateHomeEncoder(start:));
 
 /**
- Auto take off mode. 
-
- - parameter state: State of automatic take off mode (1 for autotake off enabled)
- - returns: a block that encodes the command
-*/
-+ (int (^)(struct arsdk_cmd *))autoTakeOffModeEncoder:(NSUInteger)state
-NS_SWIFT_NAME(autoTakeOffModeEncoder(state:));
-
-/**
  Move the drone to a relative position and rotate heading by a given angle.
 Moves are relative to the current drone orientation, (drone's reference).
 Also note that the given rotation will not modify the move (i.e. moves are always rectilinear). 
