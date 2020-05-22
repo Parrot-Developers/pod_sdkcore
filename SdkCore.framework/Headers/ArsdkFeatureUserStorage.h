@@ -57,8 +57,11 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureUserStorageFsState) {
     /** The media file system is not available. */
     ArsdkFeatureUserStorageFsStateError = 4,
 
+    /** The media file system needs a password for decryption. */
+    ArsdkFeatureUserStorageFsStatePasswordNeeded = 5,
+
 };
-#define ArsdkFeatureUserStorageFsStateCnt 5
+#define ArsdkFeatureUserStorageFsStateCnt 6
 
 /**  */
 typedef NS_ENUM(NSInteger, ArsdkFeatureUserStorageAttribute) {
@@ -105,6 +108,27 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureUserStorageFormattingResult) {
 #define ArsdkFeatureUserStorageFormattingResultCnt 3
 
 /**  */
+typedef NS_ENUM(NSInteger, ArsdkFeatureUserStoragePasswordResult) {
+    /**
+     Unknown value from SdkCore.
+     Only used if the received value cannot be matched with a declared value.
+     This might occur when the drone or rc has a different sdk base from the controller.
+     */
+    ArsdkFeatureUserStoragePasswordResultSdkCoreUnknown = -1,
+
+    /** The transmitted password is wrong */
+    ArsdkFeatureUserStoragePasswordResultWrongPassword = 0,
+
+    /** The transmitted password is correct */
+    ArsdkFeatureUserStoragePasswordResultSuccess = 1,
+
+    /** The usage specified with the password does not match with the current drone context (RECORD or MASS STORAGE) */
+    ArsdkFeatureUserStoragePasswordResultWrongUsage = 2,
+
+};
+#define ArsdkFeatureUserStoragePasswordResultCnt 3
+
+/**  */
 typedef NS_ENUM(NSInteger, ArsdkFeatureUserStorageFeature) {
     /**
      Unknown value from SdkCore.
@@ -122,8 +146,11 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureUserStorageFeature) {
     /** The format progress event is supported and will be sent during format operation. */
     ArsdkFeatureUserStorageFeatureFormatProgressEvtSupported = 2,
 
+    /** SD card encryption is supported. */
+    ArsdkFeatureUserStorageFeatureEncryptionSupported = 3,
+
 };
-#define ArsdkFeatureUserStorageFeatureCnt 3
+#define ArsdkFeatureUserStorageFeatureCnt 4
 
 @interface ArsdkFeatureUserStorageFeatureBitField : NSObject
 
@@ -179,6 +206,24 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureUserStorageFormattingStep) {
 
 };
 #define ArsdkFeatureUserStorageFormattingStepCnt 3
+
+/**  */
+typedef NS_ENUM(NSInteger, ArsdkFeatureUserStoragePasswordUsage) {
+    /**
+     Unknown value from SdkCore.
+     Only used if the received value cannot be matched with a declared value.
+     This might occur when the drone or rc has a different sdk base from the controller.
+     */
+    ArsdkFeatureUserStoragePasswordUsageSdkCoreUnknown = -1,
+
+    /** Send password for record requirement */
+    ArsdkFeatureUserStoragePasswordUsageRecord = 0,
+
+    /** Send password for usb mass storage requirement */
+    ArsdkFeatureUserStoragePasswordUsageUsb = 1,
+
+};
+#define ArsdkFeatureUserStoragePasswordUsageCnt 2
 
 @protocol ArsdkFeatureUserStorageCallback<NSObject>
 
@@ -246,6 +291,22 @@ NS_SWIFT_NAME(onSupportedFormattingTypes(supportedTypesBitField:));
 - (void)onFormatProgress:(ArsdkFeatureUserStorageFormattingStep)step percentage:(NSUInteger)percentage
 NS_SWIFT_NAME(onFormatProgress(step:percentage:));
 
+/**
+  
+
+ - parameter result: Result of the last transmitted password
+*/
+- (void)onDecryption:(ArsdkFeatureUserStoragePasswordResult)result
+NS_SWIFT_NAME(onDecryption(result:));
+
+/**
+  
+
+ - parameter uuid: SDCard UUID
+*/
+- (void)onSdcardUuid:(NSString*)uuid
+NS_SWIFT_NAME(onSdcardUuid(uuid:));
+
 
 @end
 
@@ -288,6 +349,27 @@ NS_SWIFT_NAME(stopMonitoringEncoder());
 */
 + (int (^)(struct arsdk_cmd *))formatWithTypeEncoder:(NSString*)label type:(ArsdkFeatureUserStorageFormattingType)type
 NS_SWIFT_NAME(formatWithTypeEncoder(label:type:));
+
+/**
+ Transmit password when needed for unlocking encrypted file system 
+
+ - parameter password: Password used for SD encryption
+ - parameter type: Reason of password requirement
+ - returns: a block that encodes the command
+*/
++ (int (^)(struct arsdk_cmd *))encryptionPasswordEncoder:(NSString*)password type:(ArsdkFeatureUserStoragePasswordUsage)type
+NS_SWIFT_NAME(encryptionPasswordEncoder(password:type:));
+
+/**
+ Start format operation for encryption of the removable media with the given password 
+
+ - parameter label: Label to set to the file system. If empty, label is set to the product name.
+ - parameter password: Password used for SD card encryption
+ - parameter type: Formatting type.
+ - returns: a block that encodes the command
+*/
++ (int (^)(struct arsdk_cmd *))formatWithEncryptionEncoder:(NSString*)label password:(NSString*)password type:(ArsdkFeatureUserStorageFormattingType)type
+NS_SWIFT_NAME(formatWithEncryptionEncoder(label:password:type:));
 
 @end
 

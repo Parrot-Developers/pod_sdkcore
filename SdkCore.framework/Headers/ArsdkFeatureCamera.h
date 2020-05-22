@@ -862,8 +862,23 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureCameraFramerate) {
     /** For thermal only, capture triggered by thermal sensor. */
     ArsdkFeatureCameraFramerateFps9 = 9,
 
+    /** 15 fps. */
+    ArsdkFeatureCameraFramerateFps15 = 10,
+
+    /** 20 fps. */
+    ArsdkFeatureCameraFramerateFps20 = 11,
+
+    /** 191.81 fps. */
+    ArsdkFeatureCameraFramerateFps192 = 12,
+
+    /** 200 fps. */
+    ArsdkFeatureCameraFramerateFps200 = 13,
+
+    /** 239.76 fps. */
+    ArsdkFeatureCameraFramerateFps240 = 14,
+
 };
-#define ArsdkFeatureCameraFramerateCnt 10
+#define ArsdkFeatureCameraFramerateCnt 15
 
 @interface ArsdkFeatureCameraFramerateBitField : NSObject
 
@@ -1195,6 +1210,32 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureCameraZoomControlMode) {
 };
 #define ArsdkFeatureCameraZoomControlModeCnt 2
 
+/** Auto Exposure metering mode. */
+typedef NS_ENUM(NSInteger, ArsdkFeatureCameraAutoExposureMeteringMode) {
+    /**
+     Unknown value from SdkCore.
+     Only used if the received value cannot be matched with a declared value.
+     This might occur when the drone or rc has a different sdk base from the controller.
+     */
+    ArsdkFeatureCameraAutoExposureMeteringModeSdkCoreUnknown = -1,
+
+    /** Default Auto Exposure metering mode. */
+    ArsdkFeatureCameraAutoExposureMeteringModeStandard = 0,
+
+    /** Auto Exposure metering mode which favours the center top of the matrix. */
+    ArsdkFeatureCameraAutoExposureMeteringModeCenterTop = 1,
+
+};
+#define ArsdkFeatureCameraAutoExposureMeteringModeCnt 2
+
+@interface ArsdkFeatureCameraAutoExposureMeteringModeBitField : NSObject
+
++ (BOOL) isSet:(ArsdkFeatureCameraAutoExposureMeteringMode)val inBitField:(NSUInteger)bitfield;
+
++ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureCameraAutoExposureMeteringMode val))cb;
+
+@end
+
 @protocol ArsdkFeatureCameraCallback<NSObject>
 
 @optional
@@ -1222,9 +1263,10 @@ mode is not supported.
  - parameter streaming_modes: Supported streaming modes, Empty if streaming is not supported.
  - parameter timelapse_interval_min: Minimal time-lapse capture interval, in seconds.
  - parameter gpslapse_interval_min: Minimal GPS-lapse capture interval, in meters.
+ - parameter auto_exposure_metering_modes: Supported auto exposure metering modes
 */
-- (void)onCameraCapabilities:(NSUInteger)camId model:(ArsdkFeatureCameraModel)model exposureModesBitField:(NSUInteger)exposureModesBitField exposureLockSupported:(ArsdkFeatureCameraSupported)exposureLockSupported exposureRoiLockSupported:(ArsdkFeatureCameraSupported)exposureRoiLockSupported evCompensationsBitField:(uint64_t)evCompensationsBitField whiteBalanceModesBitField:(NSUInteger)whiteBalanceModesBitField customWhiteBalanceTemperaturesBitField:(uint64_t)customWhiteBalanceTemperaturesBitField whiteBalanceLockSupported:(ArsdkFeatureCameraSupported)whiteBalanceLockSupported stylesBitField:(NSUInteger)stylesBitField cameraModesBitField:(NSUInteger)cameraModesBitField hyperlapseValuesBitField:(NSUInteger)hyperlapseValuesBitField bracketingPresetsBitField:(NSUInteger)bracketingPresetsBitField burstValuesBitField:(NSUInteger)burstValuesBitField streamingModesBitField:(NSUInteger)streamingModesBitField timelapseIntervalMin:(float)timelapseIntervalMin gpslapseIntervalMin:(float)gpslapseIntervalMin
-NS_SWIFT_NAME(onCameraCapabilities(camId:model:exposureModesBitField:exposureLockSupported:exposureRoiLockSupported:evCompensationsBitField:whiteBalanceModesBitField:customWhiteBalanceTemperaturesBitField:whiteBalanceLockSupported:stylesBitField:cameraModesBitField:hyperlapseValuesBitField:bracketingPresetsBitField:burstValuesBitField:streamingModesBitField:timelapseIntervalMin:gpslapseIntervalMin:));
+- (void)onCameraCapabilities:(NSUInteger)camId model:(ArsdkFeatureCameraModel)model exposureModesBitField:(NSUInteger)exposureModesBitField exposureLockSupported:(ArsdkFeatureCameraSupported)exposureLockSupported exposureRoiLockSupported:(ArsdkFeatureCameraSupported)exposureRoiLockSupported evCompensationsBitField:(uint64_t)evCompensationsBitField whiteBalanceModesBitField:(NSUInteger)whiteBalanceModesBitField customWhiteBalanceTemperaturesBitField:(uint64_t)customWhiteBalanceTemperaturesBitField whiteBalanceLockSupported:(ArsdkFeatureCameraSupported)whiteBalanceLockSupported stylesBitField:(NSUInteger)stylesBitField cameraModesBitField:(NSUInteger)cameraModesBitField hyperlapseValuesBitField:(NSUInteger)hyperlapseValuesBitField bracketingPresetsBitField:(NSUInteger)bracketingPresetsBitField burstValuesBitField:(NSUInteger)burstValuesBitField streamingModesBitField:(NSUInteger)streamingModesBitField timelapseIntervalMin:(float)timelapseIntervalMin gpslapseIntervalMin:(float)gpslapseIntervalMin autoExposureMeteringModesBitField:(NSUInteger)autoExposureMeteringModesBitField
+NS_SWIFT_NAME(onCameraCapabilities(camId:model:exposureModesBitField:exposureLockSupported:exposureRoiLockSupported:evCompensationsBitField:whiteBalanceModesBitField:customWhiteBalanceTemperaturesBitField:whiteBalanceLockSupported:stylesBitField:cameraModesBitField:hyperlapseValuesBitField:bracketingPresetsBitField:burstValuesBitField:streamingModesBitField:timelapseIntervalMin:gpslapseIntervalMin:autoExposureMeteringModesBitField:));
 
 /**
  Describe recording capabilities. Each entry of this list gives valid resolutions/framerates pair for the listed modes and if HDR is supported in this configuration. The same mode can be in multiple entries. 
@@ -1275,9 +1317,10 @@ Empty if "manual" or "manual_iso_sensitivity" exposure modes are not supported.
  - parameter max_iso_sensitivity: Maximum ISO sensitivity level as set by command "set_max_iso_sensitivity".
  - parameter max_iso_sensitivities_capabilities: Supported max iso sensitivity for current photo or recording configuration.
 Empty if setting max iso sensitivity is not supported.
+ - parameter metering_mode: Auto Exposure metering mode.
 */
-- (void)onExposureSettings:(NSUInteger)camId mode:(ArsdkFeatureCameraExposureMode)mode manualShutterSpeed:(ArsdkFeatureCameraShutterSpeed)manualShutterSpeed manualShutterSpeedCapabilitiesBitField:(uint64_t)manualShutterSpeedCapabilitiesBitField manualIsoSensitivity:(ArsdkFeatureCameraIsoSensitivity)manualIsoSensitivity manualIsoSensitivityCapabilitiesBitField:(uint64_t)manualIsoSensitivityCapabilitiesBitField maxIsoSensitivity:(ArsdkFeatureCameraIsoSensitivity)maxIsoSensitivity maxIsoSensitivitiesCapabilitiesBitField:(uint64_t)maxIsoSensitivitiesCapabilitiesBitField
-NS_SWIFT_NAME(onExposureSettings(camId:mode:manualShutterSpeed:manualShutterSpeedCapabilitiesBitField:manualIsoSensitivity:manualIsoSensitivityCapabilitiesBitField:maxIsoSensitivity:maxIsoSensitivitiesCapabilitiesBitField:));
+- (void)onExposureSettings:(NSUInteger)camId mode:(ArsdkFeatureCameraExposureMode)mode manualShutterSpeed:(ArsdkFeatureCameraShutterSpeed)manualShutterSpeed manualShutterSpeedCapabilitiesBitField:(uint64_t)manualShutterSpeedCapabilitiesBitField manualIsoSensitivity:(ArsdkFeatureCameraIsoSensitivity)manualIsoSensitivity manualIsoSensitivityCapabilitiesBitField:(uint64_t)manualIsoSensitivityCapabilitiesBitField maxIsoSensitivity:(ArsdkFeatureCameraIsoSensitivity)maxIsoSensitivity maxIsoSensitivitiesCapabilitiesBitField:(uint64_t)maxIsoSensitivitiesCapabilitiesBitField meteringMode:(ArsdkFeatureCameraAutoExposureMeteringMode)meteringMode
+NS_SWIFT_NAME(onExposureSettings(camId:mode:manualShutterSpeed:manualShutterSpeedCapabilitiesBitField:manualIsoSensitivity:manualIsoSensitivityCapabilitiesBitField:maxIsoSensitivity:maxIsoSensitivitiesCapabilitiesBitField:meteringMode:));
 
 /**
  Notify of actual exposure values (different from [exposure_settings](#143-9) values when one of the setting is in automatic mode). 
@@ -1572,10 +1615,11 @@ NS_SWIFT_NAME(onAlignmentOffsets(camId:minBoundYaw:maxBoundYaw:currentYaw:minBou
  - parameter iso_sensitivity: Requested ISO sensitivity level, ignored if mode is not Manual ISO or Manual.
  - parameter max_iso_sensitivity: Requested maximum ISO sensitivity level, ignored is not Auto. This value define the maximum iso
 sensitivity the autoexposure engine can use to adjust exposure.
+ - parameter metering_mode: Auto Exposure metering mode, ignored if mode is Manual
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setExposureSettingsEncoder:(NSUInteger)camId mode:(ArsdkFeatureCameraExposureMode)mode shutterSpeed:(ArsdkFeatureCameraShutterSpeed)shutterSpeed isoSensitivity:(ArsdkFeatureCameraIsoSensitivity)isoSensitivity maxIsoSensitivity:(ArsdkFeatureCameraIsoSensitivity)maxIsoSensitivity
-NS_SWIFT_NAME(setExposureSettingsEncoder(camId:mode:shutterSpeed:isoSensitivity:maxIsoSensitivity:));
++ (int (^)(struct arsdk_cmd *))setExposureSettingsEncoder:(NSUInteger)camId mode:(ArsdkFeatureCameraExposureMode)mode shutterSpeed:(ArsdkFeatureCameraShutterSpeed)shutterSpeed isoSensitivity:(ArsdkFeatureCameraIsoSensitivity)isoSensitivity maxIsoSensitivity:(ArsdkFeatureCameraIsoSensitivity)maxIsoSensitivity meteringMode:(ArsdkFeatureCameraAutoExposureMeteringMode)meteringMode
+NS_SWIFT_NAME(setExposureSettingsEncoder(camId:mode:shutterSpeed:isoSensitivity:maxIsoSensitivity:meteringMode:));
 
 /**
  Lock shutter speed and iso sensitivity to current values. Valid for all exposure modes exepted `manual`. Auto exposure lock is automatically removed when the exposure mode is changed. 
