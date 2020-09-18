@@ -60,8 +60,14 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureUserStorageFsState) {
     /** The media file system needs a password for decryption. */
     ArsdkFeatureUserStorageFsStatePasswordNeeded = 5,
 
+    /** The media file system is being checked */
+    ArsdkFeatureUserStorageFsStateChecking = 6,
+
+    /** The media file system is not managed by the drone itself but accessible by external means. */
+    ArsdkFeatureUserStorageFsStateExternalAccessOk = 7,
+
 };
-#define ArsdkFeatureUserStorageFsStateCnt 6
+#define ArsdkFeatureUserStorageFsStateCnt 8
 
 /**  */
 typedef NS_ENUM(NSInteger, ArsdkFeatureUserStorageAttribute) {
@@ -75,8 +81,11 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureUserStorageAttribute) {
     /** The removable media has low performance. */
     ArsdkFeatureUserStorageAttributeLowPerf = 0,
 
+    /** The removable media is encrypted. */
+    ArsdkFeatureUserStorageAttributeEncrypted = 1,
+
 };
-#define ArsdkFeatureUserStorageAttributeCnt 1
+#define ArsdkFeatureUserStorageAttributeCnt 2
 
 @interface ArsdkFeatureUserStorageAttributeBitField : NSObject
 

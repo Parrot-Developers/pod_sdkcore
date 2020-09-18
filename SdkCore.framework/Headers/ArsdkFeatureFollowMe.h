@@ -85,8 +85,14 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureFollowMeInput) {
     /** Target detection is done by image detection among other things */
     ArsdkFeatureFollowMeInputImageDetection = 6,
 
+    /** Target is at a good speed */
+    ArsdkFeatureFollowMeInputTargetGoodSpeed = 7,
+
+    /** Drone is close enough to the target */
+    ArsdkFeatureFollowMeInputDroneCloseEnough = 8,
+
 };
-#define ArsdkFeatureFollowMeInputCnt 7
+#define ArsdkFeatureFollowMeInputCnt 9
 
 @interface ArsdkFeatureFollowMeInputBitField : NSObject
 

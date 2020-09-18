@@ -18,17 +18,20 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureRthHomeType) {
     /** No home type. This might be because the drone does not have a gps fix */
     ArsdkFeatureRthHomeTypeNone = 0,
 
-    /** The drone will return to the takeoff location */
+    /** The drone will return to the last manual takeoff location */
     ArsdkFeatureRthHomeTypeTakeoff = 1,
 
     /** The drone will return to the followee position */
     ArsdkFeatureRthHomeTypeFollowee = 2,
 
-    /** The drone will return to a custom location */
+    /** The drone will return to a user-set custom location */
     ArsdkFeatureRthHomeTypeCustom = 3,
 
+    /** The drone will return to the pilot position */
+    ArsdkFeatureRthHomeTypePilot = 4,
+
 };
-#define ArsdkFeatureRthHomeTypeCnt 4
+#define ArsdkFeatureRthHomeTypeCnt 5
 
 @interface ArsdkFeatureRthHomeTypeBitField : NSObject
 
@@ -37,27 +40,6 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureRthHomeType) {
 + (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureRthHomeType val))cb;
 
 @end
-
-/** Altitude reference */
-typedef NS_ENUM(NSInteger, ArsdkFeatureRthAltitudeReference) {
-    /**
-     Unknown value from SdkCore.
-     Only used if the received value cannot be matched with a declared value.
-     This might occur when the drone or rc has a different sdk base from the controller.
-     */
-    ArsdkFeatureRthAltitudeReferenceSdkCoreUnknown = -1,
-
-    /** Altitude is not meaningful */
-    ArsdkFeatureRthAltitudeReferenceNone = 0,
-
-    /** Altitude is relative to sea level */
-    ArsdkFeatureRthAltitudeReferenceAboveSeaLevel = 1,
-
-    /** Altitude is relative to take off */
-    ArsdkFeatureRthAltitudeReferenceAboveTakeOff = 2,
-
-};
-#define ArsdkFeatureRthAltitudeReferenceCnt 3
 
 /** State of return to home */
 typedef NS_ENUM(NSInteger, ArsdkFeatureRthState) {
@@ -141,7 +123,7 @@ If rth is running, cancelling it will probably make the home not reachable. */
 };
 #define ArsdkFeatureRthHomeReachabilityCnt 4
 
-/** Home reachability */
+/** RTH auto-trigger reason */
 typedef NS_ENUM(NSInteger, ArsdkFeatureRthAutoTriggerReason) {
     /**
      Unknown value from SdkCore.
@@ -159,6 +141,42 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureRthAutoTriggerReason) {
 };
 #define ArsdkFeatureRthAutoTriggerReasonCnt 2
 
+/** RTH auto-trigger mode */
+typedef NS_ENUM(NSInteger, ArsdkFeatureRthAutoTriggerMode) {
+    /**
+     Unknown value from SdkCore.
+     Only used if the received value cannot be matched with a declared value.
+     This might occur when the drone or rc has a different sdk base from the controller.
+     */
+    ArsdkFeatureRthAutoTriggerModeSdkCoreUnknown = -1,
+
+    /** Auto trigger is off. RTH auto trigger will never occur. */
+    ArsdkFeatureRthAutoTriggerModeOff = 0,
+
+    /** Auto trigger is on. */
+    ArsdkFeatureRthAutoTriggerModeOn = 1,
+
+};
+#define ArsdkFeatureRthAutoTriggerModeCnt 2
+
+/** RTH ending behavior action. */
+typedef NS_ENUM(NSInteger, ArsdkFeatureRthEndingBehavior) {
+    /**
+     Unknown value from SdkCore.
+     Only used if the received value cannot be matched with a declared value.
+     This might occur when the drone or rc has a different sdk base from the controller.
+     */
+    ArsdkFeatureRthEndingBehaviorSdkCoreUnknown = -1,
+
+    /** The RTH end behavior is landing */
+    ArsdkFeatureRthEndingBehaviorLanding = 0,
+
+    /** The RTH end behavior is hovering */
+    ArsdkFeatureRthEndingBehaviorHovering = 1,
+
+};
+#define ArsdkFeatureRthEndingBehaviorCnt 2
+
 @protocol ArsdkFeatureRthCallback<NSObject>
 
 @optional
@@ -166,7 +184,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureRthAutoTriggerReason) {
 /**
   
 
- - parameter values: Bitfield of suported home types.
+ - parameter values: Bitfield of supported home types.
 */
 - (void)onHomeTypeCapabilities:(NSUInteger)valuesBitField
 NS_SWIFT_NAME(onHomeTypeCapabilities(valuesBitField:));
@@ -180,39 +198,44 @@ NS_SWIFT_NAME(onHomeTypeCapabilities(valuesBitField:));
 NS_SWIFT_NAME(onHomeType(type:));
 
 /**
+ Preferred home type. Please note that this is only a user preference. The actual type chosen is given by the event [home_type](#146-2). 
+
+ - parameter type: Preferred Home type.
+*/
+- (void)onPreferredHomeType:(ArsdkFeatureRthHomeType)type
+NS_SWIFT_NAME(onPreferredHomeType(type:));
+
+/**
   
 
  - parameter latitude: Latitude of the takeoff location
  - parameter longitude: Longitude of the takeoff location
- - parameter fixedBeforeTakeoff: 1 if the location was acquired before the takeoff. 0 if it was acquired during the flight (i.e. is it
+ - parameter altitude: Altitude of the custom location above takeoff (ATO).
+ - parameter fixed_before_takeoff: 1 if the location was acquired before the takeoff. 0 if it was acquired during the flight (i.e. is it
 the first fix location).
 */
-- (void)onTakeoffLocation:(double)latitude longitude:(double)longitude fixedbeforetakeoff:(NSUInteger)fixedbeforetakeoff
-NS_SWIFT_NAME(onTakeoffLocation(latitude:longitude:fixedbeforetakeoff:));
+- (void)onTakeoffLocation:(double)latitude longitude:(double)longitude altitude:(float)altitude fixedBeforeTakeoff:(NSUInteger)fixedBeforeTakeoff
+NS_SWIFT_NAME(onTakeoffLocation(latitude:longitude:altitude:fixedBeforeTakeoff:));
 
 /**
   
 
  - parameter latitude: Latitude of the custom location
  - parameter longitude: Longitude of the custom location
- - parameter altitude_reference: Reference of the altitude, `none` if altitude is not given.
- - parameter altitude: Altitude of the custom location.
-Only valid if `altitude_reference` is not `none`.
+ - parameter altitude: Altitude of the custom location above takeoff (ATO).
 */
-- (void)onCustomLocation:(double)latitude longitude:(double)longitude altitudeReference:(ArsdkFeatureRthAltitudeReference)altitudeReference altitude:(double)altitude
-NS_SWIFT_NAME(onCustomLocation(latitude:longitude:altitudeReference:altitude:));
+- (void)onCustomLocation:(double)latitude longitude:(double)longitude altitude:(float)altitude
+NS_SWIFT_NAME(onCustomLocation(latitude:longitude:altitude:));
 
 /**
   
 
  - parameter latitude: Latitude of the takeoff location
  - parameter longitude: Longitude of the takeoff location
- - parameter altitude_reference: Reference of the altitude, `none` if altitude is not given.
- - parameter altitude: Altitude of the custom location.
-Only valid if `altitude_reference` is not `none`.
+ - parameter altitude: Altitude of the custom location above takeoff (ATO).
 */
-- (void)onFolloweeLocation:(double)latitude longitude:(double)longitude altitudeReference:(ArsdkFeatureRthAltitudeReference)altitudeReference altitude:(double)altitude
-NS_SWIFT_NAME(onFolloweeLocation(latitude:longitude:altitudeReference:altitude:));
+- (void)onFolloweeLocation:(double)latitude longitude:(double)longitude altitude:(float)altitude
+NS_SWIFT_NAME(onFolloweeLocation(latitude:longitude:altitude:));
 
 /**
  Return home trigger delay. This delay represents the time after which the return home is automatically triggered after a disconnection. 
@@ -221,12 +244,11 @@ NS_SWIFT_NAME(onFolloweeLocation(latitude:longitude:altitudeReference:altitude:)
  - parameter min: Min delay in second
  - parameter max: Max delay in second
 */
-- (void)onReturnHomeDelay:(NSUInteger)delay min:(NSUInteger)min max:(NSUInteger)max
-NS_SWIFT_NAME(onReturnHomeDelay(delay:min:max:));
+- (void)onDelay:(NSUInteger)delay min:(NSUInteger)min max:(NSUInteger)max
+NS_SWIFT_NAME(onDelay(delay:min:max:));
 
 /**
- Return home state.
-Availability is related to gps fix, magnetometer calibration. 
+ Return home state. Availability is related to gps fix, magnetometer calibration. 
 
  - parameter state: State of the return to home
  - parameter reason: Reason of the state change
@@ -252,6 +274,43 @@ If reason is `none` this information has no meaning.
 - (void)onRthAutoTrigger:(ArsdkFeatureRthAutoTriggerReason)reason delay:(NSUInteger)delay
 NS_SWIFT_NAME(onRthAutoTrigger(reason:delay:));
 
+/**
+ This altitude represents the minimum altitude used by the drone during the return home. 
+
+ - parameter current: Minimum altitude used by the drone during RTH. This value is above takeoff (ATO)
+ - parameter min: Range min of altitude
+ - parameter max: Range max of altitude
+*/
+- (void)onMinAltitude:(float)current min:(float)min max:(float)max
+NS_SWIFT_NAME(onMinAltitude(current:min:max:));
+
+/**
+  
+
+ - parameter mode: RTH auto trigger mode.
+*/
+- (void)onAutoTriggerMode:(ArsdkFeatureRthAutoTriggerMode)mode
+NS_SWIFT_NAME(onAutoTriggerMode(mode:));
+
+/**
+  
+
+ - parameter ending_behavior: Ending behavior action
+*/
+- (void)onEndingBehavior:(ArsdkFeatureRthEndingBehavior)endingBehavior
+NS_SWIFT_NAME(onEndingBehavior(endingBehavior:));
+
+/**
+ This altitude represents the altitude for the hovering at the end of rth. It is only used when ending_behavior is set to hovering. 
+
+ - parameter current: Altitude used by the drone when hovering at the end of return home.
+This end altitude is AGL (above ground level).
+ - parameter min: Range min of altitude
+ - parameter max: Range max of altitude
+*/
+- (void)onEndingHoveringAltitude:(float)current min:(float)min max:(float)max
+NS_SWIFT_NAME(onEndingHoveringAltitude(current:min:max:));
+
 
 @end
 
@@ -260,33 +319,24 @@ NS_SWIFT_NAME(onRthAutoTrigger(reason:delay:));
 + (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeatureRthCallback>)callback;
 
 /**
- Set the home to the takeoff location. 
+ Set the preferred home location type. The drone will always choose this home type when available. 
 
+ - parameter type: Preferred home type.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setHomeToTakeoffLocationEncoder
-NS_SWIFT_NAME(setHomeToTakeoffLocationEncoder());
++ (int (^)(struct arsdk_cmd *))setPreferredHomeTypeEncoder:(ArsdkFeatureRthHomeType)type
+NS_SWIFT_NAME(setPreferredHomeTypeEncoder(type:));
 
 /**
- Set the home to a custom location. 
+ Set the custom location. 
 
  - parameter latitude: Latitude of the takeoff location
  - parameter longitude: Longitude of the takeoff location
- - parameter altitude_reference: Reference of the altitude, `none` if altitude is not given.
- - parameter altitude: Altitude of the custom location.
-Only valid if `altitude_reference` is not `none`.
+ - parameter altitude: Altitude of the custom location above takeoff (ATO).
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setHomeToCustomLocationEncoder:(double)latitude longitude:(double)longitude altitudeReference:(ArsdkFeatureRthAltitudeReference)altitudeReference altitude:(double)altitude
-NS_SWIFT_NAME(setHomeToCustomLocationEncoder(latitude:longitude:altitudeReference:altitude:));
-
-/**
- Set the home to the followee location. Followee means the target of a FollowMe or LookAt with gps coordinates sent. 
-
- - returns: a block that encodes the command
-*/
-+ (int (^)(struct arsdk_cmd *))setHomeToFolloweeLocationEncoder
-NS_SWIFT_NAME(setHomeToFolloweeLocationEncoder());
++ (int (^)(struct arsdk_cmd *))setCustomLocationEncoder:(double)latitude longitude:(double)longitude altitude:(float)altitude
+NS_SWIFT_NAME(setCustomLocationEncoder(latitude:longitude:altitude:));
 
 /**
  Set the delay after which the drone will automatically try to return home after a disconnection. 
@@ -294,13 +344,11 @@ NS_SWIFT_NAME(setHomeToFolloweeLocationEncoder());
  - parameter delay: Delay in second
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setReturnHomeDelayEncoder:(NSUInteger)delay
-NS_SWIFT_NAME(setReturnHomeDelayEncoder(delay:));
++ (int (^)(struct arsdk_cmd *))setDelayEncoder:(NSUInteger)delay
+NS_SWIFT_NAME(setDelayEncoder(delay:));
 
 /**
- Return home.
-Ask the drone to fly to its home position.
-Please note that the drone will wait to be hovering to start its return home. This means that it will wait to have a [flag](#1-0-2) set at 0. 
+ Return home. Ask the drone to fly to its home position. Please note that the drone will wait to be hovering to start its return home. This means that it will wait to have a [flag](#1-0-2) set at 0. 
 
  - returns: a block that encodes the command
 */
@@ -316,12 +364,49 @@ NS_SWIFT_NAME(returnToHomeEncoder());
 NS_SWIFT_NAME(abortEncoder());
 
 /**
- Cancel any current return home auto trigger. This command has no effect if there is no auto trigger currently planned (i.e. reason of [RTH auto trigger](#146-15) is `none`). 
+ Cancel any current return home auto trigger. This command has no effect if there is no auto trigger currently planned (i.e. reason of [rth_auto_trigger](#146-15) is `none`). 
 
  - returns: a block that encodes the command
 */
 + (int (^)(struct arsdk_cmd *))cancelAutoTriggerEncoder
 NS_SWIFT_NAME(cancelAutoTriggerEncoder());
+
+/**
+ Set the return home minimum altitude. If the drone is below this altitude when starting its return home, it will first reach the minimum altitude. If it is higher than this minimum altitude, it will operate its return home at its current altitude. 
+
+ - parameter altitude: Return home min altitude above takeoff (ATO).
+ - returns: a block that encodes the command
+*/
++ (int (^)(struct arsdk_cmd *))setMinAltitudeEncoder:(float)altitude
+NS_SWIFT_NAME(setMinAltitudeEncoder(altitude:));
+
+/**
+ Set mode for auto trigger return home 
+
+ - parameter mode: Mode asked by user
+ - returns: a block that encodes the command
+*/
++ (int (^)(struct arsdk_cmd *))setAutoTriggerModeEncoder:(ArsdkFeatureRthAutoTriggerMode)mode
+NS_SWIFT_NAME(setAutoTriggerModeEncoder(mode:));
+
+/**
+ Choose ending behavior action for RTH. 
+
+ - parameter ending_behavior: Ending behavior action
+ - returns: a block that encodes the command
+*/
++ (int (^)(struct arsdk_cmd *))setEndingBehaviorEncoder:(ArsdkFeatureRthEndingBehavior)endingBehavior
+NS_SWIFT_NAME(setEndingBehaviorEncoder(endingBehavior:));
+
+/**
+ Set the return home ending hovering altitude. If the ending behavior action is set to `hovering`, Use this altitude. 
+
+ - parameter altitude: Altitude used by the drone when hovering at the end of return home.
+This end altitude is AGL (above ground level).
+ - returns: a block that encodes the command
+*/
++ (int (^)(struct arsdk_cmd *))setEndingHoveringAltitudeEncoder:(float)altitude
+NS_SWIFT_NAME(setEndingHoveringAltitudeEncoder(altitude:));
 
 @end
 

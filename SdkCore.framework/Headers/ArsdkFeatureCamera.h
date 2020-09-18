@@ -21,8 +21,11 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureCameraModel) {
     /** Thermal camera, for photo and/or video. */
     ArsdkFeatureCameraModelThermal = 1,
 
+    /** Thermal-blended camera, Visible and Thermal stream are blended, for photo and/or video. */
+    ArsdkFeatureCameraModelThermalBlended = 2,
+
 };
-#define ArsdkFeatureCameraModelCnt 2
+#define ArsdkFeatureCameraModelCnt 3
 
 /** Indicate if a feature is supported by the drone. */
 typedef NS_ENUM(NSInteger, ArsdkFeatureCameraSupported) {
@@ -812,8 +815,14 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureCameraResolution) {
     /** 960x720 pixels (SD). */
     ArsdkFeatureCameraResolutionRes720pSd = 7,
 
+    /** 7680x4320 pixels (UHD). */
+    ArsdkFeatureCameraResolutionResUhd8k = 8,
+
+    /** 5120x2880 pixels. */
+    ArsdkFeatureCameraResolutionRes5k = 9,
+
 };
-#define ArsdkFeatureCameraResolutionCnt 8
+#define ArsdkFeatureCameraResolutionCnt 10
 
 @interface ArsdkFeatureCameraResolutionBitField : NSObject
 
@@ -859,7 +868,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureCameraFramerate) {
     /** 119.88 fps. */
     ArsdkFeatureCameraFramerateFps120 = 8,
 
-    /** For thermal only, capture triggered by thermal sensor. */
+    /** 9 fps. For thermal only, capture triggered by thermal sensor. */
     ArsdkFeatureCameraFramerateFps9 = 9,
 
     /** 15 fps. */
@@ -877,8 +886,14 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureCameraFramerate) {
     /** 239.76 fps. */
     ArsdkFeatureCameraFramerateFps240 = 14,
 
+    /** 10 fps. For thermal only, capture triggered by thermal sensor. */
+    ArsdkFeatureCameraFramerateFps10 = 15,
+
+    /** 8.57 fps. For thermal only, capture triggered by thermal sensor. */
+    ArsdkFeatureCameraFramerateFps8_6 = 16,
+
 };
-#define ArsdkFeatureCameraFramerateCnt 15
+#define ArsdkFeatureCameraFramerateCnt 17
 
 @interface ArsdkFeatureCameraFramerateBitField : NSObject
 

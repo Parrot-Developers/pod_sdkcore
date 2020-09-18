@@ -78,8 +78,14 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureArdrone3PilotingstateAlertstatechangedSta
     /** Almost empty battery alert */
     ArsdkFeatureArdrone3PilotingstateAlertstatechangedStateAlmostEmptyBattery = 6,
 
+    /** Magnetometer is disturbed by a magnetic element */
+    ArsdkFeatureArdrone3PilotingstateAlertstatechangedStateMagnetoPertubation = 7,
+
+    /** Local terrestrial magnetic field is too weak */
+    ArsdkFeatureArdrone3PilotingstateAlertstatechangedStateMagnetoLowEarthField = 8,
+
 };
-#define ArsdkFeatureArdrone3PilotingstateAlertstatechangedStateCnt 7
+#define ArsdkFeatureArdrone3PilotingstateAlertstatechangedStateCnt 9
 
 /** State of navigate home */
 typedef NS_ENUM(NSInteger, ArsdkFeatureArdrone3PilotingstateNavigatehomestatechangedState) {

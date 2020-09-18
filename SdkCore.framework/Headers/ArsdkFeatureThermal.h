@@ -18,11 +18,14 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureThermalMode) {
     /** Thermal is disabled */
     ArsdkFeatureThermalModeDisabled = 0,
 
-    /** Standard thermal mode */
+    /** Standard thermal mode, streaming blended on controller side */
     ArsdkFeatureThermalModeStandard = 1,
 
+    /** Blended thermal mode, streaming blended on drone side */
+    ArsdkFeatureThermalModeBlended = 2,
+
 };
-#define ArsdkFeatureThermalModeCnt 2
+#define ArsdkFeatureThermalModeCnt 3
 
 @interface ArsdkFeatureThermalModeBitField : NSObject
 

@@ -179,3 +179,6 @@
 #include "ArsdkFeatureLeds.h"
 #include "ArsdkFeaturePilotingStyle.h"
 #include "ArsdkFeatureGaugeFwUpdater.h"
+#include "ArsdkFeatureDri.h"
+#include "ArsdkFeatureSecurityEdition.h"
+#include "ArsdkFeatureMove.h"

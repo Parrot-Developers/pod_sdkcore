@@ -78,6 +78,22 @@ NS_SWIFT_NAME(onHealth(stateOfHealth:));
 - (void)onVoltage:(NSUInteger)voltage
 NS_SWIFT_NAME(onVoltage(voltage:));
 
+/**
+  
+
+ - parameter count: Battery Cycle Count
+*/
+- (void)onCycleCount:(NSUInteger)count
+NS_SWIFT_NAME(onCycleCount(count:));
+
+/**
+  
+
+ - parameter serial: Battery Serial
+*/
+- (void)onSerial:(NSString*)serial
+NS_SWIFT_NAME(onSerial(serial:));
+
 
 @end
 
