@@ -407,6 +407,28 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureArdrone3PilotingstateVibrationlevelchange
 };
 #define ArsdkFeatureArdrone3PilotingstateVibrationlevelchangedStateCnt 3
 
+/** Magneto state */
+typedef NS_ENUM(NSInteger, ArsdkFeatureArdrone3PilotingstateHeadinglockedstatechangedState) {
+    /**
+     Unknown value from SdkCore.
+     Only used if the received value cannot be matched with a declared value.
+     This might occur when the drone or rc has a different sdk base from the controller.
+     */
+    ArsdkFeatureArdrone3PilotingstateHeadinglockedstatechangedStateSdkCoreUnknown = -1,
+
+    /** Magnetometer state allows heading lock */
+    ArsdkFeatureArdrone3PilotingstateHeadinglockedstatechangedStateOk = 0,
+
+    /** Magnetometer detects a weak magnetic field (close to Earth pole), or a
+pertubated local magnetic field. Magnetometer has not lost heading lock yet. */
+    ArsdkFeatureArdrone3PilotingstateHeadinglockedstatechangedStateWarning = 1,
+
+    /** Magnetometer lost heading lock. */
+    ArsdkFeatureArdrone3PilotingstateHeadinglockedstatechangedStateCritical = 2,
+
+};
+#define ArsdkFeatureArdrone3PilotingstateHeadinglockedstatechangedStateCnt 3
+
 @protocol ArsdkFeatureArdrone3PilotingstateCallback<NSObject>
 
 @optional
@@ -637,6 +659,14 @@ This information is only valid when the state is pending or running.
 */
 - (void)onPilotedPOIV2:(double)latitude longitude:(double)longitude altitude:(double)altitude mode:(ArsdkFeatureArdrone3PilotingstatePilotedpoiv2Mode)mode status:(ArsdkFeatureArdrone3PilotingstatePilotedpoiv2Status)status
 NS_SWIFT_NAME(onPilotedPOIV2(latitude:longitude:altitude:mode:status:));
+
+/**
+ Drone's heading locked state. 
+
+ - parameter state: 
+*/
+- (void)onHeadingLockedStateChanged:(ArsdkFeatureArdrone3PilotingstateHeadinglockedstatechangedState)state
+NS_SWIFT_NAME(onHeadingLockedStateChanged(state:));
 
 
 @end
