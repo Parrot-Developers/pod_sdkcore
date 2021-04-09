@@ -1,4 +1,4 @@
-//    Copyright (C) 2019 Parrot Drones SAS
+//    Copyright (C) 2021 Parrot Drones SAS
 //
 //    Redistribution and use in source and binary forms, with or without
 //    modification, are permitted provided that the following conditions
@@ -27,54 +27,16 @@
 //    OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 //    SUCH DAMAGE.
 
-#import "ThermalProcPictureData.h"
+#import <Foundation/Foundation.h>
 
-/** define a thermal processor to render pictures. */
-@interface ThermalProcPicture : NSObject <ThermalProc>
+/** Int definition of API capabilities. */
+typedef NS_ENUM(NSInteger, ArsdkApiCapabilities) {
+    // Numerical values must be kept in sync with C code (enum enum arsdk_device_api)
 
-/**
- Renders the thermal view.
-
- Must be called in the GL context.
-
- @param textureWidth:  GL texture width
- @param textureHeight: GL texture height
- @param pictureData: picture data
- @param sessionMetadata: session metadata
- @param statusUpdateBlock: block called to notify the processing status
- */
-- (void) render:(int)textureWidth textureHeight:(int)textureHeight
-          pictureData:(ThermalProcPictureData *)pictureData
-          statusUpdateBlock:(ThermalProcStatusUpdate)statusUpdateBlock
-NS_SWIFT_NAME(render(textureWidth:textureHeight:pictureData:_:));
-
-/**
- Starts the renderer.
-
- Must be called in the GL context.
-
- TProc renderer instance MUST be disposed after use to release native resources.
-
- @param thermalCamera:  Thermal camera model used
- @param textureWidth:  GL texture width
- @param textureHeight: GL texture height
- */
-- (void) startRenderer:(ThermalProcThermalCamera)thermalCamera
-          textureWidth:(int)textureWidth textureHeight:(int)textureHeight
-NS_SWIFT_NAME(startRenderer(thermalCamera:textureWidth:textureHeight:));
-
-/**
- Stops the renderer.
-
- Must be called in the GL context.
- */
-- (void) stopRenderer;
-
-/**
- Retrieves whether the renderer is started.
-
- @return: 'YES' is the renderer is started.
- */
-- (BOOL) rendererIsStarted;
-
-@end
+    /** API capabilities unknown. */
+    ArsdkApiCapabilitiesUnknown = 0,
+    /** Full API supported. */
+    ArsdkApiCapabilitiesFull = 1,
+    /** Update API only. */
+    ArsdkApiCapabilitiesUpdateOnly = 2,
+};

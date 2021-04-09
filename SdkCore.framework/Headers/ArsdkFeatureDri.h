@@ -36,8 +36,14 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureDriSupportedCapabilities) {
     /** Possibility to enable or disable the DRI Mode */
     ArsdkFeatureDriSupportedCapabilitiesOnOff = 0,
 
+    /** French DRI regulation is supported */
+    ArsdkFeatureDriSupportedCapabilitiesFrenchRegulation = 1,
+
+    /** EN 4709-002 DRI regulation is supported */
+    ArsdkFeatureDriSupportedCapabilitiesEn4709_002Regulation = 2,
+
 };
-#define ArsdkFeatureDriSupportedCapabilitiesCnt 1
+#define ArsdkFeatureDriSupportedCapabilitiesCnt 3
 
 @interface ArsdkFeatureDriSupportedCapabilitiesBitField : NSObject
 
@@ -64,6 +70,45 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureDriIdType) {
 
 };
 #define ArsdkFeatureDriIdTypeCnt 2
+
+/** DRI Type */
+typedef NS_ENUM(NSInteger, ArsdkFeatureDriDriType) {
+    /**
+     Unknown value from SdkCore.
+     Only used if the received value cannot be matched with a declared value.
+     This might occur when the drone or rc has a different sdk base from the controller.
+     */
+    ArsdkFeatureDriDriTypeSdkCoreUnknown = -1,
+
+    /** DRI wifi beacon respects the french regulation */
+    ArsdkFeatureDriDriTypeFrench = 0,
+
+    /** DRI wifi beacon respects the EN4709-002 european regulation */
+    ArsdkFeatureDriDriTypeEn4709_002 = 1,
+
+};
+#define ArsdkFeatureDriDriTypeCnt 2
+
+/**  */
+typedef NS_ENUM(NSInteger, ArsdkFeatureDriStatus) {
+    /**
+     Unknown value from SdkCore.
+     Only used if the received value cannot be matched with a declared value.
+     This might occur when the drone or rc has a different sdk base from the controller.
+     */
+    ArsdkFeatureDriStatusSdkCoreUnknown = -1,
+
+    /** A failure happened during the command execution */
+    ArsdkFeatureDriStatusFailure = 0,
+
+    /** The related command successfully completed */
+    ArsdkFeatureDriStatusSuccess = 1,
+
+    /** DRI id is missing or was malformed */
+    ArsdkFeatureDriStatusInvalidId = 2,
+
+};
+#define ArsdkFeatureDriStatusCnt 3
 
 @protocol ArsdkFeatureDriCallback<NSObject>
 
@@ -94,6 +139,18 @@ NS_SWIFT_NAME(onDriState(mode:));
 - (void)onDroneId:(ArsdkFeatureDriIdType)type value:(NSString*)value
 NS_SWIFT_NAME(onDroneId(type:value:));
 
+/**
+  
+
+ - parameter id: The ID related to the DRI type as stored by the drone.
+For EN4709-002 type, it will not include the hyphen and
+the 3 secure characters which are only used to verify the ID consistency.
+ - parameter type: The DRI type the DRI system is configured with.
+ - parameter status: The current status of the DRI configuration.
+*/
+- (void)onDriType:(NSString*)id type:(ArsdkFeatureDriDriType)type status:(ArsdkFeatureDriStatus)status
+NS_SWIFT_NAME(onDriType(id:type:status:));
+
 
 @end
 
@@ -109,6 +166,17 @@ NS_SWIFT_NAME(onDroneId(type:value:));
 */
 + (int (^)(struct arsdk_cmd *))driModeEncoder:(ArsdkFeatureDriMode)mode
 NS_SWIFT_NAME(driModeEncoder(mode:));
+
+/**
+ Set DRI type 
+
+ - parameter type: DRI type.
+ - parameter id: Complete ID related to the DRI type. It can be empty if not required.
+For EN4709 type, it should include the 3 secure characters (and the hyphen).
+ - returns: a block that encodes the command
+*/
++ (int (^)(struct arsdk_cmd *))setDriTypeEncoder:(ArsdkFeatureDriDriType)type id:(NSString*)id
+NS_SWIFT_NAME(setDriTypeEncoder(type:id:));
 
 @end
 

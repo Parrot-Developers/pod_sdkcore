@@ -35,13 +35,13 @@
 
  Must be called in the GL context.
 
- - parameter textureWidth:  GL texture width
- - parameter textureHeight: GL texture height
- - parameter frame: video frame
- - parameter frameUserData: frame user data
- - parameter frameUserDataLength: frame user data length
- - parameter sessionMetadata: session metadata
- - parameter statusUpdateBlock: block called to notify the processing status
+ @param textureWidth:  GL texture width
+ @param textureHeight: GL texture height
+ @param frame: video frame
+ @param frameUserData: frame user data
+ @param frameUserDataLength: frame user data length
+ @param sessionMetadata: session metadata
+ @param statusUpdateBlock: block called to notify the processing status
  */
 - (void) render:(int)textureWidth textureHeight:(int)textureHeight
           frame:(const void *)frame frameUserData:(const void *)frameUserData
@@ -57,9 +57,9 @@ NS_SWIFT_NAME(render(textureWidth:textureHeight:frame:frameUserData:frameUserDat
 
  TProc renderer instance MUST be disposed after use to release native resources.
 
- - parameter thermalCamera:  Thermal camera model used
- - parameter textureWidth:  GL texture width
- - parameter textureHeight: GL texture height
+ @param thermalCamera:  Thermal camera model used
+ @param textureWidth:  GL texture width
+ @param textureHeight: GL texture height
  */
 - (void) startRenderer:(ThermalProcThermalCamera)thermalCamera
           textureWidth:(int)textureWidth textureHeight:(int)textureHeight
@@ -75,8 +75,20 @@ NS_SWIFT_NAME(startRenderer(thermalCamera:textureWidth:textureHeight:));
 /**
  Retrieves whether the renderer is started.
 
- - returns: 'YES' is the renderer is started.
+ @return: 'YES' is the renderer is started.
  */
 - (BOOL) rendererIsStarted;
+
+/**
+ Reads thermal frame metadata.
+
+ @param frameMetadataHandle frame metadata handle
+ @param status old thermal status to update with new values, create a new state if 'nil'
+
+ @return: thermal status read
+ */
++ (ThermalProcStatus *_Nonnull) readMetadata:(const void *_Nullable)frameMetadataHandle
+                                      status:(ThermalProcStatus *_Nullable)status
+NS_SWIFT_NAME(readMetadata(frameMetadataHandle:status:));
 
 @end

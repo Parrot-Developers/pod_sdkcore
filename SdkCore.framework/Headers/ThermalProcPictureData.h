@@ -116,33 +116,33 @@
 /**
  Initialize a thermal picture.
 
- - parameter visibleData: visible picture decompressed data.
- - parameter visibleWidth: width of visible picture, in pixels.
- - parameter visibleHeight: height of visible picture, in pixels.
- - parameter thermalData: thermal data.
- - parameter formatVersionMajor: format revision major number.
- - parameter formatVersionMinor: format revision minor number.
- - parameter calibR: calibration's R parameter.
- - parameter calibB: calibration's B parameter.
- - parameter calibF: calibration's F parameter.
- - parameter calibO: calibration's O parameter.
- - parameter tauWin: Transmission coefficient of the thermal window.
- - parameter rWin: Window reflection.
- - parameter sensorTemp: Sensor temperature reflected, in Kelvin.
- - parameter sensorHTemp: Sensor housing temperature, in Kelvin.
- - parameter scalingFactor: thermal camera scaling factor.
- - parameter focalLength: focal length of the lens.
- - parameter focalXResolution: focal plane X resolution.
- - parameter viewYaw: yaw orientation of the view in NED (north, east, down coordinates)
- - parameter viewPitch: pitch orientation of the view in NED
- - parameter viewRoll: roll orientation of the view in NED
- - parameter visibleCamYaw: yaw orientation of the visible camera in NED
- - parameter visibleCamPitch: pitch orientation of the visible camera in NED
- - parameter visibleCamRoll: roll orientation of the visible camera in NED
- - parameter thermalCamYaw: yaw orientation of the thermal camera in NED
- - parameter thermalCamPitch: pitch orientation of the thermal camera in NED
- - parameter thermalCamRoll: roll orientation of the thermal camera in NED
- - parameter cameraModel: thermal camera model
+ @param visibleData: visible picture decompressed data.
+ @param visibleWidth: width of visible picture, in pixels.
+ @param visibleHeight: height of visible picture, in pixels.
+ @param thermalData: thermal data.
+ @param formatVersionMajor: format revision major number.
+ @param formatVersionMinor: format revision minor number.
+ @param calibR: calibration's R parameter.
+ @param calibB: calibration's B parameter.
+ @param calibF: calibration's F parameter.
+ @param calibO: calibration's O parameter.
+ @param tauWin: Transmission coefficient of the thermal window.
+ @param rWin: Window reflection.
+ @param sensorTemp: Sensor temperature reflected, in Kelvin.
+ @param sensorHTemp: Sensor housing temperature, in Kelvin.
+ @param scalingFactor: thermal camera scaling factor.
+ @param focalLength: focal length of the lens.
+ @param focalXResolution: focal plane X resolution.
+ @param viewYaw: yaw orientation of the view in NED (north, east, down coordinates)
+ @param viewPitch: pitch orientation of the view in NED
+ @param viewRoll: roll orientation of the view in NED
+ @param visibleCamYaw: yaw orientation of the visible camera in NED
+ @param visibleCamPitch: pitch orientation of the visible camera in NED
+ @param visibleCamRoll: roll orientation of the visible camera in NED
+ @param thermalCamYaw: yaw orientation of the thermal camera in NED
+ @param thermalCamPitch: pitch orientation of the thermal camera in NED
+ @param thermalCamRoll: roll orientation of the thermal camera in NED
+ @param cameraModel: thermal camera model
  */
 - (instancetype)initWithVisibleData:(NSData *)visibleData
                        visibleWidth:(int)visibleWidth
@@ -175,10 +175,10 @@
 /**
  Decompress a jpeg image.
 
- - parameter data: jpeg data.
- - parameter width: output width of decompressed image.
- - parameter height: output height of decompressed image.
- - returns: decompressed data on success, 'nil' otherwise.
+ @param data: jpeg data.
+ @param width: output width of decompressed image.
+ @param height: output height of decompressed image.
+ @return: decompressed data on success, 'nil' otherwise.
  */
 + (NSData *) decompressJpegFrom:(NSData *)data
                           width:(int *)width

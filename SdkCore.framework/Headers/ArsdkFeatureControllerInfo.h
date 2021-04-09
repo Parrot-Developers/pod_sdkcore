@@ -37,7 +37,8 @@ This command is not acknowledged by the drone.
  - parameter north_speed: North speed (in meter per second)
  - parameter east_speed: East speed (in meter per second)
  - parameter down_speed: Vertical speed (in meter per second) (down is positive)
- - parameter timestamp: Timestamp of the gps info, in milliseconds since 00:00:00 UTC on 1 January 1970
+ - parameter timestamp: Timestamp of the gps info (in milliseconds), from a monotonic clock (not necessarily linked to utc
+clock)
  - returns: a block that encodes the command
 */
 + (int (^)(struct arsdk_cmd *))gpsEncoder:(double)latitude longitude:(double)longitude altitude:(float)altitude horizontalAccuracy:(float)horizontalAccuracy verticalAccuracy:(float)verticalAccuracy northSpeed:(float)northSpeed eastSpeed:(float)eastSpeed downSpeed:(float)downSpeed timestamp:(double)timestamp
@@ -47,7 +48,8 @@ NS_SWIFT_NAME(gpsEncoder(latitude:longitude:altitude:horizontalAccuracy:vertical
   
 
  - parameter pressure: Atmospheric pressure in Pa
- - parameter timestamp: Timestamp of the barometer info, in milliseconds since 00:00:00 UTC on 1 January 1970
+ - parameter timestamp: Timestamp of the barometer info (in milliseconds), from a monotonic clock (not necessarily linked to utc
+clock)
  - returns: a block that encodes the command
 */
 + (int (^)(struct arsdk_cmd *))barometerEncoder:(float)pressure timestamp:(double)timestamp

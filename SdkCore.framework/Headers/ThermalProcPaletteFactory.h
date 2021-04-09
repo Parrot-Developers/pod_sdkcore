@@ -46,10 +46,10 @@
 /**
  Create a thermal color.
 
- - parameter red: the rate of red of the color.
- - parameter green: the rate of green of the color.
- - parameter blue: the rate of blue of the color.
- - parameter position: the position of the color in the palette.
+ @param red: the rate of red of the color.
+ @param green: the rate of green of the color.
+ @param blue: the rate of blue of the color.
+ @param position: the position of the color in the palette.
  */
 - (instancetype _Nonnull)initWithRed:(float)red green:(float)green blue:(float)blue position:(float)position;
 @end
@@ -135,11 +135,22 @@ typedef void(^ThermalProcPaletteBoundariesUpdate)(void);
  Temperature types to highlight.
  */
 typedef NS_ENUM(NSInteger, ThermalProcTemperatureType) {
-// Numerical values must be kept in sync with C code (TPROC_TEMPERATURE_TYPE)
+// Numerical values must be kept in sync with C code (tproc_temperature_type)
 /** Used to show only temperatures hotter than the threshold. */
 ThermalProcTemperatureTypeHot = 0,
 /** Used to show only temperatures colder than the threshold. */
 ThermalProcTemperatureTypeCold = 1,
+};
+
+/**
+ Color application range.
+ */
+typedef NS_ENUM(NSInteger, ThermalProcColorRange) {
+// Numerical values must be kept in sync with C code (tproc_color_range)
+/** Palette colors is applied on the range of the temperatures of the scene. */
+ThermalProcColorRangeScene = 0,
+/** Palette colors is applied on the range of the displayed temperatures.  */
+ThermalProcColorRangeVisible = 1,
 };
 
 /**
@@ -183,19 +194,19 @@ ThermalProcTemperatureTypeCold = 1,
 /**
  Creates a new ThermalAbsolutePalette.
 
- - parameter colors: colors of the palette; Array of `ThermalProcColor`.
+ @param colors: colors of the palette; Array of `ThermalProcColor`.
 
- - returns: a new ThermalAbsolutePalette
+ @return: a new ThermalAbsolutePalette
  */
 +(id<ThermalProcAbsolutePalette> _Nonnull)createAbsolutePalette:(NSArray * _Nonnull)colors;
 
 /**
  Creates a new ThermalRelativePalette.
 
- - parameter colors: colors of the palette; Array of `ThermalProcColor`.
- - parameter boundariesUpdateBlock: block called to notify the palette boundaries update.
+ @param colors: colors of the palette; Array of `ThermalProcColor`.
+ @param boundariesUpdateBlock: block called to notify the palette boundaries update.
 
- - returns: a new ThermalRelativePalette
+ @return: a new ThermalRelativePalette
  */
 +(id<ThermalProcRelativePalette> _Nonnull)createRelativePalette:(NSArray * _Nonnull)colors
                                       boundariesUpdateBlock:(ThermalProcPaletteBoundariesUpdate _Nullable)boundariesUpdateBlock;
@@ -203,10 +214,10 @@ ThermalProcTemperatureTypeCold = 1,
 /**
  Creates a new ThermalSpotPalette.
 
- - parameter colors: colors of the palette; Array of `ThermalProcColor`.
- - parameter boundariesUpdateBlock: block called to notify the palette boundaries update.
+ @param colors: colors of the palette; Array of `ThermalProcColor`.
+ @param boundariesUpdateBlock: block called to notify the palette boundaries update.
 
- - returns: a new ThermalSpotPalette
+ @return: a new ThermalSpotPalette
  */
 +(id<ThermalProcSpotPalette> _Nonnull)createSpotPalette:(NSArray * _Nonnull)colors
                               boundariesUpdateBlock:(ThermalProcPaletteBoundariesUpdate _Nullable)boundariesUpdateBlock;
