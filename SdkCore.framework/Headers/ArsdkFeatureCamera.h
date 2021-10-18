@@ -1745,7 +1745,7 @@ NS_SWIFT_NAME(setZoomTargetEncoder(camId:controlMode:target:));
 
 /**
  Set the max zoom speed setting.
-You can get bounds using [MaxZoomSpeed](#143-25). 
+You can get bounds using [MaxZoomSpeed](#143-24). 
 
  - parameter cam_id: Id of the camera.
  - parameter max: Desired current max zoom speed. Should lay between the bounds given by [MaxZoomSpeed](#143-25).

@@ -189,3 +189,101 @@ typedef NS_ENUM(NSInteger, Level) {
  */
 + (BOOL) d:(ULogTag *)tag;
 @end
+
+/** Log error */
+#define LOG_ERR(_err) \
+    do { \
+        int err_LOG_ERR_ = (_err); \
+        [ULog e:TAG msg:@"%s:%d: err=%d(%s)", __func__, __LINE__, \
+                err_LOG_ERR_, strerror(-err_LOG_ERR_)]; \
+    } while(0)
+
+/** Log error if condition fails */
+#define LOG_IF_FAILED(_cond, _err) \
+    do { \
+        if (!(_cond)) { \
+            LOG_ERR(_err); \
+        } \
+    } while (0)
+
+/** Log if error (err < 0) */
+#define LOG_IF_ERR(_err) \
+    do { \
+        int err_LOG_IF_ERR_ = (_err); \
+        LOG_IF_FAILED(err_LOG_IF_ERR_ >= 0, err_LOG_IF_ERR_); \
+    } while (0)
+
+/** Log error if condition fails and return */
+#define RETURN_IF_FAILED(_cond, _err) \
+    do { \
+        if (!(_cond)) { \
+            LOG_ERR(_err); \
+            return; \
+        } \
+    } while (0)
+
+/** Log and return if error (err < 0) */
+#define RETURN_IF_ERR(_err) \
+    do { \
+        int err_RETURN_IF_ERR_ = (_err); \
+        RETURN_IF_FAILED(err_RETURN_IF_ERR_ >= 0, err_RETURN_IF_ERR_); \
+    } while (0)
+
+/** Log error if condition fails and goto label */
+#define GOTO_IF_FAILED(_cond, _err, _label) \
+    do { \
+        if (!(_cond)) { \
+            LOG_ERR(_err); \
+            goto _label; \
+        } \
+    } while (0)
+
+/** Log and goto label if error (err < 0) */
+#define GOTO_IF_ERR(_err, _label) \
+    do { \
+        int err_GOTO_IF_ERR_ = (_err); \
+        GOTO_IF_FAILED(err_GOTO_IF_ERR_ >= 0, err_GOTO_IF_ERR_, _label); \
+    } while(0)
+
+/** Log error and return error */
+#define RETURN_ERR(_err) \
+    do { \
+        int err_RETURN_ERR_ = (_err); \
+        LOG_ERR(err_RETURN_ERR_); \
+        return err_RETURN_ERR_; \
+    } while (0)
+
+/** Log error if condition fails and and return error */
+#define RETURN_ERRNO_IF_FAILED(_cond, _err) \
+    do { \
+        int err_RETURN_ERRNO_IF_FAILED_ = (_err); \
+        if (!(_cond)) { \
+            LOG_ERR(err_RETURN_ERRNO_IF_FAILED_); \
+            return err_RETURN_ERRNO_IF_FAILED_; \
+        } \
+    } while (0)
+
+/** Log and return error if error (err < 0) */
+#define RETURN_ERRNO_IF_ERR(_err) \
+    do { \
+        int err_RETURN_ERRNO_IF_ERR_ = (_err); \
+        RETURN_ERRNO_IF_FAILED(err_RETURN_ERRNO_IF_ERR_ >= 0, \
+                err_RETURN_ERRNO_IF_ERR_); \
+    } while (0)
+
+/** Log error if condition fails and return a value */
+#define RETURN_VAL_IF_FAILED(_cond, _err, _val) \
+    do { \
+        if (!(_cond)) { \
+            LOG_ERR(_err); \
+            return (_val); \
+        } \
+    } while (0)
+
+/** Log and return a value if error (err < 0) */
+#define RETURN_VAL_IF_ERR(_err, _val) \
+    do { \
+        int err_RETURN_VAL_IF_ERR_ = (_err); \
+        RETURN_VAL_IF_FAILED(err_RETURN_VAL_IF_ERR_ >= 0, \
+                err_RETURN_VAL_IF_ERR_, (_val)); \
+    } while (0)

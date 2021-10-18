@@ -124,8 +124,4 @@ extern ArsdkCmdLog arsdkCoreCmdLogLevel;
  */
 - (void)stop;
 
-/**
- Dispatch in pomp loop
- */
-- (void)dispatch_sync:(void (^ _Nonnull)(void))block;
 @end

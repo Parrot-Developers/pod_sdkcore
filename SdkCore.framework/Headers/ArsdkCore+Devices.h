@@ -41,7 +41,7 @@ typedef int(^ArsdkCommandEncoder)(struct arsdk_cmd* _Nonnull);
 /**
  Defines a block that will be called after a tcp proxy creation request
 
- @param proxy: the tcp proxy. nil in case of error
+ @param proxy: the tcp proxy handle to keep to maintain the proxy open. nil in case of error
  @param addr: the address of the tcp proxy. nil in case of error
  @param port: the port if the tct proxy. If addr is nil, the port value should be ignored.
  */
@@ -60,7 +60,7 @@ typedef NS_ENUM(NSInteger, ArsdkConnCancelReason) {
     ArsdkConnCancelReasonReject =    2,
 };
 
-/** A Tcp proxy */
+/** Tcp proxy handle */
 @interface ArsdkTcpProxy : NSObject
 
 @end

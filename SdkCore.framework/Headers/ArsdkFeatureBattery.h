@@ -24,8 +24,14 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureBatteryAlert) {
     /** Battery is too cold. */
     ArsdkFeatureBatteryAlertTooCold = 2,
 
+    /** Battery Gauge is too old. */
+    ArsdkFeatureBatteryAlertGaugeTooOld = 3,
+
+    /** Authentication has failed. */
+    ArsdkFeatureBatteryAlertAuthenticationFailure = 4,
+
 };
-#define ArsdkFeatureBatteryAlertCnt 3
+#define ArsdkFeatureBatteryAlertCnt 5
 
 /** Alert level. */
 typedef NS_ENUM(NSInteger, ArsdkFeatureBatteryAlertLevel) {

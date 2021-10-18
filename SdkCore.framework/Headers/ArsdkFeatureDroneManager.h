@@ -51,6 +51,32 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureDroneManagerConnectionState) {
 };
 #define ArsdkFeatureDroneManagerConnectionStateCnt 5
 
+/** Whether the drone is cellular online and/or in wifi scan results. */
+typedef NS_ENUM(NSInteger, ArsdkFeatureDroneManagerVisibleState) {
+    /**
+     Unknown value from SdkCore.
+     Only used if the received value cannot be matched with a declared value.
+     This might occur when the drone or rc has a different sdk base from the controller.
+     */
+    ArsdkFeatureDroneManagerVisibleStateSdkCoreUnknown = -1,
+
+    /** The drone is in scan results. */
+    ArsdkFeatureDroneManagerVisibleStateWifiVisible = 0,
+
+    /** The drone is cellular online. */
+    ArsdkFeatureDroneManagerVisibleStateCellularOnline = 1,
+
+};
+#define ArsdkFeatureDroneManagerVisibleStateCnt 2
+
+@interface ArsdkFeatureDroneManagerVisibleStateBitField : NSObject
+
++ (BOOL) isSet:(ArsdkFeatureDroneManagerVisibleState)val inBitField:(NSUInteger)bitfield;
+
++ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureDroneManagerVisibleState val))cb;
+
+@end
+
 @protocol ArsdkFeatureDroneManagerCallback<NSObject>
 
 @optional
@@ -61,11 +87,11 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureDroneManagerConnectionState) {
  - parameter serial: Serial number of the drone.
  - parameter model: Model id of the drone.
  - parameter name: Name (SSID) of the drone.
- - parameter connection_order: 0 if the drone is unknwon (never connected).
+ - parameter connection_order: 0 if the drone is unknown (never connected).
 Else, order of last connection (1 = most recent)
  - parameter active: 1 if the drone is active (the drone manager tries to connect or is connected to it)
 0 if the drone is not the active one.
- - parameter visible: 1 if the drone is currently visible, 0 otherwise.
+ - parameter visible: Whether the drone is cellular online and/or in wifi scan results.
  - parameter security: Security method used by the drone.
  - parameter has_saved_key: 1 if the drone manager has a saved security key for the drone, 0 otherwise.
 If security method is not 'none', and this value is 0, then the controller should prompt the user for a passphrase before sending a connect.
@@ -73,8 +99,8 @@ If security method is not 'none', and this value is 0, then the controller shoul
 The value is meaningless if the drone is not visible.
  - parameter list_flags: 
 */
-- (void)onDroneListItem:(NSString*)serial model:(NSUInteger)model name:(NSString*)name connectionOrder:(NSUInteger)connectionOrder active:(NSUInteger)active visible:(NSUInteger)visible security:(ArsdkFeatureDroneManagerSecurity)security hasSavedKey:(NSUInteger)hasSavedKey rssi:(NSInteger)rssi listFlagsBitField:(NSUInteger)listFlagsBitField
-NS_SWIFT_NAME(onDroneListItem(serial:model:name:connectionOrder:active:visible:security:hasSavedKey:rssi:listFlagsBitField:));
+- (void)onDroneListItem:(NSString*)serial model:(NSUInteger)model name:(NSString*)name connectionOrder:(NSUInteger)connectionOrder active:(NSUInteger)active visibleBitField:(NSUInteger)visibleBitField security:(ArsdkFeatureDroneManagerSecurity)security hasSavedKey:(NSUInteger)hasSavedKey rssi:(NSInteger)rssi listFlagsBitField:(NSUInteger)listFlagsBitField
+NS_SWIFT_NAME(onDroneListItem(serial:model:name:connectionOrder:active:visibleBitField:security:hasSavedKey:rssi:listFlagsBitField:));
 
 /**
  State of the connection. 

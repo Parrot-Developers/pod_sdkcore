@@ -33,9 +33,15 @@ typedef NS_ENUM(NSInteger, FileFormat) {
     FileFormatGutma
 };
 
+typedef NS_ENUM(NSInteger, ConverterResult) {
+    STATUS_ERROR = -1,
+    STATUS_OK = 0,
+    STATUS_NOFLIGHT = 1
+};
+
 @interface FileConverterAPI : NSObject
 
-+ (BOOL)convert:(NSString*)inFile
++ (ConverterResult)convert:(NSString*)inFile
         outFile:(NSString*)outFile
          format:(FileFormat)format;
 

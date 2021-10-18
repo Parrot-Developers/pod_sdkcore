@@ -21,8 +21,11 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureCommonMavlinkStartType) {
     /** Mavlink file for MapMyHouse */
     ArsdkFeatureCommonMavlinkStartTypeMapmyhouse = 1,
 
+    /** Mavlink file for FlightPlan V2 (better follow the standard) */
+    ArsdkFeatureCommonMavlinkStartTypeFlightplanv2 = 2,
+
 };
-#define ArsdkFeatureCommonMavlinkStartTypeCnt 2
+#define ArsdkFeatureCommonMavlinkStartTypeCnt 3
 
 @interface ArsdkFeatureCommonMavlink : NSObject
 

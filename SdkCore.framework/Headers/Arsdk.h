@@ -6,6 +6,8 @@
 #include "ArsdkCore.h"
 #include "ArsdkCore+Devices.h"
 #include "ArsdkCore+Stream.h"
+#include "ArsdkCore+Source.h"
+#include "ArsdkCore+Frame.h"
 #include "ArsdkCore+Media.h"
 #include "ArsdkCore+Update.h"
 #include "ArsdkCore+FtpRequest.h"
@@ -19,9 +21,7 @@
 
 #include "ArsdkBackendController.h"
 #include "ArsdkWifiBackendController.h"
-#include "ArsdkBleBackendController.h"
 #include "ArsdkMuxEaBackendController.h"
-#include "ArsdkMuxIpBackendController.h"
 
 #include "PompLoopUtil.h"
 #include "Logger.h"
@@ -31,17 +31,12 @@
 
 #include "FileConverterAPI.h"
 #include "NoAckStorage.h"
+#include "Anonymizer.h"
 
-#include "SdkCore+FileSource.h"
-#include "SdkCore+MediaInfo.h"
-#include "SdkCore+Renderer.h"
+#include "SdkCore+EventLogger.h"
+#include "SdkCoreFileSource.h"
+#include "SdkCoreMediaInfo.h"
+#include "SdkCoreRenderer.h"
 
 #include "GLError.h"
-
-#include "ThermalProc.h"
-#include "ThermalProcVideo.h"
-#include "ThermalProcPicture.h"
-#include "ThermalProcPictureData.h"
-#include "ThermalProcPaletteFactory.h"
-
 #endif /* Arsdk_h */

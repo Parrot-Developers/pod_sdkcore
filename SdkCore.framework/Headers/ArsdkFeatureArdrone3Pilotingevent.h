@@ -50,6 +50,13 @@ Informs about the move that the drone managed to do and why it stopped.
 - (void)onMoveByEnd:(float)dx dy:(float)dy dz:(float)dz dpsi:(float)dpsi error:(ArsdkFeatureArdrone3PilotingeventMovebyendError)error
 NS_SWIFT_NAME(onMoveByEnd(dx:dy:dz:dpsi:error:));
 
+/**
+ Sent when the drone is ready to be thrown during a user takeoff. 
+
+*/
+- (void)onUserTakeoffReady
+NS_SWIFT_NAME(onUserTakeoffReady());
+
 
 @end
 

@@ -141,8 +141,11 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureArdrone3PilotingstateNavigatehomestatecha
     /** Navigate home enabled by product (unavailable->available) */
     ArsdkFeatureArdrone3PilotingstateNavigatehomestatechangedReasonEnabled = 6,
 
+    /** Return to home during a flightplan (available->in_progress) */
+    ArsdkFeatureArdrone3PilotingstateNavigatehomestatechangedReasonFlightplan = 7,
+
 };
-#define ArsdkFeatureArdrone3PilotingstateNavigatehomestatechangedReasonCnt 7
+#define ArsdkFeatureArdrone3PilotingstateNavigatehomestatechangedReasonCnt 8
 
 /** Drone landing state */
 typedef NS_ENUM(NSInteger, ArsdkFeatureArdrone3PilotingstateLandingstatechangedState) {

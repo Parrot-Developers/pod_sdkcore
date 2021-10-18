@@ -131,7 +131,7 @@ However, the yaw value can be used. If all speeds are zero the command will resu
 This value is only used if the orientation mode is 'heading_start' or 'heading_during'
  - parameter max_horizontal_speed: Maximum horizontal speed in m/s.
  - parameter max_vertical_speed: Maximum vertical speed in m/s.
- - parameter max_yaw_rotation_speed: Maximum vertical speed in degrees/s.
+ - parameter max_yaw_rotation_speed: Maximum yaw rotation speed in degrees/s.
  - returns: a block that encodes the command
 */
 + (int (^)(struct arsdk_cmd *))extendedMoveToEncoder:(double)latitude longitude:(double)longitude altitude:(double)altitude orientationMode:(ArsdkFeatureMoveOrientationMode)orientationMode heading:(float)heading maxHorizontalSpeed:(float)maxHorizontalSpeed maxVerticalSpeed:(float)maxVerticalSpeed maxYawRotationSpeed:(float)maxYawRotationSpeed
@@ -148,7 +148,7 @@ Also note that the given rotation will not modify the move (i.e. moves are alway
  - parameter d_psi: Wanted rotation of heading [rad]
  - parameter max_horizontal_speed: Maximum horizontal speed in m/s.
  - parameter max_vertical_speed: Maximum vertical speed in m/s.
- - parameter max_yaw_rotation_speed: Maximum vertical speed in degrees/s.
+ - parameter max_yaw_rotation_speed: Maximum yaw rotation speed in degrees/s.
  - returns: a block that encodes the command
 */
 + (int (^)(struct arsdk_cmd *))extendedMoveByEncoder:(float)dX dY:(float)dY dZ:(float)dZ dPsi:(float)dPsi maxHorizontalSpeed:(float)maxHorizontalSpeed maxVerticalSpeed:(float)maxVerticalSpeed maxYawRotationSpeed:(float)maxYawRotationSpeed

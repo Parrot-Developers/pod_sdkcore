@@ -19,8 +19,12 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureGimbalModel) {
 Only one gimbal of this kind is allowed at a time on a drone. */
     ArsdkFeatureGimbalModelMain = 0,
 
+    /** Front Stereo Camera
+Only one gimbal of this kind is allowed at a time on a drone. */
+    ArsdkFeatureGimbalModelFstcam = 1,
+
 };
-#define ArsdkFeatureGimbalModelCnt 1
+#define ArsdkFeatureGimbalModelCnt 2
 
 /** Feature current state. */
 typedef NS_ENUM(NSInteger, ArsdkFeatureGimbalState) {
@@ -123,13 +127,13 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureGimbalAxis) {
      */
     ArsdkFeatureGimbalAxisSdkCoreUnknown = -1,
 
-    /** Yaw axis */
+    /** Yaw axis. */
     ArsdkFeatureGimbalAxisYaw = 0,
 
-    /** Pitch axis */
+    /** Pitch axis. */
     ArsdkFeatureGimbalAxisPitch = 1,
 
-    /** Roll axis */
+    /** Roll axis. */
     ArsdkFeatureGimbalAxisRoll = 2,
 
 };
@@ -170,19 +174,19 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureGimbalFrameOfReference) {
      */
     ArsdkFeatureGimbalFrameOfReferenceSdkCoreUnknown = -1,
 
-    /** None */
+    /** None, references are ignored. */
     ArsdkFeatureGimbalFrameOfReferenceNone = 0,
 
-    /** Euler angles define gimbal attitude in the drone frame of reference, where, as seen from the drone:
+    /** References are expressed in the drone frame of reference, where as seen from the drone:
 - roll axis points forward
 - pitch axis points on the right hand side
 - yaw axis points downward */
     ArsdkFeatureGimbalFrameOfReferenceRelative = 1,
 
-    /** Euler angles define gimbal attitude in the Earth frame of reference, where:
+    /** References are expressed in the NED frame of reference, where:
 - roll axis points North
 - pitch axis points East
-- yaw axis points toward the center of the Earth */
+- yaw axis points toward the center of the Earth (Down) */
     ArsdkFeatureGimbalFrameOfReferenceAbsolute = 2,
 
 };
@@ -208,12 +212,12 @@ NS_SWIFT_NAME(onGimbalCapabilities(gimbalId:model:axesBitField:));
   
 
  - parameter gimbal_id: id of the gimbal.
- - parameter min_yaw: Minimum yaw value, in degrees, in the relative frame of reference
- - parameter max_yaw: Maximum yaw value, in degrees, in the relative frame of reference
- - parameter min_pitch: Minimum pitch value, in degrees, in the relative frame of reference
- - parameter max_pitch: Maximum pitch value, in degrees, in the relative frame of reference
- - parameter min_roll: Minimum roll value, in degrees, in the relative frame of reference
- - parameter max_roll: Maximum roll value, in degrees, in the relative frame of reference
+ - parameter min_yaw: Minimum yaw value, in degrees, in the relative frame of reference.
+ - parameter max_yaw: Maximum yaw value, in degrees, in the relative frame of reference.
+ - parameter min_pitch: Minimum pitch value, in degrees, in the relative frame of reference.
+ - parameter max_pitch: Maximum pitch value, in degrees, in the relative frame of reference.
+ - parameter min_roll: Minimum roll value, in degrees, in the relative frame of reference.
+ - parameter max_roll: Maximum roll value, in degrees, in the relative frame of reference.
 */
 - (void)onRelativeAttitudeBounds:(NSUInteger)gimbalId minYaw:(float)minYaw maxYaw:(float)maxYaw minPitch:(float)minPitch maxPitch:(float)maxPitch minRoll:(float)minRoll maxRoll:(float)maxRoll
 NS_SWIFT_NAME(onRelativeAttitudeBounds(gimbalId:minYaw:maxYaw:minPitch:maxPitch:minRoll:maxRoll:));
@@ -224,15 +228,15 @@ NS_SWIFT_NAME(onRelativeAttitudeBounds(gimbalId:minYaw:maxYaw:minPitch:maxPitch:
  - parameter gimbal_id: id of the gimbal.
 Gimbal id is unique and persistent: the same gimbal model on a same drone model always has the same id.
 Main/Built-in gimbal has id zero.
- - parameter min_bound_yaw: Lower bound of the max yaw speed, in degrees per seconds
- - parameter max_bound_yaw: Upper bound of the max yaw speed, in degrees per seconds
- - parameter current_yaw: Maximum yaw speed value, in degrees per seconds
- - parameter min_bound_pitch: Lower bound of the max pitch speed, in degrees per seconds
- - parameter max_bound_pitch: Upper bound of the max pitch speed, in degrees per seconds
- - parameter current_pitch: Maximum pitch speed value, in degrees per seconds
- - parameter min_bound_roll: Lower bound of the max roll speed, in degrees per seconds
- - parameter max_bound_roll: Upper bound of the max roll speed, in degrees per seconds
- - parameter current_roll: Maximum roll speed value, in degrees per seconds
+ - parameter min_bound_yaw: Lower bound of the max yaw speed, in degrees per seconds.
+ - parameter max_bound_yaw: Upper bound of the max yaw speed, in degrees per seconds.
+ - parameter current_yaw: Maximum yaw speed value, in degrees per seconds.
+ - parameter min_bound_pitch: Lower bound of the max pitch speed, in degrees per seconds.
+ - parameter max_bound_pitch: Upper bound of the max pitch speed, in degrees per seconds.
+ - parameter current_pitch: Maximum pitch speed value, in degrees per seconds.
+ - parameter min_bound_roll: Lower bound of the max roll speed, in degrees per seconds.
+ - parameter max_bound_roll: Upper bound of the max roll speed, in degrees per seconds.
+ - parameter current_roll: Maximum roll speed value, in degrees per seconds.
 */
 - (void)onMaxSpeed:(NSUInteger)gimbalId minBoundYaw:(float)minBoundYaw maxBoundYaw:(float)maxBoundYaw currentYaw:(float)currentYaw minBoundPitch:(float)minBoundPitch maxBoundPitch:(float)maxBoundPitch currentPitch:(float)currentPitch minBoundRoll:(float)minBoundRoll maxBoundRoll:(float)maxBoundRoll currentRoll:(float)currentRoll
 NS_SWIFT_NAME(onMaxSpeed(gimbalId:minBoundYaw:maxBoundYaw:currentYaw:minBoundPitch:maxBoundPitch:currentPitch:minBoundRoll:maxBoundRoll:currentRoll:));
@@ -269,15 +273,15 @@ NS_SWIFT_NAME(onAxisLockState(gimbalId:lockedBitField:));
 
  - parameter gimbal_id: id of the gimbal.
  - parameter update_state: offset update states.
- - parameter min_bound_yaw: Lower bound of the offset that can be set on the yaw axis, in degrees
- - parameter max_bound_yaw: Upper bound of the offset that can be set on the yaw axis, in degrees
- - parameter current_yaw: Current offset applied to the yaw axis, in degrees
- - parameter min_bound_pitch: Lower bound of the offset that can be set on the pitch axis, in degrees
- - parameter max_bound_pitch: Upper bound of the offset that can be set on the pitch axis, in degrees
- - parameter current_pitch: Current offset applied to the pitch axis, in degrees
- - parameter min_bound_roll: Lower bound of the offset that can be set on the roll axis, in degrees
- - parameter max_bound_roll: Upper bound of the offset that can be set on the roll axis, in degrees
- - parameter current_roll: Current offset applied to the roll axis, in degrees
+ - parameter min_bound_yaw: Lower bound of the offset that can be set on the yaw axis, in degrees.
+ - parameter max_bound_yaw: Upper bound of the offset that can be set on the yaw axis, in degrees.
+ - parameter current_yaw: Current offset applied to the yaw axis, in degrees.
+ - parameter min_bound_pitch: Lower bound of the offset that can be set on the pitch axis, in degrees.
+ - parameter max_bound_pitch: Upper bound of the offset that can be set on the pitch axis, in degrees.
+ - parameter current_pitch: Current offset applied to the pitch axis, in degrees.
+ - parameter min_bound_roll: Lower bound of the offset that can be set on the roll axis, in degrees.
+ - parameter max_bound_roll: Upper bound of the offset that can be set on the roll axis, in degrees.
+ - parameter current_roll: Current offset applied to the roll axis, in degrees.
 */
 - (void)onOffsets:(NSUInteger)gimbalId updateState:(ArsdkFeatureGimbalState)updateState minBoundYaw:(float)minBoundYaw maxBoundYaw:(float)maxBoundYaw currentYaw:(float)currentYaw minBoundPitch:(float)minBoundPitch maxBoundPitch:(float)maxBoundPitch currentPitch:(float)currentPitch minBoundRoll:(float)minBoundRoll maxBoundRoll:(float)maxBoundRoll currentRoll:(float)currentRoll
 NS_SWIFT_NAME(onOffsets(gimbalId:updateState:minBoundYaw:maxBoundYaw:currentYaw:minBoundPitch:maxBoundPitch:currentPitch:minBoundRoll:maxBoundRoll:currentRoll:));
@@ -286,12 +290,12 @@ NS_SWIFT_NAME(onOffsets(gimbalId:updateState:minBoundYaw:maxBoundYaw:currentYaw:
   
 
  - parameter gimbal_id: id of the gimbal.
- - parameter min_yaw: Minimum yaw value, in degrees, in the absolute frame of reference
- - parameter max_yaw: Maximum yaw value, in degrees, in the absolute frame of reference
- - parameter min_pitch: Minimum pitch value, in degrees, in the absolute frame of reference
- - parameter max_pitch: Maximum pitch value, in degrees, in the absolute frame of reference
- - parameter min_roll: Minimum roll value, in degrees, in the absolute frame of reference
- - parameter max_roll: Maximum roll value, in degrees, in the absolute frame of reference
+ - parameter min_yaw: Minimum yaw value, in degrees, in the absolute frame of reference.
+ - parameter max_yaw: Maximum yaw value, in degrees, in the absolute frame of reference.
+ - parameter min_pitch: Minimum pitch value, in degrees, in the absolute frame of reference.
+ - parameter max_pitch: Maximum pitch value, in degrees, in the absolute frame of reference.
+ - parameter min_roll: Minimum roll value, in degrees, in the absolute frame of reference.
+ - parameter max_roll: Maximum roll value, in degrees, in the absolute frame of reference.
 */
 - (void)onAbsoluteAttitudeBounds:(NSUInteger)gimbalId minYaw:(float)minYaw maxYaw:(float)maxYaw minPitch:(float)minPitch maxPitch:(float)maxPitch minRoll:(float)minRoll maxRoll:(float)maxRoll
 NS_SWIFT_NAME(onAbsoluteAttitudeBounds(gimbalId:minYaw:maxYaw:minPitch:maxPitch:minRoll:maxRoll:));
@@ -323,6 +327,15 @@ NS_SWIFT_NAME(onCalibrationResult(gimbalId:result:));
 - (void)onAlert:(NSUInteger)gimbalId errorBitField:(NSUInteger)errorBitField
 NS_SWIFT_NAME(onAlert(gimbalId:errorBitField:));
 
+/**
+  
+
+ - parameter gimbal_id: id of the gimbal.
+ - parameter state: Stabilization state.
+*/
+- (void)onStabilizationState:(NSUInteger)gimbalId state:(ArsdkFeatureGimbalState)state
+NS_SWIFT_NAME(onStabilizationState(gimbalId:state:));
+
 
 @end
 
@@ -334,12 +347,12 @@ NS_SWIFT_NAME(onAlert(gimbalId:errorBitField:));
   
 
  - parameter gimbal_id: id of the gimbal.
- - parameter yaw: Maximum yaw speed value, in degrees per seconds
-This value will be clamped between [MaxSpeed](#148-3) min_bound_yaw and max_bound_yaw
- - parameter pitch: Maximum pitch speed value, in degrees per seconds
-This value will be clamped between [MaxSpeed](#148-3) min_bound_pitch and max_bound_pitch
- - parameter roll: Maximum roll speed value, in degrees per seconds
-This value will be clamped between [MaxSpeed](#148-3) min_bound_roll and max_bound_roll
+ - parameter yaw: Maximum yaw speed value, in degrees per seconds.
+This value will be clamped between [MaxSpeed](#148-3) min_bound_yaw and max_bound_yaw.
+ - parameter pitch: Maximum pitch speed value, in degrees per seconds.
+This value will be clamped between [MaxSpeed](#148-3) min_bound_pitch and max_bound_pitch.
+ - parameter roll: Maximum roll speed value, in degrees per seconds.
+This value will be clamped between [MaxSpeed](#148-3) min_bound_roll and max_bound_roll.
  - returns: a block that encodes the command
 */
 + (int (^)(struct arsdk_cmd *))setMaxSpeedEncoder:(NSUInteger)gimbalId yaw:(float)yaw pitch:(float)pitch roll:(float)roll
@@ -352,21 +365,21 @@ NS_SWIFT_NAME(setMaxSpeedEncoder(gimbalId:yaw:pitch:roll:));
  - parameter control_mode: Mode of changing the gimbal attitude.
 This parameter will caracterize following parameters units.
  - parameter yaw_frame_of_reference: Frame of reference of the yaw value.
-`none` if the yaw target should not be changed
+`none` if the yaw target should not be changed.
  - parameter yaw: Yaw value.
 Frame of reference is given by the value of `yaw_frame_of_reference`.
 Units depend on the `control_mode` value:
 - `position`: value is in degrees
 - `velocity`, value is in signed ratio (from -1 to 1) of the [MaxSpeed](#148-3) `current_yaw` parameter
- - parameter pitch_frame_of_reference: Frame of reference of the pitch value
-`none` if the pitch target should not be changed
+ - parameter pitch_frame_of_reference: Frame of reference of the pitch value.
+`none` if the pitch target should not be changed.
  - parameter pitch: Pitch value.
 Frame of reference is given by the value of `pitch_frame_of_reference`.
 Units depend on the `control_mode` value:
 - `position`: value is in degrees
 - `velocity`, value is in signed ratio (from -1 to 1) of the [MaxSpeed](#148-3) `current_pitch` parameter
- - parameter roll_frame_of_reference: Frame of reference of the roll value
-`none` if the roll target should not be changed
+ - parameter roll_frame_of_reference: Frame of reference of the roll value.
+`none` if the roll target should not be changed.
  - parameter roll: Roll value.
 Frame of reference is given by the value of `roll_frame_of_reference`.
 Units depend on the `control_mode` value:
@@ -382,11 +395,11 @@ NS_SWIFT_NAME(setTargetEncoder(gimbalId:controlMode:yawFrameOfReference:yaw:pitc
 
  - parameter gimbal_id: id of the gimbal.
  - parameter yaw: Offset, in degrees, that should be applied to the yaw axis.
-This value will be clamped between [Offsets](#148-8) min_bound_yaw and max_bound_yaw
+This value will be clamped between [Offsets](#148-8) min_bound_yaw and max_bound_yaw.
  - parameter pitch: Offset, in degrees, that should be applied to the pitch axis.
-This value will be clamped between [[Offsets](#148-8) min_bound_pitch and max_bound_pitch
+This value will be clamped between [[Offsets](#148-8) min_bound_pitch and max_bound_pitch.
  - parameter roll: Offset, in degrees, that should be applied to the roll axis.
-This value will be clamped between [Offsets](#148-8) min_bound_roll and max_bound_roll
+This value will be clamped between [Offsets](#148-8) min_bound_roll and max_bound_roll.
  - returns: a block that encodes the command
 */
 + (int (^)(struct arsdk_cmd *))setOffsetsEncoder:(NSUInteger)gimbalId yaw:(float)yaw pitch:(float)pitch roll:(float)roll

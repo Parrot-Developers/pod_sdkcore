@@ -282,5 +282,13 @@ Ignored if [PilotedPOIV2](#1-4-22) state is UNAVAILABLE.
 + (int (^)(struct arsdk_cmd *))startPilotedPOIV2Encoder:(double)latitude longitude:(double)longitude altitude:(double)altitude mode:(ArsdkFeatureArdrone3PilotingStartpilotedpoiv2Mode)mode
 NS_SWIFT_NAME(startPilotedPOIV2Encoder(latitude:longitude:altitude:mode:));
 
+/**
+ Ask the drone to take off or land. 
+
+ - returns: a block that encodes the command
+*/
++ (int (^)(struct arsdk_cmd *))smartTakeOffLandEncoder
+NS_SWIFT_NAME(smartTakeOffLandEncoder());
+
 @end
 

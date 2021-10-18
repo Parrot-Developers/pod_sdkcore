@@ -45,8 +45,11 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureCommonMavlinkstateMavlinkfileplayingstate
     /** Mavlink file for MapMyHouse */
     ArsdkFeatureCommonMavlinkstateMavlinkfileplayingstatechangedTypeMapmyhouse = 1,
 
+    /** Mavlink file for FlightPlan V2 (better follow the standard) */
+    ArsdkFeatureCommonMavlinkstateMavlinkfileplayingstatechangedTypeFlightplanv2 = 2,
+
 };
-#define ArsdkFeatureCommonMavlinkstateMavlinkfileplayingstatechangedTypeCnt 2
+#define ArsdkFeatureCommonMavlinkstateMavlinkfileplayingstatechangedTypeCnt 3
 
 /** State of play error */
 typedef NS_ENUM(NSInteger, ArsdkFeatureCommonMavlinkstateMavlinkplayerrorstatechangedError) {

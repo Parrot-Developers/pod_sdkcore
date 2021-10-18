@@ -38,15 +38,58 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureGenericListFlags) {
 
 @end
 
-@interface ArsdkFeatureGeneric : NSObject
+@protocol ArsdkFeatureGenericCallback<NSObject>
+
+@optional
 
 /**
- default 
+  
 
+ - parameter service_id: 
+ - parameter msg_num: 
+ - parameter payload: 
+*/
+- (void)onCustomEvt:(NSUInteger)serviceId msgNum:(NSUInteger)msgNum payload:(NSData*)payload
+NS_SWIFT_NAME(onCustomEvt(serviceId:msgNum:payload:));
+
+/**
+  
+
+ - parameter service_id: 
+ - parameter msg_num: 
+ - parameter payload: 
+*/
+- (void)onCustomEvtNonAck:(NSUInteger)serviceId msgNum:(NSUInteger)msgNum payload:(NSData*)payload
+NS_SWIFT_NAME(onCustomEvtNonAck(serviceId:msgNum:payload:));
+
+
+@end
+
+@interface ArsdkFeatureGeneric : NSObject
+
++ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeatureGenericCallback>)callback;
+
+/**
+  
+
+ - parameter service_id: 
+ - parameter msg_num: 
+ - parameter payload: 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))defaultEncoder
-NS_SWIFT_NAME(defaultEncoder());
++ (int (^)(struct arsdk_cmd *))customCmdEncoder:(NSUInteger)serviceId msgNum:(NSUInteger)msgNum payload:(NSData*)payload
+NS_SWIFT_NAME(customCmdEncoder(serviceId:msgNum:payload:));
+
+/**
+  
+
+ - parameter service_id: 
+ - parameter msg_num: 
+ - parameter payload: 
+ - returns: a block that encodes the command
+*/
++ (int (^)(struct arsdk_cmd *))customCmdNonAckEncoder:(NSUInteger)serviceId msgNum:(NSUInteger)msgNum payload:(NSData*)payload
+NS_SWIFT_NAME(customCmdNonAckEncoder(serviceId:msgNum:payload:));
 
 @end
 

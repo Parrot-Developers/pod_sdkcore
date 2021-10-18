@@ -72,7 +72,7 @@ NS_SWIFT_NAME(onMagnetoCalibrationStateChanged(xaxiscalibration:yaxiscalibration
 /**
  Calibration required. 
 
- - parameter required: 1 if calibration is required, 0 if current calibration is still valid
+ - parameter required: 1 if calibration is required, 0 if current calibration is still valid, 2 if calibration is recommended
 */
 - (void)onMagnetoCalibrationRequiredState:(NSUInteger)required
 NS_SWIFT_NAME(onMagnetoCalibrationRequiredState(required:));

@@ -72,8 +72,13 @@ The resulting set of photos can then be retrieved as a single media that may be 
 panoramic images. */
     ArsdkFeatureAnimationTypeSphericalPhotoPanorama = 15,
 
+    /** The drone takes photos at different camera yaw for several camera pitch.
+The resulting set of photos can then be retrieved as a single media that may
+be post-processed to make a wide angle image. */
+    ArsdkFeatureAnimationTypeSuperWidePhotoPanorama = 16,
+
 };
-#define ArsdkFeatureAnimationTypeCnt 16
+#define ArsdkFeatureAnimationTypeCnt 17
 
 @interface ArsdkFeatureAnimationTypeBitField : NSObject
 
@@ -475,6 +480,92 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureAnimationVertigoFinishAction) {
 };
 #define ArsdkFeatureAnimationVertigoFinishActionCnt 2
 
+/** Indicators needed to start an animation. */
+typedef NS_ENUM(NSInteger, ArsdkFeatureAnimationIndicator) {
+    /**
+     Unknown value from SdkCore.
+     Only used if the received value cannot be matched with a declared value.
+     This might occur when the drone or rc has a different sdk base from the controller.
+     */
+    ArsdkFeatureAnimationIndicatorSdkCoreUnknown = -1,
+
+    /** Drone gps is not fixed. */
+    ArsdkFeatureAnimationIndicatorDroneGps = 0,
+
+    /** Drone magneto is not valid. */
+    ArsdkFeatureAnimationIndicatorDroneMagneto = 1,
+
+    /** Drone is out of geofence. */
+    ArsdkFeatureAnimationIndicatorDroneGeofence = 2,
+
+    /** Drone is under min altitude. */
+    ArsdkFeatureAnimationIndicatorDroneMinAltitude = 3,
+
+    /** Drone is above max altitude. */
+    ArsdkFeatureAnimationIndicatorDroneMaxAltitude = 4,
+
+    /** Drone is not flying. */
+    ArsdkFeatureAnimationIndicatorDroneFlying = 5,
+
+    /** Target position has a bad accuracy. */
+    ArsdkFeatureAnimationIndicatorTargetPositionAccuracy = 6,
+
+    /** Target image detection is not working. */
+    ArsdkFeatureAnimationIndicatorTargetImageDetection = 7,
+
+    /** Drone is too close to target. */
+    ArsdkFeatureAnimationIndicatorDroneTargetDistanceMin = 8,
+
+    /** Drone is too far from target. */
+    ArsdkFeatureAnimationIndicatorDroneTargetDistanceMax = 9,
+
+    /** Target horizontal speed is too high. */
+    ArsdkFeatureAnimationIndicatorTargetHorizSpeed = 10,
+
+    /** Target vertical speed is too high. */
+    ArsdkFeatureAnimationIndicatorTargetVertSpeed = 11,
+
+    /** Target altitude has a bad accuracy. */
+    ArsdkFeatureAnimationIndicatorTargetAltitudeAccuracy = 12,
+
+};
+#define ArsdkFeatureAnimationIndicatorCnt 13
+
+@interface ArsdkFeatureAnimationIndicatorBitField : NSObject
+
++ (BOOL) isSet:(ArsdkFeatureAnimationIndicator)val inBitField:(NSUInteger)bitfield;
+
++ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureAnimationIndicator val))cb;
+
+@end
+
+/** Piloting mode necessary to start an animation. */
+typedef NS_ENUM(NSInteger, ArsdkFeatureAnimationMode) {
+    /**
+     Unknown value from SdkCore.
+     Only used if the received value cannot be matched with a declared value.
+     This might occur when the drone or rc has a different sdk base from the controller.
+     */
+    ArsdkFeatureAnimationModeSdkCoreUnknown = -1,
+
+    /** Follow me mode. */
+    ArsdkFeatureAnimationModeFollowMe = 0,
+
+    /** Manual mode. */
+    ArsdkFeatureAnimationModeManual = 1,
+
+    /** Point of interest mode. */
+    ArsdkFeatureAnimationModePoi = 2,
+
+    /** Look at mode. */
+    ArsdkFeatureAnimationModeLookAt = 3,
+
+    /** Flight plan mode. */
+    ArsdkFeatureAnimationModeFlightPlan = 4,
+
+};
+#define ArsdkFeatureAnimationModeCnt 5
+
 @protocol ArsdkFeatureAnimationCallback<NSObject>
 
 @optional
@@ -509,7 +600,7 @@ NS_SWIFT_NAME(onFlipState(state:type:));
   
 
  - parameter state: State of the animation
- - parameter rotation_angle: Rotation angle in rad. Positive value makes a clockwise panorama, negative is anti-clockwise.
+ - parameter rotation_angle: Rotation angle in rad. Positive value makes a clockwise panorama, negative if anti-clockwise.
 (only accurate if state is not idle)
  - parameter rotation_speed: The rotation speed of the anim in rad/s
 (only accurate if state is not idle)
@@ -553,7 +644,7 @@ NS_SWIFT_NAME(onHorizontalRevealState(state:speed:distance:playMode:));
 (only accurate if state is not idle)
  - parameter vertical_distance: Vertical distance in m.
 (only accurate if state is not idle)
- - parameter rotation_angle: Rotation angle in rad. Positive value makes a clockwise panorama, negative is anti-clockwise.
+ - parameter rotation_angle: Rotation angle in rad. Positive value makes a clockwise panorama, negative if anti-clockwise.
 (only accurate if state is not idle)
  - parameter rotation_speed: The rotation speed of the anim in rad/s
 (only accurate if state is not idle)
@@ -649,7 +740,7 @@ NS_SWIFT_NAME(onVertigoState(state:duration:maxZoomLevel:finishAction:playMode:)
 (only accurate if state is not idle)
  - parameter vertical_distance: Vertical distance in m.
 (only accurate if state is not idle)
- - parameter rotation_angle: Rotation angle in rad. Positive value makes a clockwise panorama, negative is anti-clockwise.
+ - parameter rotation_angle: Rotation angle in rad. Positive value makes a clockwise panorama, negative if anti-clockwise.
 (only accurate if state is not idle)
  - parameter rotation_speed: The rotation speed of the anim in rad/s
 (only accurate if state is not idle)
@@ -667,7 +758,7 @@ NS_SWIFT_NAME(onTwistUpState(state:speed:verticalDistance:rotationAngle:rotation
 (only accurate if state is not idle)
  - parameter vertical_distance: Vertical distance in m.
 (only accurate if state is not idle)
- - parameter rotation_angle: Rotation angle in rad. Positive value makes a clockwise panorama, negative is anti-clockwise.
+ - parameter rotation_angle: Rotation angle in rad. Positive value makes a clockwise panorama, negative if anti-clockwise.
 (only accurate if state is not idle)
  - parameter rotation_speed: The rotation speed of the anim in rad/s
 (only accurate if state is not idle)
@@ -700,6 +791,35 @@ NS_SWIFT_NAME(onVertical180PhotoPanoramaState(state:));
 */
 - (void)onSphericalPhotoPanoramaState:(ArsdkFeatureAnimationState)state
 NS_SWIFT_NAME(onSphericalPhotoPanoramaState(state:));
+
+/**
+ List of animations supported for a mode. 
+
+ - parameter mode: Piloting Mode.
+ - parameter type: List of animations supported for a mode.
+ - parameter list_flags: 
+*/
+- (void)onCapabilities:(ArsdkFeatureAnimationMode)mode typeBitField:(NSUInteger)typeBitField listFlagsBitField:(NSUInteger)listFlagsBitField
+NS_SWIFT_NAME(onCapabilities(mode:typeBitField:listFlagsBitField:));
+
+/**
+ Describes for each animation the list of missing requirements 
+
+ - parameter type: Animation type.
+ - parameter missing_inputs: List of missing requirements to start animation.
+If at least one input is missing, drone won't be able to start the animation.
+ - parameter list_flags: 
+*/
+- (void)onInfo:(ArsdkFeatureAnimationType)type missingInputsBitField:(NSUInteger)missingInputsBitField listFlagsBitField:(NSUInteger)listFlagsBitField
+NS_SWIFT_NAME(onInfo(type:missingInputsBitField:listFlagsBitField:));
+
+/**
+  
+
+ - parameter state: State of the animation
+*/
+- (void)onSuperWidePhotoPanoramaState:(ArsdkFeatureAnimationState)state
+NS_SWIFT_NAME(onSuperWidePhotoPanoramaState(state:));
 
 
 @end
@@ -734,10 +854,10 @@ This animation will make the drone horizontaly rotates on itself.
  - parameter provided_params: Bitfield of the config parameters on which given values should be used.
 Setting a bit to 1 means that the corresponding parameter should be used,
 otherwise default value should be used.
- - parameter rotation_angle: Desired rotation angle in rad. Positive value makes a clockwise panorama, negative is anti-clockwise.
-Not used when rotation angle of provided_params param is 0.
+ - parameter rotation_angle: Desired rotation angle in rad. Positive value makes a clockwise panorama, negative if anti-clockwise.
+Not used when the rotation angle of provided_params param is 0.
  - parameter rotation_speed: The desired rotation speed of the anim in rad/s
-Not used when rotation speed of provided_params param is 0.
+Not used when the rotation speed of provided_params param is 0.
  - returns: a block that encodes the command
 */
 + (int (^)(struct arsdk_cmd *))startHorizontalPanoramaEncoder:(NSUInteger)providedParamsBitField rotationAngle:(float)rotationAngle rotationSpeed:(float)rotationSpeed
@@ -793,10 +913,10 @@ otherwise default value should be used.
 Not used when speed of provided_params param is 0.
  - parameter vertical_distance: Desired vertical distance in m.
 Not used when vertical distance of provided_params param is 0.
- - parameter rotation_angle: Desired rotation angle in rad. Positive value makes a clockwise panorama, negative is anti-clockwise.
-Not used when rotation angle of provided_params param is 0.
+ - parameter rotation_angle: Desired rotation angle in rad. Positive value makes a clockwise panorama, negative if anti-clockwise.
+Not used when the rotation angle of provided_params param is 0.
  - parameter rotation_speed: The desired rotation speed of the anim in rad/s
-Not used when rotation speed of provided_params param is 0.
+Not used when the rotation speed of provided_params param is 0.
  - parameter play_mode: Desired play mode.
 Not used when play mode of provided_params param is 0.
  - returns: a block that encodes the command
@@ -823,7 +943,7 @@ Not used when radius variation of provided_params param is 0.
 If negative, the spiral will be directed to the ground.
 Not used when vertical distance of provided_params param is 0.
  - parameter revolution_nb: The number of revolution (in turn).
-Positive value makes a clockwise spiral, negative is anti-clockwise.
+Positive value makes a clockwise spiral, negative if anti-clockwise.
 Example: 1.5 makes an entire turn plus half of a turn
  - parameter play_mode: Desired play mode.
 Not used when play mode of provided_params param is 0.
@@ -924,10 +1044,10 @@ otherwise default value should be used.
 Not used when speed of provided_params param is 0.
  - parameter vertical_distance: Desired vertical distance in m.
 Not used when vertical distance of provided_params param is 0.
- - parameter rotation_angle: Desired rotation angle in rad. Positive value makes a clockwise panorama, negative is anti-clockwise.
-Not used when rotation angle of provided_params param is 0.
+ - parameter rotation_angle: Desired rotation angle in rad. Positive value makes a clockwise panorama, negative if anti-clockwise.
+Not used when the rotation angle of provided_params param is 0.
  - parameter rotation_speed: The desired rotation speed of the anim in rad/s
-Not used when rotation speed of provided_params param is 0.
+Not used when the rotation speed of provided_params param is 0.
  - parameter play_mode: Desired play mode.
 Not used when play mode of provided_params param is 0.
  - returns: a block that encodes the command
@@ -948,10 +1068,10 @@ otherwise default value should be used.
 Not used when speed of provided_params param is 0.
  - parameter vertical_distance: Desired vertical distance in m.
 Not used when vertical distance of provided_params param is 0.
- - parameter rotation_angle: Desired rotation angle in rad. Positive value makes a clockwise panorama, negative is anti-clockwise.
-Not used when rotation angle of provided_params param is 0.
+ - parameter rotation_angle: Desired rotation angle in rad. Positive value makes a clockwise panorama, negative if anti-clockwise.
+Not used when the rotation angle of provided_params param is 0.
  - parameter rotation_speed: The desired rotation speed of the anim in rad/s
-Not used when rotation speed of provided_params param is 0.
+Not used when the rotation speed of provided_params param is 0.
  - parameter play_mode: Desired play mode.
 Not used when play mode of provided_params param is 0.
  - returns: a block that encodes the command
@@ -988,6 +1108,14 @@ This animation will make the drone perform a 360 degrees rotation on the yaw axi
 */
 + (int (^)(struct arsdk_cmd *))startSphericalPhotoPanoramaEncoder
 NS_SWIFT_NAME(startSphericalPhotoPanoramaEncoder());
+
+/**
+ Starts a super wide photo panorama animation. 
+
+ - returns: a block that encodes the command
+*/
++ (int (^)(struct arsdk_cmd *))startSuperWidePhotoPanoramaEncoder
+NS_SWIFT_NAME(startSuperWidePhotoPanoramaEncoder());
 
 @end
 

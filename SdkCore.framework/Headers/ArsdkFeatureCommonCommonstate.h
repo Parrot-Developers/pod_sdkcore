@@ -33,8 +33,11 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureCommonCommonstateSensorsstateslistchanged
     /** Vertical Camera sensor */
     ArsdkFeatureCommonCommonstateSensorsstateslistchangedSensornameVerticalCamera = 5,
 
+    /** Vertical Time Of Flight sensor */
+    ArsdkFeatureCommonCommonstateSensorsstateslistchangedSensornameVerticalTof = 6,
+
 };
-#define ArsdkFeatureCommonCommonstateSensorsstateslistchangedSensornameCnt 6
+#define ArsdkFeatureCommonCommonstateSensorsstateslistchangedSensornameCnt 7
 
 /** The Model of the product. */
 typedef NS_ENUM(NSInteger, ArsdkFeatureCommonCommonstateProductmodelModel) {
@@ -286,6 +289,15 @@ Also, each medias contains the Boot Id.
 */
 - (void)onBootId:(NSString*)bootid
 NS_SWIFT_NAME(onBootId(bootid:));
+
+/**
+ Current Drone Flight id.
+A Flight Id identifies a drone flight (between takeoff and land). 
+
+ - parameter flightId: Id of the flight
+*/
+- (void)onFlightId:(NSString*)flightid
+NS_SWIFT_NAME(onFlightId(flightid:));
 
 
 @end

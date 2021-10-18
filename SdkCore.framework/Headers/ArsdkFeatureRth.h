@@ -95,8 +95,14 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureRthStateReason) {
     /** Return to home enabled by product (unavailable->available) */
     ArsdkFeatureRthStateReasonEnabled = 6,
 
+    /** Return to home during a flightplan (available->in_progress) */
+    ArsdkFeatureRthStateReasonFlightplan = 7,
+
+    /** Return to home could not find a path to home (in_progress->available) */
+    ArsdkFeatureRthStateReasonBlocked = 8,
+
 };
-#define ArsdkFeatureRthStateReasonCnt 7
+#define ArsdkFeatureRthStateReasonCnt 9
 
 /** Home reachability */
 typedef NS_ENUM(NSInteger, ArsdkFeatureRthHomeReachability) {
@@ -177,6 +183,75 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureRthEndingBehavior) {
 };
 #define ArsdkFeatureRthEndingBehaviorCnt 2
 
+/** Indicators needed to start return home. */
+typedef NS_ENUM(NSInteger, ArsdkFeatureRthIndicator) {
+    /**
+     Unknown value from SdkCore.
+     Only used if the received value cannot be matched with a declared value.
+     This might occur when the drone or rc has a different sdk base from the controller.
+     */
+    ArsdkFeatureRthIndicatorSdkCoreUnknown = -1,
+
+    /** Drone gps is not fixed. */
+    ArsdkFeatureRthIndicatorDroneGps = 0,
+
+    /** Drone magneto is not valid. */
+    ArsdkFeatureRthIndicatorDroneMagneto = 1,
+
+    /** Drone is out of geofence.
+Not applicable to Return home. */
+    ArsdkFeatureRthIndicatorDroneGeofence = 2,
+
+    /** Drone is under min altitude.
+Not applicable to Return home. */
+    ArsdkFeatureRthIndicatorDroneMinAltitude = 3,
+
+    /** Drone is above max altitude.
+Not applicable to Return home. */
+    ArsdkFeatureRthIndicatorDroneMaxAltitude = 4,
+
+    /** Drone is not flying. */
+    ArsdkFeatureRthIndicatorDroneFlying = 5,
+
+    /** Target position has a bad accuracy.
+Not applicable to Return home. */
+    ArsdkFeatureRthIndicatorTargetPositionAccuracy = 6,
+
+    /** Target image detection is not working.
+Not applicable to Return home. */
+    ArsdkFeatureRthIndicatorTargetImageDetection = 7,
+
+    /** Drone is too close to target.
+Not applicable to Return home. */
+    ArsdkFeatureRthIndicatorDroneTargetDistanceMin = 8,
+
+    /** Drone is too far from target.
+Not applicable to Return home. */
+    ArsdkFeatureRthIndicatorDroneTargetDistanceMax = 9,
+
+    /** Target horizontal speed is too high.
+Not applicable to Return home. */
+    ArsdkFeatureRthIndicatorTargetHorizSpeed = 10,
+
+    /** Target vertical speed is too high.
+Not applicable to Return home. */
+    ArsdkFeatureRthIndicatorTargetVertSpeed = 11,
+
+    /** Target altitude has a bad accuracy.
+Not applicable to Return home. */
+    ArsdkFeatureRthIndicatorTargetAltitudeAccuracy = 12,
+
+};
+#define ArsdkFeatureRthIndicatorCnt 13
+
+@interface ArsdkFeatureRthIndicatorBitField : NSObject
+
++ (BOOL) isSet:(ArsdkFeatureRthIndicator)val inBitField:(NSUInteger)bitfield;
+
++ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureRthIndicator val))cb;
+
+@end
+
 @protocol ArsdkFeatureRthCallback<NSObject>
 
 @optional
@@ -210,7 +285,7 @@ NS_SWIFT_NAME(onPreferredHomeType(type:));
 
  - parameter latitude: Latitude of the takeoff location
  - parameter longitude: Longitude of the takeoff location
- - parameter altitude: Altitude of the custom location above takeoff (ATO).
+ - parameter altitude: Altitude of the takeoff home location above takeoff (ATO).
  - parameter fixed_before_takeoff: 1 if the location was acquired before the takeoff. 0 if it was acquired during the flight (i.e. is it
 the first fix location).
 */
@@ -230,9 +305,9 @@ NS_SWIFT_NAME(onCustomLocation(latitude:longitude:altitude:));
 /**
   
 
- - parameter latitude: Latitude of the takeoff location
- - parameter longitude: Longitude of the takeoff location
- - parameter altitude: Altitude of the custom location above takeoff (ATO).
+ - parameter latitude: Latitude of the followee location
+ - parameter longitude: Longitude of the followee location
+ - parameter altitude: Altitude of the followee location above takeoff (ATO).
 */
 - (void)onFolloweeLocation:(double)latitude longitude:(double)longitude altitude:(float)altitude
 NS_SWIFT_NAME(onFolloweeLocation(latitude:longitude:altitude:));
@@ -259,7 +334,7 @@ NS_SWIFT_NAME(onState(state:reason:));
 /**
  Home reachability status. 
 
- - parameter status: State of the return to home
+ - parameter status: Status of the home reachability
 */
 - (void)onHomeReachability:(ArsdkFeatureRthHomeReachability)status
 NS_SWIFT_NAME(onHomeReachability(status:));
@@ -311,6 +386,15 @@ This end altitude is AGL (above ground level).
 - (void)onEndingHoveringAltitude:(float)current min:(float)min max:(float)max
 NS_SWIFT_NAME(onEndingHoveringAltitude(current:min:max:));
 
+/**
+ Describes the missing requirements to start a return home. 
+
+ - parameter missing_inputs: List of missing requirements to activate return home.
+If at least one input is missing, drone won't be able to return home.
+*/
+- (void)onInfo:(NSUInteger)missingInputsBitField
+NS_SWIFT_NAME(onInfo(missingInputsBitField:));
+
 
 @end
 
@@ -330,8 +414,8 @@ NS_SWIFT_NAME(setPreferredHomeTypeEncoder(type:));
 /**
  Set the custom location. 
 
- - parameter latitude: Latitude of the takeoff location
- - parameter longitude: Longitude of the takeoff location
+ - parameter latitude: Latitude of the custom location
+ - parameter longitude: Longitude of the custom location
  - parameter altitude: Altitude of the custom location above takeoff (ATO).
  - returns: a block that encodes the command
 */

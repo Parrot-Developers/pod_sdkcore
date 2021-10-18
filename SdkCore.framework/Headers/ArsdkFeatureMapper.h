@@ -107,8 +107,17 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureMapperButtonAction) {
 In record mode: start/stop record */
     ArsdkFeatureMapperButtonActionCameraAuto = 29,
 
+    /** Add a debug tag to logs, and send it to the drone */
+    ArsdkFeatureMapperButtonActionDebugTag = 30,
+
+    /** Smart take off or land (Drone will decide what to do) */
+    ArsdkFeatureMapperButtonActionSmartTakeoffLand = 31,
+
+    /** toggle between internal and external antenna */
+    ArsdkFeatureMapperButtonActionToggleAntenna = 32,
+
 };
-#define ArsdkFeatureMapperButtonActionCnt 30
+#define ArsdkFeatureMapperButtonActionCnt 33
 
 /** The action (mapped on an axis) */
 typedef NS_ENUM(NSInteger, ArsdkFeatureMapperAxisAction) {
