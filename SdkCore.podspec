@@ -6,7 +6,7 @@ Pod::Spec.new do |s|
     s.homepage              = "https://developer.parrot.com"
     s.license               = "{ :type => 'BSD 3-Clause License', :file => 'LICENSE' }"
     s.author                = "Parrot Drone SAS"
-    s.source                = { :git => 'https://github.com/Parrot-Developers/gsdk2-sdkcore.git', :tag => "7.0.0" }
+    s.source                = { :git => 'https://github.com/Parrot-Developers/pod_sdkcore.git', :tag => "7.0.0" }
     s.platform              = :ios
     s.ios.deployment_target = '12.0'
     s.vendored_frameworks   = 'SdkCore.framework'
