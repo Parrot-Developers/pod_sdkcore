@@ -347,12 +347,10 @@ NS_SWIFT_NAME(onStabilizationState(gimbalId:state:));
   
 
  - parameter gimbal_id: id of the gimbal.
- - parameter yaw: Maximum yaw speed value, in degrees per seconds.
-This value will be clamped between [MaxSpeed](#148-3) min_bound_yaw and max_bound_yaw.
- - parameter pitch: Maximum pitch speed value, in degrees per seconds.
+ - parameter yaw: Deprecated, only the pitch value is used for all axes.
+ - parameter pitch: Maximum speed value, in degrees per seconds.
 This value will be clamped between [MaxSpeed](#148-3) min_bound_pitch and max_bound_pitch.
- - parameter roll: Maximum roll speed value, in degrees per seconds.
-This value will be clamped between [MaxSpeed](#148-3) min_bound_roll and max_bound_roll.
+ - parameter roll: Deprecated, only the pitch value is used for all axes.
  - returns: a block that encodes the command
 */
 + (int (^)(struct arsdk_cmd *))setMaxSpeedEncoder:(NSUInteger)gimbalId yaw:(float)yaw pitch:(float)pitch roll:(float)roll

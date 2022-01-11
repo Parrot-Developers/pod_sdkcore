@@ -39,8 +39,17 @@ State is 0 when one or more waypoints are beyond the geofence. */
 State is 0 when the drone needs to wait camera availability. */
     ArsdkFeatureCommonFlightplanstateComponentstatelistchangedComponentCameraavailable = 5,
 
+    /** Mavlink state component.
+State is 0 when the mavlink did not start because of drone bad state. */
+    ArsdkFeatureCommonFlightplanstateComponentstatelistchangedComponentMavlinkState = 6,
+
+    /** Mavlink Media component.
+State is 0 when the mavlink did not start because of a media action
+which cannot be performed. */
+    ArsdkFeatureCommonFlightplanstateComponentstatelistchangedComponentMavlinkMedia = 7,
+
 };
-#define ArsdkFeatureCommonFlightplanstateComponentstatelistchangedComponentCnt 6
+#define ArsdkFeatureCommonFlightplanstateComponentstatelistchangedComponentCnt 8
 
 @protocol ArsdkFeatureCommonFlightplanstateCallback<NSObject>
 

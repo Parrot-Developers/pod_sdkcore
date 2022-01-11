@@ -156,9 +156,10 @@ NS_SWIFT_NAME(onCapabilities(supportedCapabilitiesBitField:));
  - parameter custom_id: Custom identifier of the latest flight plan execution started before connection, or empty if none.
  - parameter item: Index of the latest mission item executed.
  - parameter running_time: Running time if the flightplan is currently being executed.
+ - parameter resource_id: First resource id of the latest media capture requested by the flightplan.
 */
-- (void)onRecoveryInfo:(NSString*)flightplanId customId:(NSString*)customId item:(NSUInteger)item runningTime:(NSUInteger)runningTime
-NS_SWIFT_NAME(onRecoveryInfo(flightplanId:customId:item:runningTime:));
+- (void)onRecoveryInfo:(NSString*)flightplanId customId:(NSString*)customId item:(NSUInteger)item runningTime:(NSUInteger)runningTime resourceId:(NSString*)resourceId
+NS_SWIFT_NAME(onRecoveryInfo(flightplanId:customId:item:runningTime:resourceId:));
 
 
 @end

@@ -33,8 +33,8 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureFcrPipeline) {
     /** Drone front camera last frames pipeline. */
     ArsdkFeatureFcrPipelineFcamEmergency = 5,
 
-    /** Drone front camera follow me pipeline. */
-    ArsdkFeatureFcrPipelineFcamFollowme = 6,
+    /** Drone front camera tracking pipeline. */
+    ArsdkFeatureFcrPipelineFcamTracking = 6,
 
     /** Drone vertical camera precise home pipeline. */
     ArsdkFeatureFcrPipelineVcamPrecisehome = 7,
@@ -63,8 +63,11 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureFcrPipeline) {
     /** Drone right stereo camera specific events pipeline. */
     ArsdkFeatureFcrPipelineFstcamRightEvent = 15,
 
+    /** Drone front camera event pipeline. */
+    ArsdkFeatureFcrPipelineFcamEvent = 16,
+
 };
-#define ArsdkFeatureFcrPipelineCnt 16
+#define ArsdkFeatureFcrPipelineCnt 17
 
 @interface ArsdkFeatureFcrPipelineBitField : NSObject
 
