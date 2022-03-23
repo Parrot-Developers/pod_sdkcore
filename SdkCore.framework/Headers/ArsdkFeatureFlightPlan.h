@@ -109,8 +109,11 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureFlightPlanSupportedCapabilities) {
     /** Support command to start a flight plan at a given item. */
     ArsdkFeatureFlightPlanSupportedCapabilitiesStartAt = 0,
 
+    /** Support command to start a flight plan at a given item with disconnection behavior. */
+    ArsdkFeatureFlightPlanSupportedCapabilitiesStartAtV2 = 1,
+
 };
-#define ArsdkFeatureFlightPlanSupportedCapabilitiesCnt 1
+#define ArsdkFeatureFlightPlanSupportedCapabilitiesCnt 2
 
 @interface ArsdkFeatureFlightPlanSupportedCapabilitiesBitField : NSObject
 
@@ -189,6 +192,21 @@ NS_SWIFT_NAME(startAtEncoder(flightplanId:customId:type:item:));
 */
 + (int (^)(struct arsdk_cmd *))clearRecoveryInfoEncoder
 NS_SWIFT_NAME(clearRecoveryInfoEncoder());
+
+/**
+ Start a flight plan at a given mission item. 
+
+ - parameter flightplan_id: Unique identifier of the flight plan to execute.
+ - parameter custom_id: Replaces the flightplan id in all the events returned by the drone.
+If empty, the original id is used.
+ - parameter type: Mavlink file type
+ - parameter item: Index of the mission item where the flight plan should start.
+This is the index of the mission item in the mission's items list, starting from 0.
+ - parameter continue_on_disconnect: Boolean : 0 : RTH on Disconnection / 1 : Continue on Disconnection
+ - returns: a block that encodes the command
+*/
++ (int (^)(struct arsdk_cmd *))startAtV2Encoder:(NSString*)flightplanId customId:(NSString*)customId type:(ArsdkFeatureFlightPlanMavlinkType)type item:(NSUInteger)item continueOnDisconnect:(NSUInteger)continueOnDisconnect
+NS_SWIFT_NAME(startAtV2Encoder(flightplanId:customId:type:item:continueOnDisconnect:));
 
 @end
 

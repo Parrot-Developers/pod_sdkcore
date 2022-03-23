@@ -82,47 +82,52 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureObstacleAvoidanceAlert) {
     ArsdkFeatureObstacleAvoidanceAlertStuck = 1,
 
     /** Perception system is unplugged or not working properly.
-Obstacle avoidance is unavailable and disabled. */
+Obstacle avoidance is unavailable and state is inactive. */
     ArsdkFeatureObstacleAvoidanceAlertStereoFailure = 2,
 
     /** Perception system lens is dirty or broken.
-Obstacle avoidance is unavailable and disabled. */
+Obstacle avoidance is unavailable and state is inactive. */
     ArsdkFeatureObstacleAvoidanceAlertStereoLensFailure = 3,
 
     /** Gimbal is not stabilized in direction of motion.
-Obstacle avoidance is unavailable and disabled. */
+Obstacle avoidance is unavailable and state is inactive. */
     ArsdkFeatureObstacleAvoidanceAlertGimbalFailure = 4,
 
     /** Environment is too dark for perception system or vertical camera.
-Obstacle avoidance is unavailable and disabled. */
+Obstacle avoidance is unavailable and state is inactive. */
     ArsdkFeatureObstacleAvoidanceAlertTooDark = 5,
 
     /** GPS and vertical camera do not provide reliable data.
-Obstacle avoidance is unavailable and disabled. */
+Obstacle avoidance is unavailable and state is inactive. */
     ArsdkFeatureObstacleAvoidanceAlertEstimationUnreliable = 6,
 
     /** Perception system is not calibrated.
-Obstacle avoidance is unavailable and disabled. */
+Obstacle avoidance is unavailable and state is inactive. */
     ArsdkFeatureObstacleAvoidanceAlertCalibrationFailure = 7,
 
     /** Obstacle Avoidance is in degraded mode due to poor GPS quality.
-Obstacle avoidance is available and enabled. */
+Obstacle avoidance is available with degraded performance. */
     ArsdkFeatureObstacleAvoidanceAlertPoorGps = 8,
 
     /** Obstacle Avoidance is in degraded mode due to strong wind.
-Obstacle avoidance is available and enabled. */
+Obstacle avoidance is available with degraded performance. */
     ArsdkFeatureObstacleAvoidanceAlertStrongWind = 9,
 
     /** Obstacle avoidance failed to compute trajectories.
-Obstacle avoidance is unavailable and disabled. */
+Obstacle avoidance is unavailable and state is inactive. */
     ArsdkFeatureObstacleAvoidanceAlertComputationalError = 10,
 
     /** The perception system is blind in the current motion direction.
-Obstacle avoidance is available and enabled. */
+Obstacle avoidance is available and state may be active. */
     ArsdkFeatureObstacleAvoidanceAlertBlindMotionDirection = 11,
 
+    /** The drone is frozen and does not respond to PCMD
+Obstacle avoidance mode needs to be set to disabled for the drone to move again.
+Obstacle avoidance is unavailable and state is inactive. */
+    ArsdkFeatureObstacleAvoidanceAlertFreeze = 12,
+
 };
-#define ArsdkFeatureObstacleAvoidanceAlertCnt 12
+#define ArsdkFeatureObstacleAvoidanceAlertCnt 13
 
 @interface ArsdkFeatureObstacleAvoidanceAlertBitField : NSObject
 
@@ -153,6 +158,15 @@ NS_SWIFT_NAME(onStatus(mode:state:availability:));
 */
 - (void)onAlerts:(NSUInteger)alertsBitField
 NS_SWIFT_NAME(onAlerts(alertsBitField:));
+
+/**
+  
+
+ - parameter alert: Alert raised.
+ - parameter timer: Timer until the deactivation of obstacle avoidance in seconds.
+*/
+- (void)onAlertTimer:(ArsdkFeatureObstacleAvoidanceAlert)alert timer:(NSUInteger)timer
+NS_SWIFT_NAME(onAlertTimer(alert:timer:));
 
 
 @end

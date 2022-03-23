@@ -39,8 +39,11 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureAlarmsType) {
     /** freefall detected. */
     ArsdkFeatureAlarmsTypeFreefallDetected = 7,
 
+    /** Stereo camera is decalibrated. */
+    ArsdkFeatureAlarmsTypeFstcamDecalibrated = 8,
+
 };
-#define ArsdkFeatureAlarmsTypeCnt 8
+#define ArsdkFeatureAlarmsTypeCnt 9
 
 /** takeoff readiness checks. */
 typedef NS_ENUM(NSInteger, ArsdkFeatureAlarmsTakeoffChecklistType) {
