@@ -39,4 +39,11 @@
 #include "SdkCoreRenderer.h"
 
 #include "GLError.h"
+
+#include "ThermalProc.h"
+#include "ThermalProcVideo.h"
+#include "ThermalProcPicture.h"
+#include "ThermalProcPictureData.h"
+#include "ThermalProcPaletteFactory.h"
+
 #endif /* Arsdk_h */
