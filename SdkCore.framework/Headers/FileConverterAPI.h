@@ -41,8 +41,8 @@ typedef NS_ENUM(NSInteger, ConverterResult) {
 
 @interface FileConverterAPI : NSObject
 
-+ (ConverterResult)convert:(NSString*)inFile
-        outFile:(NSString*)outFile
-         format:(FileFormat)format;
++ (ConverterResult)convert:(nonnull NSString *)inFile
+                   outFile:(nonnull NSString *)outFile
+                    format:(FileFormat)format;
 
 @end

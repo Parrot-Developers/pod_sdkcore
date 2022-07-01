@@ -150,3 +150,4 @@
 #include "ArsdkFeatureMotors.h"
 #include "ArsdkFeatureFcr.h"
 #include "ArsdkFeatureAlarms.h"
+#include "ArsdkFeatureTerrain.h"

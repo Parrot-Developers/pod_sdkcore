@@ -34,7 +34,7 @@ Some actions can not be mapped to two different buttons at the same time. In thi
  - parameter mapping_uid: The mapping to associate with the key
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setButtonMappingEncoder:(NSInteger)keyId mappingUid:(NSString*)mappingUid
++ (int (^)(struct arsdk_cmd *))setButtonMappingEncoder:(NSInteger)keyId mappingUid:(NSString *)mappingUid
 NS_SWIFT_NAME(setButtonMappingEncoder(keyId:mappingUid:));
 
 /**

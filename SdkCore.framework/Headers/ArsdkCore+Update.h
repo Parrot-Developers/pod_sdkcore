@@ -57,9 +57,9 @@ typedef void(^ArsdkUpdateCompletion)(ArsdkUpdateStatus status);
 @interface ArsdkCore (Update)
 
 /** Update request */
-- (ArsdkRequest * _Nonnull)updateFirwmare:(int16_t)handle
+- (nonnull ArsdkRequest *)updateFirwmare:(int16_t)handle
                                deviceType:(NSInteger)deviceType
-                                     file:(NSString* _Nonnull)filepath
-                                 progress:(ArsdkUpdateProgress _Nonnull)progressBlock
-                               completion:(ArsdkUpdateCompletion _Nonnull)completionBlock;
+                                     file:(nonnull NSString *)filepath
+                                 progress:(nonnull ArsdkUpdateProgress)progressBlock
+                               completion:(nonnull ArsdkUpdateCompletion)completionBlock;
 @end

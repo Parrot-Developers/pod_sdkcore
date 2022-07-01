@@ -29,9 +29,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureThermalMode) {
 
 @interface ArsdkFeatureThermalModeBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureThermalMode)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureThermalMode)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureThermalMode val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureThermalMode val))cb;
 
 @end
 
@@ -266,7 +266,7 @@ NS_SWIFT_NAME(onShutterMode(currentTrigger:));
 
 @interface ArsdkFeatureThermal : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeatureThermalCallback>)callback;
++ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureThermalCallback>)callback;
 
 /**
  Set thermal mode.

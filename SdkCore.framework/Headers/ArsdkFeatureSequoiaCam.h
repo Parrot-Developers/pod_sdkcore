@@ -89,9 +89,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureSequoiaCamSensorValue) {
 
 @interface ArsdkFeatureSequoiaCamSensorValueBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureSequoiaCamSensorValue)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureSequoiaCamSensorValue)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureSequoiaCamSensorValue val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureSequoiaCamSensorValue val))cb;
 
 @end
 
@@ -136,9 +136,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureSequoiaCamSystemError) {
 
 @interface ArsdkFeatureSequoiaCamSystemErrorBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureSequoiaCamSystemError)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureSequoiaCamSystemError)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureSequoiaCamSystemError val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureSequoiaCamSystemError val))cb;
 
 @end
 
@@ -177,7 +177,7 @@ NS_SWIFT_NAME(onRadiometricCalibResult(camId:value:listFlagsBitField:));
  - parameter live_stitch_path: 
  - parameter list_flags: 
 */
-- (void)onSessionStateChanged:(NSUInteger)camId state:(ArsdkFeatureSequoiaCamSessionStatusValue)state sessionPath:(NSString*)sessionPath liveStitchPath:(NSString*)liveStitchPath listFlagsBitField:(NSUInteger)listFlagsBitField
+- (void)onSessionStateChanged:(NSUInteger)camId state:(ArsdkFeatureSequoiaCamSessionStatusValue)state sessionPath:(NSString *)sessionPath liveStitchPath:(NSString *)liveStitchPath listFlagsBitField:(NSUInteger)listFlagsBitField
 NS_SWIFT_NAME(onSessionStateChanged(camId:state:sessionPath:liveStitchPath:listFlagsBitField:));
 
 /**
@@ -247,7 +247,7 @@ NS_SWIFT_NAME(onLiveStitchPicturesInProgressNumberChanged(camId:nbPictures:listF
 
 @interface ArsdkFeatureSequoiaCam : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeatureSequoiaCamCallback>)callback;
++ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureSequoiaCamCallback>)callback;
 
 /**
  Launch capture on radiometric calibration mode. This PTP mode is 0x8004 
@@ -265,7 +265,7 @@ NS_SWIFT_NAME(radiometricCalibStartEncoder(id:));
  - parameter name: Name of the session, only letters, numbers, '-' and '_' are allowed.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))openSessionEncoder:(NSUInteger)id name:(NSString*)name
++ (int (^)(struct arsdk_cmd *))openSessionEncoder:(NSUInteger)id name:(NSString *)name
 NS_SWIFT_NAME(openSessionEncoder(id:name:));
 
 /**

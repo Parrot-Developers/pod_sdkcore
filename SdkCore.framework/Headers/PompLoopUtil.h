@@ -39,7 +39,7 @@
  @param name String Id used in Logs
  @return instancetype or NIL if error
  */
-- (instancetype _Nonnull)initWithName:(NSString * _Nullable)name;
+- (nonnull instancetype)initWithName:(nullable NSString *)name NS_DESIGNATED_INITIALIZER;
 
 /**
  Run the Loop.
@@ -69,8 +69,7 @@ The caller must be in the same thread as the one used during the init
 
 /**
  Retrieves the internal pomp loop
-
- @return the pomp loop
  */
-- (struct pomp_loop * _Nonnull)internalPompLoop;
+@property (nonatomic, readonly, nonnull) struct pomp_loop *internalPompLoop;
+
 @end

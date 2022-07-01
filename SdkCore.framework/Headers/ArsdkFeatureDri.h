@@ -47,9 +47,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureDriSupportedCapabilities) {
 
 @interface ArsdkFeatureDriSupportedCapabilitiesBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureDriSupportedCapabilities)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureDriSupportedCapabilities)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureDriSupportedCapabilities val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureDriSupportedCapabilities val))cb;
 
 @end
 
@@ -136,7 +136,7 @@ NS_SWIFT_NAME(onDriState(mode:));
  - parameter type: 
  - parameter value: 
 */
-- (void)onDroneId:(ArsdkFeatureDriIdType)type value:(NSString*)value
+- (void)onDroneId:(ArsdkFeatureDriIdType)type value:(NSString *)value
 NS_SWIFT_NAME(onDroneId(type:value:));
 
 /**
@@ -148,7 +148,7 @@ the 3 secure characters which are only used to verify the ID consistency.
  - parameter type: The DRI type the DRI system is configured with.
  - parameter status: The current status of the DRI configuration.
 */
-- (void)onDriType:(NSString*)id type:(ArsdkFeatureDriDriType)type status:(ArsdkFeatureDriStatus)status
+- (void)onDriType:(NSString *)id type:(ArsdkFeatureDriDriType)type status:(ArsdkFeatureDriStatus)status
 NS_SWIFT_NAME(onDriType(id:type:status:));
 
 
@@ -156,7 +156,7 @@ NS_SWIFT_NAME(onDriType(id:type:status:));
 
 @interface ArsdkFeatureDri : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeatureDriCallback>)callback;
++ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureDriCallback>)callback;
 
 /**
  Set DRI mode. 
@@ -175,7 +175,7 @@ NS_SWIFT_NAME(driModeEncoder(mode:));
 For EN4709 type, it should include the 3 secure characters (and the hyphen).
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setDriTypeEncoder:(ArsdkFeatureDriDriType)type id:(NSString*)id
++ (int (^)(struct arsdk_cmd *))setDriTypeEncoder:(ArsdkFeatureDriDriType)type id:(NSString *)id
 NS_SWIFT_NAME(setDriTypeEncoder(type:id:));
 
 @end

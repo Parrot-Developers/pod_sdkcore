@@ -66,12 +66,12 @@ typedef NS_ENUM(NSInteger, ArsdkFirmwareVersionType) {
               Alpha = `alpha`, Beta = `beta`, Rc = `rc`.
               Or `major.minor.patch` for production version.
  */
-- (instancetype _Nullable)initFromName:(NSString* _Nullable)name;
+- (nullable instancetype)initFromName:(nullable NSString *)name;
 
 /**
  Returns an NSComparisonResult value that indicates the ordering of the receiver and another given firmware version.
  */
-- (NSComparisonResult)compare:(ArsdkFirmwareVersion* _Nonnull)otherVersion;
+- (NSComparisonResult)compare:(nonnull ArsdkFirmwareVersion *)otherVersion;
 
 @end
 
@@ -79,19 +79,17 @@ typedef NS_ENUM(NSInteger, ArsdkFirmwareVersionType) {
 @interface ArsdkFirmwareInfo: NSObject
 
 /** File path */
-@property (nonatomic, strong, readonly) NSString * _Nonnull filepath;
+@property (nonatomic, strong, readonly, nonnull) NSString *filepath;
 /** Firmware version */
-@property (nonatomic, strong, readonly) ArsdkFirmwareVersion * _Nonnull version;
+@property (nonatomic, strong, readonly, nonnull) ArsdkFirmwareVersion *version;
 /** Firmware name (version as string) */
-@property (nonatomic, strong, readonly) NSString * _Nonnull name;
+@property (nonatomic, strong, readonly, nonnull) NSString *name;
 /** Device for which this firmware is dedicated to */
 @property (nonatomic, assign, readonly) NSInteger device;
 /** Size of the firmware */
 @property (nonatomic, assign, readonly) size_t size;
-/** MD5 sum of the file */
-@property (nonatomic, strong, readonly) NSString * _Nonnull md5;
 
 /** Get the firmware info from a given file */
-- (instancetype _Nullable)initFromFile:(NSString* _Nonnull)filepath;
+- (nullable instancetype)initFromFile:(nonnull NSString *)filepath;
 
 @end

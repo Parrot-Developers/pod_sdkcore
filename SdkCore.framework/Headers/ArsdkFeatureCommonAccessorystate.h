@@ -121,7 +121,7 @@ NS_SWIFT_NAME(onAccessoryConfigModificationEnabled(enabled:));
 
 @interface ArsdkFeatureCommonAccessorystate : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeatureCommonAccessorystateCallback>)callback;
++ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureCommonAccessorystateCallback>)callback;
 
 @end
 

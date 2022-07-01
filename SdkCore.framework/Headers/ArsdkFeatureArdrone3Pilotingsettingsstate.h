@@ -171,7 +171,7 @@ NS_SWIFT_NAME(onMotionDetection(enabled:));
 
 @interface ArsdkFeatureArdrone3Pilotingsettingsstate : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeatureArdrone3PilotingsettingsstateCallback>)callback;
++ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureArdrone3PilotingsettingsstateCallback>)callback;
 
 @end
 

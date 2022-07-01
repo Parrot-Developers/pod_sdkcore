@@ -47,9 +47,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureThermalCamRange) {
 
 @interface ArsdkFeatureThermalCamRangeBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureThermalCamRange)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureThermalCamRange)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureThermalCamRange val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureThermalCamRange val))cb;
 
 @end
 
@@ -191,7 +191,7 @@ NS_SWIFT_NAME(onFlatFieldCalibrationMode(camId:mode:listFlagsBitField:));
 
 @interface ArsdkFeatureThermalCam : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeatureThermalCamCallback>)callback;
++ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureThermalCamCallback>)callback;
 
 /**
  Activate a given thermal camera.

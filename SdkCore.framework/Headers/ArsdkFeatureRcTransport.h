@@ -26,9 +26,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureRcTransportTransportLayer) {
 
 @interface ArsdkFeatureRcTransportTransportLayerBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureRcTransportTransportLayer)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureRcTransportTransportLayer)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureRcTransportTransportLayer val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureRcTransportTransportLayer val))cb;
 
 @end
 
@@ -57,7 +57,7 @@ NS_SWIFT_NAME(onCapabilities(transportsBitField:));
 
 @interface ArsdkFeatureRcTransport : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeatureRcTransportCallback>)callback;
++ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureRcTransportCallback>)callback;
 
 /**
  Configures transport layer. 

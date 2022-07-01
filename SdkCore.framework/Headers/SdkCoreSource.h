@@ -40,7 +40,7 @@
  @param mux: Mux context to use, `NULL` if not needed.
  @return 0 on success, a negative error code otherwise.
  */
-- (int)open:(NSString * _Nonnull)url mux:(/*struct mux_ctx * */void* _Nullable)mux;
+- (int)open:(nonnull NSString *)url mux:(/* nullable struct mux_ctx * */nullable void *)mux;
 
 @end
 
@@ -56,7 +56,7 @@
  @param target: stream target to be used to open the source as appropriate.
  @return 0 on success, a negative error code otherwise.
  */
-- (int)open:(id<SdkCoreSourceTarget> _Nonnull)target;
+- (int)open:(nonnull id<SdkCoreSourceTarget>)target;
 
 /**
  Selects the media to stream.
@@ -65,7 +65,8 @@
  @param count: Number of the media available in the list.
  @return The media id selected or `0` to select default media or `-ECANCELED` to cancel the source opening.
  */
-- (int)selectMedia:(/* const struct pdraw_demuxer_media * */const void* _Nonnull)medias count: (size_t)count;
+- (int)selectMedia:(/* nonnull const struct pdraw_demuxer_media * */nonnull const void *)medias
+             count:(size_t)count;
 
 /**
  Closes the Source.

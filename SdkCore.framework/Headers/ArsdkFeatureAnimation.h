@@ -82,9 +82,9 @@ be post-processed to make a wide angle image. */
 
 @interface ArsdkFeatureAnimationTypeBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureAnimationType)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureAnimationType)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureAnimationType val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureAnimationType val))cb;
 
 @end
 
@@ -171,9 +171,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureAnimationHorizontalPanoramaConfigParam) {
 
 @interface ArsdkFeatureAnimationHorizontalPanoramaConfigParamBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureAnimationHorizontalPanoramaConfigParam)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureAnimationHorizontalPanoramaConfigParam)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureAnimationHorizontalPanoramaConfigParam val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureAnimationHorizontalPanoramaConfigParam val))cb;
 
 @end
 
@@ -200,9 +200,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureAnimationDronieConfigParam) {
 
 @interface ArsdkFeatureAnimationDronieConfigParamBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureAnimationDronieConfigParam)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureAnimationDronieConfigParam)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureAnimationDronieConfigParam val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureAnimationDronieConfigParam val))cb;
 
 @end
 
@@ -229,9 +229,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureAnimationHorizontalRevealConfigParam) {
 
 @interface ArsdkFeatureAnimationHorizontalRevealConfigParamBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureAnimationHorizontalRevealConfigParam)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureAnimationHorizontalRevealConfigParam)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureAnimationHorizontalRevealConfigParam val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureAnimationHorizontalRevealConfigParam val))cb;
 
 @end
 
@@ -264,9 +264,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureAnimationVerticalRevealConfigParam) {
 
 @interface ArsdkFeatureAnimationVerticalRevealConfigParamBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureAnimationVerticalRevealConfigParam)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureAnimationVerticalRevealConfigParam)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureAnimationVerticalRevealConfigParam val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureAnimationVerticalRevealConfigParam val))cb;
 
 @end
 
@@ -299,9 +299,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureAnimationSpiralConfigParam) {
 
 @interface ArsdkFeatureAnimationSpiralConfigParamBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureAnimationSpiralConfigParam)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureAnimationSpiralConfigParam)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureAnimationSpiralConfigParam val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureAnimationSpiralConfigParam val))cb;
 
 @end
 
@@ -328,9 +328,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureAnimationParabolaConfigParam) {
 
 @interface ArsdkFeatureAnimationParabolaConfigParamBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureAnimationParabolaConfigParam)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureAnimationParabolaConfigParam)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureAnimationParabolaConfigParam val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureAnimationParabolaConfigParam val))cb;
 
 @end
 
@@ -357,9 +357,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureAnimationCandleConfigParam) {
 
 @interface ArsdkFeatureAnimationCandleConfigParamBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureAnimationCandleConfigParam)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureAnimationCandleConfigParam)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureAnimationCandleConfigParam val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureAnimationCandleConfigParam val))cb;
 
 @end
 
@@ -389,9 +389,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureAnimationDollySlideConfigParam) {
 
 @interface ArsdkFeatureAnimationDollySlideConfigParamBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureAnimationDollySlideConfigParam)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureAnimationDollySlideConfigParam)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureAnimationDollySlideConfigParam val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureAnimationDollySlideConfigParam val))cb;
 
 @end
 
@@ -421,9 +421,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureAnimationVertigoConfigParam) {
 
 @interface ArsdkFeatureAnimationVertigoConfigParamBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureAnimationVertigoConfigParam)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureAnimationVertigoConfigParam)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureAnimationVertigoConfigParam val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureAnimationVertigoConfigParam val))cb;
 
 @end
 
@@ -456,9 +456,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureAnimationTwistUpConfigParam) {
 
 @interface ArsdkFeatureAnimationTwistUpConfigParamBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureAnimationTwistUpConfigParam)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureAnimationTwistUpConfigParam)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureAnimationTwistUpConfigParam val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureAnimationTwistUpConfigParam val))cb;
 
 @end
 
@@ -528,14 +528,20 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureAnimationIndicator) {
     /** Target altitude has a bad accuracy. */
     ArsdkFeatureAnimationIndicatorTargetAltitudeAccuracy = 12,
 
+    /** Drone battery is insufficient. */
+    ArsdkFeatureAnimationIndicatorDroneBattery = 13,
+
+    /** Drone is not in a valid state. */
+    ArsdkFeatureAnimationIndicatorDroneState = 14,
+
 };
-#define ArsdkFeatureAnimationIndicatorCnt 13
+#define ArsdkFeatureAnimationIndicatorCnt 15
 
 @interface ArsdkFeatureAnimationIndicatorBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureAnimationIndicator)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureAnimationIndicator)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureAnimationIndicator val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureAnimationIndicator val))cb;
 
 @end
 
@@ -826,7 +832,7 @@ NS_SWIFT_NAME(onSuperWidePhotoPanoramaState(state:));
 
 @interface ArsdkFeatureAnimation : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeatureAnimationCallback>)callback;
++ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureAnimationCallback>)callback;
 
 /**
  Cancel current animation. 

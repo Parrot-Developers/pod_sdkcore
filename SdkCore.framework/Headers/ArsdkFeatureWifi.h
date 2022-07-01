@@ -26,9 +26,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureWifiBand) {
 
 @interface ArsdkFeatureWifiBandBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureWifiBand)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureWifiBand)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureWifiBand val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureWifiBand val))cb;
 
 @end
 
@@ -76,9 +76,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureWifiSecurityType) {
 
 @interface ArsdkFeatureWifiSecurityTypeBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureWifiSecurityType)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureWifiSecurityType)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureWifiSecurityType val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureWifiSecurityType val))cb;
 
 @end
 
@@ -117,9 +117,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureWifiEnvironment) {
 
 @interface ArsdkFeatureWifiEnvironmentBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureWifiEnvironment)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureWifiEnvironment)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureWifiEnvironment val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureWifiEnvironment val))cb;
 
 @end
 
@@ -154,7 +154,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureWifiCountrySelection) {
  - parameter channel: Channel of the AP
  - parameter list_flags: 
 */
-- (void)onScannedItem:(NSString*)ssid rssi:(NSInteger)rssi band:(ArsdkFeatureWifiBand)band channel:(NSUInteger)channel listFlagsBitField:(NSUInteger)listFlagsBitField
+- (void)onScannedItem:(NSString *)ssid rssi:(NSInteger)rssi band:(ArsdkFeatureWifiBand)band channel:(NSUInteger)channel listFlagsBitField:(NSUInteger)listFlagsBitField
 NS_SWIFT_NAME(onScannedItem(ssid:rssi:band:channel:listFlagsBitField:));
 
 /**
@@ -185,7 +185,7 @@ NS_SWIFT_NAME(onApChannelChanged(type:band:channel:));
  - parameter key: The key to secure the network. Not used if type is open
  - parameter key_type: 
 */
-- (void)onSecurityChanged:(ArsdkFeatureWifiSecurityType)type key:(NSString*)key keyType:(ArsdkFeatureWifiSecurityKeyType)keyType
+- (void)onSecurityChanged:(ArsdkFeatureWifiSecurityType)type key:(NSString *)key keyType:(ArsdkFeatureWifiSecurityKeyType)keyType
 NS_SWIFT_NAME(onSecurityChanged(type:key:keyType:));
 
 /**
@@ -194,7 +194,7 @@ NS_SWIFT_NAME(onSecurityChanged(type:key:keyType:));
  - parameter selection_mode: 
  - parameter code: Country code with ISO 3166 format, empty string means unknown country.
 */
-- (void)onCountryChanged:(ArsdkFeatureWifiCountrySelection)selectionMode code:(NSString*)code
+- (void)onCountryChanged:(ArsdkFeatureWifiCountrySelection)selectionMode code:(NSString *)code
 NS_SWIFT_NAME(onCountryChanged(selectionMode:code:));
 
 /**
@@ -218,7 +218,7 @@ NS_SWIFT_NAME(onRssiChanged(rssi:));
 
  - parameter countries: List of country code in ISO 3166 format separated by ";"
 */
-- (void)onSupportedCountries:(NSString*)countries
+- (void)onSupportedCountries:(NSString *)countries
 NS_SWIFT_NAME(onSupportedCountries(countries:));
 
 /**
@@ -234,7 +234,7 @@ NS_SWIFT_NAME(onSupportedSecurityTypes(typesBitField:));
 
 @interface ArsdkFeatureWifi : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeatureWifiCallback>)callback;
++ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureWifiCallback>)callback;
 
 /**
  Launches wifi network scan for a given band to get a list of all wifi networks found by the drone. 
@@ -274,7 +274,7 @@ The security is changed on the next boot.
  - parameter key_type: 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setSecurityEncoder:(ArsdkFeatureWifiSecurityType)type key:(NSString*)key keyType:(ArsdkFeatureWifiSecurityKeyType)keyType
++ (int (^)(struct arsdk_cmd *))setSecurityEncoder:(ArsdkFeatureWifiSecurityType)type key:(NSString *)key keyType:(ArsdkFeatureWifiSecurityKeyType)keyType
 NS_SWIFT_NAME(setSecurityEncoder(type:key:keyType:));
 
 /**
@@ -284,7 +284,7 @@ NS_SWIFT_NAME(setSecurityEncoder(type:key:keyType:));
  - parameter code: Country code with ISO 3166 format. Not used if automatic is 1.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setCountryEncoder:(ArsdkFeatureWifiCountrySelection)selectionMode code:(NSString*)code
++ (int (^)(struct arsdk_cmd *))setCountryEncoder:(ArsdkFeatureWifiCountrySelection)selectionMode code:(NSString *)code
 NS_SWIFT_NAME(setCountryEncoder(selectionMode:code:));
 
 /**

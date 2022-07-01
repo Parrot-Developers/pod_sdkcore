@@ -42,7 +42,7 @@ This id is unique by accessory_type.
 0x04: Empty: indicate the list is empty (implies First/Last). All other arguments should be ignored.
 0x08: Remove: This value should be removed from the existing list.
 */
-- (void)onConnectedAccessories:(NSUInteger)id accessoryType:(ArsdkFeatureArdrone3AccessorystateConnectedaccessoriesAccessoryType)accessoryType uid:(NSString*)uid swversion:(NSString*)swversion listFlags:(NSUInteger)listFlags
+- (void)onConnectedAccessories:(NSUInteger)id accessoryType:(ArsdkFeatureArdrone3AccessorystateConnectedaccessoriesAccessoryType)accessoryType uid:(NSString *)uid swversion:(NSString *)swversion listFlags:(NSUInteger)listFlags
 NS_SWIFT_NAME(onConnectedAccessories(id:accessoryType:uid:swversion:listFlags:));
 
 /**
@@ -64,7 +64,7 @@ NS_SWIFT_NAME(onBattery(id:batterylevel:listFlags:));
 
 @interface ArsdkFeatureArdrone3Accessorystate : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeatureArdrone3AccessorystateCallback>)callback;
++ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureArdrone3AccessorystateCallback>)callback;
 
 @end
 

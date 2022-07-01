@@ -74,9 +74,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureGaugeFwUpdaterRequirements) {
 
 @interface ArsdkFeatureGaugeFwUpdaterRequirementsBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureGaugeFwUpdaterRequirements)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureGaugeFwUpdaterRequirements)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureGaugeFwUpdaterRequirements val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureGaugeFwUpdaterRequirements val))cb;
 
 @end
 
@@ -138,7 +138,7 @@ NS_SWIFT_NAME(onProgress(result:percent:));
 
 @interface ArsdkFeatureGaugeFwUpdater : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeatureGaugeFwUpdaterCallback>)callback;
++ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureGaugeFwUpdaterCallback>)callback;
 
 /**
  Prepare Update 

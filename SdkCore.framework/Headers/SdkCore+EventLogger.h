@@ -39,14 +39,14 @@
  @param directory: directory where event logs will be recorded
  @param properties: properties to add in header
  */
-- (void)start:(NSString * _Nonnull)directory properties:(NSDictionary * _Nonnull)properties;
+- (void)start:(nonnull NSString *)directory properties:(nonnull NSDictionary *)properties;
 
 /**
  Logs a message.
 
  @param message: message to be logged
  */
-- (void)log:(NSString * _Nonnull)message;
+- (void)log:(nonnull NSString *)message;
 
 /**
  Stops the logger.

@@ -73,7 +73,7 @@ NS_SWIFT_NAME(onVideoStreamModeChanged(mode:));
 
 @interface ArsdkFeatureArdrone3Mediastreamingstate : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeatureArdrone3MediastreamingstateCallback>)callback;
++ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureArdrone3MediastreamingstateCallback>)callback;
 
 @end
 

@@ -26,9 +26,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeaturePilotingStyleStyle) {
 
 @interface ArsdkFeaturePilotingStyleStyleBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeaturePilotingStyleStyle)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeaturePilotingStyleStyle)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeaturePilotingStyleStyle val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeaturePilotingStyleStyle val))cb;
 
 @end
 
@@ -57,7 +57,7 @@ NS_SWIFT_NAME(onCapabilities(stylesBitField:));
 
 @interface ArsdkFeaturePilotingStyle : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeaturePilotingStyleCallback>)callback;
++ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeaturePilotingStyleCallback>)callback;
 
 /**
  Configures piloting style. 

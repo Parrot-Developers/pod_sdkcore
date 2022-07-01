@@ -25,6 +25,8 @@
 
 #include "PompLoopUtil.h"
 #include "Logger.h"
+#include "LogBinRecorderConfig.h"
+#include "LogTxtRecorderConfig.h"
 
 #include "NSData+zlib.h"
 #include "NSData+Crypto.h"

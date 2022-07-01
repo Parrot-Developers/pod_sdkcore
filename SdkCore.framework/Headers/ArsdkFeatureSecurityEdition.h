@@ -41,9 +41,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureSecurityEditionSupportedCapabilities) {
 
 @interface ArsdkFeatureSecurityEditionSupportedCapabilitiesBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureSecurityEditionSupportedCapabilities)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureSecurityEditionSupportedCapabilities)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureSecurityEditionSupportedCapabilities val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureSecurityEditionSupportedCapabilities val))cb;
 
 @end
 
@@ -72,7 +72,7 @@ NS_SWIFT_NAME(onLogStorageState(logStorageState:));
 
 @interface ArsdkFeatureSecurityEdition : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeatureSecurityEditionCallback>)callback;
++ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureSecurityEditionCallback>)callback;
 
 /**
  Deactivate logs. 

@@ -60,24 +60,27 @@ typedef NS_ENUM(NSInteger, ArsdkMediaStatus) {
 
 /** Wrapper around arsdk_media */
 @protocol ArsdkMedia <NSObject>
-/** gets media type */
-- (ArsdkMediaType) getType;
-/** gets media name */
-- (NSString * _Nonnull) getName;
-/** gets media run uid */
-- (NSString * _Nonnull) getRunUid;
-/** gets media creation date */
-- (NSDate * _Nonnull) getCreationDate;
 
-- (void)iterateResources:(__attribute__((noescape)) void(^ _Nonnull)(NSString *_Nonnull resourceUid,
-                                                                     ArsdkMediaResourceFormat format,
-                                                                     size_t size))block;
+/** The media type */
+@property  (nonatomic, readonly) ArsdkMediaType type;
+/** The media name */
+@property  (nonatomic, readonly, strong, nonnull) NSString *name;
+/** The media run uid */
+@property  (nonatomic, readonly, strong, nonnull) NSString *runUid;
+/** The media creation date */
+@property  (nonatomic, readonly, strong, nonnull) NSDate *creationDate;
+
+- (void)iterateResources:(void (NS_NOESCAPE ^ _Nonnull)(NSString *_Nonnull resourceUid,
+                                                        ArsdkMediaResourceFormat format,
+                                                        size_t size))block;
 @end
 
 /** Wrapper around arsdk_media_list */
-@protocol ArsdkMediaList
-/** get next item, null if there is no more items */
-- (id<ArsdkMedia> _Nullable)next;
+@protocol ArsdkMediaList <NSObject>
+
+/** get next item, `nil` if there is no more items */
+- (nullable id<ArsdkMedia>)next;
+
 @end
 
 /** list request callback */
@@ -99,30 +102,30 @@ typedef void(^ArsdkMediaDeleteCompletion)(ArsdkMediaStatus status);
 @interface ArsdkCore (Media)
 
 /** List medias */
-- (ArsdkRequest * _Nonnull)listMedia:(int16_t)handle
-                          deviceType:(NSInteger)deviceType
-                          completion:(ArsdkMediaListCompletion _Nonnull)completionBlock;
+- (nonnull ArsdkRequest *)listMedia:(int16_t)handle
+                         deviceType:(NSInteger)deviceType
+                         completion:(nonnull ArsdkMediaListCompletion)completionBlock;
 
 /** Download media thumbnail */
-- (ArsdkRequest * _Nonnull)downloadMediaThumnail:(int16_t)handle
-                                      deviceType:(NSInteger)deviceType
-                                           media:(id<ArsdkMedia> _Nonnull )media
-                                      completion:(ArsdkMediaDownloadThumbnailCompletion _Nonnull)completionBlock;
+- (nonnull ArsdkRequest *)downloadMediaThumnail:(int16_t)handle
+                                     deviceType:(NSInteger)deviceType
+                                          media:(nonnull id<ArsdkMedia>)media
+                                     completion:(nonnull ArsdkMediaDownloadThumbnailCompletion)completionBlock;
 
 /** Download media */
-- (ArsdkRequest * _Nonnull)downloadMedia:(int16_t)handle
-                              deviceType:(NSInteger)deviceType
-                                   media:(id<ArsdkMedia> _Nonnull)media
-                                  format:(ArsdkMediaResourceFormat)fomat
-                       destDirectoryPath:(NSString * _Nonnull)destDirectoryPath
-                                progress:(ArsdkMediaDownloadProgress _Nonnull)progressBlock
-                              completion:(ArsdkMediaDownloadCompletion _Nonnull)completionBlock;
+- (nonnull ArsdkRequest *)downloadMedia:(int16_t)handle
+                             deviceType:(NSInteger)deviceType
+                                  media:(nonnull id<ArsdkMedia>)media
+                                 format:(ArsdkMediaResourceFormat)fomat
+                      destDirectoryPath:(nonnull NSString *)destDirectoryPath
+                               progress:(nonnull ArsdkMediaDownloadProgress)progressBlock
+                             completion:(nonnull ArsdkMediaDownloadCompletion)completionBlock;
 
 /** Delete media */
-- (ArsdkRequest * _Nonnull )deleteMedia:(int16_t)handle
-                             deviceType:(NSInteger)deviceType
-                                  media:(id<ArsdkMedia> _Nonnull )media
-                             completion:(ArsdkMediaDeleteCompletion _Nonnull )completionBlock;
+- (nonnull ArsdkRequest *)deleteMedia:(int16_t)handle
+                           deviceType:(NSInteger)deviceType
+                                media:(nonnull id<ArsdkMedia>)media
+                           completion:(nonnull ArsdkMediaDeleteCompletion)completionBlock;
 
 @end
 

@@ -131,7 +131,7 @@ NS_SWIFT_NAME(onWifiSecurityChanged(type:));
  - parameter key: The key used to secure the network (empty if type is open)
  - parameter keyType: 
 */
-- (void)onWifiSecurity:(ArsdkFeatureArdrone3NetworksettingsstateWifisecurityType)type key:(NSString*)key keytype:(ArsdkFeatureArdrone3NetworksettingsstateWifisecurityKeytype)keytype
+- (void)onWifiSecurity:(ArsdkFeatureArdrone3NetworksettingsstateWifisecurityType)type key:(NSString *)key keytype:(ArsdkFeatureArdrone3NetworksettingsstateWifisecurityKeytype)keytype
 NS_SWIFT_NAME(onWifiSecurity(type:key:keytype:));
 
 
@@ -139,7 +139,7 @@ NS_SWIFT_NAME(onWifiSecurity(type:key:keytype:));
 
 @interface ArsdkFeatureArdrone3Networksettingsstate : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeatureArdrone3NetworksettingsstateCallback>)callback;
++ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureArdrone3NetworksettingsstateCallback>)callback;
 
 @end
 

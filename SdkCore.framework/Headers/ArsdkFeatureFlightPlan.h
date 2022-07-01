@@ -65,14 +65,20 @@ Not applicable to Flight plan. */
 Not applicable to Flight plan. */
     ArsdkFeatureFlightPlanIndicatorTargetAltitudeAccuracy = 12,
 
+    /** Drone battery is insufficient. */
+    ArsdkFeatureFlightPlanIndicatorDroneBattery = 13,
+
+    /** Drone is not in a valid state. */
+    ArsdkFeatureFlightPlanIndicatorDroneState = 14,
+
 };
-#define ArsdkFeatureFlightPlanIndicatorCnt 13
+#define ArsdkFeatureFlightPlanIndicatorCnt 15
 
 @interface ArsdkFeatureFlightPlanIndicatorBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureFlightPlanIndicator)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureFlightPlanIndicator)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureFlightPlanIndicator val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureFlightPlanIndicator val))cb;
 
 @end
 
@@ -117,9 +123,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureFlightPlanSupportedCapabilities) {
 
 @interface ArsdkFeatureFlightPlanSupportedCapabilitiesBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureFlightPlanSupportedCapabilities)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureFlightPlanSupportedCapabilities)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureFlightPlanSupportedCapabilities val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureFlightPlanSupportedCapabilities val))cb;
 
 @end
 
@@ -161,7 +167,7 @@ NS_SWIFT_NAME(onCapabilities(supportedCapabilitiesBitField:));
  - parameter running_time: Running time if the flightplan is currently being executed.
  - parameter resource_id: First resource id of the latest media capture requested by the flightplan.
 */
-- (void)onRecoveryInfo:(NSString*)flightplanId customId:(NSString*)customId item:(NSUInteger)item runningTime:(NSUInteger)runningTime resourceId:(NSString*)resourceId
+- (void)onRecoveryInfo:(NSString *)flightplanId customId:(NSString *)customId item:(NSUInteger)item runningTime:(NSUInteger)runningTime resourceId:(NSString *)resourceId
 NS_SWIFT_NAME(onRecoveryInfo(flightplanId:customId:item:runningTime:resourceId:));
 
 
@@ -169,7 +175,7 @@ NS_SWIFT_NAME(onRecoveryInfo(flightplanId:customId:item:runningTime:resourceId:)
 
 @interface ArsdkFeatureFlightPlan : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeatureFlightPlanCallback>)callback;
++ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureFlightPlanCallback>)callback;
 
 /**
  Start a flight plan at a given mission item. 
@@ -182,7 +188,7 @@ If empty, the original id is used.
 This is the place of the mission item in the mission's items list, starting from 0.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))startAtEncoder:(NSString*)flightplanId customId:(NSString*)customId type:(ArsdkFeatureFlightPlanMavlinkType)type item:(NSUInteger)item
++ (int (^)(struct arsdk_cmd *))startAtEncoder:(NSString *)flightplanId customId:(NSString *)customId type:(ArsdkFeatureFlightPlanMavlinkType)type item:(NSUInteger)item
 NS_SWIFT_NAME(startAtEncoder(flightplanId:customId:type:item:));
 
 /**
@@ -205,7 +211,7 @@ This is the index of the mission item in the mission's items list, starting from
  - parameter continue_on_disconnect: Boolean : 0 : RTH on Disconnection / 1 : Continue on Disconnection
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))startAtV2Encoder:(NSString*)flightplanId customId:(NSString*)customId type:(ArsdkFeatureFlightPlanMavlinkType)type item:(NSUInteger)item continueOnDisconnect:(NSUInteger)continueOnDisconnect
++ (int (^)(struct arsdk_cmd *))startAtV2Encoder:(NSString *)flightplanId customId:(NSString *)customId type:(ArsdkFeatureFlightPlanMavlinkType)type item:(NSUInteger)item continueOnDisconnect:(NSUInteger)continueOnDisconnect
 NS_SWIFT_NAME(startAtV2Encoder(flightplanId:customId:type:item:continueOnDisconnect:));
 
 @end

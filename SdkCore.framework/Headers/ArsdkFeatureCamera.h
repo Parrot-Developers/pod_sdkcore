@@ -115,9 +115,9 @@ This mode provides better results when the drone is moving slowly. */
 
 @interface ArsdkFeatureCameraExposureModeBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureCameraExposureMode)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureCameraExposureMode)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureCameraExposureMode val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureCameraExposureMode val))cb;
 
 @end
 
@@ -243,9 +243,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureCameraShutterSpeed) {
 
 @interface ArsdkFeatureCameraShutterSpeedBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureCameraShutterSpeed)val inBitField:(uint64_t)bitfield;
++ (BOOL)isSet:(ArsdkFeatureCameraShutterSpeed)val inBitField:(uint64_t)bitfield;
 
-+ (void) forAllSetIn:(uint64_t)bitfield execute:(void(^)(ArsdkFeatureCameraShutterSpeed val))cb;
++ (void)forAllSetIn:(uint64_t)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureCameraShutterSpeed val))cb;
 
 @end
 
@@ -314,9 +314,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureCameraIsoSensitivity) {
 
 @interface ArsdkFeatureCameraIsoSensitivityBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureCameraIsoSensitivity)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureCameraIsoSensitivity)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureCameraIsoSensitivity val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureCameraIsoSensitivity val))cb;
 
 @end
 
@@ -391,9 +391,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureCameraEvCompensation) {
 
 @interface ArsdkFeatureCameraEvCompensationBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureCameraEvCompensation)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureCameraEvCompensation)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureCameraEvCompensation val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureCameraEvCompensation val))cb;
 
 @end
 
@@ -465,9 +465,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureCameraWhiteBalanceMode) {
 
 @interface ArsdkFeatureCameraWhiteBalanceModeBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureCameraWhiteBalanceMode)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureCameraWhiteBalanceMode)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureCameraWhiteBalanceMode val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureCameraWhiteBalanceMode val))cb;
 
 @end
 
@@ -650,9 +650,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureCameraWhiteBalanceTemperature) {
 
 @interface ArsdkFeatureCameraWhiteBalanceTemperatureBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureCameraWhiteBalanceTemperature)val inBitField:(uint64_t)bitfield;
++ (BOOL)isSet:(ArsdkFeatureCameraWhiteBalanceTemperature)val inBitField:(uint64_t)bitfield;
 
-+ (void) forAllSetIn:(uint64_t)bitfield execute:(void(^)(ArsdkFeatureCameraWhiteBalanceTemperature val))cb;
++ (void)forAllSetIn:(uint64_t)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureCameraWhiteBalanceTemperature val))cb;
 
 @end
 
@@ -682,9 +682,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureCameraStyle) {
 
 @interface ArsdkFeatureCameraStyleBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureCameraStyle)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureCameraStyle)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureCameraStyle val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureCameraStyle val))cb;
 
 @end
 
@@ -708,9 +708,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureCameraCameraMode) {
 
 @interface ArsdkFeatureCameraCameraModeBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureCameraCameraMode)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureCameraCameraMode)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureCameraCameraMode val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureCameraCameraMode val))cb;
 
 @end
 
@@ -741,9 +741,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureCameraRecordingMode) {
 
 @interface ArsdkFeatureCameraRecordingModeBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureCameraRecordingMode)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureCameraRecordingMode)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureCameraRecordingMode val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureCameraRecordingMode val))cb;
 
 @end
 
@@ -776,9 +776,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureCameraPhotoMode) {
 
 @interface ArsdkFeatureCameraPhotoModeBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureCameraPhotoMode)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureCameraPhotoMode)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureCameraPhotoMode val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureCameraPhotoMode val))cb;
 
 @end
 
@@ -826,9 +826,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureCameraResolution) {
 
 @interface ArsdkFeatureCameraResolutionBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureCameraResolution)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureCameraResolution)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureCameraResolution val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureCameraResolution val))cb;
 
 @end
 
@@ -897,9 +897,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureCameraFramerate) {
 
 @interface ArsdkFeatureCameraFramerateBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureCameraFramerate)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureCameraFramerate)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureCameraFramerate val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureCameraFramerate val))cb;
 
 @end
 
@@ -923,9 +923,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureCameraPhotoFormat) {
 
 @interface ArsdkFeatureCameraPhotoFormatBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureCameraPhotoFormat)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureCameraPhotoFormat)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureCameraPhotoFormat val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureCameraPhotoFormat val))cb;
 
 @end
 
@@ -952,9 +952,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureCameraPhotoFileFormat) {
 
 @interface ArsdkFeatureCameraPhotoFileFormatBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureCameraPhotoFileFormat)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureCameraPhotoFileFormat)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureCameraPhotoFileFormat val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureCameraPhotoFileFormat val))cb;
 
 @end
 
@@ -984,9 +984,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureCameraAntiflickerMode) {
 
 @interface ArsdkFeatureCameraAntiflickerModeBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureCameraAntiflickerMode)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureCameraAntiflickerMode)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureCameraAntiflickerMode val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureCameraAntiflickerMode val))cb;
 
 @end
 
@@ -1019,9 +1019,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureCameraHyperlapseValue) {
 
 @interface ArsdkFeatureCameraHyperlapseValueBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureCameraHyperlapseValue)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureCameraHyperlapseValue)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureCameraHyperlapseValue val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureCameraHyperlapseValue val))cb;
 
 @end
 
@@ -1066,9 +1066,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureCameraBurstValue) {
 
 @interface ArsdkFeatureCameraBurstValueBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureCameraBurstValue)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureCameraBurstValue)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureCameraBurstValue val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureCameraBurstValue val))cb;
 
 @end
 
@@ -1107,9 +1107,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureCameraBracketingPreset) {
 
 @interface ArsdkFeatureCameraBracketingPresetBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureCameraBracketingPreset)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureCameraBracketingPreset)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureCameraBracketingPreset val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureCameraBracketingPreset val))cb;
 
 @end
 
@@ -1138,9 +1138,9 @@ quality is important but not the latency). */
 
 @interface ArsdkFeatureCameraStreamingModeBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureCameraStreamingMode)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureCameraStreamingMode)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureCameraStreamingMode val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureCameraStreamingMode val))cb;
 
 @end
 
@@ -1245,9 +1245,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureCameraAutoExposureMeteringMode) {
 
 @interface ArsdkFeatureCameraAutoExposureMeteringModeBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureCameraAutoExposureMeteringMode)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureCameraAutoExposureMeteringMode)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureCameraAutoExposureMeteringMode val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureCameraAutoExposureMeteringMode val))cb;
 
 @end
 
@@ -1533,7 +1533,7 @@ Other results are errors.
  - parameter photo_count: Only valid when result is `photo_taken`, indicate the number of photo taken in the sequence.
  - parameter media_id: Only valid when result is `photo_saved`, indicate the media id containing taken photo(s).
 */
-- (void)onPhotoProgress:(NSUInteger)camId result:(ArsdkFeatureCameraPhotoResult)result photoCount:(NSUInteger)photoCount mediaId:(NSString*)mediaId
+- (void)onPhotoProgress:(NSUInteger)camId result:(ArsdkFeatureCameraPhotoResult)result photoCount:(NSUInteger)photoCount mediaId:(NSString *)mediaId
 NS_SWIFT_NAME(onPhotoProgress(camId:result:photoCount:mediaId:));
 
 /**
@@ -1553,7 +1553,7 @@ NS_SWIFT_NAME(onPhotoState(camId:available:state:));
  - parameter result: Current recording result. Indicate if recording has started/stopped.
  - parameter media_id: Recorded media_id. Only valid when result is `stopped` or `stopped_no_storage_space`.
 */
-- (void)onRecordingProgress:(NSUInteger)camId result:(ArsdkFeatureCameraRecordingResult)result mediaId:(NSString*)mediaId
+- (void)onRecordingProgress:(NSUInteger)camId result:(ArsdkFeatureCameraRecordingResult)result mediaId:(NSString *)mediaId
 NS_SWIFT_NAME(onRecordingProgress(camId:result:mediaId:));
 
 /**
@@ -1619,7 +1619,7 @@ NS_SWIFT_NAME(onAlignmentOffsets(camId:minBoundYaw:maxBoundYaw:currentYaw:minBou
 
 @interface ArsdkFeatureCamera : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeatureCameraCallback>)callback;
++ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureCameraCallback>)callback;
 
 /**
  Sets exposure mode, shutter speed, iso sensitivity and maximum iso sensitivity. 

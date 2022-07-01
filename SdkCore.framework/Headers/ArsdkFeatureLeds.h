@@ -41,9 +41,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureLedsSupportedCapabilities) {
 
 @interface ArsdkFeatureLedsSupportedCapabilitiesBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureLedsSupportedCapabilities)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureLedsSupportedCapabilities)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureLedsSupportedCapabilities val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureLedsSupportedCapabilities val))cb;
 
 @end
 
@@ -72,7 +72,7 @@ NS_SWIFT_NAME(onSwitchState(switchState:));
 
 @interface ArsdkFeatureLeds : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeatureLedsCallback>)callback;
++ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureLedsCallback>)callback;
 
 /**
  Activate switch 

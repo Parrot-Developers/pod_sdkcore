@@ -144,8 +144,11 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureArdrone3PilotingstateNavigatehomestatecha
     /** Return to home during a flightplan (available->in_progress) */
     ArsdkFeatureArdrone3PilotingstateNavigatehomestatechangedReasonFlightplan = 7,
 
+    /** Return to home triggered by propeller icing event (available->in_progress) */
+    ArsdkFeatureArdrone3PilotingstateNavigatehomestatechangedReasonIcing = 8,
+
 };
-#define ArsdkFeatureArdrone3PilotingstateNavigatehomestatechangedReasonCnt 8
+#define ArsdkFeatureArdrone3PilotingstateNavigatehomestatechangedReasonCnt 9
 
 /** Drone landing state */
 typedef NS_ENUM(NSInteger, ArsdkFeatureArdrone3PilotingstateLandingstatechangedState) {
@@ -432,6 +435,29 @@ pertubated local magnetic field. Magnetometer has not lost heading lock yet. */
 };
 #define ArsdkFeatureArdrone3PilotingstateHeadinglockedstatechangedStateCnt 3
 
+/** Drone propeller icing level */
+typedef NS_ENUM(NSInteger, ArsdkFeatureArdrone3PilotingstateIcinglevelchangedState) {
+    /**
+     Unknown value from SdkCore.
+     Only used if the received value cannot be matched with a declared value.
+     This might occur when the drone or rc has a different sdk base from the controller.
+     */
+    ArsdkFeatureArdrone3PilotingstateIcinglevelchangedStateSdkCoreUnknown = -1,
+
+    /** The level of propeller icing is low or non-existent. */
+    ArsdkFeatureArdrone3PilotingstateIcinglevelchangedStateOk = 0,
+
+    /** The level of propeller icing begins to be too strong and can impact drone flying
+capacity. */
+    ArsdkFeatureArdrone3PilotingstateIcinglevelchangedStateWarning = 1,
+
+    /** The level of propeller icing is high, will impact drone flying capacity and
+eventually damage motors. */
+    ArsdkFeatureArdrone3PilotingstateIcinglevelchangedStateCritical = 2,
+
+};
+#define ArsdkFeatureArdrone3PilotingstateIcinglevelchangedStateCnt 3
+
 @protocol ArsdkFeatureArdrone3PilotingstateCallback<NSObject>
 
 @optional
@@ -671,12 +697,21 @@ NS_SWIFT_NAME(onPilotedPOIV2(latitude:longitude:altitude:mode:status:));
 - (void)onHeadingLockedStateChanged:(ArsdkFeatureArdrone3PilotingstateHeadinglockedstatechangedState)state
 NS_SWIFT_NAME(onHeadingLockedStateChanged(state:));
 
+/**
+ Propeller icing level.
+Informs that drone propellers are iced, which result in a degraded flying behavior. 
+
+ - parameter state: 
+*/
+- (void)onIcingLevelChanged:(ArsdkFeatureArdrone3PilotingstateIcinglevelchangedState)state
+NS_SWIFT_NAME(onIcingLevelChanged(state:));
+
 
 @end
 
 @interface ArsdkFeatureArdrone3Pilotingstate : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeatureArdrone3PilotingstateCallback>)callback;
++ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureArdrone3PilotingstateCallback>)callback;
 
 @end
 

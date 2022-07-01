@@ -27,7 +27,7 @@ NS_SWIFT_NAME(onCameraSettingsChanged(fov:panmax:panmin:tiltmax:tiltmin:));
 
 @interface ArsdkFeatureCommonCamerasettingsstate : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeatureCommonCamerasettingsstateCallback>)callback;
++ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureCommonCamerasettingsstateCallback>)callback;
 
 @end
 

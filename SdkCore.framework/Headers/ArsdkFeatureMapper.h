@@ -372,7 +372,7 @@ NS_SWIFT_NAME(onVolatileMappingState(active:));
 
 @interface ArsdkFeatureMapper : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeatureMapperCallback>)callback;
++ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureMapperCallback>)callback;
 
 /**
  Grabbed buttons are sent to the app and are not handled by the mapper 

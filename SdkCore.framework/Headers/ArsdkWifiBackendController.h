@@ -34,5 +34,7 @@
  Wifi backend controller
  */
 @interface ArsdkWifiBackendController : ArsdkBackendController
-- (instancetype)initWithSupportedDeviceTypes:(NSSet<NSNumber*>*)deviceTypes;
+
+- (nonnull instancetype)initWithSupportedDeviceTypes:(nonnull NSSet<NSNumber *> *)deviceTypes;
+
 @end

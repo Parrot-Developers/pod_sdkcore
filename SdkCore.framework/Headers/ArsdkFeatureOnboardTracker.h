@@ -120,7 +120,7 @@ NS_SWIFT_NAME(onTrackingEngineState(state:));
 
 @interface ArsdkFeatureOnboardTracker : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeatureOnboardTrackerCallback>)callback;
++ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureOnboardTrackerCallback>)callback;
 
 /**
  Tells the drone to start tracking a target from a rectangle. The previous trackings are not stopped. 

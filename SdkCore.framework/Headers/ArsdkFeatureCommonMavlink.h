@@ -42,7 +42,7 @@ Requirements are:
  - parameter type: 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))startEncoder:(NSString*)filepath type:(ArsdkFeatureCommonMavlinkStartType)type
++ (int (^)(struct arsdk_cmd *))startEncoder:(NSString *)filepath type:(ArsdkFeatureCommonMavlinkStartType)type
 NS_SWIFT_NAME(startEncoder(filepath:type:));
 
 /**

@@ -16,7 +16,7 @@ struct arsdk_cmd;
  - parameter axis_id: The axiscode filtered
  - parameter filter_uid_or_builder: The filter associated
 */
-- (void)onCurrentAxisFilters:(NSInteger)axisId filterUidOrBuilder:(NSString*)filterUidOrBuilder
+- (void)onCurrentAxisFilters:(NSInteger)axisId filterUidOrBuilder:(NSString *)filterUidOrBuilder
 NS_SWIFT_NAME(onCurrentAxisFilters(axisId:filterUidOrBuilder:));
 
 /**
@@ -33,7 +33,7 @@ NS_SWIFT_NAME(onAllCurrentFiltersSent());
  - parameter filter_uid: The filter UID (used in communication with the SkyController)
  - parameter name: Display name for the user
 */
-- (void)onPresetAxisFilters:(NSString*)filterUid name:(NSString*)name
+- (void)onPresetAxisFilters:(NSString *)filterUid name:(NSString *)name
 NS_SWIFT_NAME(onPresetAxisFilters(filterUid:name:));
 
 /**
@@ -48,7 +48,7 @@ NS_SWIFT_NAME(onAllPresetFiltersSent());
 
 @interface ArsdkFeatureSkyctrlAxisfiltersstate : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeatureSkyctrlAxisfiltersstateCallback>)callback;
++ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureSkyctrlAxisfiltersstateCallback>)callback;
 
 @end
 

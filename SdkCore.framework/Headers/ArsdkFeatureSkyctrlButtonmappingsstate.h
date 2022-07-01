@@ -17,7 +17,7 @@ A special mapping (NO_ACTION) is attached to unmapped buttons.
  - parameter key_id: The keycode mapped
  - parameter mapping_uid: The mapping associated
 */
-- (void)onCurrentButtonMappings:(NSInteger)keyId mappingUid:(NSString*)mappingUid
+- (void)onCurrentButtonMappings:(NSInteger)keyId mappingUid:(NSString *)mappingUid
 NS_SWIFT_NAME(onCurrentButtonMappings(keyId:mappingUid:));
 
 /**
@@ -37,7 +37,7 @@ An [allAvailableButtonsMappingsSent](#4-13-3) event is sent at the end of the li
  - parameter mapping_uid: The mapping UID (used in communication with the SkyController)
  - parameter name: Display name for the user
 */
-- (void)onAvailableButtonMappings:(NSString*)mappingUid name:(NSString*)name
+- (void)onAvailableButtonMappings:(NSString *)mappingUid name:(NSString *)name
 NS_SWIFT_NAME(onAvailableButtonMappings(mappingUid:name:));
 
 /**
@@ -52,7 +52,7 @@ NS_SWIFT_NAME(onAllAvailableButtonsMappingsSent());
 
 @interface ArsdkFeatureSkyctrlButtonmappingsstate : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeatureSkyctrlButtonmappingsstateCallback>)callback;
++ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureSkyctrlButtonmappingsstateCallback>)callback;
 
 @end
 

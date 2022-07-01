@@ -26,9 +26,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeaturePreciseHomeMode) {
 
 @interface ArsdkFeaturePreciseHomeModeBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeaturePreciseHomeMode)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeaturePreciseHomeMode)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeaturePreciseHomeMode val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeaturePreciseHomeMode val))cb;
 
 @end
 
@@ -86,7 +86,7 @@ NS_SWIFT_NAME(onState(state:));
 
 @interface ArsdkFeaturePreciseHome : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeaturePreciseHomeCallback>)callback;
++ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeaturePreciseHomeCallback>)callback;
 
 /**
  Configures precise home mode. 

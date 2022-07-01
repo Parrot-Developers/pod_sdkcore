@@ -37,9 +37,9 @@
 @property (atomic, readonly) BOOL canceled;
 
 // arsdk control instance
-@property (nonatomic, strong, readonly) ArsdkCore* arsdkCore;
+@property (nonatomic, strong, readonly, nonnull) ArsdkCore *arsdkCore;
 
-- (instancetype)initWithArsdkCore:(ArsdkCore*)arsdkCore;
+- (nonnull instancetype)initWithArsdkCore:(nonnull ArsdkCore *)arsdkCore;
 
 - (void)cancel;
 

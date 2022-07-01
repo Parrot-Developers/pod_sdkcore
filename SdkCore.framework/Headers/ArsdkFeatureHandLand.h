@@ -42,7 +42,7 @@ NS_SWIFT_NAME(onState(state:));
 
 @interface ArsdkFeatureHandLand : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeatureHandLandCallback>)callback;
++ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureHandLandCallback>)callback;
 
 @end
 

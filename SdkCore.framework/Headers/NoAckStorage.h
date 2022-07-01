@@ -40,6 +40,9 @@ typedef NS_ENUM(NSInteger, ArsdkNoAckCmdType) {
     ArsdkNoAckCmdTypeCameraZoom,
 };
 
+/** ArsdkCommandEncoder block */
+typedef ArsdkCommandEncoder _Nullable (^NoAckStorageEncoderBlock)(void);
+
 /**
 Storage of an ArsdkCommandEncoder block registered in the NoAck Command Loop
 
@@ -58,9 +61,11 @@ this is obviously not the case for a closure array.
 @interface NoAckStorage : NSObject
 
 /** ArsdkCommandEncoder block */
-@property (readonly)  ArsdkCommandEncoder (^encoderBlock)(void);
-@property (readonly, assign) ArsdkNoAckCmdType type;
+@property (nonatomic, copy, readonly, nonnull) NoAckStorageEncoderBlock encoderBlock;
+/** NoAck command type */
+@property (nonatomic, readonly, assign) ArsdkNoAckCmdType type;
 
-- (instancetype)initWithCmdEncoder:(ArsdkCommandEncoder (^)(void))encoderBlock type:(ArsdkNoAckCmdType)type;
+- (nonnull instancetype)initWithCmdEncoder:(nonnull NoAckStorageEncoderBlock)encoderBlock
+                                      type:(ArsdkNoAckCmdType)type;
 
 @end

@@ -28,7 +28,7 @@ libARController API as this library is handling the connection process for you.*
  - parameter datetime: DateTime with the ISO-8601 complete short format: "%Y%m%dT%H%M%S%z"
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))currentDateTimeEncoder:(NSString*)datetime
++ (int (^)(struct arsdk_cmd *))currentDateTimeEncoder:(NSString *)datetime
 NS_SWIFT_NAME(currentDateTimeEncoder(datetime:));
 
 @end

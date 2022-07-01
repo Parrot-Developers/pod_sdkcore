@@ -43,7 +43,7 @@
 
  @param frame: new available frame
  */
-- (void)onFrame:(SdkCoreFrame * _Nonnull)frame;
+- (void)onFrame:(nonnull SdkCoreFrame *)frame;
 
 /**
  Notifies that the sink has stopped.
@@ -57,21 +57,21 @@
 
 /**
  Init sink.
-
+ 
  @param queueSize: desired queue size
  @param listener: Sink listener.
  */
-- (instancetype _Nullable)initWithQueueSize:(unsigned int)queueSize
-                                   listener:(id<SdkCoreSinkListener> _Nonnull)listener;
+- (nonnull instancetype)initWithQueueSize:(unsigned int)queueSize
+                                 listener:(nonnull id<SdkCoreSinkListener>)listener;
 /**
  Starts the sink.
-
+ 
  @param pdraw:   pdraw instance that will deliver frames to the sink
  @param pomp:    stream pomp loop
  @param mediaId: identifies the stream media to be delivered to the sink
  */
-- (void)start:(/*struct pdraw **/void * _Nonnull)pdraw
-         pomp:(PompLoopUtil * _Nonnull)pompLoopUtil
+- (void)start:(/*nonnull struct pdraw **/ nonnull void *)pdraw
+         pomp:(nonnull PompLoopUtil *)pompLoopUtil
       mediaId:(unsigned int)mediaId;
 
 /** Stops the sink. */

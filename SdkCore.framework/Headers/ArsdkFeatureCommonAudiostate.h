@@ -25,7 +25,7 @@ NS_SWIFT_NAME(onAudioStreamingRunning(running:));
 
 @interface ArsdkFeatureCommonAudiostate : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeatureCommonAudiostateCallback>)callback;
++ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureCommonAudiostateCallback>)callback;
 
 @end
 

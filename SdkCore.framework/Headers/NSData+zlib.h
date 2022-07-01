@@ -35,12 +35,12 @@
  *  Compress data with gzip method
  *  @return compressed data
  */
-- (NSData*)compress;
+- (nullable NSData *)compress;
 
 /**
  *  Compress concatenation of data and adding data with gzip method
  *  @return compressed data
  */
-- (NSData*)compressWithAddedData: (NSData *)addedData;
+- (nullable NSData *)compressWithAddedData:(nonnull NSData *)addedData;
 
 @end

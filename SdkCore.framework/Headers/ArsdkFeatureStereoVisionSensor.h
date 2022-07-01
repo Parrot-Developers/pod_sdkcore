@@ -39,9 +39,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureStereoVisionSensorFeature) {
 
 @interface ArsdkFeatureStereoVisionSensorFeatureBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureStereoVisionSensorFeature)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureStereoVisionSensorFeature)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureStereoVisionSensorFeature val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureStereoVisionSensorFeature val))cb;
 
 @end
 
@@ -93,7 +93,7 @@ NS_SWIFT_NAME(onCalibrationState(sensorId:state:));
 
 @interface ArsdkFeatureStereoVisionSensor : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeatureStereoVisionSensorCallback>)callback;
++ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureStereoVisionSensorCallback>)callback;
 
 @end
 

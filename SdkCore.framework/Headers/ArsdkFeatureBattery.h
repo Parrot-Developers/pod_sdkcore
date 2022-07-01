@@ -97,15 +97,54 @@ NS_SWIFT_NAME(onCycleCount(count:));
 
  - parameter serial: Battery Serial
 */
-- (void)onSerial:(NSString*)serial
+- (void)onSerial:(NSString *)serial
 NS_SWIFT_NAME(onSerial(serial:));
+
+/**
+  
+
+ - parameter serial: Battery Serial
+ - parameter date: Battery Configuration Date
+ - parameter design: Battery Design Capacity in mAh
+ - parameter cell_count: Battery cell count
+ - parameter cell_min_voltage: Battery cell minimum Voltage in mV
+ - parameter cell_max_voltage: Battery cell maximum Voltage in mV
+*/
+- (void)onDescription:(NSString *)serial date:(NSString *)date design:(NSUInteger)design cellCount:(NSUInteger)cellCount cellMinVoltage:(NSUInteger)cellMinVoltage cellMaxVoltage:(NSUInteger)cellMaxVoltage
+NS_SWIFT_NAME(onDescription(serial:date:design:cellCount:cellMinVoltage:cellMaxVoltage:));
+
+/**
+  
+
+ - parameter temperature: Battery Temperature in Kelvin
+*/
+- (void)onTemperature:(NSUInteger)temperature
+NS_SWIFT_NAME(onTemperature(temperature:));
+
+/**
+  
+
+ - parameter full_charge: Battery Full Charge Capacity in mAh
+ - parameter remaining: Battery Remaining Capacity in mAh
+*/
+- (void)onCapacity:(NSUInteger)fullCharge remaining:(NSUInteger)remaining
+NS_SWIFT_NAME(onCapacity(fullCharge:remaining:));
+
+/**
+ Battery cell voltage. 
+
+ - parameter index: Cell index starting from 0
+ - parameter cell_voltage: Cell Voltage in mV
+*/
+- (void)onCellVoltage:(NSUInteger)index cellVoltage:(NSUInteger)cellVoltage
+NS_SWIFT_NAME(onCellVoltage(index:cellVoltage:));
 
 
 @end
 
 @interface ArsdkFeatureBattery : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeatureBatteryCallback>)callback;
++ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureBatteryCallback>)callback;
 
 @end
 

@@ -39,14 +39,14 @@
 @interface ArsdkBackendController : NSObject
 
 /** Arsdk controller instance */
-@property (nonatomic, strong, readonly) ArsdkCore* arsdkCore;
+@property (nonatomic, strong, readonly, nonnull) ArsdkCore *arsdkCore;
 
 /**
  Start the backend controller
 
  @param arsdkCore: Arsdk controller instance
  */
-- (void)start:(ArsdkCore*)arsdkCore;
+- (void)start:(nonnull ArsdkCore *)arsdkCore;
 
 /**
  Stop the backend controller

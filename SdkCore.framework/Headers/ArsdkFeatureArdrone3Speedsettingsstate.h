@@ -61,7 +61,7 @@ NS_SWIFT_NAME(onMaxPitchRollRotationSpeedChanged(current:min:max:));
 
 @interface ArsdkFeatureArdrone3Speedsettingsstate : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeatureArdrone3SpeedsettingsstateCallback>)callback;
++ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureArdrone3SpeedsettingsstateCallback>)callback;
 
 @end
 

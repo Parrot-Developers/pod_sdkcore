@@ -28,6 +28,8 @@
 //    SUCH DAMAGE.
 
 #import <Foundation/Foundation.h>
+#import "LogBinRecorderConfig.h"
+#import "LogTxtRecorderConfig.h"
 
 typedef NS_ENUM(NSInteger, Level) {
     LOG_CRIT =     2, /* critical conditions */
@@ -43,7 +45,7 @@ typedef NS_ENUM(NSInteger, Level) {
  */
 @interface ULogTag : NSObject
 
-- (instancetype)initWithName:(NSString *)name;
+- (nonnull instancetype)initWithName:(nonnull NSString *)name;
 
 /**
  Set the minimum level to log for the tag.
@@ -61,23 +63,46 @@ typedef NS_ENUM(NSInteger, Level) {
 
 @end
 
-/** Common logger based on ulog, using asl as backend */
+/** Provides control over a rotating log recorder instance. */
+@protocol RotatingLogRecorder <NSObject>
+
+/**
+- Closes current log file and starts a new one.
+ */
+- (void)rotateLogFile;
+
+@end
+
+/** Common logger based on ulog, using. */
 @interface ULog : NSObject
 
 /**
- Start to save logs in file.
+ Enables redirecting log messages to binary file `.bin` recorder.
+
+ @param config log recorder configuration
+
+ @return a new LogBinRecorder instance, that allows to control the log recording.
  */
-+ (NSString *)startFileRecord;
++ (nullable id<RotatingLogRecorder>)redirectToLogBin:(nonnull LogBinRecorderConfig *)config
+NS_SWIFT_NAME(redirectToLogBin(config:));
 
 /**
- Get the log path.
+ Enables redirecting log messages to system log.
+
+ @param enabled `YES` to enable redirecting log messages to system log, `NO` to disable it.
  */
-+ (NSString *)getLogPath ;
++ (void)redirectToSystemLog:(BOOL)enabled
+NS_SWIFT_NAME(redirectToSystemLog(enabled:));
 
 /**
- Stop to save logs in file.
+ Enables redirecting log messages to textual file `.log` recorder.
+
+ @param config log recorder configuration
+
+ @return a new LogTxtRecorder instance, that allows to control the log recording.
  */
-+ (void)stopFileRecord;
++ (nullable id<RotatingLogRecorder>)redirectToLogTxt:(nonnull LogTxtRecorderConfig *)config
+NS_SWIFT_NAME(redirectToLogTxt(config:));
 
 /**
  Send a critical log.
@@ -85,8 +110,8 @@ typedef NS_ENUM(NSInteger, Level) {
  @param tag tag use to log.
  @param msg message to log.
  */
-+ (void) c:(ULogTag *)tag msg:(NSString *)msg, ... NS_FORMAT_FUNCTION(2,3);
-+ (void) c:(ULogTag *)tag :(NSString *)msg;
++ (void)c:(nonnull ULogTag *)tag msg:(nonnull NSString *)msg, ... NS_FORMAT_FUNCTION(2,3);
++ (void)c:(nonnull ULogTag *)tag :(nonnull NSString *)msg;
 
 /**
  Send an error log.
@@ -94,8 +119,8 @@ typedef NS_ENUM(NSInteger, Level) {
  @param tag tag use to log.
  @param msg message to log.
  */
-+ (void) e:(ULogTag *)tag msg:(NSString *)msg, ... NS_FORMAT_FUNCTION(2,3);
-+ (void) e:(ULogTag *)tag :(NSString *)msg;
++ (void)e:(nonnull ULogTag *)tag msg:(nonnull NSString *)msg, ... NS_FORMAT_FUNCTION(2,3);
++ (void)e:(nonnull ULogTag *)tag :(nonnull NSString *)msg;
 
 /**
  Send a warning log.
@@ -103,8 +128,8 @@ typedef NS_ENUM(NSInteger, Level) {
  @param tag tag use to log.
  @param msg message to log.
  */
-+ (void) w:(ULogTag *)tag msg:(NSString *)msg, ... NS_FORMAT_FUNCTION(2,3);
-+ (void) w:(ULogTag *)tag :(NSString *)msg;
++ (void)w:(nonnull ULogTag *)tag msg:(nonnull NSString *)msg, ... NS_FORMAT_FUNCTION(2,3);
++ (void)w:(nonnull ULogTag *)tag :(nonnull NSString *)msg;
 
 /**
  Send a notice log.
@@ -112,8 +137,8 @@ typedef NS_ENUM(NSInteger, Level) {
  @param tag tag use to log.
  @param msg message to log.
  */
-+ (void) n:(ULogTag *)tag msg:(NSString *)msg, ... NS_FORMAT_FUNCTION(2,3);
-+ (void) n:(ULogTag *)tag :(NSString *)msg;
++ (void)n:(nonnull ULogTag *)tag msg:(nonnull NSString *)msg, ... NS_FORMAT_FUNCTION(2,3);
++ (void)n:(nonnull ULogTag *)tag :(nonnull NSString *)msg;
 
 /**
  Send an informational log.
@@ -121,8 +146,8 @@ typedef NS_ENUM(NSInteger, Level) {
  @param tag tag use to log.
  @param msg message to log.
  */
-+ (void) i:(ULogTag *)tag msg:(NSString *)msg, ... NS_FORMAT_FUNCTION(2,3);
-+ (void) i:(ULogTag *)tag :(NSString *)msg;
++ (void)i:(nonnull ULogTag *)tag msg:(nonnull NSString *)msg, ... NS_FORMAT_FUNCTION(2,3);
++ (void)i:(nonnull ULogTag *)tag :(nonnull NSString *)msg;
 
 /**
  Send a debug log.
@@ -130,8 +155,8 @@ typedef NS_ENUM(NSInteger, Level) {
  @param tag tag use to log.
  @param msg message to log.
  */
-+ (void) d:(ULogTag *)tag msg:(NSString *)msg, ...;
-+ (void) d:(ULogTag *)tag :(NSString *)msg;
++ (void)d:(nonnull ULogTag *)tag msg:(nonnull NSString *)msg, ...;
++ (void)d:(nonnull ULogTag *)tag :(nonnull NSString *)msg;
 
 /**
  Set the minimum level to log for a tag.
@@ -139,7 +164,7 @@ typedef NS_ENUM(NSInteger, Level) {
  @param minLevel the minimum level to log.
  @param tagName tag name.
  */
-+ (int) setLogLevel:(Level) minLevel tagName:(NSString *)tagName ;
++ (int)setLogLevel:(Level) minLevel tagName:(nonnull NSString *)tagName ;
 
 /**
  Check if the critical log will be logged for this tag.
@@ -147,7 +172,7 @@ typedef NS_ENUM(NSInteger, Level) {
  @param tag tag to check.
  @return true if critical log is enabled otherwise false.
  */
-+ (BOOL) c:(ULogTag *)tag;
++ (BOOL)c:(nonnull ULogTag *)tag;
 
 /**
  Check if the error log will be logged for this tag.
@@ -155,7 +180,7 @@ typedef NS_ENUM(NSInteger, Level) {
  @param tag tag to check.
  @return true if error log is enabled otherwise false.
  */
-+ (BOOL) e:(ULogTag *)tag;
++ (BOOL)e:(nonnull ULogTag *)tag;
 
 /**
  Check if the warning log will be logged for this tag.
@@ -163,7 +188,7 @@ typedef NS_ENUM(NSInteger, Level) {
  @param tag tag to check.
  @return true if warning log is enabled otherwise false.
  */
-+ (BOOL) w:(ULogTag *)tag;
++ (BOOL)w:(nonnull ULogTag *)tag;
 
 /**
  Check if the informational log will be logged for this tag.
@@ -171,7 +196,7 @@ typedef NS_ENUM(NSInteger, Level) {
  @param tag tag to check.
  @return true if informational log is enabled otherwise false.
  */
-+ (BOOL) i:(ULogTag *)tag;
++ (BOOL)i:(nonnull ULogTag *)tag;
 
 /**
  Check if the notice log will be logged for this tag.
@@ -179,7 +204,7 @@ typedef NS_ENUM(NSInteger, Level) {
  @param tag tag to check.
  @return true if notice log is enabled otherwise false.
  */
-+ (BOOL) n:(ULogTag *)tag;
++ (BOOL)n:(nonnull ULogTag *)tag;
 
 /**
  Check if the debug log will be logged for this tag.
@@ -187,7 +212,7 @@ typedef NS_ENUM(NSInteger, Level) {
  @param tag tag to check.
  @return true if debug log is enabled otherwise false.
  */
-+ (BOOL) d:(ULogTag *)tag;
++ (BOOL)d:(nonnull ULogTag *)tag;
 @end
 
 /** Log error */

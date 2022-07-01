@@ -45,7 +45,7 @@ Exponential filters:
 (Or a string to build a new one)
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setAxisFilterEncoder:(NSInteger)axisId filterUidOrBuilder:(NSString*)filterUidOrBuilder
++ (int (^)(struct arsdk_cmd *))setAxisFilterEncoder:(NSInteger)axisId filterUidOrBuilder:(NSString *)filterUidOrBuilder
 NS_SWIFT_NAME(setAxisFilterEncoder(axisId:filterUidOrBuilder:));
 
 /**

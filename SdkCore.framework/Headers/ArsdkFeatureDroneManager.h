@@ -71,9 +71,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureDroneManagerVisibleState) {
 
 @interface ArsdkFeatureDroneManagerVisibleStateBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureDroneManagerVisibleState)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureDroneManagerVisibleState)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureDroneManagerVisibleState val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureDroneManagerVisibleState val))cb;
 
 @end
 
@@ -99,7 +99,7 @@ If security method is not 'none', and this value is 0, then the controller shoul
 The value is meaningless if the drone is not visible.
  - parameter list_flags: 
 */
-- (void)onDroneListItem:(NSString*)serial model:(NSUInteger)model name:(NSString*)name connectionOrder:(NSUInteger)connectionOrder active:(NSUInteger)active visibleBitField:(NSUInteger)visibleBitField security:(ArsdkFeatureDroneManagerSecurity)security hasSavedKey:(NSUInteger)hasSavedKey rssi:(NSInteger)rssi listFlagsBitField:(NSUInteger)listFlagsBitField
+- (void)onDroneListItem:(NSString *)serial model:(NSUInteger)model name:(NSString *)name connectionOrder:(NSUInteger)connectionOrder active:(NSUInteger)active visibleBitField:(NSUInteger)visibleBitField security:(ArsdkFeatureDroneManagerSecurity)security hasSavedKey:(NSUInteger)hasSavedKey rssi:(NSInteger)rssi listFlagsBitField:(NSUInteger)listFlagsBitField
 NS_SWIFT_NAME(onDroneListItem(serial:model:name:connectionOrder:active:visibleBitField:security:hasSavedKey:rssi:listFlagsBitField:));
 
 /**
@@ -110,7 +110,7 @@ NS_SWIFT_NAME(onDroneListItem(serial:model:name:connectionOrder:active:visibleBi
  - parameter model: Model id of the drone.
  - parameter name: Name (SSID) of the drone.
 */
-- (void)onConnectionState:(ArsdkFeatureDroneManagerConnectionState)state serial:(NSString*)serial model:(NSUInteger)model name:(NSString*)name
+- (void)onConnectionState:(ArsdkFeatureDroneManagerConnectionState)state serial:(NSString *)serial model:(NSUInteger)model name:(NSString *)name
 NS_SWIFT_NAME(onConnectionState(state:serial:model:name:));
 
 /**
@@ -120,7 +120,7 @@ NS_SWIFT_NAME(onConnectionState(state:serial:model:name:));
  - parameter model: Model id of the drone.
  - parameter name: Name (SSID) of the drone.
 */
-- (void)onAuthenticationFailed:(NSString*)serial model:(NSUInteger)model name:(NSString*)name
+- (void)onAuthenticationFailed:(NSString *)serial model:(NSUInteger)model name:(NSString *)name
 NS_SWIFT_NAME(onAuthenticationFailed(serial:model:name:));
 
 /**
@@ -130,7 +130,7 @@ NS_SWIFT_NAME(onAuthenticationFailed(serial:model:name:));
  - parameter model: Model id of the drone.
  - parameter name: Name (SSID) of the drone.
 */
-- (void)onConnectionRefused:(NSString*)serial model:(NSUInteger)model name:(NSString*)name
+- (void)onConnectionRefused:(NSString *)serial model:(NSUInteger)model name:(NSString *)name
 NS_SWIFT_NAME(onConnectionRefused(serial:model:name:));
 
 /**
@@ -144,7 +144,7 @@ NS_SWIFT_NAME(onConnectionRefused(serial:model:name:));
 If security method is not 'none', and this value is 0, then the controller should prompt the user for a passphrase before sending a connect.
  - parameter list_flags: 
 */
-- (void)onKnownDroneItem:(NSString*)serial model:(NSUInteger)model name:(NSString*)name security:(ArsdkFeatureDroneManagerSecurity)security hasSavedKey:(NSUInteger)hasSavedKey listFlagsBitField:(NSUInteger)listFlagsBitField
+- (void)onKnownDroneItem:(NSString *)serial model:(NSUInteger)model name:(NSString *)name security:(ArsdkFeatureDroneManagerSecurity)security hasSavedKey:(NSUInteger)hasSavedKey listFlagsBitField:(NSUInteger)listFlagsBitField
 NS_SWIFT_NAME(onKnownDroneItem(serial:model:name:security:hasSavedKey:listFlagsBitField:));
 
 
@@ -152,7 +152,7 @@ NS_SWIFT_NAME(onKnownDroneItem(serial:model:name:security:hasSavedKey:listFlagsB
 
 @interface ArsdkFeatureDroneManager : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeatureDroneManagerCallback>)callback;
++ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureDroneManagerCallback>)callback;
 
 /**
  The list will contain:
@@ -172,7 +172,7 @@ This arg is ignored if the drone security is 'none'.
 If the drone manager has a saved key for the drone, pass an empty string to use it
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))connectEncoder:(NSString*)serial key:(NSString*)key
++ (int (^)(struct arsdk_cmd *))connectEncoder:(NSString *)serial key:(NSString *)key
 NS_SWIFT_NAME(connectEncoder(serial:key:));
 
 /**
@@ -181,7 +181,7 @@ NS_SWIFT_NAME(connectEncoder(serial:key:));
  - parameter serial: Serial number of the drone to forget.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))forgetEncoder:(NSString*)serial
++ (int (^)(struct arsdk_cmd *))forgetEncoder:(NSString *)serial
 NS_SWIFT_NAME(forgetEncoder(serial:));
 
 @end

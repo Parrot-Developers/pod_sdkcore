@@ -70,9 +70,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureGimbalError) {
 
 @interface ArsdkFeatureGimbalErrorBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureGimbalError)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureGimbalError)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureGimbalError val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureGimbalError val))cb;
 
 @end
 
@@ -141,9 +141,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureGimbalAxis) {
 
 @interface ArsdkFeatureGimbalAxisBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureGimbalAxis)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureGimbalAxis)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureGimbalAxis val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureGimbalAxis val))cb;
 
 @end
 
@@ -341,7 +341,7 @@ NS_SWIFT_NAME(onStabilizationState(gimbalId:state:));
 
 @interface ArsdkFeatureGimbal : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeatureGimbalCallback>)callback;
++ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureGimbalCallback>)callback;
 
 /**
   

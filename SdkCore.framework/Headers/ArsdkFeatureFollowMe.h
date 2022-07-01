@@ -96,9 +96,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureFollowMeInput) {
 
 @interface ArsdkFeatureFollowMeInputBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureFollowMeInput)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureFollowMeInput)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureFollowMeInput val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureFollowMeInput val))cb;
 
 @end
 
@@ -125,9 +125,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureFollowMeGeoRelConfigureParam) {
 
 @interface ArsdkFeatureFollowMeGeoRelConfigureParamBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureFollowMeGeoRelConfigureParam)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureFollowMeGeoRelConfigureParam)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureFollowMeGeoRelConfigureParam val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureFollowMeGeoRelConfigureParam val))cb;
 
 @end
 
@@ -163,9 +163,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureFollowMeAnimation) {
 
 @interface ArsdkFeatureFollowMeAnimationBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureFollowMeAnimation)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureFollowMeAnimation)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureFollowMeAnimation val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureFollowMeAnimation val))cb;
 
 @end
 
@@ -192,9 +192,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureFollowMeHelicoidConfigureParam) {
 
 @interface ArsdkFeatureFollowMeHelicoidConfigureParamBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureFollowMeHelicoidConfigureParam)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureFollowMeHelicoidConfigureParam)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureFollowMeHelicoidConfigureParam val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureFollowMeHelicoidConfigureParam val))cb;
 
 @end
 
@@ -218,9 +218,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureFollowMeSwingConfigureParam) {
 
 @interface ArsdkFeatureFollowMeSwingConfigureParamBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureFollowMeSwingConfigureParam)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureFollowMeSwingConfigureParam)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureFollowMeSwingConfigureParam val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureFollowMeSwingConfigureParam val))cb;
 
 @end
 
@@ -244,9 +244,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureFollowMeBoomerangConfigureParam) {
 
 @interface ArsdkFeatureFollowMeBoomerangConfigureParamBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureFollowMeBoomerangConfigureParam)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureFollowMeBoomerangConfigureParam)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureFollowMeBoomerangConfigureParam val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureFollowMeBoomerangConfigureParam val))cb;
 
 @end
 
@@ -270,9 +270,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureFollowMeCandleConfigureParam) {
 
 @interface ArsdkFeatureFollowMeCandleConfigureParamBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureFollowMeCandleConfigureParam)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureFollowMeCandleConfigureParam)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureFollowMeCandleConfigureParam val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureFollowMeCandleConfigureParam val))cb;
 
 @end
 
@@ -299,9 +299,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureFollowMeDollySlideConfigureParam) {
 
 @interface ArsdkFeatureFollowMeDollySlideConfigureParamBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureFollowMeDollySlideConfigureParam)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureFollowMeDollySlideConfigureParam)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureFollowMeDollySlideConfigureParam val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureFollowMeDollySlideConfigureParam val))cb;
 
 @end
 
@@ -516,7 +516,7 @@ NS_SWIFT_NAME(onLeashConfig(useDefaultBitField:distance:elevation:azimuth:));
 
 @interface ArsdkFeatureFollowMe : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeatureFollowMeCallback>)callback;
++ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureFollowMeCallback>)callback;
 
 /**
  Start a FollowMe with all its params set to the default params.

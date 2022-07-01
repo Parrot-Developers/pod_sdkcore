@@ -44,8 +44,8 @@
  @param name: name of the device
  @param handle: handle on the arsdk device
  */
-- (void)onDeviceAdded:(NSString* _Nonnull)uid type:(NSInteger)type backendType:(ArsdkBackendType)backendType
-                 name:(NSString* _Nonnull)name api:(ArsdkApiCapabilities)api handle:(int16_t)handle;
+- (void)onDeviceAdded:(nonnull NSString *)uid type:(NSInteger)type backendType:(ArsdkBackendType)backendType
+                 name:(nonnull NSString *)name api:(ArsdkApiCapabilities)api handle:(int16_t)handle;
 
 /**
  Called when a device has been removed from the native backend
@@ -55,7 +55,7 @@
  @param backendType: type of the backend this device is comming from
  @param handle: handle on the arsdk device
  */
-- (void)onDeviceRemoved:(NSString* _Nonnull)uid type:(NSInteger)type backendType:(ArsdkBackendType)backendType
+- (void)onDeviceRemoved:(nonnull NSString *)uid type:(NSInteger)type backendType:(ArsdkBackendType)backendType
                  handle:(int16_t)handle;
 
 @end
@@ -72,7 +72,7 @@ struct arsdk_cmd;
 
  @param command: received command
  */
-- (void)onCommandReceived:(const struct arsdk_cmd* _Nonnull)command;
+- (void)onCommandReceived:(nonnull const struct arsdk_cmd *)command;
 
 @end
 
@@ -99,7 +99,7 @@ extern ArsdkCmdLog arsdkCoreCmdLogLevel;
 @interface ArsdkCore : NSObject
 
 /** Native arsdk manager */
-@property (nonatomic, assign, readonly) struct arsdk_ctrl * _Nonnull ctrl;
+@property (nonatomic, assign, readonly, nonnull) struct arsdk_ctrl *ctrl;
 
 /**
  Constructor
@@ -109,10 +109,10 @@ extern ArsdkCmdLog arsdkCoreCmdLogLevel;
  @param controllerDescriptor: controller description string
  @param controllerVersion: controller version string
  */
-- (instancetype _Nonnull)initWithBackendControllers:(NSArray* _Nonnull)backendControllers
-                                           listener:(id<ArsdkCoreListener> _Nonnull)listener
-                               controllerDescriptor:(NSString* _Nonnull)controllerDescriptor
-                                  controllerVersion:(NSString* _Nonnull)controllerVersion;
+- (nonnull instancetype)initWithBackendControllers:(nonnull NSArray *)backendControllers
+                                          listener:(nonnull id<ArsdkCoreListener>)listener
+                              controllerDescriptor:(nonnull NSString *)controllerDescriptor
+                                 controllerVersion:(nonnull NSString *)controllerVersion;
 
 /**
  Start the backend controllers and run the loop

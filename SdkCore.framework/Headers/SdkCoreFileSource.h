@@ -39,6 +39,7 @@
  @param path: file path
  @param trackName: specific track name to stream, `nil` if not specified.
  */
-- (instancetype _Nullable)initWithPath:(NSString * _Nonnull)path trackName:(NSString * _Nullable)trackName;
+- (nonnull instancetype)initWithPath:(nonnull NSString *)path
+                           trackName:(nullable NSString *)trackName;
 
 @end

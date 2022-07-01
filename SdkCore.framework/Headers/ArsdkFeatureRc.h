@@ -75,9 +75,9 @@ available, becomes the main controller. */
 
 @interface ArsdkFeatureRcChannelActionBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureRcChannelAction)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureRcChannelAction)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureRcChannelAction val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureRcChannelAction val))cb;
 
 @end
 
@@ -137,9 +137,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureRcChannelType) {
 
 @interface ArsdkFeatureRcChannelTypeBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureRcChannelType)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureRcChannelType)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureRcChannelType val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureRcChannelType val))cb;
 
 @end
 
@@ -155,7 +155,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureRcChannelType) {
  - parameter enabled: 1 if enabled, 0 otherwise.
 If enabled, drone will apply values sent by RC receiver.
 */
-- (void)onReceiverState:(ArsdkFeatureRcReceiverState)state protocol:(NSString*)protocol enabled:(NSUInteger)enabled
+- (void)onReceiverState:(ArsdkFeatureRcReceiverState)state protocol:(NSString *)protocol enabled:(NSUInteger)enabled
 NS_SWIFT_NAME(onReceiverState(state:protocol:enabled:));
 
 /**
@@ -210,7 +210,7 @@ NS_SWIFT_NAME(onChannelActionItem(action:supportedTypeBitField:calibratedType:in
 
 @interface ArsdkFeatureRc : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeatureRcCallback>)callback;
++ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureRcCallback>)callback;
 
 /**
  Enable or Disable RC channels monitoring.

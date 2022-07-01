@@ -76,14 +76,20 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureAutoLookAtIndicator) {
     /** Target altitude has a bad accuracy. */
     ArsdkFeatureAutoLookAtIndicatorTargetAltitudeAccuracy = 12,
 
+    /** Drone battery is insufficient. */
+    ArsdkFeatureAutoLookAtIndicatorDroneBattery = 13,
+
+    /** Drone is not in a valid state. */
+    ArsdkFeatureAutoLookAtIndicatorDroneState = 14,
+
 };
-#define ArsdkFeatureAutoLookAtIndicatorCnt 13
+#define ArsdkFeatureAutoLookAtIndicatorCnt 15
 
 @interface ArsdkFeatureAutoLookAtIndicatorBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureAutoLookAtIndicator)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureAutoLookAtIndicator)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureAutoLookAtIndicator val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureAutoLookAtIndicator val))cb;
 
 @end
 
@@ -136,7 +142,7 @@ NS_SWIFT_NAME(onState(mode:behavior:));
 
 @interface ArsdkFeatureAutoLookAt : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeatureAutoLookAtCallback>)callback;
++ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureAutoLookAtCallback>)callback;
 
 /**
  Start a look at. Sending this command will stop other running look at. 

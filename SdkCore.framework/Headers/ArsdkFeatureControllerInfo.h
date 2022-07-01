@@ -44,9 +44,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureControllerInfoSupportedCommand) {
 
 @interface ArsdkFeatureControllerInfoSupportedCommandBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureControllerInfoSupportedCommand)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureControllerInfoSupportedCommand)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureControllerInfoSupportedCommand val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureControllerInfoSupportedCommand val))cb;
 
 @end
 
@@ -88,9 +88,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureControllerInfoAvailableData) {
 
 @interface ArsdkFeatureControllerInfoAvailableDataBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureControllerInfoAvailableData)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureControllerInfoAvailableData)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureControllerInfoAvailableData val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureControllerInfoAvailableData val))cb;
 
 @end
 
@@ -119,7 +119,7 @@ NS_SWIFT_NAME(onCapabilities(supportedCommandBitField:));
 
 @interface ArsdkFeatureControllerInfo : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeatureControllerInfoCallback>)callback;
++ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureControllerInfoCallback>)callback;
 
 /**
  Controller gps info.

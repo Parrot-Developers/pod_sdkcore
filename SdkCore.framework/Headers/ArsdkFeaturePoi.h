@@ -61,14 +61,20 @@ Not applicable to POI. */
 Not applicable to POI. */
     ArsdkFeaturePoiIndicatorTargetAltitudeAccuracy = 12,
 
+    /** Drone battery is insufficient. */
+    ArsdkFeaturePoiIndicatorDroneBattery = 13,
+
+    /** Drone is not in a valid state. */
+    ArsdkFeaturePoiIndicatorDroneState = 14,
+
 };
-#define ArsdkFeaturePoiIndicatorCnt 13
+#define ArsdkFeaturePoiIndicatorCnt 15
 
 @interface ArsdkFeaturePoiIndicatorBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeaturePoiIndicator)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeaturePoiIndicator)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeaturePoiIndicator val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeaturePoiIndicator val))cb;
 
 @end
 
@@ -90,7 +96,7 @@ NS_SWIFT_NAME(onInfo(missingInputsBitField:));
 
 @interface ArsdkFeaturePoi : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeaturePoiCallback>)callback;
++ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeaturePoiCallback>)callback;
 
 @end
 

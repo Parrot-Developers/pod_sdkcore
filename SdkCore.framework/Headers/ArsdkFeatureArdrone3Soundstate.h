@@ -41,7 +41,7 @@ NS_SWIFT_NAME(onAlertSound(state:));
 
 @interface ArsdkFeatureArdrone3Soundstate : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeatureArdrone3SoundstateCallback>)callback;
++ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureArdrone3SoundstateCallback>)callback;
 
 @end
 

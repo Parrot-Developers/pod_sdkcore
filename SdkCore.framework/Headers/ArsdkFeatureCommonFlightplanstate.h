@@ -88,7 +88,7 @@ NS_SWIFT_NAME(onLockStateChanged(lockstate:));
 
 @interface ArsdkFeatureCommonFlightplanstate : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeatureCommonFlightplanstateCallback>)callback;
++ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureCommonFlightplanstateCallback>)callback;
 
 @end
 

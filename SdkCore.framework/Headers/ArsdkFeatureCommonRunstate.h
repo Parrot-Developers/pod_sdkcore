@@ -18,7 +18,7 @@ Also, each medias taken during a run has a filename containing the run id.
 
  - parameter runId: Id of the run
 */
-- (void)onRunIdChanged:(NSString*)runid
+- (void)onRunIdChanged:(NSString *)runid
 NS_SWIFT_NAME(onRunIdChanged(runid:));
 
 
@@ -26,7 +26,7 @@ NS_SWIFT_NAME(onRunIdChanged(runid:));
 
 @interface ArsdkFeatureCommonRunstate : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeatureCommonRunstateCallback>)callback;
++ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureCommonRunstateCallback>)callback;
 
 @end
 

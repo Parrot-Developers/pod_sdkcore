@@ -39,9 +39,9 @@
  @param deviceHandle: device handle
  @param url: stream url
  */
-- (instancetype _Nullable)initWithArsdkCore:(ArsdkCore * _Nonnull)arsdkCore
-                               deviceHandle:(short)deviceHandle
-                                        url:(NSString * _Nonnull)url;
+- (nonnull instancetype)initWithArsdkCore:(nonnull ArsdkCore *)arsdkCore
+                             deviceHandle:(short)deviceHandle
+                                      url:(nonnull NSString *)url;
 
 @end
 
@@ -87,7 +87,7 @@ typedef NS_ENUM(NSInteger, ArsdkSourceLiveCameraType) {
 
  @return a stream live source object
  */
-- (ArsdkSourceLive * _Nonnull)createVideoSourceLive:(int16_t)handle cameraType:(ArsdkSourceLiveCameraType)cameraType;
+- (nonnull ArsdkSourceLive *)createVideoSourceLive:(int16_t)handle cameraType:(ArsdkSourceLiveCameraType)cameraType;
 
 /**
  Create a native video media source.
@@ -95,10 +95,10 @@ typedef NS_ENUM(NSInteger, ArsdkSourceLiveCameraType) {
  @param handle: device handle
  @param url: url of the media to stream
  @param trackName: specifique track name to stream
-
+ 
  @return a stream media source object
  */
-- (ArsdkSourceMedia * _Nonnull)createVideoSourceMedia:(int16_t)handle url:(NSString * _Nonnull)url
-                                            trackName:(NSString * _Nullable)trackName;
+- (nonnull ArsdkSourceMedia *)createVideoSourceMedia:(int16_t)handle url:(nonnull NSString *)url
+                                           trackName:(nullable NSString *)trackName;
 
 @end

@@ -34,7 +34,7 @@ Some actions can not be mapped to two different axes at the same time. In this c
  - parameter mapping_uid: The mapping to associate with the axis
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setAxisMappingEncoder:(NSInteger)axisId mappingUid:(NSString*)mappingUid
++ (int (^)(struct arsdk_cmd *))setAxisMappingEncoder:(NSInteger)axisId mappingUid:(NSString *)mappingUid
 NS_SWIFT_NAME(setAxisMappingEncoder(axisId:mappingUid:));
 
 /**

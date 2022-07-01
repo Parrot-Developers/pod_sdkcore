@@ -36,6 +36,6 @@
 
  @return md5 hash
  */
-- (NSString *_Nonnull)computeMd5;
+- (nonnull NSString *)computeMd5;
 
 @end

@@ -143,9 +143,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureMapperMiniMode) {
 
 @interface ArsdkFeatureMapperMiniModeBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureMapperMiniMode)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureMapperMiniMode)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureMapperMiniMode val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureMapperMiniMode val))cb;
 
 @end
 
@@ -185,7 +185,7 @@ NS_SWIFT_NAME(onAxisMappingItem(uid:modesBitField:action:axis:buttons:listFlagsB
 
 @interface ArsdkFeatureMapperMini : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeatureMapperMiniCallback>)callback;
++ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureMapperMiniCallback>)callback;
 
 /**
  An action can only be mapped to one button set.

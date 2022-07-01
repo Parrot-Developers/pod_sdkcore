@@ -24,7 +24,7 @@ NS_SWIFT_NAME(onIntensityChanged(left:right:));
 
 @interface ArsdkFeatureCommonHeadlightsstate : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeatureCommonHeadlightsstateCallback>)callback;
++ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureCommonHeadlightsstateCallback>)callback;
 
 @end
 

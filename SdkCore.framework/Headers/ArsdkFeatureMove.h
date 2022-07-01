@@ -85,14 +85,20 @@ Not applicable to Move. */
 Not applicable to Move. */
     ArsdkFeatureMoveIndicatorTargetAltitudeAccuracy = 12,
 
+    /** Drone battery is insufficient. */
+    ArsdkFeatureMoveIndicatorDroneBattery = 13,
+
+    /** Drone is not in a valid state. */
+    ArsdkFeatureMoveIndicatorDroneState = 14,
+
 };
-#define ArsdkFeatureMoveIndicatorCnt 13
+#define ArsdkFeatureMoveIndicatorCnt 15
 
 @interface ArsdkFeatureMoveIndicatorBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureMoveIndicator)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureMoveIndicator)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureMoveIndicator val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureMoveIndicator val))cb;
 
 @end
 
@@ -114,7 +120,7 @@ NS_SWIFT_NAME(onInfo(missingInputsBitField:));
 
 @interface ArsdkFeatureMove : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeatureMoveCallback>)callback;
++ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureMoveCallback>)callback;
 
 /**
  Move the drone to a specified location with speeds limited by the value given.

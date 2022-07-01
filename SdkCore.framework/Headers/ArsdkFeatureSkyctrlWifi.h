@@ -35,7 +35,7 @@ If the network is secured, then the passphrase must be set. For non-secure netwo
  - parameter passphrase: Wifi passphrase
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))connectToWifiEncoder:(NSString*)bssid ssid:(NSString*)ssid passphrase:(NSString*)passphrase
++ (int (^)(struct arsdk_cmd *))connectToWifiEncoder:(NSString *)bssid ssid:(NSString *)ssid passphrase:(NSString *)passphrase
 NS_SWIFT_NAME(connectToWifiEncoder(bssid:ssid:passphrase:));
 
 /**
@@ -45,7 +45,7 @@ If the network is the current network, then the SkyController will be disconnect
  - parameter ssid: Wifi ssid
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))forgetWifiEncoder:(NSString*)ssid
++ (int (^)(struct arsdk_cmd *))forgetWifiEncoder:(NSString *)ssid
 NS_SWIFT_NAME(forgetWifiEncoder(ssid:));
 
 /**

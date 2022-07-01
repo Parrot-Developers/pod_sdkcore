@@ -73,7 +73,7 @@ typedef void(^ArsdkStreamCmdCb)(int status);
 
  @param stream: the stream
  */
-- (void)streamStateDidChange:(ArsdkStream * _Nonnull)stream;
+- (void)streamStateDidChange:(nonnull ArsdkStream *)stream;
 
 /**
  Called when the stream is ready and when the playback state changed.
@@ -81,8 +81,8 @@ typedef void(^ArsdkStreamCmdCb)(int status);
  @param stream: the stream
  @param playbackState: playback state
  */
-- (void)streamPlaybackStateDidChange:(ArsdkStream * _Nonnull)stream
-                       playbackState:(id<ArsdkStreamPlaybackState> _Nonnull)playbackState;
+- (void)streamPlaybackStateDidChange:(nonnull ArsdkStream *)stream
+                       playbackState:(nonnull id<ArsdkStreamPlaybackState>)playbackState;
 
 /**
  Called when a new media is available for the stream.
@@ -90,8 +90,8 @@ typedef void(^ArsdkStreamCmdCb)(int status);
  @param stream: the stream
  @param mediaInfo: information concerning the new media
  */
-- (void)mediaAdded:(ArsdkStream * _Nonnull)stream
-         mediaInfo:(SdkCoreMediaInfo * _Nonnull)mediaInfo;
+- (void)mediaAdded:(nonnull ArsdkStream *)stream
+         mediaInfo:(nonnull SdkCoreMediaInfo *)mediaInfo;
 
 /**
  Called when a media became unavailable for the stream.
@@ -99,8 +99,8 @@ typedef void(^ArsdkStreamCmdCb)(int status);
  @param stream: the stream
  @param mediaInfo: information concerning the removed media
  */
-- (void)mediaRemoved:(ArsdkStream * _Nonnull)stream
-           mediaInfo:(SdkCoreMediaInfo * _Nonnull)mediaInfo;
+- (void)mediaRemoved:(nonnull ArsdkStream *)stream
+           mediaInfo:(nonnull SdkCoreMediaInfo *)mediaInfo;
 @end
 
 /** Video stream object that have a native stream object. */
@@ -114,12 +114,12 @@ typedef void(^ArsdkStreamCmdCb)(int status);
 
 /**
  Creates a native video stream.
-
+ 
  @param pompLoopUtil: pomp loop utility
  @param listener: a listener that will be called when events happen on the stream
  */
-- (instancetype _Nullable)initWithPompLoopUtil:(PompLoopUtil * _Nonnull)pompLoopUtil
-                                      listener:(id<ArsdkStreamListener> _Nonnull)listener;
+- (nonnull instancetype)initWithPompLoopUtil:(nonnull PompLoopUtil *)pompLoopUtil
+                                    listener:(nonnull id<ArsdkStreamListener>)listener;
 
 /**
  Opens the stream.
@@ -129,7 +129,7 @@ typedef void(^ArsdkStreamCmdCb)(int status);
  @param source: source to open
  @param completion: completion block called at the command end
  */
-- (void)open:(id<SdkCoreSource> _Nonnull)source completion:(ArsdkStreamCmdCb _Nonnull)completion;
+- (void)open:(nonnull id<SdkCoreSource>)source completion:(nonnull ArsdkStreamCmdCb)completion;
 
 /**
  Plays the stream.
@@ -138,7 +138,7 @@ typedef void(^ArsdkStreamCmdCb)(int status);
 
  @param completion: completion block called at the command end
  */
-- (void)play:(ArsdkStreamCmdCb _Nonnull)completion;
+- (void)play:(nonnull ArsdkStreamCmdCb)completion;
 
 /**
  Pauses the stream.
@@ -147,7 +147,7 @@ typedef void(^ArsdkStreamCmdCb)(int status);
 
  @param completion: completion block called at the command end
  */
-- (void)pause:(ArsdkStreamCmdCb _Nonnull)completion;
+- (void)pause:(nonnull ArsdkStreamCmdCb)completion;
 
 /**
  Seeks to a time position.
@@ -156,7 +156,7 @@ typedef void(^ArsdkStreamCmdCb)(int status);
  @param position: position in milliseconds.
  @param completion: completion block called at the command end
  */
-- (void)seekTo:(int)position completion:(ArsdkStreamCmdCb _Nonnull)completion;
+- (void)seekTo:(int)position completion:(nonnull ArsdkStreamCmdCb)completion;
 
 /**
  Closes the stream.
@@ -165,14 +165,14 @@ typedef void(^ArsdkStreamCmdCb)(int status);
 
  @param completion: completion block called at the command end
  */
-- (void)close:(ArsdkStreamCmdCb _Nonnull)completion;
+- (void)close:(nonnull ArsdkStreamCmdCb)completion;
 
 /**
  Retrieves the playback state.
 
  @return the playback state, or `nil`if `state`is not equals to `ArsdkStreamStateOpened`.
  */
-- (id<ArsdkStreamPlaybackState> _Nullable) playbackState;
+- (nullable id<ArsdkStreamPlaybackState>) playbackState;
 
 /**
  Starts a renderer.
@@ -191,15 +191,15 @@ typedef void(^ArsdkStreamCmdCb)(int status);
  @param overlayListener: overlay rendering listener.
  @param listener: renderer listener.
  */
-- (SdkCoreRenderer * _Nullable)startRendererWithZone:(CGRect)renderZone
-                                            fillMode:(SdkCoreStreamRenderingFillMode)fillMode
-                                       zebrasEnabled:(BOOL)zebrasEnabled zebrasThreshold:(float)zebrasThreshold
-                                        textureWidth:(int)textureWidth
-                                     textureDarWidth:(int)textureDarWidth textureDarHeight:(int)textureDarHeight
-                               textureLoaderlistener:(id<SdkCoreTextureLoaderListener> _Nullable)textureLoaderlistener
-                                   histogramsEnabled:(BOOL)histogramsEnabled
-                                     overlayListener:(id<SdkCoreRendererOverlayListener> _Nonnull)overlayListener
-                                            listener:(id<SdkCoreRendererListener> _Nonnull)listener
+- (nonnull SdkCoreRenderer *)startRendererWithZone:(CGRect)renderZone
+                                          fillMode:(SdkCoreStreamRenderingFillMode)fillMode
+                                     zebrasEnabled:(BOOL)zebrasEnabled zebrasThreshold:(float)zebrasThreshold
+                                      textureWidth:(int)textureWidth
+                                   textureDarWidth:(int)textureDarWidth textureDarHeight:(int)textureDarHeight
+                             textureLoaderlistener:(nullable id<SdkCoreTextureLoaderListener>)textureLoaderlistener
+                                 histogramsEnabled:(BOOL)histogramsEnabled
+                                   overlayListener:(nonnull id<SdkCoreRendererOverlayListener>)overlayListener
+                                          listener:(nonnull id<SdkCoreRendererListener>)listener
 NS_SWIFT_NAME(startRenderer(renderZone:fillMode:zebrasEnabled:zebrasThreshold:textureWidth:textureDarWidth:textureDarHeight:textureLoaderlistener:histogramsEnabled:overlayListener:listener:));
 
 /**
@@ -210,7 +210,7 @@ NS_SWIFT_NAME(startRenderer(renderZone:fillMode:zebrasEnabled:zebrasThreshold:te
  @param sink:    sink to start
  @param mediaId: identifies the stream media to deliver to the sink
  */
-- (void)startSink:(SdkCoreSink * _Nonnull)sink mediaId:(UInt32)mediaId;
+- (void)startSink:(nonnull SdkCoreSink *)sink mediaId:(UInt32)mediaId;
 
 @end
 
@@ -226,6 +226,6 @@ NS_SWIFT_NAME(startRenderer(renderZone:fillMode:zebrasEnabled:zebrasThreshold:te
  @param listener: a listener that will be called when events happen on the stream
  @return a stream object
  */
-- (ArsdkStream * _Nonnull)createVideoStream:(id<ArsdkStreamListener> _Nonnull)listener;
+- (nonnull ArsdkStream *)createVideoStream:(nonnull id<ArsdkStreamListener>)listener;
 
 @end

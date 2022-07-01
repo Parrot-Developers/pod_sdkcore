@@ -55,7 +55,7 @@ Please note that the list is not complete until you receive the event [WifiScanE
  - parameter band: 
  - parameter channel: Channel of the AP
 */
-- (void)onWifiScanListChanged:(NSString*)ssid rssi:(NSInteger)rssi band:(ArsdkFeatureArdrone3NetworkstateWifiscanlistchangedBand)band channel:(NSUInteger)channel
+- (void)onWifiScanListChanged:(NSString *)ssid rssi:(NSInteger)rssi band:(ArsdkFeatureArdrone3NetworkstateWifiscanlistchangedBand)band channel:(NSUInteger)channel
 NS_SWIFT_NAME(onWifiScanListChanged(ssid:rssi:band:channel:));
 
 /**
@@ -90,7 +90,7 @@ NS_SWIFT_NAME(onAllWifiAuthChannelChanged());
 
 @interface ArsdkFeatureArdrone3Networkstate : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeatureArdrone3NetworkstateCallback>)callback;
++ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureArdrone3NetworkstateCallback>)callback;
 
 @end
 

@@ -45,7 +45,7 @@ typedef NS_ENUM(NSInteger, ArsdkFlightLogStatus) {
 };
 
 /// Progress callback
-typedef void(^ArsdkFlightLogDownloadProgress)(NSString* _Nonnull path, ArsdkFlightLogStatus status);
+typedef void(^ArsdkFlightLogDownloadProgress)(NSString * _Nonnull path, ArsdkFlightLogStatus status);
 
 /// Completion callback
 typedef void(^ArsdkFlightLogDownloadCompletion)(ArsdkFlightLogStatus status);
@@ -57,9 +57,9 @@ typedef void(^ArsdkFlightLogDownloadCompletion)(ArsdkFlightLogStatus status);
 @interface ArsdkCore (FlightLog)
 
 /** FlightLog request */
-- (ArsdkRequest * _Nonnull)downloadFlightLog:(int16_t)handle
-                                deviceType:(NSInteger)deviceType
-                                      path:(NSString* _Nonnull)path
-                                  progress:(ArsdkFlightLogDownloadProgress _Nonnull)progressBlock
-                                completion:(ArsdkFlightLogDownloadCompletion _Nonnull)completionBlock;
+- (nonnull ArsdkRequest *)downloadFlightLog:(int16_t)handle
+                                 deviceType:(NSInteger)deviceType
+                                       path:(nonnull NSString *)path
+                                   progress:(nonnull ArsdkFlightLogDownloadProgress)progressBlock
+                                 completion:(nonnull ArsdkFlightLogDownloadCompletion)completionBlock;
 @end

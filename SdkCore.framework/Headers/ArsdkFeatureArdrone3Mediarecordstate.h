@@ -230,7 +230,7 @@ NS_SWIFT_NAME(onVideoResolutionState(streaming:recording:));
 
 @interface ArsdkFeatureArdrone3Mediarecordstate : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeatureArdrone3MediarecordstateCallback>)callback;
++ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureArdrone3MediarecordstateCallback>)callback;
 
 @end
 

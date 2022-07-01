@@ -31,7 +31,7 @@ The SkyController will automatically connect to the first visible device on the 
  - parameter deviceName: Device name
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))connectToDeviceEncoder:(NSString*)devicename
++ (int (^)(struct arsdk_cmd *))connectToDeviceEncoder:(NSString *)devicename
 NS_SWIFT_NAME(connectToDeviceEncoder(devicename:));
 
 @end

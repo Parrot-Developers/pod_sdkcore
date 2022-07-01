@@ -44,8 +44,8 @@ typedef void(^ArsdkRcBlackBoxPilotingInfoCb)(int roll, int pitch, int yaw, int g
 @interface ArsdkCore(RcBlackBox)
 
 /** BlackBox request */
-- (ArsdkRequest * _Nonnull)subscribeToRcBlackBox:(int16_t)handle
-                                  buttonAction:(ArsdkRcBlackBoxButtonActionCb _Nonnull)buttonActionBlock
-                                  pilotingInfo:(ArsdkRcBlackBoxPilotingInfoCb _Nonnull)pilotingInfoBlock
+- (nonnull ArsdkRequest *)subscribeToRcBlackBox:(int16_t)handle
+                                   buttonAction:(nonnull ArsdkRcBlackBoxButtonActionCb)buttonActionBlock
+                                   pilotingInfo:(nonnull ArsdkRcBlackBoxPilotingInfoCb)pilotingInfoBlock
 NS_SWIFT_NAME(subscribeToRcBlackBox(handle:buttonAction:pilotingInfo:));
 @end

@@ -35,9 +35,9 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureRthHomeType) {
 
 @interface ArsdkFeatureRthHomeTypeBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureRthHomeType)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureRthHomeType)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureRthHomeType val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureRthHomeType val))cb;
 
 @end
 
@@ -101,8 +101,11 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureRthStateReason) {
     /** Return to home could not find a path to home (in_progress->available) */
     ArsdkFeatureRthStateReasonBlocked = 8,
 
+    /** Return to home triggered by propeller icing event (available->in_progress) */
+    ArsdkFeatureRthStateReasonIcing = 9,
+
 };
-#define ArsdkFeatureRthStateReasonCnt 9
+#define ArsdkFeatureRthStateReasonCnt 10
 
 /** Home reachability */
 typedef NS_ENUM(NSInteger, ArsdkFeatureRthHomeReachability) {
@@ -241,14 +244,20 @@ Not applicable to Return home. */
 Not applicable to Return home. */
     ArsdkFeatureRthIndicatorTargetAltitudeAccuracy = 12,
 
+    /** Drone battery is insufficient. */
+    ArsdkFeatureRthIndicatorDroneBattery = 13,
+
+    /** Drone is not in a valid state. */
+    ArsdkFeatureRthIndicatorDroneState = 14,
+
 };
-#define ArsdkFeatureRthIndicatorCnt 13
+#define ArsdkFeatureRthIndicatorCnt 15
 
 @interface ArsdkFeatureRthIndicatorBitField : NSObject
 
-+ (BOOL) isSet:(ArsdkFeatureRthIndicator)val inBitField:(NSUInteger)bitfield;
++ (BOOL)isSet:(ArsdkFeatureRthIndicator)val inBitField:(NSUInteger)bitfield;
 
-+ (void) forAllSetIn:(NSUInteger)bitfield execute:(void(^)(ArsdkFeatureRthIndicator val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureRthIndicator val))cb;
 
 @end
 
@@ -400,7 +409,7 @@ NS_SWIFT_NAME(onInfo(missingInputsBitField:));
 
 @interface ArsdkFeatureRth : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeatureRthCallback>)callback;
++ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureRthCallback>)callback;
 
 /**
  Set the preferred home location type. The drone will always choose this home type when available. 

@@ -30,7 +30,7 @@ NS_SWIFT_NAME(onOverHeatRegulationChanged(regulationtype:));
 
 @interface ArsdkFeatureCommonOverheatstate : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeatureCommonOverheatstateCallback>)callback;
++ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureCommonOverheatstateCallback>)callback;
 
 @end
 

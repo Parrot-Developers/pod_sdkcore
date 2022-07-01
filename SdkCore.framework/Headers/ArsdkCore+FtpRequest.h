@@ -71,11 +71,11 @@ typedef void(^ArsdkFtpRequestCompletion)(ArsdkFtpRequestStatus status);
  @param completionBlock completion block
  @return the request
  */
-- (ArsdkRequest* _Nonnull)ftpUpload:(int16_t)handle
+- (nonnull ArsdkRequest *)ftpUpload:(int16_t)handle
                          deviceType:(NSInteger)deviceType
                          serverType:(ArsdkFtpServerType)serverType
-                            srcPath:(NSString* _Nonnull)srcPath
-                             dstPth:(NSString* _Nonnull)dstPath
-                           progress:(ArsdkFtpRequestProgress _Nonnull)progressBlock
-                         completion:(ArsdkFtpRequestCompletion _Nonnull)completionBlock;
+                            srcPath:(nonnull NSString *)srcPath
+                             dstPth:(nonnull NSString *)dstPath
+                           progress:(nonnull ArsdkFtpRequestProgress)progressBlock
+                         completion:(nonnull ArsdkFtpRequestCompletion)completionBlock;
 @end

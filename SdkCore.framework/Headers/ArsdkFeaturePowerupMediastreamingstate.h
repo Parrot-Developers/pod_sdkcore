@@ -44,7 +44,7 @@ NS_SWIFT_NAME(onVideoEnableChanged(enabled:));
 
 @interface ArsdkFeaturePowerupMediastreamingstate : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeaturePowerupMediastreamingstateCallback>)callback;
++ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeaturePowerupMediastreamingstateCallback>)callback;
 
 @end
 

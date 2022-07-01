@@ -66,7 +66,7 @@ The name will be checked, and can be modified before application. Use the [Acces
  - parameter ssid: AccessPoint SSID
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))accessPointSSIDEncoder:(NSString*)ssid
++ (int (^)(struct arsdk_cmd *))accessPointSSIDEncoder:(NSString *)ssid
 NS_SWIFT_NAME(accessPointSSIDEncoder(ssid:));
 
 /**
@@ -101,7 +101,7 @@ NS_SWIFT_NAME(wifiSelectionEncoder(type:band:channel:));
  - parameter key: The security key (ignored if security_type is open)
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))wifiSecurityEncoder:(ArsdkFeatureSkyctrlAccesspointsettingsWifisecuritySecurityType)securityType key:(NSString*)key
++ (int (^)(struct arsdk_cmd *))wifiSecurityEncoder:(ArsdkFeatureSkyctrlAccesspointsettingsWifisecuritySecurityType)securityType key:(NSString *)key
 NS_SWIFT_NAME(wifiSecurityEncoder(securityType:key:));
 
 @end

@@ -43,8 +43,8 @@ typedef NS_ENUM(NSInteger, AnonymizerResult) {
 
 @interface Anonymizer : NSObject
 
-+ (AnonymizerResult)convert:(NSString*)inFile
-        outFile:(NSString*)outFile
-        profile: (Profile)profile;
++ (AnonymizerResult)convert:(nonnull NSString *)inFile
+                    outFile:(nonnull NSString *)outFile
+                    profile:(Profile)profile;
 
 @end

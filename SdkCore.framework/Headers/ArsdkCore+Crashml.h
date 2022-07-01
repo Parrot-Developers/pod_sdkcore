@@ -45,7 +45,7 @@ typedef NS_ENUM(NSInteger, ArsdkCrashmlStatus) {
 };
 
 /// Progress callback
-typedef void(^ArsdkCrashmlDownloadProgress)(NSString* _Nonnull path, ArsdkCrashmlStatus status);
+typedef void(^ArsdkCrashmlDownloadProgress)(NSString * _Nonnull path, ArsdkCrashmlStatus status);
 
 /// Completion callback
 typedef void(^ArsdkCrashmlDownloadCompletion)(ArsdkCrashmlStatus status);
@@ -57,9 +57,9 @@ typedef void(^ArsdkCrashmlDownloadCompletion)(ArsdkCrashmlStatus status);
 @interface ArsdkCore (Crashml)
 
 /** Crashml request */
-- (ArsdkRequest * _Nonnull)downloadCrashml:(int16_t)handle
+- (nonnull ArsdkRequest *)downloadCrashml:(int16_t)handle
                                deviceType:(NSInteger)deviceType
-                                     path:(NSString* _Nonnull)path
-                                 progress:(ArsdkCrashmlDownloadProgress _Nonnull)progressBlock
-                               completion:(ArsdkCrashmlDownloadCompletion _Nonnull)completionBlock;
+                                     path:(nonnull NSString *)path
+                                 progress:(nonnull ArsdkCrashmlDownloadProgress)progressBlock
+                               completion:(nonnull ArsdkCrashmlDownloadCompletion)completionBlock;
 @end

@@ -36,7 +36,7 @@ struct arsdk_cmd;
 /**
  Defines a block that encode a command. This bloc takes the command to encode
  */
-typedef int(^ArsdkCommandEncoder)(struct arsdk_cmd* _Nonnull);
+typedef int(^ArsdkCommandEncoder)(struct arsdk_cmd * _Nonnull);
 
 /**
  Defines a block that will be called after a tcp proxy creation request
@@ -45,7 +45,7 @@ typedef int(^ArsdkCommandEncoder)(struct arsdk_cmd* _Nonnull);
  @param addr: the address of the tcp proxy. nil in case of error
  @param port: the port if the tct proxy. If addr is nil, the port value should be ignored.
  */
-typedef void(^ArsdkTcpProxyCreationCompletion)(ArsdkTcpProxy *_Nullable proxy, NSString *_Nullable addr,
+typedef void(^ArsdkTcpProxyCreationCompletion)(ArsdkTcpProxy * _Nullable proxy, NSString * _Nullable addr,
                                                NSInteger port);
 
 /** Reason of a connection cancel */
@@ -107,7 +107,7 @@ NS_SWIFT_NAME(onConnected(api:));
 
  @param command: received command
  */
-- (void)onCommandReceived:(const struct arsdk_cmd* _Nonnull)command;
+- (void)onCommandReceived:(nonnull const struct arsdk_cmd *)command;
 @end
 
 
@@ -126,7 +126,7 @@ extern short const ARSDK_INVALID_DEVICE_HANDLE;
  @param deviceListener: listener notified when device connection changes and recevied commands.
  Retained until callback disconnected or canceled is called
  */
-- (void)connectDevice:(int16_t)handle deviceListener:(id<ArsdkCoreDeviceListener> _Nonnull)deviceListener;
+- (void)connectDevice:(int16_t)handle deviceListener:(nonnull id<ArsdkCoreDeviceListener>)deviceListener;
 
 /**
  Disconnect from a device
@@ -144,7 +144,7 @@ extern short const ARSDK_INVALID_DEVICE_HANDLE;
  @param encoder: command encoder of the command to send
  */
 - (void)sendCommand:(int16_t)handle
-            encoder:(__attribute__((noescape)) int(^ _Nonnull)(struct arsdk_cmd* _Nonnull))encoder;
+            encoder:(int (NS_NOESCAPE ^ _Nonnull)(struct arsdk_cmd * _Nonnull))encoder;
 
 
 /**
@@ -175,7 +175,7 @@ extern short const ARSDK_INVALID_DEVICE_HANDLE;
  @param encoders: The array of NoAck commands, each stored in a NoAckStorage Object
  @param handle: device handle to which send the command
  */
-- (void)setNoAckCommands:(NSArray<NoAckStorage *> *_Nullable)encoders handle:(short)handle
+- (void)setNoAckCommands:(nonnull NSArray<NoAckStorage *> *)encoders handle:(short)handle
 NS_SWIFT_NAME(setNoAckCommands(encoders:handle:));
 
 
@@ -189,7 +189,7 @@ NS_SWIFT_NAME(setNoAckCommands(encoders:handle:));
                     be called with nil as address parameter.
  */
 - (void)createTcpProxy:(int16_t)handle deviceType:(NSInteger)deviceType port:(uint16_t)port
-            completion:(ArsdkTcpProxyCreationCompletion _Nonnull)completion;
+            completion:(nonnull ArsdkTcpProxyCreationCompletion)completion;
 
 @end
 

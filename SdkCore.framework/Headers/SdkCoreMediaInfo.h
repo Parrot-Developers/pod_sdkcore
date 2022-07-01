@@ -43,23 +43,23 @@ typedef NS_ENUM(NSInteger, SdkCoreMediaType) {
 @interface SdkCoreMediaInfo: NSObject
 
 /** Media unique identifier. */
-@property (readonly, nonatomic, assign) long mediaId;
+@property (nonatomic, assign, readonly) long mediaId;
 /** Media type. */
-@property (readonly, nonatomic, assign) SdkCoreMediaType type;
+@property (nonatomic, assign, readonly) SdkCoreMediaType type;
 
 /**
  Create a media info instance from Pdraw media info.
 
  @param mediaInfo: media info.
  */
-+ (SdkCoreMediaInfo * _Nullable)createFromPdrawMediaInfo:(/*struct pdraw_media_info* */void * _Nonnull)mediaInfo;
++ (nullable SdkCoreMediaInfo *)createFromPdrawMediaInfo:(/* nonnull struct pdraw_media_info * */nonnull void *)mediaInfo;
 
 /**
  Constructor
 
  @param mediaId: Media unique identifier.
 */
-- (instancetype _Nonnull)initWithMediaId:(long)mediaId;
+- (nonnull instancetype)initWithMediaId:(long)mediaId;
 
 /**
  Create a media info.
@@ -67,7 +67,7 @@ typedef NS_ENUM(NSInteger, SdkCoreMediaType) {
  @param mediaId: Media unique identifier.
  @param type:Media type.
  */
-- (instancetype _Nonnull)initWithMediaId:(long)mediaId type:(SdkCoreMediaType)type;
+- (nonnull instancetype)initWithMediaId:(long)mediaId type:(SdkCoreMediaType)type;
 
 @end
 
@@ -75,11 +75,17 @@ typedef NS_ENUM(NSInteger, SdkCoreMediaType) {
 @interface SdkCoreVideoInfo: SdkCoreMediaInfo
 
 /** Video media source. */
-@property (readonly, nonatomic, assign) int source;
+@property (nonatomic, assign, readonly) int source;
 /** Video width, in pixels. */
-@property (readonly, nonatomic, assign) int width;
+@property (nonatomic, assign, readonly) int width;
 /** Video height, in pixels. */
-@property (readonly, nonatomic, assign) int height;
+@property (nonatomic, assign, readonly) int height;
+
+- (nonnull instancetype)initWithMediaId:(long)mediaId
+                                   type:(SdkCoreMediaType)type
+                                 source:(int)source
+                                  width:(int)width
+                                 height:(int)height;
 
 @end
 

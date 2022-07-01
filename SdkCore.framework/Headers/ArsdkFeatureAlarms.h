@@ -155,7 +155,7 @@ NS_SWIFT_NAME(onTakeoffChecklist(check:state:listFlagsBitField:));
 
 @interface ArsdkFeatureAlarms : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeatureAlarmsCallback>)callback;
++ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureAlarmsCallback>)callback;
 
 @end
 

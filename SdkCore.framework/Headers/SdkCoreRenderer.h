@@ -67,16 +67,16 @@ typedef NS_ENUM(NSInteger, SdkCoreStreamRenderingFillMode) {
 @interface SdkCoreTextureLoaderFrame: NSObject
 
 /** Handle on the frame. */
-@property (readonly, nonatomic, assign) const void * _Nonnull frame;
+@property (nonatomic, assign, readonly, nonnull) const void *frame;
 
 /** Handle on the frame user data. */
-@property (readonly, nonatomic, assign) const void * _Nullable userData;
+@property (nonatomic, assign, readonly, nullable) const void *userData;
 
 /** Length of the frame user data. */
-@property (readonly, nonatomic, assign) size_t userDataLen;
+@property (nonatomic, assign, readonly) size_t userDataLen;
 
 /** Handle on media information. */
-@property (readonly, nonatomic, assign) const void * _Nonnull mediaInfo;
+@property (nonatomic, assign, readonly, nonnull) const void *mediaInfo;
 
 @end
 
@@ -94,9 +94,9 @@ typedef NS_ENUM(NSInteger, SdkCoreStreamRenderingFillMode) {
  @param height: texture height
  @param frame: frame data, non-persistent data, should not be used after the return of the callback.
  */
-- (bool)loadTexture:(int)width
+- (BOOL)loadTexture:(int)width
              height:(int)height
-              frame:(SdkCoreTextureLoaderFrame * _Nonnull)frame;
+              frame:(nonnull SdkCoreTextureLoaderFrame *)frame;
 
 @end
 
@@ -105,22 +105,22 @@ typedef NS_ENUM(NSInteger, SdkCoreStreamRenderingFillMode) {
 @interface SdkCoreHistogram: NSObject
 
 /** Histogram channel red. */
-@property (readonly, nonatomic) const float * _Nullable histogramRed;
+@property (readonly, nonatomic, nullable) const float *histogramRed;
 /** Length of histogram channel red. */
 @property (readonly, nonatomic) size_t histogramRedLen;
 
 /** Histogram channel green. */
-@property (readonly, nonatomic) const float * _Nullable histogramGreen;
+@property (readonly, nonatomic, nullable) const float *histogramGreen;
 /** Length of histogram channel green. */
 @property (readonly, nonatomic) size_t histogramGreenLen;
 
 /** Histogram channel blue. */
-@property (readonly, nonatomic) const float * _Nullable histogramBlue;
+@property (readonly, nonatomic, nullable) const float *histogramBlue;
 /** Length of histogram channel blue. */
 @property (readonly, nonatomic) size_t histogramBlueLen;
 
 /** Histogram channel luma. */
-@property (readonly, nonatomic) const float * _Nullable histogramLuma;
+@property (readonly, nonatomic, nullable) const float *histogramLuma;
 /** Length of histogram channel luma. */
 @property (readonly, nonatomic) size_t histogramLumaLen;
 
@@ -133,22 +133,22 @@ typedef NS_ENUM(NSInteger, SdkCoreStreamRenderingFillMode) {
 @property (nonatomic, readonly) CGRect renderZone;
 
 /** Render zone handle; pointer to const struct pdraw_rect. */
-@property (nonatomic, readonly) const void * _Nonnull renderZoneHandle;
+@property (nonatomic, readonly, nonnull) const void *renderZoneHandle;
 
 /** Area where frame content was rendered (excluding any padding introduced by scaling). */
 @property (nonatomic, readonly) CGRect contentZone;
 
 /** Content zone handle; pointer to const struct pdraw_rect. */
-@property (nonatomic, readonly) const void * _Nonnull contentZoneHandle;
+@property (nonatomic, readonly, nonnull) const void *contentZoneHandle;
 
 /** Media Info handle; (const struct pdraw_media_info *) */
-@property (nonatomic, readonly) const void * _Nonnull mediaInfoHandle;
+@property (nonatomic, readonly, nonnull) const void *mediaInfoHandle;
 
 /** Frame metadata handle; pointer to const struct vmeta_frame. */
-@property (nonatomic, readonly) const void * _Nullable frameMetadataHandle;
+@property (nonatomic, readonly, nullable) const void * frameMetadataHandle;
 
 /** Histogram. */
-@property (nonatomic, readonly) SdkCoreHistogram * _Nonnull histogram;
+@property (nonatomic, strong, readonly, nonnull) SdkCoreHistogram *histogram;
 
 @end
 
@@ -165,11 +165,11 @@ typedef NS_ENUM(NSInteger, SdkCoreStreamRenderingFillMode) {
  @param context: overlay context.
                 non-persistent data, should not be used after the return of the callback.
  */
-- (void)overlay:(SdkCoreOverlayContext * _Nonnull)context;
+- (void)overlay:(nonnull SdkCoreOverlayContext *)context;
 
 @end
 
-/** Video renderer object that have a native renderer object*/
+/** Video renderer object that have a native renderer object */
 @interface SdkCoreRenderer: NSObject
 
 /** Content zone, relative to the renderer zone **/
@@ -192,16 +192,20 @@ typedef NS_ENUM(NSInteger, SdkCoreStreamRenderingFillMode) {
  @param overlayListener: overlay rendering listener.
  @param listener: renderer listener.
  */
-- (instancetype _Nullable)initWithPdraw:(/*struct pdraw **/void * _Nonnull)pdraw
-                                   zone:(CGRect)renderZone
-                               fillMode:(SdkCoreStreamRenderingFillMode)fillMode
-                          zebrasEnabled:(BOOL)zebrasEnabled zebrasThreshold:(float)zebrasThreshold
-                           textureWidth:(int)textureWidth textureDarWidth:(int)textureDarWidth textureDarHeight:(int)textureDarHeight
-                  textureLoaderlistener:(id<SdkCoreTextureLoaderListener> _Nullable)textureLoaderlistener
-                      histogramsEnabled:(BOOL)histogramsEnabled
-                        overlayListener:(id<SdkCoreRendererOverlayListener> _Nonnull)overlayListener
-                               listener:(id<SdkCoreRendererListener> _Nonnull)listener
+- (nonnull instancetype)initWithPdraw:(nonnull /*struct pdraw **/void *)pdraw
+                                 zone:(CGRect)renderZone
+                             fillMode:(SdkCoreStreamRenderingFillMode)fillMode
+                        zebrasEnabled:(BOOL)zebrasEnabled
+                      zebrasThreshold:(float)zebrasThreshold
+                         textureWidth:(int)textureWidth
+                      textureDarWidth:(int)textureDarWidth
+                     textureDarHeight:(int)textureDarHeight
+                textureLoaderlistener:(nullable id<SdkCoreTextureLoaderListener>)textureLoaderlistener
+                    histogramsEnabled:(BOOL)histogramsEnabled
+                      overlayListener:(nonnull id<SdkCoreRendererOverlayListener> )overlayListener
+                             listener:(nonnull id<SdkCoreRendererListener>)listener
 NS_SWIFT_UNAVAILABLE("useless");
+
 /** Stop renderer. */
 - (void)stop;
 

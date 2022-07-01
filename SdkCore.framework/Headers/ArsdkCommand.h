@@ -39,7 +39,7 @@ struct arsdk_cmd;
  @param command the command to get the name of
  @return name of the command
  */
-+(NSString* _Nonnull)getName:(const struct arsdk_cmd* _Nonnull)command;
++ (nonnull NSString *)getName:(nonnull const struct arsdk_cmd *)command;
 
 /**
  Get the feature id of a command
@@ -47,7 +47,7 @@ struct arsdk_cmd;
  @param command the command to get the feature id of
  @return feature id of the command
  */
-+(int16_t)getFeatureId:(const struct arsdk_cmd* _Nonnull)command;
++ (int16_t)getFeatureId:(nonnull const struct arsdk_cmd *)command;
 
 /**
  Get a string describing the command, for debug purpose.
@@ -55,6 +55,6 @@ struct arsdk_cmd;
  @param command the command to describe
  @return command description
  */
-+(NSString* _Nonnull)describe:(const struct arsdk_cmd* _Nonnull)command;
++ (nonnull NSString *)describe:(nonnull const struct arsdk_cmd *)command;
 
 @end

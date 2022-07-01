@@ -37,7 +37,7 @@ Each control have a human-readable english name describing its physical position
 A button and an axis can have the same ID, but their type is different
  - parameter name: Display name for the control
 */
-- (void)onGamepadControl:(ArsdkFeatureSkyctrlGamepadinfosstateGamepadcontrolType)type id:(NSInteger)id name:(NSString*)name
+- (void)onGamepadControl:(ArsdkFeatureSkyctrlGamepadinfosstateGamepadcontrolType)type id:(NSInteger)id name:(NSString *)name
 NS_SWIFT_NAME(onGamepadControl(type:id:name:));
 
 /**
@@ -52,7 +52,7 @@ NS_SWIFT_NAME(onAllGamepadControlsSent());
 
 @interface ArsdkFeatureSkyctrlGamepadinfosstate : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeatureSkyctrlGamepadinfosstateCallback>)callback;
++ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureSkyctrlGamepadinfosstateCallback>)callback;
 
 @end
 

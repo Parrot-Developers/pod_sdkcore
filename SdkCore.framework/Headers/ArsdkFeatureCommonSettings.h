@@ -34,7 +34,7 @@ It also sets the name of the SSID for Wifi products and advertisement name for B
  - parameter name: Product name
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))productNameEncoder:(NSString*)name
++ (int (^)(struct arsdk_cmd *))productNameEncoder:(NSString *)name
 NS_SWIFT_NAME(productNameEncoder(name:));
 
 /**
@@ -45,7 +45,7 @@ This can modify Wifi band and/or channel.
  - parameter code: Country code with ISO 3166 format
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))countryEncoder:(NSString*)code
++ (int (^)(struct arsdk_cmd *))countryEncoder:(NSString *)code
 NS_SWIFT_NAME(countryEncoder(code:));
 
 /**

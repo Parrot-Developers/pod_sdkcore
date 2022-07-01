@@ -31,7 +31,7 @@ NS_SWIFT_NAME(onPipelines(id:));
 
 @interface ArsdkFeatureFcr : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeatureFcrCallback>)callback;
++ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureFcrCallback>)callback;
 
 /**
  Allows to select current flight camera recording pipelines configuration. 

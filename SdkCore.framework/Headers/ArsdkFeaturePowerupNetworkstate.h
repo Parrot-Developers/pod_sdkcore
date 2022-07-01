@@ -54,7 +54,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeaturePowerupNetworkstateWifiauthchannellistcha
  - parameter band: 
  - parameter channel: Channel of the AP
 */
-- (void)onWifiScanListChanged:(NSString*)ssid rssi:(NSInteger)rssi band:(ArsdkFeaturePowerupNetworkstateWifiscanlistchangedBand)band channel:(NSUInteger)channel
+- (void)onWifiScanListChanged:(NSString *)ssid rssi:(NSInteger)rssi band:(ArsdkFeaturePowerupNetworkstateWifiscanlistchangedBand)band channel:(NSUInteger)channel
 NS_SWIFT_NAME(onWifiScanListChanged(ssid:rssi:band:channel:));
 
 /**
@@ -94,7 +94,7 @@ NS_SWIFT_NAME(onLinkQualityChanged(quality:));
 
 @interface ArsdkFeaturePowerupNetworkstate : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeaturePowerupNetworkstateCallback>)callback;
++ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeaturePowerupNetworkstateCallback>)callback;
 
 @end
 

@@ -95,7 +95,7 @@ NS_SWIFT_NAME(onSettingChanged(setting:current:min:max:listFlags:));
 
 @interface ArsdkFeaturePowerupPilotingsettingsstate : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeaturePowerupPilotingsettingsstateCallback>)callback;
++ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeaturePowerupPilotingsettingsstateCallback>)callback;
 
 @end
 

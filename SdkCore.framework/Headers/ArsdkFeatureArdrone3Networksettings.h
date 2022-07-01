@@ -100,7 +100,7 @@ The security will be changed on the next restart
  - parameter keyType: 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))wifiSecurityEncoder:(ArsdkFeatureArdrone3NetworksettingsWifisecurityType)type key:(NSString*)key keytype:(ArsdkFeatureArdrone3NetworksettingsWifisecurityKeytype)keytype
++ (int (^)(struct arsdk_cmd *))wifiSecurityEncoder:(ArsdkFeatureArdrone3NetworksettingsWifisecurityType)type key:(NSString *)key keytype:(ArsdkFeatureArdrone3NetworksettingsWifisecurityKeytype)keytype
 NS_SWIFT_NAME(wifiSecurityEncoder(type:key:keytype:));
 
 @end

@@ -72,7 +72,7 @@ May not be available at disconnection.
 May not be available at disconnection.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))peerStateChangedEncoder:(ArsdkFeatureCommonControllerPeerstatechangedState)state type:(ArsdkFeatureCommonControllerPeerstatechangedType)type peername:(NSString*)peername peerid:(NSString*)peerid peertype:(NSString*)peertype
++ (int (^)(struct arsdk_cmd *))peerStateChangedEncoder:(ArsdkFeatureCommonControllerPeerstatechangedState)state type:(ArsdkFeatureCommonControllerPeerstatechangedType)type peername:(NSString *)peername peerid:(NSString *)peerid peertype:(NSString *)peertype
 NS_SWIFT_NAME(peerStateChangedEncoder(state:type:peername:peerid:peertype:));
 
 @end

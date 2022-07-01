@@ -50,7 +50,7 @@ NS_SWIFT_NAME(onShutdown(reason:));
 
 @interface ArsdkFeatureSkyctrlCommoneventstate : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeatureSkyctrlCommoneventstateCallback>)callback;
++ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureSkyctrlCommoneventstateCallback>)callback;
 
 @end
 

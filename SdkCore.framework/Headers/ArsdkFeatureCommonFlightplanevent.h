@@ -34,7 +34,7 @@ NS_SWIFT_NAME(onSpeedBridleEvent());
 
 @interface ArsdkFeatureCommonFlightplanevent : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeatureCommonFlightplaneventCallback>)callback;
++ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureCommonFlightplaneventCallback>)callback;
 
 @end
 

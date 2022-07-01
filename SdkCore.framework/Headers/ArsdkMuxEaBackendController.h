@@ -34,5 +34,7 @@
  External accessory mux backend controller
  */
 @interface ArsdkMuxEaBackendController : ArsdkBackendController
-- (instancetype)initWithSupportedDeviceTypes:(NSSet<NSNumber*>*)deviceTypes;
+
+- (nonnull instancetype)initWithSupportedDeviceTypes:(nonnull NSSet<NSNumber *> *)deviceTypes;
+
 @end

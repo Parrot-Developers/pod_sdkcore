@@ -25,7 +25,7 @@ Corresponds to the latest datetime set on the drone.
 
  - parameter datetime: Datetime with the ISO-8601 complete short format: "%Y%m%dT%H%M%S%z"
 */
-- (void)onCurrentDateTimeChanged:(NSString*)datetime
+- (void)onCurrentDateTimeChanged:(NSString *)datetime
 NS_SWIFT_NAME(onCurrentDateTimeChanged(datetime:));
 
 /**
@@ -43,7 +43,7 @@ A Boot Id identifies a boot session and does not change between controller power
 
  - parameter bootId: Id of the boot
 */
-- (void)onBootId:(NSString*)bootid
+- (void)onBootId:(NSString *)bootid
 NS_SWIFT_NAME(onBootId(bootid:));
 
 
@@ -51,7 +51,7 @@ NS_SWIFT_NAME(onBootId(bootid:));
 
 @interface ArsdkFeatureSkyctrlCommonstate : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd*)command callback:(id<ArsdkFeatureSkyctrlCommonstateCallback>)callback;
++ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureSkyctrlCommonstateCallback>)callback;
 
 @end
 
