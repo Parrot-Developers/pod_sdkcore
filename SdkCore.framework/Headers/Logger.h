@@ -76,6 +76,9 @@ typedef NS_ENUM(NSInteger, Level) {
 /** Common logger based on ulog, using. */
 @interface ULog : NSObject
 
+/** Tag used to log commands as text. */
+@property (class, nonatomic, readonly, nonnull) ULogTag *cmdTag;
+
 /**
  Enables redirecting log messages to binary file `.bin` recorder.
 

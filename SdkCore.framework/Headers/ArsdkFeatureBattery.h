@@ -30,8 +30,11 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureBatteryAlert) {
     /** Authentication has failed. */
     ArsdkFeatureBatteryAlertAuthenticationFailure = 4,
 
+    /** Lost comm with battery. */
+    ArsdkFeatureBatteryAlertLostComm = 5,
+
 };
-#define ArsdkFeatureBatteryAlertCnt 5
+#define ArsdkFeatureBatteryAlertCnt 6
 
 /** Alert level. */
 typedef NS_ENUM(NSInteger, ArsdkFeatureBatteryAlertLevel) {
@@ -138,6 +141,17 @@ NS_SWIFT_NAME(onCapacity(fullCharge:remaining:));
 */
 - (void)onCellVoltage:(NSUInteger)index cellVoltage:(NSUInteger)cellVoltage
 NS_SWIFT_NAME(onCellVoltage(index:cellVoltage:));
+
+/**
+ Version of the components of the battery. 
+
+ - parameter hw_revision: Battery Hardware Revision
+ - parameter fw_version: Battery Firmware Version
+ - parameter gauge_version: Battery Gauge Version
+ - parameter usb_version: Battery USB Version
+*/
+- (void)onVersion:(NSUInteger)hwRevision fwVersion:(NSString *)fwVersion gaugeVersion:(NSString *)gaugeVersion usbVersion:(NSString *)usbVersion
+NS_SWIFT_NAME(onVersion(hwRevision:fwVersion:gaugeVersion:usbVersion:));
 
 
 @end

@@ -368,8 +368,17 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureArdrone3PilotingstateForcedlandingautotri
     /** Battery will soon be critical, so forced landing auto trigger is planned. */
     ArsdkFeatureArdrone3PilotingstateForcedlandingautotriggerReasonBatteryCriticalSoon = 1,
 
+    /** Propellers are critically iced, so forced landing auto trigger is planned. */
+    ArsdkFeatureArdrone3PilotingstateForcedlandingautotriggerReasonPropellerIcingCritical = 2,
+
+    /** Battery is too cold, so forced landing auto trigger is planned. */
+    ArsdkFeatureArdrone3PilotingstateForcedlandingautotriggerReasonBatteryTooCold = 3,
+
+    /** Battery is too hot, so forced landing auto trigger is planned. */
+    ArsdkFeatureArdrone3PilotingstateForcedlandingautotriggerReasonBatteryTooHot = 4,
+
 };
-#define ArsdkFeatureArdrone3PilotingstateForcedlandingautotriggerReasonCnt 2
+#define ArsdkFeatureArdrone3PilotingstateForcedlandingautotriggerReasonCnt 5
 
 /** Drone wind state */
 typedef NS_ENUM(NSInteger, ArsdkFeatureArdrone3PilotingstateWindstatechangedState) {

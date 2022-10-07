@@ -32,21 +32,6 @@
 #import <CoreGraphics/CoreGraphics.h>
 #import <CoreLocation/CLLocation.h>
 
-/* Position in frame */
-struct vmeta_position_in_frame {
-    /* Horizontal coordinate in the image, in range [0, 1] */
-    CGFloat x;
-
-    /* Vertical coordinate in the image, in range [0, 1] */
-    CGFloat y;
-
-    /* Distance between the drone and the location in meters */
-    CGFloat distance;
-
-    /* Horizontal distance between the drone and the location in meters */
-    CGFloat horizontal_distance;
-};
-
 /** Video frame. */
 @interface SdkCoreFrame: NSObject
 
@@ -63,25 +48,6 @@ struct vmeta_position_in_frame {
 
  @param src: pointer to frame to copy, (struct mbuf_raw_video_frame *)
  */
-- (nullable instancetype)initWithCopy:(nonnull void *)src;
-
-/** Position from location.
-
- @param location: the location
- @return the position in the frame, all values will be 0 if an error occurred and the point can not be
- retrieved.
- */
-- (struct vmeta_position_in_frame)positionFromLocation:(nonnull CLLocation *)location;
-
-/** Location from position.
-
- @param position: new position in frame
- @param currentLocation: current location in frame
- @param considerFlatGround: `YES` if flat ground hypothesis is used to compute the new location.
- @return the new location or `nil` if an error occured and the location could not be retrieved.
- */
-- (nullable CLLocation *)locationFromPosition:(CGPoint)position
-                                  forLocation:(nonnull CLLocation *)currentLocation
-                           considerFlatGround:(BOOL)flatGround;
+- (nullable instancetype)initWithFrame:(nonnull void *)src;
 
 @end

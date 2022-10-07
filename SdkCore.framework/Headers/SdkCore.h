@@ -7,7 +7,7 @@ FOUNDATION_EXPORT double SdkCoreVersionNumber;
 FOUNDATION_EXPORT const unsigned char SdkCoreVersionString[];
 
 // Import components
-#include "Arsdk.h"
+#import "Arsdk.h"
 
 // Mavlink
 #pragma clang diagnostic push

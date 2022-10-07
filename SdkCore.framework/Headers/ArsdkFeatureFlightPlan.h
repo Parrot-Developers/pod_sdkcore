@@ -214,5 +214,13 @@ This is the index of the mission item in the mission's items list, starting from
 + (int (^)(struct arsdk_cmd *))startAtV2Encoder:(NSString *)flightplanId customId:(NSString *)customId type:(ArsdkFeatureFlightPlanMavlinkType)type item:(NSUInteger)item continueOnDisconnect:(NSUInteger)continueOnDisconnect
 NS_SWIFT_NAME(startAtV2Encoder(flightplanId:customId:type:item:continueOnDisconnect:));
 
+/**
+ Start flightplan pre-configuration 
+
+ - returns: a block that encodes the command
+*/
++ (int (^)(struct arsdk_cmd *))preConfigEncoder
+NS_SWIFT_NAME(preConfigEncoder());
+
 @end
 

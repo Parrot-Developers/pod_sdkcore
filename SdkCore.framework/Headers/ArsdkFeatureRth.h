@@ -104,8 +104,11 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureRthStateReason) {
     /** Return to home triggered by propeller icing event (available->in_progress) */
     ArsdkFeatureRthStateReasonIcing = 9,
 
+    /** Return to home triggered by battery lost comm event (available->in_progress) */
+    ArsdkFeatureRthStateReasonBatteryLostComm = 10,
+
 };
-#define ArsdkFeatureRthStateReasonCnt 10
+#define ArsdkFeatureRthStateReasonCnt 11
 
 /** Home reachability */
 typedef NS_ENUM(NSInteger, ArsdkFeatureRthHomeReachability) {

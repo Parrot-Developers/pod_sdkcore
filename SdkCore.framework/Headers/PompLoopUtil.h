@@ -70,6 +70,6 @@ The caller must be in the same thread as the one used during the init
 /**
  Retrieves the internal pomp loop
  */
-@property (nonatomic, readonly, nonnull) struct pomp_loop *internalPompLoop;
+@property (nonatomic, readonly, nonnull) struct pomp_loop *internalPompLoop NS_RETURNS_INNER_POINTER;
 
 @end

@@ -105,8 +105,11 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureAlarmsTakeoffChecklistType) {
     /** Magneto calibration check. */
     ArsdkFeatureAlarmsTakeoffChecklistTypeMagnetoCalibration = 16,
 
+    /** Battery lost comm. */
+    ArsdkFeatureAlarmsTakeoffChecklistTypeBatteryLostComm = 17,
+
 };
-#define ArsdkFeatureAlarmsTakeoffChecklistTypeCnt 17
+#define ArsdkFeatureAlarmsTakeoffChecklistTypeCnt 18
 
 /** Alarm state. */
 typedef NS_ENUM(NSInteger, ArsdkFeatureAlarmsState) {

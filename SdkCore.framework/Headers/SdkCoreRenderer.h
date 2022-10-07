@@ -145,7 +145,7 @@ typedef NS_ENUM(NSInteger, SdkCoreStreamRenderingFillMode) {
 @property (nonatomic, readonly, nonnull) const void *mediaInfoHandle;
 
 /** Frame metadata handle; pointer to const struct vmeta_frame. */
-@property (nonatomic, readonly, nullable) const void * frameMetadataHandle;
+@property (nonatomic, readonly, nullable) const void *frameMetadataHandle;
 
 /** Histogram. */
 @property (nonatomic, strong, readonly, nonnull) SdkCoreHistogram *histogram;

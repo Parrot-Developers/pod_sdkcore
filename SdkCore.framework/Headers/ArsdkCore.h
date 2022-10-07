@@ -76,22 +76,6 @@ struct arsdk_cmd;
 
 @end
 
-/** Command logging level */
-typedef NS_ENUM(NSInteger, ArsdkCmdLog) {
-    /** Don't log any commands */
-    ArsdkCmdLogNone = 0,
-    /**
-     Only log acknowledged commands which are not the frequent ones (like mass storage info or number of satellites)
-     */
-    ArsdkCmdLogAcknowledgedOnlyWithoutFrequent = 1,
-    /** Only log acknowledged commands */
-    ArsdkCmdLogAcknowledgedOnly = 2,
-    /** Log all commands */
-    ArsdkCmdLogAll = 3,
-};
-
-extern ArsdkCmdLog arsdkCoreCmdLogLevel;
-
 /**
  Arsdk Controller
  Wrapper around arsdk-ng.
@@ -99,7 +83,7 @@ extern ArsdkCmdLog arsdkCoreCmdLogLevel;
 @interface ArsdkCore : NSObject
 
 /** Native arsdk manager */
-@property (nonatomic, assign, readonly, nonnull) struct arsdk_ctrl *ctrl;
+@property (nonatomic, assign, readonly, nonnull) struct arsdk_ctrl *ctrl NS_RETURNS_INNER_POINTER;
 
 /**
  Constructor

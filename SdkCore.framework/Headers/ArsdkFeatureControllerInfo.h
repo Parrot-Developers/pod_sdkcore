@@ -185,5 +185,14 @@ clock)
 + (int (^)(struct arsdk_cmd *))gpsV2Encoder:(ArsdkFeatureControllerInfoSource)source latitude:(double)latitude longitude:(double)longitude amslAltitude:(float)amslAltitude wgs84Altitude:(float)wgs84Altitude latitudeAccuracy:(float)latitudeAccuracy longitudeAccuracy:(float)longitudeAccuracy altitudeAccuracy:(float)altitudeAccuracy northVelocity:(float)northVelocity eastVelocity:(float)eastVelocity upVelocity:(float)upVelocity velocityAccuracy:(float)velocityAccuracy numberOfSatellites:(NSUInteger)numberOfSatellites timestamp:(uint64_t)timestamp
 NS_SWIFT_NAME(gpsV2Encoder(source:latitude:longitude:amslAltitude:wgs84Altitude:latitudeAccuracy:longitudeAccuracy:altitudeAccuracy:northVelocity:eastVelocity:upVelocity:velocityAccuracy:numberOfSatellites:timestamp:));
 
+/**
+ SkyController Magneto temperature in Kelvin. 
+
+ - parameter temp: SkyController magnetometer temperature
+ - returns: a block that encodes the command
+*/
++ (int (^)(struct arsdk_cmd *))magnetoTemperatureEncoder:(float)temp
+NS_SWIFT_NAME(magnetoTemperatureEncoder(temp:));
+
 @end
 
