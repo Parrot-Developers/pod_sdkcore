@@ -42,8 +42,11 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureDriSupportedCapabilities) {
     /** EN 4709-002 DRI regulation is supported */
     ArsdkFeatureDriSupportedCapabilitiesEn4709_002Regulation = 2,
 
+    /** ASTM F341122 DRI regulation is supported */
+    ArsdkFeatureDriSupportedCapabilitiesAstmF3411Regulation = 3,
+
 };
-#define ArsdkFeatureDriSupportedCapabilitiesCnt 3
+#define ArsdkFeatureDriSupportedCapabilitiesCnt 4
 
 @interface ArsdkFeatureDriSupportedCapabilitiesBitField : NSObject
 
@@ -86,8 +89,11 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureDriDriType) {
     /** DRI wifi beacon respects the EN4709-002 european regulation */
     ArsdkFeatureDriDriTypeEn4709_002 = 1,
 
+    /** DRI wifi beacon respects the ASTN F341122 US regulation */
+    ArsdkFeatureDriDriTypeAstmF3411 = 2,
+
 };
-#define ArsdkFeatureDriDriTypeCnt 2
+#define ArsdkFeatureDriDriTypeCnt 3
 
 /**  */
 typedef NS_ENUM(NSInteger, ArsdkFeatureDriStatus) {

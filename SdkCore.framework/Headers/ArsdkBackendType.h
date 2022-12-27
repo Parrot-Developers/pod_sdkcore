@@ -37,8 +37,6 @@ typedef NS_ENUM(NSInteger, ArsdkBackendType) {
     ArsdkBackendTypeUnknown = -1,
     /** Net backend */
     ArsdkBackendTypeNet =      0,
-    /** Ble backend */
-    ArsdkBackendTypeBle =      1,
     /** Usb mux backend */
-    ArsdkBackendTypeMux =      2
+    ArsdkBackendTypeMux =      1
 };

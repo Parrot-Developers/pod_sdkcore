@@ -272,11 +272,14 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureArdrone3PilotingstatePilotedpoiv2Mode) {
     /** Gimbal is locked on the POI */
     ArsdkFeatureArdrone3PilotingstatePilotedpoiv2ModeLockedGimbal = 0,
 
+    /** Gimbal is locked on the POI once, then it is freely controllable */
+    ArsdkFeatureArdrone3PilotingstatePilotedpoiv2ModeLockedOnceGimbal = 1,
+
     /** Gimbal is freely controllable */
-    ArsdkFeatureArdrone3PilotingstatePilotedpoiv2ModeFreeGimbal = 1,
+    ArsdkFeatureArdrone3PilotingstatePilotedpoiv2ModeFreeGimbal = 2,
 
 };
-#define ArsdkFeatureArdrone3PilotingstatePilotedpoiv2ModeCnt 2
+#define ArsdkFeatureArdrone3PilotingstatePilotedpoiv2ModeCnt 3
 
 /** Status of the Piloted POI */
 typedef NS_ENUM(NSInteger, ArsdkFeatureArdrone3PilotingstatePilotedpoiv2Status) {
@@ -377,8 +380,11 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureArdrone3PilotingstateForcedlandingautotri
     /** Battery is too hot, so forced landing auto trigger is planned. */
     ArsdkFeatureArdrone3PilotingstateForcedlandingautotriggerReasonBatteryTooHot = 4,
 
+    /** ESC (motor) is too hot, so forced landing auto trigger is planned. */
+    ArsdkFeatureArdrone3PilotingstateForcedlandingautotriggerReasonEscTooHot = 5,
+
 };
-#define ArsdkFeatureArdrone3PilotingstateForcedlandingautotriggerReasonCnt 5
+#define ArsdkFeatureArdrone3PilotingstateForcedlandingautotriggerReasonCnt 6
 
 /** Drone wind state */
 typedef NS_ENUM(NSInteger, ArsdkFeatureArdrone3PilotingstateWindstatechangedState) {
@@ -531,7 +537,7 @@ NS_SWIFT_NAME(onAttitudeChanged(roll:pitch:yaw:));
 /**
  Drone's altitude changed.
 The altitude reported is the altitude above the take off point.
-To get the altitude above sea level, see [PositionChanged](#1-4-4). 
+To get the altitude above sea level, see [GpsLocationChanged](#1-4-9). 
 
  - parameter altitude: Altitude in meters
 */
@@ -539,8 +545,7 @@ To get the altitude above sea level, see [PositionChanged](#1-4-4).
 NS_SWIFT_NAME(onAltitudeChanged(altitude:));
 
 /**
- Drone's location changed.
-This event is meant to replace [PositionChanged](#1-4-4). 
+ Drone's location changed. 
 
  - parameter latitude: Latitude location in decimal degrees (500.0 if not available)
  - parameter longitude: Longitude location in decimal degrees (500.0 if not available)

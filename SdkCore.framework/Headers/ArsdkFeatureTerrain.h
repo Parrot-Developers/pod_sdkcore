@@ -117,5 +117,17 @@ NS_SWIFT_NAME(calibrateEncoder());
 + (int (^)(struct arsdk_cmd *))calibrationResetEncoder
 NS_SWIFT_NAME(calibrationResetEncoder());
 
+/**
+  
+
+ - parameter elevation: Terrain elevation(m) above mean sea level at the location
+given by Latitude and Longitude.
+ - parameter latitude: Latitude of the location (in degrees)
+ - parameter longitude: Longitude of the location (in degrees)
+ - returns: a block that encodes the command
+*/
++ (int (^)(struct arsdk_cmd *))setAmslReferenceEncoder:(float)elevation latitude:(double)latitude longitude:(double)longitude
+NS_SWIFT_NAME(setAmslReferenceEncoder(elevation:latitude:longitude:));
+
 @end
 

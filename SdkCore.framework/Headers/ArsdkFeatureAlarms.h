@@ -42,8 +42,11 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureAlarmsType) {
     /** Stereo camera is decalibrated. */
     ArsdkFeatureAlarmsTypeFstcamDecalibrated = 8,
 
+    /** DRI is not functional. */
+    ArsdkFeatureAlarmsTypeDriFailing = 9,
+
 };
-#define ArsdkFeatureAlarmsTypeCnt 9
+#define ArsdkFeatureAlarmsTypeCnt 10
 
 /** takeoff readiness checks. */
 typedef NS_ENUM(NSInteger, ArsdkFeatureAlarmsTakeoffChecklistType) {
@@ -108,8 +111,11 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureAlarmsTakeoffChecklistType) {
     /** Battery lost comm. */
     ArsdkFeatureAlarmsTakeoffChecklistTypeBatteryLostComm = 17,
 
+    /** Drone Remote Identification check. */
+    ArsdkFeatureAlarmsTakeoffChecklistTypeDri = 18,
+
 };
-#define ArsdkFeatureAlarmsTakeoffChecklistTypeCnt 18
+#define ArsdkFeatureAlarmsTakeoffChecklistTypeCnt 19
 
 /** Alarm state. */
 typedef NS_ENUM(NSInteger, ArsdkFeatureAlarmsState) {

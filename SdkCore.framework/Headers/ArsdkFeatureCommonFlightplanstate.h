@@ -48,8 +48,13 @@ State is 0 when the mavlink did not start because of a media action
 which cannot be performed. */
     ArsdkFeatureCommonFlightplanstateComponentstatelistchangedComponentMavlinkMedia = 7,
 
+    /** Component for first waypoint too far away.
+State is 0 when the first waypoint in the flight plan is too far
+to be reached. */
+    ArsdkFeatureCommonFlightplanstateComponentstatelistchangedComponentFirstwaypointtoofar = 8,
+
 };
-#define ArsdkFeatureCommonFlightplanstateComponentstatelistchangedComponentCnt 8
+#define ArsdkFeatureCommonFlightplanstateComponentstatelistchangedComponentCnt 9
 
 @protocol ArsdkFeatureCommonFlightplanstateCallback<NSObject>
 

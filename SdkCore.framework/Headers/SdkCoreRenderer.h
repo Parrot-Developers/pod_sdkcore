@@ -93,6 +93,8 @@ typedef NS_ENUM(NSInteger, SdkCoreStreamRenderingFillMode) {
  @param width: texture width
  @param height: texture height
  @param frame: frame data, non-persistent data, should not be used after the return of the callback.
+
+ @returns `YES` on success, otherwise 'NO'.
  */
 - (BOOL)loadTexture:(int)width
              height:(int)height

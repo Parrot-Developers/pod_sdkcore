@@ -31,7 +31,7 @@
 #import "SdkCoreSource.h"
 #import "SdkCoreMediaInfo.h"
 #import "SdkCoreRenderer.h"
-#import "SdkCoreSink.h"
+#import "SdkCoreRawVideoSink.h"
 
 // Forward declaration.
 @class ArsdkStream;
@@ -106,20 +106,24 @@ typedef void(^ArsdkStreamCmdCb)(int status);
 /** Video stream object that have a native stream object. */
 @interface ArsdkStream: NSObject <SdkCoreSourceTarget>
 
+/** Listener for stream events */
+@property (nonatomic, weak, nullable) id<ArsdkStreamListener> listener;
+
 /** Pdraw state */
 @property (nonatomic, assign, readonly) ArsdkStreamState state;
 
 /** `YES` if the stream is busy and no command can be executed, `NO` if the stream is ready to a new command. */
 @property (nonatomic, assign, readonly) BOOL busy;
 
+/** Information of the media availables. */
+@property (nonatomic, strong, readonly, nonnull) NSDictionary<NSNumber*, SdkCoreMediaInfo*> *medias;
+
 /**
  Creates a native video stream.
  
  @param pompLoopUtil: pomp loop utility
- @param listener: a listener that will be called when events happen on the stream
  */
-- (nonnull instancetype)initWithPompLoopUtil:(nonnull PompLoopUtil *)pompLoopUtil
-                                    listener:(nonnull id<ArsdkStreamListener>)listener;
+- (nonnull instancetype)initWithPompLoopUtil:(nonnull PompLoopUtil *)pompLoopUtil;
 
 /**
  Opens the stream.
@@ -207,10 +211,10 @@ NS_SWIFT_NAME(startRenderer(renderZone:fillMode:zebrasEnabled:zebrasThreshold:te
 
  Must be called on main thread. Stream must be opened.
 
- @param sink:    sink to start
+ @param sink: sink to start
  @param mediaId: identifies the stream media to deliver to the sink
  */
-- (void)startSink:(nonnull SdkCoreSink *)sink mediaId:(UInt32)mediaId;
+- (void)startSink:(nonnull SdkCoreRawVideoSink *)sink mediaId:(UInt32)mediaId;
 
 @end
 
@@ -223,9 +227,8 @@ NS_SWIFT_NAME(startRenderer(renderZone:fillMode:zebrasEnabled:zebrasThreshold:te
  Creates a native video stream.
 
  @param handle: device handle
- @param listener: a listener that will be called when events happen on the stream
  @return a stream object
  */
-- (nonnull ArsdkStream *)createVideoStream:(nonnull id<ArsdkStreamListener>)listener;
+- (nonnull ArsdkStream *)createVideoStream;
 
 @end

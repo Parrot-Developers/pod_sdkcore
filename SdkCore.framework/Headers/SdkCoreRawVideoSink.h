@@ -1,4 +1,4 @@
-//    Copyright (C) 2019 Parrot Drones SAS
+//    Copyright (C) 2022 Parrot Drones SAS
 //
 //    Redistribution and use in source and binary forms, with or without
 //    modification, are permitted provided that the following conditions
@@ -27,54 +27,56 @@
 //    OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 //    SUCH DAMAGE.
 
-#import "ThermalProcPictureData.h"
-
-/** define a thermal processor to render pictures. */
-@interface ThermalProcPicture : NSObject <ThermalProc>
-
-/**
- Renders the thermal view.
-
- Must be called in the GL context.
-
- @param textureWidth:  GL texture width
- @param textureHeight: GL texture height
- @param pictureData: picture data
- @param sessionMetadata: session metadata
- @param statusUpdateBlock: block called to notify the processing status
- */
-- (void) render:(int)textureWidth textureHeight:(int)textureHeight
-          pictureData:(ThermalProcPictureData *)pictureData
-          statusUpdateBlock:(ThermalProcStatusUpdate)statusUpdateBlock
-NS_SWIFT_NAME(render(textureWidth:textureHeight:pictureData:_:));
+#import <Foundation/Foundation.h>
+#import "ArsdkCore.h"
+#import "PompLoopUtil.h"
+#import "SdkCoreFrame.h"
 
 /**
- Starts the renderer.
-
- Must be called in the GL context.
-
- TProc renderer instance MUST be disposed after use to release native resources.
-
- @param thermalCamera:  Thermal camera model used
- @param textureWidth:  GL texture width
- @param textureHeight: GL texture height
+ Listener that will be called when events about the renderer are emitted by the native renderer object
  */
-- (void) startRenderer:(ThermalProcThermalCamera)thermalCamera
-          textureWidth:(int)textureWidth textureHeight:(int)textureHeight
-NS_SWIFT_NAME(startRenderer(thermalCamera:textureWidth:textureHeight:));
+@protocol SdkCoreRawVideoSinkListener <NSObject>
 
 /**
- Stops the renderer.
-
- Must be called in the GL context.
+ Notifies that the sink has started and will begin to receive frames.
  */
-- (void) stopRenderer;
+- (void)onStart;
 
 /**
- Retrieves whether the renderer is started.
+ Notifies that a new frame is available from the sink.
+ Called in pomp thread.
 
- @return: 'YES' is the renderer is started.
+ @param frame: new available frame
  */
-- (BOOL) rendererIsStarted;
+- (void)onFrame:(nonnull SdkCoreFrame *)frame;
+
+/**
+ Notifies that the sink has stopped and won't receive frames anymore.
+ */
+- (void)onStop;
+
+@end
+
+/**
+ Raw video sink.
+
+ Receives raw video frames from a stream SdkCoreStream.
+ */
+@interface SdkCoreRawVideoSink: NSObject
+
+/**
+ Init sink.
+
+ @param queueSize: size of the sink queue; 0 for unlimited queue, otherwise older frames
+ will be automatically dropped when the queue is full to make room for new frames
+ @param listener: Sink listener.
+ */
+- (nonnull instancetype)initWithQueueSize:(unsigned int)queueSize
+                                 listener:(nonnull id<SdkCoreRawVideoSinkListener>)listener NS_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init NS_UNAVAILABLE;
+
+
+/** Stops the sink. */
+- (void)stop;
 
 @end

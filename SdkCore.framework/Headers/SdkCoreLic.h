@@ -36,18 +36,30 @@
 @interface LicPosition: NSObject
 
 /** Horizontal coordinate in the image, in range [0, 1] */
-@property(nonatomic, readonly) CGFloat x;
+@property(nonatomic, assign, readonly) CGFloat x;
 
 /** Vertical coordinate in the image, in range [0, 1] */
-@property(nonatomic, readonly) CGFloat y;
+@property(nonatomic, assign, readonly) CGFloat y;
 
 /** Distance between the drone and the location in meters */
-@property(nonatomic, readonly) CGFloat distance;
+@property(nonatomic, assign, readonly) CGFloat distance;
 
 /** Horizontal distance between the drone and the location in meters */
-@property(nonatomic, readonly) CGFloat horizontalDistance;
+@property(nonatomic, assign, readonly) CGFloat horizontalDistance;
 
 @end
+
+/** SdkCoreLic error domain. */
+extern NSErrorDomain const _Nonnull SdkCoreLicErrorDomain;
+/** SdkCoreLic errors */
+typedef NS_ERROR_ENUM(SdkCoreLicErrorDomain, SdkCoreLicError) {
+    /** Unknown error. */
+    SdkCoreLicErrorUnknown,
+    /** Current frame info unusable. */
+    SdkCoreLicErrorFrameInfo,
+    /** Result not representable. */
+    SdkCoreLicErrorOutOfRange,
+};
 
 /** Location from image coordinates context. */
 @interface SdkCoreLic: NSObject
@@ -63,32 +75,39 @@ NS_SWIFT_NAME(update(mediaInfo:metadata:));
 /** Position from location.
 
  @param location: the location
+ @param error: If an error occurs, upon return contains an NSError object with code `SdkCoreLicError` that describes the problem.
  @return the position in the frame or `nil` if an error occured and the position could not be retrieved.
  */
-- (nullable LicPosition *)positionFromLocation:(nonnull CLLocation *)location;
+- (nullable LicPosition *)positionFromLocation:(nonnull CLLocation *)location
+                                         error:(NSError *_Nullable*_Nullable)error;
 
 /** Location from position.
 
  @param position: new position in frame
  @param currentLocation: current location in frame
+ @param error: If an error occurs, upon return contains an NSError object with code `SdkCoreLicError` that describes the problem.
  @return the new location or `nil` if an error occured and the location could not be retrieved.
  */
-- (nullable CLLocation *)locationFromPosition:(CGPoint)position forLocation:(nonnull CLLocation *)currentLocation;
-
+- (nullable CLLocation *)locationFromPosition:(CGPoint)position forLocation:(nonnull CLLocation *)currentLocation
+                                                                      error:(NSError *_Nullable*_Nullable)error;
 
 /** Location from position with a fixed altitude.
 
  @param position: new position in frame
  @param altitude: altitude to apply
+ @param error: If an error occurs, upon return contains an NSError object with code `SdkCoreLicError` that describes the problem.
  @return the new location or `nil` if an error occured and the location could not be retrieved.
  */
-- (nullable CLLocation *)locationFromPosition:(CGPoint)position forAltitude: (float)altitude;
+- (nullable CLLocation *)locationFromPosition:(CGPoint)position forAltitude:(float)altitude
+                                        error:(NSError *_Nullable*_Nullable)error;
 
 /** Location from position with a fixed distance.
 
  @param position: new position in frame
  @param distance: new location distance
+ @param error: If an error occurs, upon return contains an NSError object with code `SdkCoreLicError` that describes the problem.
  @return the new location or `nil` if an error occured and the location could not be retrieved.
  */
-- (nullable CLLocation *)locationFromPosition:(CGPoint)position forDistance: (float)distance;
+- (nullable CLLocation *)locationFromPosition:(CGPoint)position forDistance:(float)distance
+                                        error:(NSError *_Nullable*_Nullable)error;
 @end

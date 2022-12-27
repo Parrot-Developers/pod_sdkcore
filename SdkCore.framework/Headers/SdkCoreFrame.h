@@ -29,25 +29,101 @@
 
 #import <Foundation/Foundation.h>
 #import "ArsdkCore.h"
-#import <CoreGraphics/CoreGraphics.h>
-#import <CoreLocation/CLLocation.h>
+
+/** Contextual information on a frame. */
+@protocol SdkCoreFrameInfo <NSObject>
+
+/** Frame timestamp, in `timeScale` units. */
+@property (nonatomic, assign, readonly) NSInteger timestamp;
+
+/** Frame timescale, in Hz. */
+@property (nonatomic, assign, readonly) NSInteger timeScale;
+
+/** Capture time of the frame, in microseconds on the monotonic clock of the drone; `0` if unknown.*/
+@property (nonatomic, assign, readonly) long captureTimestamp;
+
+/** Frame monotonic index. */
+@property (nonatomic, assign, readonly) NSInteger index;
+
+/** Frame flags. */
+@property (nonatomic, assign, readonly) long flags;
+
+/**
+ `true` when the frame contains a visual error.
+
+ This flag indicates that the frame is valid, but may contain visual errors.
+ A frame with this flag can be displayed, but should not be used for vision algorithms.
+ */
+@property (nonatomic, assign, readonly) BOOL visualError;
+
+/**
+ `true` when the frame is not intended to be displayed.
+
+ This flag is usually applied during a pipeline initialization to the first few frames.
+ Such frames are not intended to be displayed nor used for vision algorithms.
+ */
+@property (nonatomic, assign, readonly) BOOL silent;
+
+@end
 
 /** Video frame. */
 @interface SdkCoreFrame: NSObject
 
-/** PDRAW video frame, can be cast to (struct mbuf_raw_video_frame *). */
-@property (nonatomic, assign, readonly, nullable) void *mbufFrame;
-/** Metadata protobuf packed data. */
-@property (nonatomic, strong, readonly, nullable) NSData *metadataProtobuf;
-/** Video frame data buffer. */
-@property (nonatomic, assign, readonly, nullable) const uint8_t *data;
-/** Length in bytes of video frame buffer. */
-@property (nonatomic, assign, readonly) size_t len;
+/**
+ Native pointer on to the `struct mbuf_raw_video_frame` C structure which is this frame native backend.
 
-/** Constructor.
+ This pointer remains valid until this frame is released.
 
- @param src: pointer to frame to copy, (struct mbuf_raw_video_frame *)
  */
-- (nullable instancetype)initWithFrame:(nonnull void *)src;
+@property (nonatomic, assign, readonly, nonnull) void *nativePtr NS_RETURNS_INNER_POINTER;
+
+/**
+ Frame information.
+
+ Returned data is only valid until the frame is released.
+
+ @returns an `SdkCoreFrameInfo` instance, containing information relative to the frame
+ */
+@property (nonatomic, strong, readonly, nonnull) id<SdkCoreFrameInfo> frameInfo;
+
+/**
+ Data for each frame plane.
+
+ Returned data is only valid until the frame is released.
+
+ @returns an Array of ByteBuffer where each buffer contains the data of one frame plane
+ */
+@property (nonatomic, strong, readonly, nonnull) NSArray<NSData *> *planes;
+
+/**
+ Stride for each frame plane.
+
+ Returned data is only valid until the frame is released.
+
+ @returns an IntArray where each element represents the stride of one frame plane
+ */
+@property (nonatomic, strong, readonly, nonnull) NSArray<NSNumber *> *strides;
+
+/**
+ Frame metadata.
+
+ Returned data is only valid until the frame is released.
+ Metadata are in Parrot vmeta protobuf format.
+
+ @returns a ByteBuffer which wraps the frame metadata
+ */
+@property (nonatomic, strong, readonly, nullable) NSData *metadataProtobuf;
+
+- (nonnull instancetype)init NS_UNAVAILABLE;
+
+/**
+ Copies this frame.
+
+ Copied instance and its data are completely separate from the source and MUST be released
+ independently when not used anymore, otherwise its memory will be leaked.
+
+ @returns a new frame copy
+ */
+- (nonnull SdkCoreFrame*)copy;
 
 @end

@@ -63,11 +63,14 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureArdrone3PilotingStartpilotedpoiv2Mode) {
     /** Gimbal is locked on the POI */
     ArsdkFeatureArdrone3PilotingStartpilotedpoiv2ModeLockedGimbal = 0,
 
+    /** Gimbal is locked on the POI once, then it is freely controllable */
+    ArsdkFeatureArdrone3PilotingStartpilotedpoiv2ModeLockedOnceGimbal = 1,
+
     /** Gimbal is freely controllable */
-    ArsdkFeatureArdrone3PilotingStartpilotedpoiv2ModeFreeGimbal = 1,
+    ArsdkFeatureArdrone3PilotingStartpilotedpoiv2ModeFreeGimbal = 2,
 
 };
-#define ArsdkFeatureArdrone3PilotingStartpilotedpoiv2ModeCnt 2
+#define ArsdkFeatureArdrone3PilotingStartpilotedpoiv2ModeCnt 3
 
 @interface ArsdkFeatureArdrone3Piloting : NSObject
 

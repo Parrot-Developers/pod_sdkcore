@@ -1,4 +1,4 @@
-//    Copyright (C) 2019 Parrot Drones SAS
+//    Copyright (C) 2022 Parrot Drones SAS
 //
 //    Redistribution and use in source and binary forms, with or without
 //    modification, are permitted provided that the following conditions
@@ -30,51 +30,24 @@
 #import <Foundation/Foundation.h>
 #import "ArsdkCore.h"
 #import "PompLoopUtil.h"
-#import "SdkCoreFrame.h"
+#import <pdraw/pdraw.h>
 
 /**
- Listener that will be called when events about the renderer are emitted by the native renderer object
+ Raw video sink private part.
+
+ Receives raw video frames from a stream SdkCoreStream.
  */
-@protocol SdkCoreSinkListener <NSObject>
+@interface SdkCoreRawVideoSink()
 
-/**
- Notifies that a new frame is available from the sink.
- Called in pomp thread.
-
- @param frame: new available frame
- */
-- (void)onFrame:(nonnull SdkCoreFrame *)frame;
-
-/**
- Notifies that the sink has stopped.
- */
-- (void)onStop;
-
-@end
-
-/** Video sink. */
-@interface SdkCoreSink: NSObject
-
-/**
- Init sink.
- 
- @param queueSize: desired queue size
- @param listener: Sink listener.
- */
-- (nonnull instancetype)initWithQueueSize:(unsigned int)queueSize
-                                 listener:(nonnull id<SdkCoreSinkListener>)listener;
 /**
  Starts the sink.
- 
- @param pdraw:   pdraw instance that will deliver frames to the sink
- @param pomp:    stream pomp loop
+
+ @param pdraw: pdraw instance that will deliver frames to the sink
+ @param pomp: stream pomp loop
  @param mediaId: identifies the stream media to be delivered to the sink
  */
-- (void)start:(/*nonnull struct pdraw **/ nonnull void *)pdraw
+- (void)start:(nonnull struct pdraw *)pdraw
          pomp:(nonnull PompLoopUtil *)pompLoopUtil
       mediaId:(unsigned int)mediaId;
-
-/** Stops the sink. */
-- (void)stop;
 
 @end

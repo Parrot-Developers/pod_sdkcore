@@ -61,6 +61,14 @@ The caller must be in the same thread as the one used during the init
 - (void)dispatch:(void (^ _Nonnull)(void))block;
 
 /**
+ Queue a block to be executed in the loop thread
+
+ @param block The block to execute.
+ @param queueAssert `YES` to assert than the current queue differs from the pomp loop queue.
+ */
+- (void)dispatch:(void (^ _Nonnull)(void))block queueAssert:(BOOL)queueAssert;
+
+/**
  Queue a block to be executed in the loop thread and wait until execution
 
  @param block The block to execute.
