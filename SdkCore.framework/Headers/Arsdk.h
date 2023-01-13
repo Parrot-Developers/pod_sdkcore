@@ -42,4 +42,11 @@
 #import "SdkCoreLic.h"
 
 #import "GLError.h"
+
+#import "ThermalProc.h"
+#import "ThermalProcVideo.h"
+#import "ThermalProcPicture.h"
+#import "ThermalProcPictureData.h"
+#import "ThermalProcPaletteFactory.h"
+
 #endif /* Arsdk_h */
