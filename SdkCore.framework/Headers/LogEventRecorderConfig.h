@@ -1,4 +1,4 @@
-//    Copyright (C) 2020 Parrot Drones SAS
+//    Copyright (C) 2023 Parrot Drones SAS
 //
 //    Redistribution and use in source and binary forms, with or without
 //    modification, are permitted provided that the following conditions
@@ -28,34 +28,11 @@
 //    SUCH DAMAGE.
 
 #import <Foundation/Foundation.h>
-
-/** Event logger. */
-@interface SdkCoreEventLogger: NSObject
-
+#import "LogBinRecorderConfig.h"
 
 /**
- Starts the logger.
-
- @param directory: directory where event logs will be recorded
- @param properties: properties to add in header
+ Event log file recorder configuration.
  */
-- (void)start:(nonnull NSString *)directory properties:(nonnull NSDictionary *)properties;
-
-/**
- Logs a message.
-
- @param message: message to be logged
- */
-- (void)log:(nonnull NSString *)message;
-
-/**
- Stops the logger.
- */
-- (void)stop;
-
-/**
- Closes current event log session and starts a new one, creating a new log file.
- */
-- (void)newSession;
+@interface LogEventRecorderConfig: LogBinRecorderConfig
 
 @end

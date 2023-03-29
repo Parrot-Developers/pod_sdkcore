@@ -30,6 +30,7 @@
 #import <Foundation/Foundation.h>
 #import "LogBinRecorderConfig.h"
 #import "LogTxtRecorderConfig.h"
+#import "LogEventRecorderConfig.h"
 
 typedef NS_ENUM(NSInteger, Level) {
     LOG_CRIT =     2, /* critical conditions */
@@ -73,6 +74,20 @@ typedef NS_ENUM(NSInteger, Level) {
 
 @end
 
+/** Provides control over a event log recorder instance. */
+@protocol EventLogRecorder <RotatingLogRecorder>
+
+/**
+ Updates a header property.
+
+ @param key: key
+ @param value: value
+ */
+- (void)updateProperty:(nonnull NSString *)key value:(nonnull NSString *)value
+NS_SWIFT_NAME(updateProperty(key:value:));
+
+@end
+
 /** Common logger based on ulog, using. */
 @interface ULog : NSObject
 
@@ -106,6 +121,20 @@ NS_SWIFT_NAME(redirectToSystemLog(enabled:));
  */
 + (nullable id<RotatingLogRecorder>)redirectToLogTxt:(nonnull LogTxtRecorderConfig *)config
 NS_SWIFT_NAME(redirectToLogTxt(config:));
+
+/**
+ Enables redirecting log messages to event binary file `.bin` recorder.
+
+ @param config log recorder configuration
+ @param roProperties: custom read only header properties
+ @param rwProperties: custom read write header properties
+
+ @return a new LogEventRecorder instance, that allows to control the log recording.
+ */
++ (nullable id<EventLogRecorder>)redirectToLogEvent:(nonnull LogEventRecorderConfig *)config
+                                         roProperties:(nullable NSDictionary<NSString*, NSString*> *)roProperties
+                                         rwProperties:(nullable NSDictionary<NSString*, NSString*> *)rwProperties
+NS_SWIFT_NAME(redirectToLogEvent(config:roProperties:rwProperties:));
 
 /**
  Send a critical log.

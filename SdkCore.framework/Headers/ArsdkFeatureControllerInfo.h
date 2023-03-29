@@ -39,8 +39,11 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureControllerInfoSupportedCommand) {
     /** Gps v2 command is supported. */
     ArsdkFeatureControllerInfoSupportedCommandGpsV2 = 1,
 
+    /** Barometer v2 command is supported. */
+    ArsdkFeatureControllerInfoSupportedCommandBarometerV2 = 2,
+
 };
-#define ArsdkFeatureControllerInfoSupportedCommandCnt 2
+#define ArsdkFeatureControllerInfoSupportedCommandCnt 3
 
 @interface ArsdkFeatureControllerInfoSupportedCommandBitField : NSObject
 
@@ -91,6 +94,32 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureControllerInfoAvailableData) {
 + (BOOL)isSet:(ArsdkFeatureControllerInfoAvailableData)val inBitField:(NSUInteger)bitfield;
 
 + (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureControllerInfoAvailableData val))cb;
+
+@end
+
+/** Available data for barometer. */
+typedef NS_ENUM(NSInteger, ArsdkFeatureControllerInfoBarometerAvailableData) {
+    /**
+     Unknown value from SdkCore.
+     Only used if the received value cannot be matched with a declared value.
+     This might occur when the drone or rc has a different sdk base from the controller.
+     */
+    ArsdkFeatureControllerInfoBarometerAvailableDataSdkCoreUnknown = -1,
+
+    /** Atmospheric pressure in Pa. */
+    ArsdkFeatureControllerInfoBarometerAvailableDataPressure = 0,
+
+    /** Barometer sensor temperature in Kelvin. */
+    ArsdkFeatureControllerInfoBarometerAvailableDataTemperature = 1,
+
+};
+#define ArsdkFeatureControllerInfoBarometerAvailableDataCnt 2
+
+@interface ArsdkFeatureControllerInfoBarometerAvailableDataBitField : NSObject
+
++ (BOOL)isSet:(ArsdkFeatureControllerInfoBarometerAvailableData)val inBitField:(NSUInteger)bitfield;
+
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureControllerInfoBarometerAvailableData val))cb;
 
 @end
 
@@ -193,6 +222,29 @@ NS_SWIFT_NAME(gpsV2Encoder(source:latitude:longitude:amslAltitude:wgs84Altitude:
 */
 + (int (^)(struct arsdk_cmd *))magnetoTemperatureEncoder:(float)temp
 NS_SWIFT_NAME(magnetoTemperatureEncoder(temp:));
+
+/**
+ Barometer available data. 
+
+ - parameter source: Barometer data source.
+ - parameter available_data: Available data.
+ - returns: a block that encodes the command
+*/
++ (int (^)(struct arsdk_cmd *))barometerV2AvailableDataEncoder:(ArsdkFeatureControllerInfoSource)source availableDataBitField:(NSUInteger)availableDataBitField
+NS_SWIFT_NAME(barometerV2AvailableDataEncoder(source:availableDataBitField:));
+
+/**
+  
+
+ - parameter source: Barometer data source.
+ - parameter pressure: Atmospheric pressure in Pa
+ - parameter temperature: Barometer sensor temperature in Kelvin. This field is only used when source is "main" or "auxiliary"
+ - parameter timestamp: Timestamp of the barometer info (in milliseconds), from a monotonic clock (not necessarily linked to utc
+clock)
+ - returns: a block that encodes the command
+*/
++ (int (^)(struct arsdk_cmd *))barometerV2Encoder:(ArsdkFeatureControllerInfoSource)source pressure:(float)pressure temperature:(float)temperature timestamp:(uint64_t)timestamp
+NS_SWIFT_NAME(barometerV2Encoder(source:pressure:temperature:timestamp:));
 
 @end
 

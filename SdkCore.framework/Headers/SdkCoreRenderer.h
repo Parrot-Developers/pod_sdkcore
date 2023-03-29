@@ -50,6 +50,13 @@ typedef NS_ENUM(NSInteger, SdkCoreStreamRenderingFillMode) {
 @protocol SdkCoreRendererListener <NSObject>
 
 /**
+ Called when the preferred display framerate should change.
+
+ @param fps: the preferred count of frames per second
+ */
+- (void)onPreferredFpsChanged:(float)fps;
+
+/**
  Called when the native renderer is ready to render a frame.
  */
 - (void)onFrameReady;

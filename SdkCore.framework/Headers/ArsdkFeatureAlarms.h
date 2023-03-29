@@ -45,8 +45,11 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureAlarmsType) {
     /** DRI is not functional. */
     ArsdkFeatureAlarmsTypeDriFailing = 9,
 
+    /** Video Signal Processing is not available. */
+    ArsdkFeatureAlarmsTypeVideoDspFault = 10,
+
 };
-#define ArsdkFeatureAlarmsTypeCnt 10
+#define ArsdkFeatureAlarmsTypeCnt 11
 
 /** takeoff readiness checks. */
 typedef NS_ENUM(NSInteger, ArsdkFeatureAlarmsTakeoffChecklistType) {

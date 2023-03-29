@@ -27,6 +27,7 @@
 #import "Logger.h"
 #import "LogBinRecorderConfig.h"
 #import "LogTxtRecorderConfig.h"
+#import "LogEventRecorderConfig.h"
 
 #import "NSData+zlib.h"
 #import "NSData+Crypto.h"
@@ -35,7 +36,6 @@
 #import "NoAckStorage.h"
 #import "Anonymizer.h"
 
-#import "SdkCore+EventLogger.h"
 #import "SdkCoreFileSource.h"
 #import "SdkCoreMediaInfo.h"
 #import "SdkCoreRenderer.h"
