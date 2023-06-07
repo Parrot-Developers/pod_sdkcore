@@ -80,7 +80,7 @@ On the fixed wings (such as Disco): not used except to cancel a land.
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))takeOffEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))takeOffEncoder
 NS_SWIFT_NAME(takeOffEncoder());
 
 /**
@@ -138,7 +138,7 @@ Positive value makes the plane fly faster
  - parameter timestampAndSeqNum: Command timestamp in milliseconds (low 24 bits) + command sequence number (high 8 bits) [0;255].
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))pCMDEncoder:(NSUInteger)flag roll:(NSInteger)roll pitch:(NSInteger)pitch yaw:(NSInteger)yaw gaz:(NSInteger)gaz timestampandseqnum:(NSUInteger)timestampandseqnum
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))pCMDEncoder:(NSUInteger)flag roll:(NSInteger)roll pitch:(NSInteger)pitch yaw:(NSInteger)yaw gaz:(NSInteger)gaz timestampandseqnum:(NSUInteger)timestampandseqnum
 NS_SWIFT_NAME(pCMDEncoder(flag:roll:pitch:yaw:gaz:timestampandseqnum:));
 
 /**
@@ -147,7 +147,7 @@ Please note that on copters, if you put some positive gaz (in the [PilotingComma
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))landingEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))landingEncoder
 NS_SWIFT_NAME(landingEncoder());
 
 /**
@@ -157,7 +157,7 @@ This command is sent on a dedicated high priority buffer which will infinitely r
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))emergencyEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))emergencyEncoder
 NS_SWIFT_NAME(emergencyEncoder());
 
 /**
@@ -169,7 +169,7 @@ Please note that the drone will wait to be hovering to start its return home. Th
  - parameter start: 1 to start the navigate home, 0 to stop it
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))navigateHomeEncoder:(NSUInteger)start
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))navigateHomeEncoder:(NSUInteger)start
 NS_SWIFT_NAME(navigateHomeEncoder(start:));
 
 /**
@@ -183,7 +183,7 @@ Also note that the given rotation will not modify the move (i.e. moves are alway
  - parameter dPsi: Wanted rotation of heading [rad]
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))moveByEncoder:(float)dx dy:(float)dy dz:(float)dz dpsi:(float)dpsi
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))moveByEncoder:(float)dx dy:(float)dy dz:(float)dz dpsi:(float)dpsi
 NS_SWIFT_NAME(moveByEncoder(dx:dy:dz:dpsi:));
 
 /**
@@ -198,7 +198,7 @@ Setting the state to 0 will cancel the preparation. You can cancel it before tha
 - 0 to exit from user take off.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))userTakeOffEncoder:(NSUInteger)state
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))userTakeOffEncoder:(NSUInteger)state
 NS_SWIFT_NAME(userTakeOffEncoder(state:));
 
 /**
@@ -208,7 +208,7 @@ The circle will use the [CirclingAltitude](#1-6-14) and the [CirclingRadius](#1-
  - parameter direction: 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))circleEncoder:(ArsdkFeatureArdrone3PilotingCircleDirection)direction
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))circleEncoder:(ArsdkFeatureArdrone3PilotingCircleDirection)direction
 NS_SWIFT_NAME(circleEncoder(direction:));
 
 /**
@@ -226,7 +226,7 @@ However, the yaw value can be used.
 This value is only used if the orientation mode is HEADING_START or HEADING_DURING
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))moveToEncoder:(double)latitude longitude:(double)longitude altitude:(double)altitude orientationMode:(ArsdkFeatureArdrone3PilotingMovetoOrientationMode)orientationMode heading:(float)heading
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))moveToEncoder:(double)latitude longitude:(double)longitude altitude:(double)altitude orientationMode:(ArsdkFeatureArdrone3PilotingMovetoOrientationMode)orientationMode heading:(float)heading
 NS_SWIFT_NAME(moveToEncoder(latitude:longitude:altitude:orientationMode:heading:));
 
 /**
@@ -235,7 +235,7 @@ If there is no current moveTo, this command has no effect.
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))cancelMoveToEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))cancelMoveToEncoder
 NS_SWIFT_NAME(cancelMoveToEncoder());
 
 /**
@@ -248,7 +248,7 @@ Ignored if [PilotedPOI](#1-4-14) state is UNAVAILABLE.
  - parameter altitude: Altitude above take off point (in m) to look at
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))startPilotedPOIEncoder:(double)latitude longitude:(double)longitude altitude:(double)altitude
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))startPilotedPOIEncoder:(double)latitude longitude:(double)longitude altitude:(double)altitude
 NS_SWIFT_NAME(startPilotedPOIEncoder(latitude:longitude:altitude:));
 
 /**
@@ -257,7 +257,7 @@ If [PilotedPOI](#1-4-14) or [PilotedPOIV2](#1-4-22) state is RUNNING or PENDING,
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))stopPilotedPOIEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))stopPilotedPOIEncoder
 NS_SWIFT_NAME(stopPilotedPOIEncoder());
 
 /**
@@ -266,7 +266,7 @@ If there is no current relative move, this command has no effect.
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))cancelMoveByEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))cancelMoveByEncoder
 NS_SWIFT_NAME(cancelMoveByEncoder());
 
 /**
@@ -282,7 +282,7 @@ Ignored if [PilotedPOIV2](#1-4-22) state is UNAVAILABLE.
  - parameter mode: 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))startPilotedPOIV2Encoder:(double)latitude longitude:(double)longitude altitude:(double)altitude mode:(ArsdkFeatureArdrone3PilotingStartpilotedpoiv2Mode)mode
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))startPilotedPOIV2Encoder:(double)latitude longitude:(double)longitude altitude:(double)altitude mode:(ArsdkFeatureArdrone3PilotingStartpilotedpoiv2Mode)mode
 NS_SWIFT_NAME(startPilotedPOIV2Encoder(latitude:longitude:altitude:mode:));
 
 /**
@@ -290,7 +290,7 @@ NS_SWIFT_NAME(startPilotedPOIV2Encoder(latitude:longitude:altitude:mode:));
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))smartTakeOffLandEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))smartTakeOffLandEncoder
 NS_SWIFT_NAME(smartTakeOffLandEncoder());
 
 @end

@@ -89,7 +89,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureAutoLookAtIndicator) {
 
 + (BOOL)isSet:(ArsdkFeatureAutoLookAtIndicator)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureAutoLookAtIndicator val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureAutoLookAtIndicator val))cb;
 
 @end
 
@@ -142,7 +142,7 @@ NS_SWIFT_NAME(onState(mode:behavior:));
 
 @interface ArsdkFeatureAutoLookAt : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureAutoLookAtCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeatureAutoLookAtCallback>)callback;
 
 /**
  Start a look at. Sending this command will stop other running look at. 
@@ -150,7 +150,7 @@ NS_SWIFT_NAME(onState(mode:behavior:));
  - parameter mode: 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))startEncoder:(ArsdkFeatureAutoLookAtMode)mode
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))startEncoder:(ArsdkFeatureAutoLookAtMode)mode
 NS_SWIFT_NAME(startEncoder(mode:));
 
 /**
@@ -158,7 +158,7 @@ NS_SWIFT_NAME(startEncoder(mode:));
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))stopEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))stopEncoder
 NS_SWIFT_NAME(stopEncoder());
 
 @end

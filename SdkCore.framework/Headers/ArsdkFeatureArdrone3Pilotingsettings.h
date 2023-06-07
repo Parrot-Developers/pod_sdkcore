@@ -56,7 +56,7 @@ You can get the bounds in the event [MaxAltitude](#1-6-0).
  - parameter current: Current altitude max in m
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))maxAltitudeEncoder:(float)current
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))maxAltitudeEncoder:(float)current
 NS_SWIFT_NAME(maxAltitudeEncoder(current:));
 
 /**
@@ -67,7 +67,7 @@ You can get the bounds with the commands [MaxPitchRoll](#1-6-1).
  - parameter current: Current tilt max in degree
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))maxTiltEncoder:(float)current
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))maxTiltEncoder:(float)current
 NS_SWIFT_NAME(maxTiltEncoder(current:));
 
 /**
@@ -76,7 +76,7 @@ NS_SWIFT_NAME(maxTiltEncoder(current:));
  - parameter on: 1 to enable, 0 to disable
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))absolutControlEncoder:(NSUInteger)on
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))absolutControlEncoder:(NSUInteger)on
 NS_SWIFT_NAME(absolutControlEncoder(on:));
 
 /**
@@ -88,7 +88,7 @@ If [Geofence](#1-6-4) is activated, the drone won't fly over the given max dista
  - parameter value: Current max distance in meter
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))maxDistanceEncoder:(float)value
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))maxDistanceEncoder:(float)value
 NS_SWIFT_NAME(maxDistanceEncoder(value:));
 
 /**
@@ -101,7 +101,7 @@ For fixed wings: the distance is computed from the take off position.
  - parameter shouldNotFlyOver: 1 if the drone can't fly further than max distance, 0 if no limitation on the drone should be done
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))noFlyOverMaxDistanceEncoder:(NSUInteger)shouldnotflyover
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))noFlyOverMaxDistanceEncoder:(NSUInteger)shouldnotflyover
 NS_SWIFT_NAME(noFlyOverMaxDistanceEncoder(shouldnotflyover:));
 
 /**
@@ -111,7 +111,7 @@ When banked turn mode is enabled, the drone will use yaw values from the pilotin
  - parameter value: 1 to enable, 0 to disable
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))bankedTurnEncoder:(NSUInteger)value
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))bankedTurnEncoder:(NSUInteger)value
 NS_SWIFT_NAME(bankedTurnEncoder(value:));
 
 /**
@@ -121,7 +121,7 @@ Only available for fixed wings.
  - parameter current: Current altitude min in m
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))minAltitudeEncoder:(float)current
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))minAltitudeEncoder:(float)current
 NS_SWIFT_NAME(minAltitudeEncoder(current:));
 
 /**
@@ -131,7 +131,7 @@ Only available for fixed wings.
  - parameter value: 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))circlingDirectionEncoder:(ArsdkFeatureArdrone3PilotingsettingsCirclingdirectionValue)value
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))circlingDirectionEncoder:(ArsdkFeatureArdrone3PilotingsettingsCirclingdirectionValue)value
 NS_SWIFT_NAME(circlingDirectionEncoder(value:));
 
 /**
@@ -141,7 +141,7 @@ Only available for fixed wings.
  - parameter value: The circling radius in meter
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))circlingRadiusEncoder:(NSUInteger)value
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))circlingRadiusEncoder:(NSUInteger)value
 NS_SWIFT_NAME(circlingRadiusEncoder(value:));
 
 /**
@@ -151,7 +151,7 @@ Only available for fixed wings.
  - parameter value: The circling altitude in meter
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))circlingAltitudeEncoder:(NSUInteger)value
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))circlingAltitudeEncoder:(NSUInteger)value
 NS_SWIFT_NAME(circlingAltitudeEncoder(value:));
 
 /**
@@ -161,7 +161,7 @@ Only available for fixed wings.
  - parameter value: 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))pitchModeEncoder:(ArsdkFeatureArdrone3PilotingsettingsPitchmodeValue)value
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))pitchModeEncoder:(ArsdkFeatureArdrone3PilotingsettingsPitchmodeValue)value
 NS_SWIFT_NAME(pitchModeEncoder(value:));
 
 /**
@@ -171,7 +171,7 @@ If the motion detection is enabled, the drone will send its [MotionState](#1-4-1
  - parameter enable: 1 to enable the motion detection, 0 to disable it.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setMotionDetectionModeEncoder:(NSUInteger)enable
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setMotionDetectionModeEncoder:(NSUInteger)enable
 NS_SWIFT_NAME(setMotionDetectionModeEncoder(enable:));
 
 @end

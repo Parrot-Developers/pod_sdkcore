@@ -15,7 +15,7 @@ When set, drone will return home, after return home delay, if a disconnection oc
  - parameter value: 1 to enable, 0 to disable
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))returnHomeOnDisconnectEncoder:(NSUInteger)value
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))returnHomeOnDisconnectEncoder:(NSUInteger)value
 NS_SWIFT_NAME(returnHomeOnDisconnectEncoder(value:));
 
 @end

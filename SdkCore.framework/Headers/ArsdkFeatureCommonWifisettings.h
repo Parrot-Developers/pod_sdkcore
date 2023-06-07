@@ -15,7 +15,7 @@ struct arsdk_cmd;
  - parameter outdoor: 1 if it should use outdoor wifi settings, 0 otherwise
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))outdoorSettingEncoder:(NSUInteger)outdoor
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))outdoorSettingEncoder:(NSUInteger)outdoor
 NS_SWIFT_NAME(outdoorSettingEncoder(outdoor:));
 
 @end

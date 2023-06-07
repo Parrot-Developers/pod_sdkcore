@@ -129,7 +129,7 @@ NS_SWIFT_NAME(onAltitudeChanged(altitude:));
 
 @interface ArsdkFeaturePowerupPilotingstate : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeaturePowerupPilotingstateCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeaturePowerupPilotingstateCallback>)callback;
 
 @end
 

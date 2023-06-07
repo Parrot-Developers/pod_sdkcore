@@ -70,7 +70,7 @@ NS_SWIFT_NAME(onWifiSelectionChanged(type:band:channel:));
 
 @interface ArsdkFeaturePowerupNetworksettingsstate : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeaturePowerupNetworksettingsstateCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeaturePowerupNetworksettingsstateCallback>)callback;
 
 @end
 

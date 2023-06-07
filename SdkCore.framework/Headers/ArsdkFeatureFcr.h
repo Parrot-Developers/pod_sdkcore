@@ -31,7 +31,7 @@ NS_SWIFT_NAME(onPipelines(id:));
 
 @interface ArsdkFeatureFcr : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureFcrCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeatureFcrCallback>)callback;
 
 /**
  Allows to select current flight camera recording pipelines configuration. 
@@ -39,7 +39,7 @@ NS_SWIFT_NAME(onPipelines(id:));
  - parameter id: Pipeline configuration identifier.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))configurePipelinesEncoder:(uint64_t)id
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))configurePipelinesEncoder:(uint64_t)id
 NS_SWIFT_NAME(configurePipelinesEncoder(id:));
 
 @end

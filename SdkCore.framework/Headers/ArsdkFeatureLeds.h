@@ -43,7 +43,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureLedsSupportedCapabilities) {
 
 + (BOOL)isSet:(ArsdkFeatureLedsSupportedCapabilities)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureLedsSupportedCapabilities val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureLedsSupportedCapabilities val))cb;
 
 @end
 
@@ -72,14 +72,14 @@ NS_SWIFT_NAME(onSwitchState(switchState:));
 
 @interface ArsdkFeatureLeds : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureLedsCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeatureLedsCallback>)callback;
 
 /**
  Activate switch 
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))activateEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))activateEncoder
 NS_SWIFT_NAME(activateEncoder());
 
 /**
@@ -87,7 +87,7 @@ NS_SWIFT_NAME(activateEncoder());
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))deactivateEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))deactivateEncoder
 NS_SWIFT_NAME(deactivateEncoder());
 
 @end

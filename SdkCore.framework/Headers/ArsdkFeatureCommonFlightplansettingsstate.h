@@ -24,7 +24,7 @@ NS_SWIFT_NAME(onReturnHomeOnDisconnectChanged(state:isreadonly:));
 
 @interface ArsdkFeatureCommonFlightplansettingsstate : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureCommonFlightplansettingsstateCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeatureCommonFlightplansettingsstateCallback>)callback;
 
 @end
 

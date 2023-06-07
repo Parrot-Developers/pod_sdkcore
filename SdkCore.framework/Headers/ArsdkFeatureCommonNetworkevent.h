@@ -47,7 +47,7 @@ NS_SWIFT_NAME(onDisconnection(cause:));
 
 @interface ArsdkFeatureCommonNetworkevent : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureCommonNetworkeventCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeatureCommonNetworkeventCallback>)callback;
 
 @end
 

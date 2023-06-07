@@ -71,7 +71,7 @@ NS_SWIFT_NAME(onModeChanged(mode:));
 
 @interface ArsdkFeatureArdrone3Antiflickeringstate : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureArdrone3AntiflickeringstateCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeatureArdrone3AntiflickeringstateCallback>)callback;
 
 @end
 

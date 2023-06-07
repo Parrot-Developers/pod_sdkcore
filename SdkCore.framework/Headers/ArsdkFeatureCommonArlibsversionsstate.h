@@ -15,7 +15,7 @@ struct arsdk_cmd;
 
  - parameter version: version of libARCommands ("1.2.3.4" format)
 */
-- (void)onControllerLibARCommandsVersion:(NSString *)version
+- (void)onControllerLibARCommandsVersion:(nonnull NSString *)version
 NS_SWIFT_NAME(onControllerLibARCommandsVersion(version:));
 
 /**
@@ -23,7 +23,7 @@ NS_SWIFT_NAME(onControllerLibARCommandsVersion(version:));
 
  - parameter version: version of libARCommands ("1.2.3.4" format)
 */
-- (void)onSkyControllerLibARCommandsVersion:(NSString *)version
+- (void)onSkyControllerLibARCommandsVersion:(nonnull NSString *)version
 NS_SWIFT_NAME(onSkyControllerLibARCommandsVersion(version:));
 
 /**
@@ -31,7 +31,7 @@ NS_SWIFT_NAME(onSkyControllerLibARCommandsVersion(version:));
 
  - parameter version: version of libARCommands ("1.2.3.4" format)
 */
-- (void)onDeviceLibARCommandsVersion:(NSString *)version
+- (void)onDeviceLibARCommandsVersion:(nonnull NSString *)version
 NS_SWIFT_NAME(onDeviceLibARCommandsVersion(version:));
 
 
@@ -39,7 +39,7 @@ NS_SWIFT_NAME(onDeviceLibARCommandsVersion(version:));
 
 @interface ArsdkFeatureCommonArlibsversionsstate : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureCommonArlibsversionsstateCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeatureCommonArlibsversionsstateCallback>)callback;
 
 @end
 

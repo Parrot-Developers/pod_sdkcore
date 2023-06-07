@@ -23,7 +23,7 @@ NS_SWIFT_NAME(onBuzzChanged(enabled:));
 
 @interface ArsdkFeaturePowerupSoundsstate : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeaturePowerupSoundsstateCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeaturePowerupSoundsstateCallback>)callback;
 
 @end
 

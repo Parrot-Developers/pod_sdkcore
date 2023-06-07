@@ -15,7 +15,7 @@ struct arsdk_cmd;
  - parameter right: Set the right LED intensity value (0 through 255).
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))intensityEncoder:(NSUInteger)left right:(NSUInteger)right
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))intensityEncoder:(NSUInteger)left right:(NSUInteger)right
 NS_SWIFT_NAME(intensityEncoder(left:right:));
 
 @end

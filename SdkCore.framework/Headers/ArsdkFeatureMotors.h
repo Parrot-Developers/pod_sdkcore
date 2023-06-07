@@ -85,7 +85,7 @@ NS_SWIFT_NAME(onThreeMotorsFlightEnded());
 
 @interface ArsdkFeatureMotors : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureMotorsCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeatureMotorsCallback>)callback;
 
 @end
 

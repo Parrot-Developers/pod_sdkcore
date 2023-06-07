@@ -18,7 +18,7 @@ Watch out, this command is not used by BLE products.
  - parameter longitude: Controller longitude in decimal degrees
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))controllerPositionForRunEncoder:(double)latitude longitude:(double)longitude
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))controllerPositionForRunEncoder:(double)latitude longitude:(double)longitude
 NS_SWIFT_NAME(controllerPositionForRunEncoder(latitude:longitude:));
 
 @end

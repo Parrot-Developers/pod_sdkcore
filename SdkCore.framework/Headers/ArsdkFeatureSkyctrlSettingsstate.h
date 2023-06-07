@@ -49,7 +49,7 @@ NS_SWIFT_NAME(onResetChanged());
 
  - parameter serialNumber: Serial number (hexadecimal value)
 */
-- (void)onProductSerialChanged:(NSString *)serialnumber
+- (void)onProductSerialChanged:(nonnull NSString *)serialnumber
 NS_SWIFT_NAME(onProductSerialChanged(serialnumber:));
 
 /**
@@ -66,7 +66,7 @@ NS_SWIFT_NAME(onProductVariantChanged(variant:));
  - parameter software: Product software version
  - parameter hardware: Product hardware version
 */
-- (void)onProductVersionChanged:(NSString *)software hardware:(NSString *)hardware
+- (void)onProductVersionChanged:(nonnull NSString *)software hardware:(nonnull NSString *)hardware
 NS_SWIFT_NAME(onProductVersionChanged(software:hardware:));
 
 /**
@@ -74,7 +74,7 @@ NS_SWIFT_NAME(onProductVersionChanged(software:hardware:));
 
  - parameter id: Product main cpu id
 */
-- (void)onCPUID:(NSString *)id
+- (void)onCPUID:(nonnull NSString *)id
 NS_SWIFT_NAME(onCPUID(id:));
 
 
@@ -82,7 +82,7 @@ NS_SWIFT_NAME(onCPUID(id:));
 
 @interface ArsdkFeatureSkyctrlSettingsstate : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureSkyctrlSettingsstateCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeatureSkyctrlSettingsstateCallback>)callback;
 
 @end
 

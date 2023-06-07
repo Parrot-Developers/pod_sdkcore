@@ -66,7 +66,7 @@ The name will be checked, and can be modified before application. Use the [Acces
  - parameter ssid: AccessPoint SSID
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))accessPointSSIDEncoder:(NSString *)ssid
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))accessPointSSIDEncoder:(nonnull NSString *)ssid
 NS_SWIFT_NAME(accessPointSSIDEncoder(ssid:));
 
 /**
@@ -78,7 +78,7 @@ This command is deprecated. Use the [WifiSelection](#4-9-2) command instead.
  - parameter channel: AccessPoint Channel
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))accessPointChannelEncoder:(NSUInteger)channel
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))accessPointChannelEncoder:(NSUInteger)channel
 NS_SWIFT_NAME(accessPointChannelEncoder(channel:));
 
 /**
@@ -91,7 +91,7 @@ The list of authorized channels for the current country can be retrived with the
  - parameter channel: The channel
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))wifiSelectionEncoder:(ArsdkFeatureSkyctrlAccesspointsettingsWifiselectionType)type band:(ArsdkFeatureSkyctrlAccesspointsettingsWifiselectionBand)band channel:(NSUInteger)channel
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))wifiSelectionEncoder:(ArsdkFeatureSkyctrlAccesspointsettingsWifiselectionType)type band:(ArsdkFeatureSkyctrlAccesspointsettingsWifiselectionBand)band channel:(NSUInteger)channel
 NS_SWIFT_NAME(wifiSelectionEncoder(type:band:channel:));
 
 /**
@@ -101,7 +101,7 @@ NS_SWIFT_NAME(wifiSelectionEncoder(type:band:channel:));
  - parameter key: The security key (ignored if security_type is open)
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))wifiSecurityEncoder:(ArsdkFeatureSkyctrlAccesspointsettingsWifisecuritySecurityType)securityType key:(NSString *)key
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))wifiSecurityEncoder:(ArsdkFeatureSkyctrlAccesspointsettingsWifisecuritySecurityType)securityType key:(nonnull NSString *)key
 NS_SWIFT_NAME(wifiSecurityEncoder(securityType:key:));
 
 @end

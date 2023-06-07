@@ -13,7 +13,7 @@ struct arsdk_cmd;
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))getGamepadControlsEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))getGamepadControlsEncoder
 NS_SWIFT_NAME(getGamepadControlsEncoder());
 
 @end

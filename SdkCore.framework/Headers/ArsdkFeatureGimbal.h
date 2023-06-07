@@ -72,7 +72,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureGimbalError) {
 
 + (BOOL)isSet:(ArsdkFeatureGimbalError)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureGimbalError val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureGimbalError val))cb;
 
 @end
 
@@ -143,7 +143,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureGimbalAxis) {
 
 + (BOOL)isSet:(ArsdkFeatureGimbalAxis)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureGimbalAxis val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureGimbalAxis val))cb;
 
 @end
 
@@ -341,7 +341,7 @@ NS_SWIFT_NAME(onStabilizationState(gimbalId:state:));
 
 @interface ArsdkFeatureGimbal : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureGimbalCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeatureGimbalCallback>)callback;
 
 /**
   
@@ -353,7 +353,7 @@ This value will be clamped between [MaxSpeed](#148-3) min_bound_pitch and max_bo
  - parameter roll: Deprecated, only the pitch value is used for all axes.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setMaxSpeedEncoder:(NSUInteger)gimbalId yaw:(float)yaw pitch:(float)pitch roll:(float)roll
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setMaxSpeedEncoder:(NSUInteger)gimbalId yaw:(float)yaw pitch:(float)pitch roll:(float)roll
 NS_SWIFT_NAME(setMaxSpeedEncoder(gimbalId:yaw:pitch:roll:));
 
 /**
@@ -385,7 +385,7 @@ Units depend on the `control_mode` value:
 - `velocity`, value is in signed ratio (from -1 to 1) of the [MaxSpeed](#148-3) `current_roll` parameter
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setTargetEncoder:(NSUInteger)gimbalId controlMode:(ArsdkFeatureGimbalControlMode)controlMode yawFrameOfReference:(ArsdkFeatureGimbalFrameOfReference)yawFrameOfReference yaw:(float)yaw pitchFrameOfReference:(ArsdkFeatureGimbalFrameOfReference)pitchFrameOfReference pitch:(float)pitch rollFrameOfReference:(ArsdkFeatureGimbalFrameOfReference)rollFrameOfReference roll:(float)roll
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setTargetEncoder:(NSUInteger)gimbalId controlMode:(ArsdkFeatureGimbalControlMode)controlMode yawFrameOfReference:(ArsdkFeatureGimbalFrameOfReference)yawFrameOfReference yaw:(float)yaw pitchFrameOfReference:(ArsdkFeatureGimbalFrameOfReference)pitchFrameOfReference pitch:(float)pitch rollFrameOfReference:(ArsdkFeatureGimbalFrameOfReference)rollFrameOfReference roll:(float)roll
 NS_SWIFT_NAME(setTargetEncoder(gimbalId:controlMode:yawFrameOfReference:yaw:pitchFrameOfReference:pitch:rollFrameOfReference:roll:));
 
 /**
@@ -400,7 +400,7 @@ This value will be clamped between [[Offsets](#148-8) min_bound_pitch and max_bo
 This value will be clamped between [Offsets](#148-8) min_bound_roll and max_bound_roll.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setOffsetsEncoder:(NSUInteger)gimbalId yaw:(float)yaw pitch:(float)pitch roll:(float)roll
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setOffsetsEncoder:(NSUInteger)gimbalId yaw:(float)yaw pitch:(float)pitch roll:(float)roll
 NS_SWIFT_NAME(setOffsetsEncoder(gimbalId:yaw:pitch:roll:));
 
 /**
@@ -409,7 +409,7 @@ NS_SWIFT_NAME(setOffsetsEncoder(gimbalId:yaw:pitch:roll:));
  - parameter gimbal_id: id of the gimbal.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))resetOrientationEncoder:(NSUInteger)gimbalId
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))resetOrientationEncoder:(NSUInteger)gimbalId
 NS_SWIFT_NAME(resetOrientationEncoder(gimbalId:));
 
 /**
@@ -418,7 +418,7 @@ NS_SWIFT_NAME(resetOrientationEncoder(gimbalId:));
  - parameter gimbal_id: id of the gimbal.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))startOffsetsUpdateEncoder:(NSUInteger)gimbalId
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))startOffsetsUpdateEncoder:(NSUInteger)gimbalId
 NS_SWIFT_NAME(startOffsetsUpdateEncoder(gimbalId:));
 
 /**
@@ -427,7 +427,7 @@ NS_SWIFT_NAME(startOffsetsUpdateEncoder(gimbalId:));
  - parameter gimbal_id: id of the gimbal.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))stopOffsetsUpdateEncoder:(NSUInteger)gimbalId
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))stopOffsetsUpdateEncoder:(NSUInteger)gimbalId
 NS_SWIFT_NAME(stopOffsetsUpdateEncoder(gimbalId:));
 
 /**
@@ -436,7 +436,7 @@ NS_SWIFT_NAME(stopOffsetsUpdateEncoder(gimbalId:));
  - parameter gimbal_id: id of the gimbal.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))calibrateEncoder:(NSUInteger)gimbalId
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))calibrateEncoder:(NSUInteger)gimbalId
 NS_SWIFT_NAME(calibrateEncoder(gimbalId:));
 
 /**
@@ -445,7 +445,7 @@ NS_SWIFT_NAME(calibrateEncoder(gimbalId:));
  - parameter gimbal_id: id of the gimbal.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))cancelCalibrationEncoder:(NSUInteger)gimbalId
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))cancelCalibrationEncoder:(NSUInteger)gimbalId
 NS_SWIFT_NAME(cancelCalibrationEncoder(gimbalId:));
 
 @end

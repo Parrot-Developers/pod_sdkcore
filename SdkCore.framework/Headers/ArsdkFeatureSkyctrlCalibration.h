@@ -17,7 +17,7 @@ The [MagnetoCalibrationState](#4-23-0) event will always be sent when the status
 0 = Disable quality updates
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))enableMagnetoCalibrationQualityUpdatesEncoder:(NSUInteger)enable
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))enableMagnetoCalibrationQualityUpdatesEncoder:(NSUInteger)enable
 NS_SWIFT_NAME(enableMagnetoCalibrationQualityUpdatesEncoder(enable:));
 
 /**
@@ -26,7 +26,7 @@ If the calibration is already started, this command has no effect.
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))startCalibrationEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))startCalibrationEncoder
 NS_SWIFT_NAME(startCalibrationEncoder());
 
 /**
@@ -35,7 +35,7 @@ If no calibration is in progress, this command has no effect.
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))abortCalibrationEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))abortCalibrationEncoder
 NS_SWIFT_NAME(abortCalibrationEncoder());
 
 @end

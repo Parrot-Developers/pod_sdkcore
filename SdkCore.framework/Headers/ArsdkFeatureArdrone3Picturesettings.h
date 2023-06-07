@@ -148,7 +148,7 @@ Also, please note that if your picture format is different from snapshot, pictur
  - parameter type: 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))pictureFormatSelectionEncoder:(ArsdkFeatureArdrone3PicturesettingsPictureformatselectionType)type
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))pictureFormatSelectionEncoder:(ArsdkFeatureArdrone3PicturesettingsPictureformatselectionType)type
 NS_SWIFT_NAME(pictureFormatSelectionEncoder(type:));
 
 /**
@@ -157,7 +157,7 @@ NS_SWIFT_NAME(pictureFormatSelectionEncoder(type:));
  - parameter type: 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))autoWhiteBalanceSelectionEncoder:(ArsdkFeatureArdrone3PicturesettingsAutowhitebalanceselectionType)type
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))autoWhiteBalanceSelectionEncoder:(ArsdkFeatureArdrone3PicturesettingsAutowhitebalanceselectionType)type
 NS_SWIFT_NAME(autoWhiteBalanceSelectionEncoder(type:));
 
 /**
@@ -166,7 +166,7 @@ NS_SWIFT_NAME(autoWhiteBalanceSelectionEncoder(type:));
  - parameter value: Exposition value (bounds given by ExpositionChanged arg min and max, by default [-3:3])
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))expositionSelectionEncoder:(float)value
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))expositionSelectionEncoder:(float)value
 NS_SWIFT_NAME(expositionSelectionEncoder(value:));
 
 /**
@@ -175,7 +175,7 @@ NS_SWIFT_NAME(expositionSelectionEncoder(value:));
  - parameter value: Saturation value (bounds given by SaturationChanged arg min and max, by default [-100:100])
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))saturationSelectionEncoder:(float)value
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))saturationSelectionEncoder:(float)value
 NS_SWIFT_NAME(saturationSelectionEncoder(value:));
 
 /**
@@ -187,7 +187,7 @@ Watch out, this command only configure the timelapse mode. Once it is configured
  - parameter interval: interval in seconds for taking pictures
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))timelapseSelectionEncoder:(NSUInteger)enabled interval:(float)interval
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))timelapseSelectionEncoder:(NSUInteger)enabled interval:(float)interval
 NS_SWIFT_NAME(timelapseSelectionEncoder(enabled:interval:));
 
 /**
@@ -198,7 +198,7 @@ If autorecord is set, video record will be automatically started when the drone 
  - parameter mass_storage_id: Mass storage id to take video
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))videoAutorecordSelectionEncoder:(NSUInteger)enabled massStorageId:(NSUInteger)massStorageId
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))videoAutorecordSelectionEncoder:(NSUInteger)enabled massStorageId:(NSUInteger)massStorageId
 NS_SWIFT_NAME(videoAutorecordSelectionEncoder(enabled:massStorageId:));
 
 /**
@@ -207,7 +207,7 @@ NS_SWIFT_NAME(videoAutorecordSelectionEncoder(enabled:massStorageId:));
  - parameter mode: 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))videoStabilizationModeEncoder:(ArsdkFeatureArdrone3PicturesettingsVideostabilizationmodeMode)mode
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))videoStabilizationModeEncoder:(ArsdkFeatureArdrone3PicturesettingsVideostabilizationmodeMode)mode
 NS_SWIFT_NAME(videoStabilizationModeEncoder(mode:));
 
 /**
@@ -216,7 +216,7 @@ NS_SWIFT_NAME(videoStabilizationModeEncoder(mode:));
  - parameter mode: 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))videoRecordingModeEncoder:(ArsdkFeatureArdrone3PicturesettingsVideorecordingmodeMode)mode
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))videoRecordingModeEncoder:(ArsdkFeatureArdrone3PicturesettingsVideorecordingmodeMode)mode
 NS_SWIFT_NAME(videoRecordingModeEncoder(mode:));
 
 /**
@@ -225,7 +225,7 @@ NS_SWIFT_NAME(videoRecordingModeEncoder(mode:));
  - parameter framerate: 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))videoFramerateEncoder:(ArsdkFeatureArdrone3PicturesettingsVideoframerateFramerate)framerate
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))videoFramerateEncoder:(ArsdkFeatureArdrone3PicturesettingsVideoframerateFramerate)framerate
 NS_SWIFT_NAME(videoFramerateEncoder(framerate:));
 
 /**
@@ -234,7 +234,7 @@ NS_SWIFT_NAME(videoFramerateEncoder(framerate:));
  - parameter type: 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))videoResolutionsEncoder:(ArsdkFeatureArdrone3PicturesettingsVideoresolutionsType)type
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))videoResolutionsEncoder:(ArsdkFeatureArdrone3PicturesettingsVideoresolutionsType)type
 NS_SWIFT_NAME(videoResolutionsEncoder(type:));
 
 @end

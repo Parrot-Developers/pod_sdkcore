@@ -49,7 +49,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureControllerInfoSupportedCommand) {
 
 + (BOOL)isSet:(ArsdkFeatureControllerInfoSupportedCommand)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureControllerInfoSupportedCommand val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureControllerInfoSupportedCommand val))cb;
 
 @end
 
@@ -93,7 +93,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureControllerInfoAvailableData) {
 
 + (BOOL)isSet:(ArsdkFeatureControllerInfoAvailableData)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureControllerInfoAvailableData val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureControllerInfoAvailableData val))cb;
 
 @end
 
@@ -119,7 +119,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureControllerInfoBarometerAvailableData) {
 
 + (BOOL)isSet:(ArsdkFeatureControllerInfoBarometerAvailableData)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureControllerInfoBarometerAvailableData val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureControllerInfoBarometerAvailableData val))cb;
 
 @end
 
@@ -148,7 +148,7 @@ NS_SWIFT_NAME(onCapabilities(supportedCommandBitField:));
 
 @interface ArsdkFeatureControllerInfo : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureControllerInfoCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeatureControllerInfoCallback>)callback;
 
 /**
  Controller gps info.
@@ -166,7 +166,7 @@ This command is not acknowledged by the drone.
 clock)
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))gpsEncoder:(double)latitude longitude:(double)longitude altitude:(float)altitude horizontalAccuracy:(float)horizontalAccuracy verticalAccuracy:(float)verticalAccuracy northSpeed:(float)northSpeed eastSpeed:(float)eastSpeed downSpeed:(float)downSpeed timestamp:(double)timestamp
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))gpsEncoder:(double)latitude longitude:(double)longitude altitude:(float)altitude horizontalAccuracy:(float)horizontalAccuracy verticalAccuracy:(float)verticalAccuracy northSpeed:(float)northSpeed eastSpeed:(float)eastSpeed downSpeed:(float)downSpeed timestamp:(double)timestamp
 NS_SWIFT_NAME(gpsEncoder(latitude:longitude:altitude:horizontalAccuracy:verticalAccuracy:northSpeed:eastSpeed:downSpeed:timestamp:));
 
 /**
@@ -177,7 +177,7 @@ NS_SWIFT_NAME(gpsEncoder(latitude:longitude:altitude:horizontalAccuracy:vertical
 clock)
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))barometerEncoder:(float)pressure timestamp:(double)timestamp
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))barometerEncoder:(float)pressure timestamp:(double)timestamp
 NS_SWIFT_NAME(barometerEncoder(pressure:timestamp:));
 
 /**
@@ -187,7 +187,7 @@ NS_SWIFT_NAME(barometerEncoder(pressure:timestamp:));
  - parameter available_data: Available data.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))gpsV2AvailableDataEncoder:(ArsdkFeatureControllerInfoSource)source availableDataBitField:(NSUInteger)availableDataBitField
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))gpsV2AvailableDataEncoder:(ArsdkFeatureControllerInfoSource)source availableDataBitField:(NSUInteger)availableDataBitField
 NS_SWIFT_NAME(gpsV2AvailableDataEncoder(source:availableDataBitField:));
 
 /**
@@ -211,7 +211,7 @@ This command is not acknowledged by the drone.
 clock)
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))gpsV2Encoder:(ArsdkFeatureControllerInfoSource)source latitude:(double)latitude longitude:(double)longitude amslAltitude:(float)amslAltitude wgs84Altitude:(float)wgs84Altitude latitudeAccuracy:(float)latitudeAccuracy longitudeAccuracy:(float)longitudeAccuracy altitudeAccuracy:(float)altitudeAccuracy northVelocity:(float)northVelocity eastVelocity:(float)eastVelocity upVelocity:(float)upVelocity velocityAccuracy:(float)velocityAccuracy numberOfSatellites:(NSUInteger)numberOfSatellites timestamp:(uint64_t)timestamp
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))gpsV2Encoder:(ArsdkFeatureControllerInfoSource)source latitude:(double)latitude longitude:(double)longitude amslAltitude:(float)amslAltitude wgs84Altitude:(float)wgs84Altitude latitudeAccuracy:(float)latitudeAccuracy longitudeAccuracy:(float)longitudeAccuracy altitudeAccuracy:(float)altitudeAccuracy northVelocity:(float)northVelocity eastVelocity:(float)eastVelocity upVelocity:(float)upVelocity velocityAccuracy:(float)velocityAccuracy numberOfSatellites:(NSUInteger)numberOfSatellites timestamp:(uint64_t)timestamp
 NS_SWIFT_NAME(gpsV2Encoder(source:latitude:longitude:amslAltitude:wgs84Altitude:latitudeAccuracy:longitudeAccuracy:altitudeAccuracy:northVelocity:eastVelocity:upVelocity:velocityAccuracy:numberOfSatellites:timestamp:));
 
 /**
@@ -220,7 +220,7 @@ NS_SWIFT_NAME(gpsV2Encoder(source:latitude:longitude:amslAltitude:wgs84Altitude:
  - parameter temp: SkyController magnetometer temperature
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))magnetoTemperatureEncoder:(float)temp
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))magnetoTemperatureEncoder:(float)temp
 NS_SWIFT_NAME(magnetoTemperatureEncoder(temp:));
 
 /**
@@ -230,7 +230,7 @@ NS_SWIFT_NAME(magnetoTemperatureEncoder(temp:));
  - parameter available_data: Available data.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))barometerV2AvailableDataEncoder:(ArsdkFeatureControllerInfoSource)source availableDataBitField:(NSUInteger)availableDataBitField
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))barometerV2AvailableDataEncoder:(ArsdkFeatureControllerInfoSource)source availableDataBitField:(NSUInteger)availableDataBitField
 NS_SWIFT_NAME(barometerV2AvailableDataEncoder(source:availableDataBitField:));
 
 /**
@@ -243,7 +243,7 @@ NS_SWIFT_NAME(barometerV2AvailableDataEncoder(source:availableDataBitField:));
 clock)
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))barometerV2Encoder:(ArsdkFeatureControllerInfoSource)source pressure:(float)pressure temperature:(float)temperature timestamp:(uint64_t)timestamp
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))barometerV2Encoder:(ArsdkFeatureControllerInfoSource)source pressure:(float)pressure temperature:(float)temperature timestamp:(uint64_t)timestamp
 NS_SWIFT_NAME(barometerV2Encoder(source:pressure:temperature:timestamp:));
 
 @end

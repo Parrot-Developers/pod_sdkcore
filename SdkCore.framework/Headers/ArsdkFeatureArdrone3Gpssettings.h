@@ -37,7 +37,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureArdrone3GpssettingsHometypeType) {
  - parameter altitude: Home altitude in meters
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setHomeEncoder:(double)latitude longitude:(double)longitude altitude:(double)altitude
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setHomeEncoder:(double)latitude longitude:(double)longitude altitude:(double)altitude
 NS_SWIFT_NAME(setHomeEncoder(latitude:longitude:altitude:));
 
 /**
@@ -45,7 +45,7 @@ NS_SWIFT_NAME(setHomeEncoder(latitude:longitude:altitude:));
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))resetHomeEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))resetHomeEncoder
 NS_SWIFT_NAME(resetHomeEncoder());
 
 /**
@@ -59,7 +59,7 @@ The user location might be used in case of return home, according to the home ty
  - parameter verticalAccuracy: Vertical Accuracy in meter ; equal -1 if no vertical Accuracy
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))sendControllerGPSEncoder:(double)latitude longitude:(double)longitude altitude:(double)altitude horizontalaccuracy:(double)horizontalaccuracy verticalaccuracy:(double)verticalaccuracy
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))sendControllerGPSEncoder:(double)latitude longitude:(double)longitude altitude:(double)altitude horizontalaccuracy:(double)horizontalaccuracy verticalaccuracy:(double)verticalaccuracy
 NS_SWIFT_NAME(sendControllerGPSEncoder(latitude:longitude:altitude:horizontalaccuracy:verticalaccuracy:));
 
 /**
@@ -70,7 +70,7 @@ You can get the currently available types with the event [HomeTypeAvailability](
  - parameter type: 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))homeTypeEncoder:(ArsdkFeatureArdrone3GpssettingsHometypeType)type
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))homeTypeEncoder:(ArsdkFeatureArdrone3GpssettingsHometypeType)type
 NS_SWIFT_NAME(homeTypeEncoder(type:));
 
 /**
@@ -79,7 +79,7 @@ NS_SWIFT_NAME(homeTypeEncoder(type:));
  - parameter delay: Delay in second
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))returnHomeDelayEncoder:(NSUInteger)delay
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))returnHomeDelayEncoder:(NSUInteger)delay
 NS_SWIFT_NAME(returnHomeDelayEncoder(delay:));
 
 /**
@@ -89,7 +89,7 @@ NS_SWIFT_NAME(returnHomeDelayEncoder(delay:));
 Bounds are given by the event [ReturnHomeMinAltitude](#1-24-7).
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))returnHomeMinAltitudeEncoder:(float)value
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))returnHomeMinAltitudeEncoder:(float)value
 NS_SWIFT_NAME(returnHomeMinAltitudeEncoder(value:));
 
 @end

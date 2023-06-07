@@ -14,7 +14,7 @@ struct arsdk_cmd;
  - parameter current: Current max vertical speed in m/s
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))maxVerticalSpeedEncoder:(float)current
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))maxVerticalSpeedEncoder:(float)current
 NS_SWIFT_NAME(maxVerticalSpeedEncoder(current:));
 
 /**
@@ -23,7 +23,7 @@ NS_SWIFT_NAME(maxVerticalSpeedEncoder(current:));
  - parameter current: Current max yaw rotation speed in degree/s
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))maxRotationSpeedEncoder:(float)current
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))maxRotationSpeedEncoder:(float)current
 NS_SWIFT_NAME(maxRotationSpeedEncoder(current:));
 
 /**
@@ -32,7 +32,7 @@ NS_SWIFT_NAME(maxRotationSpeedEncoder(current:));
  - parameter present: 1 if present, 0 if not present
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))hullProtectionEncoder:(NSUInteger)present
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))hullProtectionEncoder:(NSUInteger)present
 NS_SWIFT_NAME(hullProtectionEncoder(present:));
 
 /**
@@ -41,7 +41,7 @@ NS_SWIFT_NAME(hullProtectionEncoder(present:));
  - parameter outdoor: 1 if outdoor flight, 0 if indoor flight
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))outdoorEncoder:(NSUInteger)outdoor
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))outdoorEncoder:(NSUInteger)outdoor
 NS_SWIFT_NAME(outdoorEncoder(outdoor:));
 
 /**
@@ -50,7 +50,7 @@ NS_SWIFT_NAME(outdoorEncoder(outdoor:));
  - parameter current: Current max pitch/roll rotation speed in degree/s
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))maxPitchRollRotationSpeedEncoder:(float)current
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))maxPitchRollRotationSpeedEncoder:(float)current
 NS_SWIFT_NAME(maxPitchRollRotationSpeedEncoder(current:));
 
 @end

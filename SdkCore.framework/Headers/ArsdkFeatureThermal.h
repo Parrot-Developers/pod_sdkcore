@@ -31,7 +31,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureThermalMode) {
 
 + (BOOL)isSet:(ArsdkFeatureThermalMode)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureThermalMode val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureThermalMode val))cb;
 
 @end
 
@@ -266,7 +266,7 @@ NS_SWIFT_NAME(onShutterMode(currentTrigger:));
 
 @interface ArsdkFeatureThermal : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureThermalCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeatureThermalCallback>)callback;
 
 /**
  Set thermal mode.
@@ -275,7 +275,7 @@ Changing thermal mode may activate or deactivate some cameras on some drones.
  - parameter mode: Requested thermal mode.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setModeEncoder:(ArsdkFeatureThermalMode)mode
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setModeEncoder:(ArsdkFeatureThermalMode)mode
 NS_SWIFT_NAME(setModeEncoder(mode:));
 
 /**
@@ -289,7 +289,7 @@ Normalized between 0 and 1.
  - parameter list_flags: List flags.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setPalettePartEncoder:(float)red green:(float)green blue:(float)blue index:(float)index listFlagsBitField:(NSUInteger)listFlagsBitField
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setPalettePartEncoder:(float)red green:(float)green blue:(float)blue index:(float)index listFlagsBitField:(NSUInteger)listFlagsBitField
 NS_SWIFT_NAME(setPalettePartEncoder(red:green:blue:index:listFlagsBitField:));
 
 /**
@@ -310,7 +310,7 @@ and `extended` outside_colorization.
  - parameter spot_threshold: Requested threshold palette index of the spot. Normalized between 0 and 1. Valid only in `spot` mode.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setPaletteSettingsEncoder:(ArsdkFeatureThermalPaletteMode)mode lowestTemp:(float)lowestTemp highestTemp:(float)highestTemp outsideColorization:(ArsdkFeatureThermalColorizationMode)outsideColorization relativeRange:(ArsdkFeatureThermalRelativeRangeMode)relativeRange spotType:(ArsdkFeatureThermalSpotType)spotType spotThreshold:(float)spotThreshold
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setPaletteSettingsEncoder:(ArsdkFeatureThermalPaletteMode)mode lowestTemp:(float)lowestTemp highestTemp:(float)highestTemp outsideColorization:(ArsdkFeatureThermalColorizationMode)outsideColorization relativeRange:(ArsdkFeatureThermalRelativeRangeMode)relativeRange spotType:(ArsdkFeatureThermalSpotType)spotType spotThreshold:(float)spotThreshold
 NS_SWIFT_NAME(setPaletteSettingsEncoder(mode:lowestTemp:highestTemp:outsideColorization:relativeRange:spotType:spotThreshold:));
 
 /**
@@ -321,7 +321,7 @@ NS_SWIFT_NAME(setPaletteSettingsEncoder(mode:lowestTemp:highestTemp:outsideColor
 Ignored if mode is not `blended`.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setRenderingEncoder:(ArsdkFeatureThermalRenderingMode)mode blendingRate:(float)blendingRate
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setRenderingEncoder:(ArsdkFeatureThermalRenderingMode)mode blendingRate:(float)blendingRate
 NS_SWIFT_NAME(setRenderingEncoder(mode:blendingRate:));
 
 /**
@@ -330,7 +330,7 @@ NS_SWIFT_NAME(setRenderingEncoder(mode:blendingRate:));
  - parameter emissivity: Requested emissivity. Normalized between 0 and 1.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setEmissivityEncoder:(float)emissivity
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setEmissivityEncoder:(float)emissivity
 NS_SWIFT_NAME(setEmissivityEncoder(emissivity:));
 
 /**
@@ -339,7 +339,7 @@ NS_SWIFT_NAME(setEmissivityEncoder(emissivity:));
  - parameter background_temperature: Requested background temperature in Kelvin.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setBackgroundTemperatureEncoder:(float)backgroundTemperature
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setBackgroundTemperatureEncoder:(float)backgroundTemperature
 NS_SWIFT_NAME(setBackgroundTemperatureEncoder(backgroundTemperature:));
 
 /**
@@ -348,7 +348,7 @@ NS_SWIFT_NAME(setBackgroundTemperatureEncoder(backgroundTemperature:));
  - parameter range: Desired range of the thermal sensor
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setSensitivityEncoder:(ArsdkFeatureThermalRange)range
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setSensitivityEncoder:(ArsdkFeatureThermalRange)range
 NS_SWIFT_NAME(setSensitivityEncoder(range:));
 
 /**
@@ -357,7 +357,7 @@ NS_SWIFT_NAME(setSensitivityEncoder(range:));
  - parameter trigger: Desired shutter trigger mode of the thermal sensor
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setShutterModeEncoder:(ArsdkFeatureThermalShutterTrigger)trigger
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setShutterModeEncoder:(ArsdkFeatureThermalShutterTrigger)trigger
 NS_SWIFT_NAME(setShutterModeEncoder(trigger:));
 
 /**
@@ -365,7 +365,7 @@ NS_SWIFT_NAME(setShutterModeEncoder(trigger:));
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))triggShutterEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))triggShutterEncoder
 NS_SWIFT_NAME(triggShutterEncoder());
 
 @end

@@ -74,7 +74,7 @@ Not applicable to POI. */
 
 + (BOOL)isSet:(ArsdkFeaturePoiIndicator)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeaturePoiIndicator val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeaturePoiIndicator val))cb;
 
 @end
 
@@ -96,7 +96,7 @@ NS_SWIFT_NAME(onInfo(missingInputsBitField:));
 
 @interface ArsdkFeaturePoi : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeaturePoiCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeaturePoiCallback>)callback;
 
 @end
 

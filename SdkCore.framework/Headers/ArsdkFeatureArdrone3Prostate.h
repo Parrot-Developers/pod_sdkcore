@@ -23,7 +23,7 @@ NS_SWIFT_NAME(onFeatures(features:));
 
 @interface ArsdkFeatureArdrone3Prostate : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureArdrone3ProstateCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeatureArdrone3ProstateCallback>)callback;
 
 @end
 

@@ -100,7 +100,7 @@ NS_SWIFT_NAME(onCycleCount(count:));
 
  - parameter serial: Battery Serial
 */
-- (void)onSerial:(NSString *)serial
+- (void)onSerial:(nonnull NSString *)serial
 NS_SWIFT_NAME(onSerial(serial:));
 
 /**
@@ -113,7 +113,7 @@ NS_SWIFT_NAME(onSerial(serial:));
  - parameter cell_min_voltage: Battery cell minimum Voltage in mV
  - parameter cell_max_voltage: Battery cell maximum Voltage in mV
 */
-- (void)onDescription:(NSString *)serial date:(NSString *)date design:(NSUInteger)design cellCount:(NSUInteger)cellCount cellMinVoltage:(NSUInteger)cellMinVoltage cellMaxVoltage:(NSUInteger)cellMaxVoltage
+- (void)onDescription:(nonnull NSString *)serial date:(nonnull NSString *)date design:(NSUInteger)design cellCount:(NSUInteger)cellCount cellMinVoltage:(NSUInteger)cellMinVoltage cellMaxVoltage:(NSUInteger)cellMaxVoltage
 NS_SWIFT_NAME(onDescription(serial:date:design:cellCount:cellMinVoltage:cellMaxVoltage:));
 
 /**
@@ -150,7 +150,7 @@ NS_SWIFT_NAME(onCellVoltage(index:cellVoltage:));
  - parameter gauge_version: Battery Gauge Version
  - parameter usb_version: Battery USB Version
 */
-- (void)onVersion:(NSUInteger)hwRevision fwVersion:(NSString *)fwVersion gaugeVersion:(NSString *)gaugeVersion usbVersion:(NSString *)usbVersion
+- (void)onVersion:(NSUInteger)hwRevision fwVersion:(nonnull NSString *)fwVersion gaugeVersion:(nonnull NSString *)gaugeVersion usbVersion:(nonnull NSString *)usbVersion
 NS_SWIFT_NAME(onVersion(hwRevision:fwVersion:gaugeVersion:usbVersion:));
 
 
@@ -158,7 +158,7 @@ NS_SWIFT_NAME(onVersion(hwRevision:fwVersion:gaugeVersion:usbVersion:));
 
 @interface ArsdkFeatureBattery : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureBatteryCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeatureBatteryCallback>)callback;
 
 @end
 

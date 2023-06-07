@@ -13,7 +13,7 @@ struct arsdk_cmd;
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))requestDeviceListEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))requestDeviceListEncoder
 NS_SWIFT_NAME(requestDeviceListEncoder());
 
 /**
@@ -21,7 +21,7 @@ NS_SWIFT_NAME(requestDeviceListEncoder());
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))requestCurrentDeviceEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))requestCurrentDeviceEncoder
 NS_SWIFT_NAME(requestCurrentDeviceEncoder());
 
 /**
@@ -31,7 +31,7 @@ The SkyController will automatically connect to the first visible device on the 
  - parameter deviceName: Device name
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))connectToDeviceEncoder:(NSString *)devicename
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))connectToDeviceEncoder:(nonnull NSString *)devicename
 NS_SWIFT_NAME(connectToDeviceEncoder(devicename:));
 
 @end

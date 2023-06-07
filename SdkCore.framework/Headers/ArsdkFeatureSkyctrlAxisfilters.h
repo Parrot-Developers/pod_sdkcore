@@ -13,7 +13,7 @@ struct arsdk_cmd;
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))getCurrentAxisFiltersEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))getCurrentAxisFiltersEncoder
 NS_SWIFT_NAME(getCurrentAxisFiltersEncoder());
 
 /**
@@ -21,7 +21,7 @@ NS_SWIFT_NAME(getCurrentAxisFiltersEncoder());
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))getPresetAxisFiltersEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))getPresetAxisFiltersEncoder
 NS_SWIFT_NAME(getPresetAxisFiltersEncoder());
 
 /**
@@ -45,7 +45,7 @@ Exponential filters:
 (Or a string to build a new one)
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setAxisFilterEncoder:(NSInteger)axisId filterUidOrBuilder:(NSString *)filterUidOrBuilder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setAxisFilterEncoder:(NSInteger)axisId filterUidOrBuilder:(nonnull NSString *)filterUidOrBuilder
 NS_SWIFT_NAME(setAxisFilterEncoder(axisId:filterUidOrBuilder:));
 
 /**
@@ -53,7 +53,7 @@ NS_SWIFT_NAME(setAxisFilterEncoder(axisId:filterUidOrBuilder:));
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))defaultAxisFiltersEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))defaultAxisFiltersEncoder
 NS_SWIFT_NAME(defaultAxisFiltersEncoder());
 
 @end

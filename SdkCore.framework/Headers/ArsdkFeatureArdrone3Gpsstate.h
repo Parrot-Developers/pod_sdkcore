@@ -92,7 +92,7 @@ NS_SWIFT_NAME(onHomeTypeChosenChanged(type:));
 
 @interface ArsdkFeatureArdrone3Gpsstate : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureArdrone3GpsstateCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeatureArdrone3GpsstateCallback>)callback;
 
 @end
 

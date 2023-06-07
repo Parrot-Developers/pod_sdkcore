@@ -55,7 +55,7 @@ NS_SWIFT_NAME(onCounters(videoMediaCount:photoMediaCount:videoResourceCount:phot
 
 @interface ArsdkFeatureMediastore : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureMediastoreCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeatureMediastoreCallback>)callback;
 
 @end
 

@@ -127,7 +127,7 @@ NS_SWIFT_NAME(onList(anim:state:error:));
 
 @interface ArsdkFeatureCommonAnimationsstate : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureCommonAnimationsstateCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeatureCommonAnimationsstateCallback>)callback;
 
 @end
 

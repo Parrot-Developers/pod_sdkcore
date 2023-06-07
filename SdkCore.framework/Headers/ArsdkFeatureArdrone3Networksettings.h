@@ -88,7 +88,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureArdrone3NetworksettingsWifisecurityKeytyp
  - parameter channel: The channel (not used in auto mode)
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))wifiSelectionEncoder:(ArsdkFeatureArdrone3NetworksettingsWifiselectionType)type band:(ArsdkFeatureArdrone3NetworksettingsWifiselectionBand)band channel:(NSUInteger)channel
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))wifiSelectionEncoder:(ArsdkFeatureArdrone3NetworksettingsWifiselectionType)type band:(ArsdkFeatureArdrone3NetworksettingsWifiselectionBand)band channel:(NSUInteger)channel
 NS_SWIFT_NAME(wifiSelectionEncoder(type:band:channel:));
 
 /**
@@ -100,7 +100,7 @@ The security will be changed on the next restart
  - parameter keyType: 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))wifiSecurityEncoder:(ArsdkFeatureArdrone3NetworksettingsWifisecurityType)type key:(NSString *)key keytype:(ArsdkFeatureArdrone3NetworksettingsWifisecurityKeytype)keytype
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))wifiSecurityEncoder:(ArsdkFeatureArdrone3NetworksettingsWifisecurityType)type key:(nonnull NSString *)key keytype:(ArsdkFeatureArdrone3NetworksettingsWifisecurityKeytype)keytype
 NS_SWIFT_NAME(wifiSecurityEncoder(type:key:keytype:));
 
 @end

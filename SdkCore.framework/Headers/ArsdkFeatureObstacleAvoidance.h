@@ -133,7 +133,7 @@ Obstacle avoidance is unavailable and state is inactive. */
 
 + (BOOL)isSet:(ArsdkFeatureObstacleAvoidanceAlert)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureObstacleAvoidanceAlert val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureObstacleAvoidanceAlert val))cb;
 
 @end
 
@@ -173,7 +173,7 @@ NS_SWIFT_NAME(onAlertTimer(alert:timer:));
 
 @interface ArsdkFeatureObstacleAvoidance : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureObstacleAvoidanceCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeatureObstacleAvoidanceCallback>)callback;
 
 /**
  Configures obstacle avoidance mode. 
@@ -181,7 +181,7 @@ NS_SWIFT_NAME(onAlertTimer(alert:timer:));
  - parameter mode: Obstacle avoidance mode.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setModeEncoder:(ArsdkFeatureObstacleAvoidanceMode)mode
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setModeEncoder:(ArsdkFeatureObstacleAvoidanceMode)mode
 NS_SWIFT_NAME(setModeEncoder(mode:));
 
 @end

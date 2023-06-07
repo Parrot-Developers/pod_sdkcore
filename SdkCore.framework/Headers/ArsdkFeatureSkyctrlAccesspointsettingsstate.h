@@ -66,7 +66,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureSkyctrlAccesspointsettingsstateWifisecuri
 
  - parameter ssid: AccessPoint SSID
 */
-- (void)onAccessPointSSIDChanged:(NSString *)ssid
+- (void)onAccessPointSSIDChanged:(nonnull NSString *)ssid
 NS_SWIFT_NAME(onAccessPointSSIDChanged(ssid:));
 
 /**
@@ -93,7 +93,7 @@ NS_SWIFT_NAME(onWifiSelectionChanged(type:band:channel:));
  - parameter security_type: 
  - parameter key: The security key (ignored if security_type is open)
 */
-- (void)onWifiSecurityChanged:(ArsdkFeatureSkyctrlAccesspointsettingsstateWifisecuritychangedSecurityType)securityType key:(NSString *)key
+- (void)onWifiSecurityChanged:(ArsdkFeatureSkyctrlAccesspointsettingsstateWifisecuritychangedSecurityType)securityType key:(nonnull NSString *)key
 NS_SWIFT_NAME(onWifiSecurityChanged(securityType:key:));
 
 
@@ -101,7 +101,7 @@ NS_SWIFT_NAME(onWifiSecurityChanged(securityType:key:));
 
 @interface ArsdkFeatureSkyctrlAccesspointsettingsstate : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureSkyctrlAccesspointsettingsstateCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeatureSkyctrlAccesspointsettingsstateCallback>)callback;
 
 @end
 

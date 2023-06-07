@@ -31,7 +31,7 @@ NS_SWIFT_NAME(onResetChanged());
 
  - parameter name: Product name
 */
-- (void)onProductNameChanged:(NSString *)name
+- (void)onProductNameChanged:(nonnull NSString *)name
 NS_SWIFT_NAME(onProductNameChanged(name:));
 
 /**
@@ -40,7 +40,7 @@ NS_SWIFT_NAME(onProductNameChanged(name:));
  - parameter software: Product software version
  - parameter hardware: Product hardware version
 */
-- (void)onProductVersionChanged:(NSString *)software hardware:(NSString *)hardware
+- (void)onProductVersionChanged:(nonnull NSString *)software hardware:(nonnull NSString *)hardware
 NS_SWIFT_NAME(onProductVersionChanged(software:hardware:));
 
 /**
@@ -48,7 +48,7 @@ NS_SWIFT_NAME(onProductVersionChanged(software:hardware:));
 
  - parameter high: Serial high number (hexadecimal value)
 */
-- (void)onProductSerialHighChanged:(NSString *)high
+- (void)onProductSerialHighChanged:(nonnull NSString *)high
 NS_SWIFT_NAME(onProductSerialHighChanged(high:));
 
 /**
@@ -56,7 +56,7 @@ NS_SWIFT_NAME(onProductSerialHighChanged(high:));
 
  - parameter low: Serial low number (hexadecimal value)
 */
-- (void)onProductSerialLowChanged:(NSString *)low
+- (void)onProductSerialLowChanged:(nonnull NSString *)low
 NS_SWIFT_NAME(onProductSerialLowChanged(low:));
 
 /**
@@ -64,7 +64,7 @@ NS_SWIFT_NAME(onProductSerialLowChanged(low:));
 
  - parameter code: Country code with ISO 3166 format, empty string means unknown country.
 */
-- (void)onCountryChanged:(NSString *)code
+- (void)onCountryChanged:(nonnull NSString *)code
 NS_SWIFT_NAME(onCountryChanged(code:));
 
 /**
@@ -80,7 +80,7 @@ NS_SWIFT_NAME(onAutoCountryChanged(automatic:));
 
  - parameter id: Board id
 */
-- (void)onBoardIdChanged:(NSString *)id
+- (void)onBoardIdChanged:(nonnull NSString *)id
 NS_SWIFT_NAME(onBoardIdChanged(id:));
 
 
@@ -88,7 +88,7 @@ NS_SWIFT_NAME(onBoardIdChanged(id:));
 
 @interface ArsdkFeatureCommonSettingsstate : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureCommonSettingsstateCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeatureCommonSettingsstateCallback>)callback;
 
 @end
 

@@ -42,7 +42,7 @@ Requirements are:
  - parameter type: 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))startEncoder:(NSString *)filepath type:(ArsdkFeatureCommonMavlinkStartType)type
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))startEncoder:(nonnull NSString *)filepath type:(ArsdkFeatureCommonMavlinkStartType)type
 NS_SWIFT_NAME(startEncoder(filepath:type:));
 
 /**
@@ -52,7 +52,7 @@ To unpause a FlightPlan, see [StartFlightPlan](#0-11-0)
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))pauseEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))pauseEncoder
 NS_SWIFT_NAME(pauseEncoder());
 
 /**
@@ -61,7 +61,7 @@ NS_SWIFT_NAME(pauseEncoder());
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))stopEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))stopEncoder
 NS_SWIFT_NAME(stopEncoder());
 
 @end

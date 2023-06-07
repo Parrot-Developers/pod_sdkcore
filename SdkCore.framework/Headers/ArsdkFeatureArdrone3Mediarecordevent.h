@@ -139,7 +139,7 @@ NS_SWIFT_NAME(onVideoEventChanged(event:error:));
 
 @interface ArsdkFeatureArdrone3Mediarecordevent : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureArdrone3MediarecordeventCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeatureArdrone3MediarecordeventCallback>)callback;
 
 @end
 

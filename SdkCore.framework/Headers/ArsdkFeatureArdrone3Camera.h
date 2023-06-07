@@ -20,7 +20,7 @@ The value is saturated by the drone.
 Saturation value is sent by thre drone through CameraSettingsChanged command.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))orientationEncoder:(NSInteger)tilt pan:(NSInteger)pan
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))orientationEncoder:(NSInteger)tilt pan:(NSInteger)pan
 NS_SWIFT_NAME(orientationEncoder(tilt:pan:));
 
 /**
@@ -35,7 +35,7 @@ The value is saturated by the drone.
 Saturation value is sent by thre drone through CameraSettingsChanged command.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))orientationV2Encoder:(float)tilt pan:(float)pan
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))orientationV2Encoder:(float)tilt pan:(float)pan
 NS_SWIFT_NAME(orientationV2Encoder(tilt:pan:));
 
 /**
@@ -50,7 +50,7 @@ Negative pan velocity move camera to left
 Positive pan velocity move camera to right
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))velocityEncoder:(float)tilt pan:(float)pan
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))velocityEncoder:(float)tilt pan:(float)pan
 NS_SWIFT_NAME(velocityEncoder(tilt:pan:));
 
 @end

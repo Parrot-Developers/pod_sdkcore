@@ -62,7 +62,7 @@ NS_SWIFT_NAME(onUserTakeoffReady());
 
 @interface ArsdkFeatureArdrone3Pilotingevent : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureArdrone3PilotingeventCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeatureArdrone3PilotingeventCallback>)callback;
 
 @end
 

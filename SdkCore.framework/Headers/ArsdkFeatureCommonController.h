@@ -55,7 +55,7 @@ On a non-flying products it is used to know when a run begins.
  - parameter piloting: 0 when the application is not in the piloting HUD, 1 when it enters the HUD.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))isPilotingEncoder:(NSUInteger)piloting
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))isPilotingEncoder:(NSUInteger)piloting
 NS_SWIFT_NAME(isPilotingEncoder(piloting:));
 
 /**
@@ -72,7 +72,7 @@ May not be available at disconnection.
 May not be available at disconnection.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))peerStateChangedEncoder:(ArsdkFeatureCommonControllerPeerstatechangedState)state type:(ArsdkFeatureCommonControllerPeerstatechangedType)type peername:(NSString *)peername peerid:(NSString *)peerid peertype:(NSString *)peertype
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))peerStateChangedEncoder:(ArsdkFeatureCommonControllerPeerstatechangedState)state type:(ArsdkFeatureCommonControllerPeerstatechangedType)type peername:(nonnull NSString *)peername peerid:(nonnull NSString *)peerid peertype:(nonnull NSString *)peertype
 NS_SWIFT_NAME(peerStateChangedEncoder(state:type:peername:peerid:peertype:));
 
 @end

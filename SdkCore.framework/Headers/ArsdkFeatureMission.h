@@ -71,7 +71,7 @@ load or start. */
  - parameter target_max_version: Maximum version of target firmware supported.
  - parameter list_flags: 
 */
-- (void)onCapabilities:(NSString *)uid name:(NSString *)name desc:(NSString *)desc version:(NSString *)version recipientId:(NSUInteger)recipientId targetModelId:(NSUInteger)targetModelId targetMinVersion:(NSString *)targetMinVersion targetMaxVersion:(NSString *)targetMaxVersion listFlagsBitField:(NSUInteger)listFlagsBitField
+- (void)onCapabilities:(nonnull NSString *)uid name:(nonnull NSString *)name desc:(nonnull NSString *)desc version:(nonnull NSString *)version recipientId:(NSUInteger)recipientId targetModelId:(NSUInteger)targetModelId targetMinVersion:(nonnull NSString *)targetMinVersion targetMaxVersion:(nonnull NSString *)targetMaxVersion listFlagsBitField:(NSUInteger)listFlagsBitField
 NS_SWIFT_NAME(onCapabilities(uid:name:desc:version:recipientId:targetModelId:targetMinVersion:targetMaxVersion:listFlagsBitField:));
 
 /**
@@ -82,7 +82,7 @@ NS_SWIFT_NAME(onCapabilities(uid:name:desc:version:recipientId:targetModelId:tar
  - parameter unavailability_reason: Unavailability reason(s) to load the mission.
 Empty if mission is activate.
 */
-- (void)onState:(NSString *)uid state:(ArsdkFeatureMissionState)state unavailabilityReason:(ArsdkFeatureMissionUnavailabilityReason)unavailabilityReason
+- (void)onState:(nonnull NSString *)uid state:(ArsdkFeatureMissionState)state unavailabilityReason:(ArsdkFeatureMissionUnavailabilityReason)unavailabilityReason
 NS_SWIFT_NAME(onState(uid:state:unavailabilityReason:));
 
 /**
@@ -93,7 +93,7 @@ NS_SWIFT_NAME(onState(uid:state:unavailabilityReason:));
  - parameter msg_num: 
  - parameter payload: 
 */
-- (void)onCustomEvt:(NSUInteger)recipientId serviceId:(NSUInteger)serviceId msgNum:(NSUInteger)msgNum payload:(NSData *)payload
+- (void)onCustomEvt:(NSUInteger)recipientId serviceId:(NSUInteger)serviceId msgNum:(NSUInteger)msgNum payload:(nonnull NSData *)payload
 NS_SWIFT_NAME(onCustomEvt(recipientId:serviceId:msgNum:payload:));
 
 /**
@@ -101,7 +101,7 @@ NS_SWIFT_NAME(onCustomEvt(recipientId:serviceId:msgNum:payload:));
 
  - parameter uid: Unique id of the mission
 */
-- (void)onSuggestedActivation:(NSString *)uid
+- (void)onSuggestedActivation:(nonnull NSString *)uid
 NS_SWIFT_NAME(onSuggestedActivation(uid:));
 
 
@@ -109,7 +109,7 @@ NS_SWIFT_NAME(onSuggestedActivation(uid:));
 
 @interface ArsdkFeatureMission : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureMissionCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeatureMissionCallback>)callback;
 
 /**
  Tells the drone to load the corresponding mission. 
@@ -117,7 +117,7 @@ NS_SWIFT_NAME(onSuggestedActivation(uid:));
  - parameter uid: Unique id of the mission
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))loadEncoder:(NSString *)uid
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))loadEncoder:(nonnull NSString *)uid
 NS_SWIFT_NAME(loadEncoder(uid:));
 
 /**
@@ -126,7 +126,7 @@ NS_SWIFT_NAME(loadEncoder(uid:));
  - parameter uid: Unique id of the mission
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))activateEncoder:(NSString *)uid
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))activateEncoder:(nonnull NSString *)uid
 NS_SWIFT_NAME(activateEncoder(uid:));
 
 /**
@@ -135,7 +135,7 @@ NS_SWIFT_NAME(activateEncoder(uid:));
  - parameter uid: Unique id of the mission
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))unloadEncoder:(NSString *)uid
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))unloadEncoder:(nonnull NSString *)uid
 NS_SWIFT_NAME(unloadEncoder(uid:));
 
 /**
@@ -147,7 +147,7 @@ NS_SWIFT_NAME(unloadEncoder(uid:));
  - parameter payload: 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))customCmdEncoder:(NSUInteger)recipientId serviceId:(NSUInteger)serviceId msgNum:(NSUInteger)msgNum payload:(NSData *)payload
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))customCmdEncoder:(NSUInteger)recipientId serviceId:(NSUInteger)serviceId msgNum:(NSUInteger)msgNum payload:(nonnull NSData *)payload
 NS_SWIFT_NAME(customCmdEncoder(recipientId:serviceId:msgNum:payload:));
 
 /**
@@ -155,7 +155,7 @@ NS_SWIFT_NAME(customCmdEncoder(recipientId:serviceId:msgNum:payload:));
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))customMsgEnableEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))customMsgEnableEncoder
 NS_SWIFT_NAME(customMsgEnableEncoder());
 
 /**
@@ -163,7 +163,7 @@ NS_SWIFT_NAME(customMsgEnableEncoder());
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))customMsgDisableEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))customMsgDisableEncoder
 NS_SWIFT_NAME(customMsgDisableEncoder());
 
 @end

@@ -40,7 +40,7 @@ This event is deprecated and will never be sent by a SkyController
 
  - parameter name: Device name
 */
-- (void)onDeviceList:(NSString *)name
+- (void)onDeviceList:(nonnull NSString *)name
 NS_SWIFT_NAME(onDeviceList(name:));
 
 /**
@@ -50,7 +50,7 @@ NS_SWIFT_NAME(onDeviceList(name:));
  - parameter deviceName: Drone name
  - parameter deviceProductID: Drone product IDentifier
 */
-- (void)onConnexionChanged:(ArsdkFeatureSkyctrlDevicestateConnexionchangedStatus)status devicename:(NSString *)devicename deviceproductid:(NSUInteger)deviceproductid
+- (void)onConnexionChanged:(ArsdkFeatureSkyctrlDevicestateConnexionchangedStatus)status devicename:(nonnull NSString *)devicename deviceproductid:(NSUInteger)deviceproductid
 NS_SWIFT_NAME(onConnexionChanged(status:devicename:deviceproductid:));
 
 
@@ -58,7 +58,7 @@ NS_SWIFT_NAME(onConnexionChanged(status:devicename:deviceproductid:));
 
 @interface ArsdkFeatureSkyctrlDevicestate : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureSkyctrlDevicestateCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeatureSkyctrlDevicestateCallback>)callback;
 
 @end
 

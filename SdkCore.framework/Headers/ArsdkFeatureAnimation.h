@@ -84,7 +84,7 @@ be post-processed to make a wide angle image. */
 
 + (BOOL)isSet:(ArsdkFeatureAnimationType)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureAnimationType val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureAnimationType val))cb;
 
 @end
 
@@ -173,7 +173,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureAnimationHorizontalPanoramaConfigParam) {
 
 + (BOOL)isSet:(ArsdkFeatureAnimationHorizontalPanoramaConfigParam)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureAnimationHorizontalPanoramaConfigParam val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureAnimationHorizontalPanoramaConfigParam val))cb;
 
 @end
 
@@ -202,7 +202,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureAnimationDronieConfigParam) {
 
 + (BOOL)isSet:(ArsdkFeatureAnimationDronieConfigParam)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureAnimationDronieConfigParam val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureAnimationDronieConfigParam val))cb;
 
 @end
 
@@ -231,7 +231,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureAnimationHorizontalRevealConfigParam) {
 
 + (BOOL)isSet:(ArsdkFeatureAnimationHorizontalRevealConfigParam)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureAnimationHorizontalRevealConfigParam val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureAnimationHorizontalRevealConfigParam val))cb;
 
 @end
 
@@ -266,7 +266,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureAnimationVerticalRevealConfigParam) {
 
 + (BOOL)isSet:(ArsdkFeatureAnimationVerticalRevealConfigParam)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureAnimationVerticalRevealConfigParam val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureAnimationVerticalRevealConfigParam val))cb;
 
 @end
 
@@ -301,7 +301,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureAnimationSpiralConfigParam) {
 
 + (BOOL)isSet:(ArsdkFeatureAnimationSpiralConfigParam)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureAnimationSpiralConfigParam val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureAnimationSpiralConfigParam val))cb;
 
 @end
 
@@ -330,7 +330,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureAnimationParabolaConfigParam) {
 
 + (BOOL)isSet:(ArsdkFeatureAnimationParabolaConfigParam)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureAnimationParabolaConfigParam val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureAnimationParabolaConfigParam val))cb;
 
 @end
 
@@ -359,7 +359,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureAnimationCandleConfigParam) {
 
 + (BOOL)isSet:(ArsdkFeatureAnimationCandleConfigParam)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureAnimationCandleConfigParam val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureAnimationCandleConfigParam val))cb;
 
 @end
 
@@ -391,7 +391,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureAnimationDollySlideConfigParam) {
 
 + (BOOL)isSet:(ArsdkFeatureAnimationDollySlideConfigParam)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureAnimationDollySlideConfigParam val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureAnimationDollySlideConfigParam val))cb;
 
 @end
 
@@ -423,7 +423,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureAnimationVertigoConfigParam) {
 
 + (BOOL)isSet:(ArsdkFeatureAnimationVertigoConfigParam)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureAnimationVertigoConfigParam val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureAnimationVertigoConfigParam val))cb;
 
 @end
 
@@ -458,7 +458,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureAnimationTwistUpConfigParam) {
 
 + (BOOL)isSet:(ArsdkFeatureAnimationTwistUpConfigParam)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureAnimationTwistUpConfigParam val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureAnimationTwistUpConfigParam val))cb;
 
 @end
 
@@ -541,7 +541,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureAnimationIndicator) {
 
 + (BOOL)isSet:(ArsdkFeatureAnimationIndicator)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureAnimationIndicator val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureAnimationIndicator val))cb;
 
 @end
 
@@ -832,14 +832,14 @@ NS_SWIFT_NAME(onSuperWidePhotoPanoramaState(state:));
 
 @interface ArsdkFeatureAnimation : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureAnimationCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeatureAnimationCallback>)callback;
 
 /**
  Cancel current animation. 
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))cancelEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))cancelEncoder
 NS_SWIFT_NAME(cancelEncoder());
 
 /**
@@ -849,7 +849,7 @@ Starting this animation when another animation is started (or canceling), will c
  - parameter type: Type of the flip
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))startFlipEncoder:(ArsdkFeatureAnimationFlipType)type
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))startFlipEncoder:(ArsdkFeatureAnimationFlipType)type
 NS_SWIFT_NAME(startFlipEncoder(type:));
 
 /**
@@ -866,7 +866,7 @@ Not used when the rotation angle of provided_params param is 0.
 Not used when the rotation speed of provided_params param is 0.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))startHorizontalPanoramaEncoder:(NSUInteger)providedParamsBitField rotationAngle:(float)rotationAngle rotationSpeed:(float)rotationSpeed
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))startHorizontalPanoramaEncoder:(NSUInteger)providedParamsBitField rotationAngle:(float)rotationAngle rotationSpeed:(float)rotationSpeed
 NS_SWIFT_NAME(startHorizontalPanoramaEncoder(providedParamsBitField:rotationAngle:rotationSpeed:));
 
 /**
@@ -885,7 +885,7 @@ Not used when distance of provided_params param is 0.
 Not used when play mode of provided_params param is 0.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))startDronieEncoder:(NSUInteger)providedParamsBitField speed:(float)speed distance:(float)distance playMode:(ArsdkFeatureAnimationPlayMode)playMode
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))startDronieEncoder:(NSUInteger)providedParamsBitField speed:(float)speed distance:(float)distance playMode:(ArsdkFeatureAnimationPlayMode)playMode
 NS_SWIFT_NAME(startDronieEncoder(providedParamsBitField:speed:distance:playMode:));
 
 /**
@@ -904,7 +904,7 @@ Not used when distance of provided_params param is 0.
 Not used when play mode of provided_params param is 0.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))startHorizontalRevealEncoder:(NSUInteger)providedParamsBitField speed:(float)speed distance:(float)distance playMode:(ArsdkFeatureAnimationPlayMode)playMode
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))startHorizontalRevealEncoder:(NSUInteger)providedParamsBitField speed:(float)speed distance:(float)distance playMode:(ArsdkFeatureAnimationPlayMode)playMode
 NS_SWIFT_NAME(startHorizontalRevealEncoder(providedParamsBitField:speed:distance:playMode:));
 
 /**
@@ -927,7 +927,7 @@ Not used when the rotation speed of provided_params param is 0.
 Not used when play mode of provided_params param is 0.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))startVerticalRevealEncoder:(NSUInteger)providedParamsBitField speed:(float)speed verticalDistance:(float)verticalDistance rotationAngle:(float)rotationAngle rotationSpeed:(float)rotationSpeed playMode:(ArsdkFeatureAnimationPlayMode)playMode
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))startVerticalRevealEncoder:(NSUInteger)providedParamsBitField speed:(float)speed verticalDistance:(float)verticalDistance rotationAngle:(float)rotationAngle rotationSpeed:(float)rotationSpeed playMode:(ArsdkFeatureAnimationPlayMode)playMode
 NS_SWIFT_NAME(startVerticalRevealEncoder(providedParamsBitField:speed:verticalDistance:rotationAngle:rotationSpeed:playMode:));
 
 /**
@@ -955,7 +955,7 @@ Example: 1.5 makes an entire turn plus half of a turn
 Not used when play mode of provided_params param is 0.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))startSpiralEncoder:(NSUInteger)providedParamsBitField speed:(float)speed radiusVariation:(float)radiusVariation verticalDistance:(float)verticalDistance revolutionNb:(float)revolutionNb playMode:(ArsdkFeatureAnimationPlayMode)playMode
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))startSpiralEncoder:(NSUInteger)providedParamsBitField speed:(float)speed radiusVariation:(float)radiusVariation verticalDistance:(float)verticalDistance revolutionNb:(float)revolutionNb playMode:(ArsdkFeatureAnimationPlayMode)playMode
 NS_SWIFT_NAME(startSpiralEncoder(providedParamsBitField:speed:radiusVariation:verticalDistance:revolutionNb:playMode:));
 
 /**
@@ -974,7 +974,7 @@ Not used when vertical distance of provided_params param is 0.
 Not used when play mode of provided_params param is 0.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))startParabolaEncoder:(NSUInteger)providedParamsBitField speed:(float)speed verticalDistance:(float)verticalDistance playMode:(ArsdkFeatureAnimationPlayMode)playMode
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))startParabolaEncoder:(NSUInteger)providedParamsBitField speed:(float)speed verticalDistance:(float)verticalDistance playMode:(ArsdkFeatureAnimationPlayMode)playMode
 NS_SWIFT_NAME(startParabolaEncoder(providedParamsBitField:speed:verticalDistance:playMode:));
 
 /**
@@ -993,7 +993,7 @@ Not used when vertical distance of provided_params param is 0.
 Not used when play mode of provided_params param is 0.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))startCandleEncoder:(NSUInteger)providedParamsBitField speed:(float)speed verticalDistance:(float)verticalDistance playMode:(ArsdkFeatureAnimationPlayMode)playMode
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))startCandleEncoder:(NSUInteger)providedParamsBitField speed:(float)speed verticalDistance:(float)verticalDistance playMode:(ArsdkFeatureAnimationPlayMode)playMode
 NS_SWIFT_NAME(startCandleEncoder(providedParamsBitField:speed:verticalDistance:playMode:));
 
 /**
@@ -1014,7 +1014,7 @@ Not used when angle of provided_params param is 0.
 Not used when play mode of provided_params param is 0.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))startDollySlideEncoder:(NSUInteger)providedParamsBitField speed:(float)speed angle:(float)angle horizontalDistance:(float)horizontalDistance playMode:(ArsdkFeatureAnimationPlayMode)playMode
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))startDollySlideEncoder:(NSUInteger)providedParamsBitField speed:(float)speed angle:(float)angle horizontalDistance:(float)horizontalDistance playMode:(ArsdkFeatureAnimationPlayMode)playMode
 NS_SWIFT_NAME(startDollySlideEncoder(providedParamsBitField:speed:angle:horizontalDistance:playMode:));
 
 /**
@@ -1035,7 +1035,7 @@ Not used when finish_action of provided_params param is 0.
 Not used when play mode of provided_params param is 0.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))startVertigoEncoder:(NSUInteger)providedParamsBitField duration:(float)duration maxZoomLevel:(float)maxZoomLevel finishAction:(ArsdkFeatureAnimationVertigoFinishAction)finishAction playMode:(ArsdkFeatureAnimationPlayMode)playMode
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))startVertigoEncoder:(NSUInteger)providedParamsBitField duration:(float)duration maxZoomLevel:(float)maxZoomLevel finishAction:(ArsdkFeatureAnimationVertigoFinishAction)finishAction playMode:(ArsdkFeatureAnimationPlayMode)playMode
 NS_SWIFT_NAME(startVertigoEncoder(providedParamsBitField:duration:maxZoomLevel:finishAction:playMode:));
 
 /**
@@ -1058,7 +1058,7 @@ Not used when the rotation speed of provided_params param is 0.
 Not used when play mode of provided_params param is 0.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))startTwistUpEncoder:(NSUInteger)providedParamsBitField speed:(float)speed verticalDistance:(float)verticalDistance rotationAngle:(float)rotationAngle rotationSpeed:(float)rotationSpeed playMode:(ArsdkFeatureAnimationPlayMode)playMode
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))startTwistUpEncoder:(NSUInteger)providedParamsBitField speed:(float)speed verticalDistance:(float)verticalDistance rotationAngle:(float)rotationAngle rotationSpeed:(float)rotationSpeed playMode:(ArsdkFeatureAnimationPlayMode)playMode
 NS_SWIFT_NAME(startTwistUpEncoder(providedParamsBitField:speed:verticalDistance:rotationAngle:rotationSpeed:playMode:));
 
 /**
@@ -1082,7 +1082,7 @@ Not used when the rotation speed of provided_params param is 0.
 Not used when play mode of provided_params param is 0.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))startPositionTwistUpEncoder:(NSUInteger)providedParamsBitField speed:(float)speed verticalDistance:(float)verticalDistance rotationAngle:(float)rotationAngle rotationSpeed:(float)rotationSpeed playMode:(ArsdkFeatureAnimationPlayMode)playMode
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))startPositionTwistUpEncoder:(NSUInteger)providedParamsBitField speed:(float)speed verticalDistance:(float)verticalDistance rotationAngle:(float)rotationAngle rotationSpeed:(float)rotationSpeed playMode:(ArsdkFeatureAnimationPlayMode)playMode
 NS_SWIFT_NAME(startPositionTwistUpEncoder(providedParamsBitField:speed:verticalDistance:rotationAngle:rotationSpeed:playMode:));
 
 /**
@@ -1092,7 +1092,7 @@ This animation will make the drone perform a 180 degrees rotation on the yaw axi
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))startHorizontal180PhotoPanoramaEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))startHorizontal180PhotoPanoramaEncoder
 NS_SWIFT_NAME(startHorizontal180PhotoPanoramaEncoder());
 
 /**
@@ -1102,7 +1102,7 @@ This animation will make the the drone camera perform a 180 degrees rotation on 
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))startVertical180PhotoPanoramaEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))startVertical180PhotoPanoramaEncoder
 NS_SWIFT_NAME(startVertical180PhotoPanoramaEncoder());
 
 /**
@@ -1112,7 +1112,7 @@ This animation will make the drone perform a 360 degrees rotation on the yaw axi
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))startSphericalPhotoPanoramaEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))startSphericalPhotoPanoramaEncoder
 NS_SWIFT_NAME(startSphericalPhotoPanoramaEncoder());
 
 /**
@@ -1120,7 +1120,7 @@ NS_SWIFT_NAME(startSphericalPhotoPanoramaEncoder());
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))startSuperWidePhotoPanoramaEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))startSuperWidePhotoPanoramaEncoder
 NS_SWIFT_NAME(startSuperWidePhotoPanoramaEncoder());
 
 @end

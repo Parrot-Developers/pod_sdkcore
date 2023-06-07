@@ -23,7 +23,7 @@ NS_SWIFT_NAME(onSettings());
 
 @interface ArsdkFeatureSkyctrlButtonevents : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureSkyctrlButtoneventsCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeatureSkyctrlButtoneventsCallback>)callback;
 
 @end
 

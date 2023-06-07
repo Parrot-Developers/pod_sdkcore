@@ -96,7 +96,7 @@ The application must clear the list before sending the [RequestWifiList](#4-1-0)
  - parameter rssi: Wifi rssi
  - parameter frequency: Wifi frequency
 */
-- (void)onWifiList:(NSString *)bssid ssid:(NSString *)ssid secured:(NSUInteger)secured saved:(NSUInteger)saved rssi:(NSInteger)rssi frequency:(NSInteger)frequency
+- (void)onWifiList:(nonnull NSString *)bssid ssid:(nonnull NSString *)ssid secured:(NSUInteger)secured saved:(NSUInteger)saved rssi:(NSInteger)rssi frequency:(NSInteger)frequency
 NS_SWIFT_NAME(onWifiList(bssid:ssid:secured:saved:rssi:frequency:));
 
 /**
@@ -106,7 +106,7 @@ The connection to a wifi network does not guarantee a connection to a drone. To 
  - parameter ssid: Wifi ssid
  - parameter status: 
 */
-- (void)onConnexionChanged:(NSString *)ssid status:(ArsdkFeatureSkyctrlWifistateConnexionchangedStatus)status
+- (void)onConnexionChanged:(nonnull NSString *)ssid status:(ArsdkFeatureSkyctrlWifistateConnexionchangedStatus)status
 NS_SWIFT_NAME(onConnexionChanged(ssid:status:));
 
 /**
@@ -161,7 +161,7 @@ NS_SWIFT_NAME(onWifiAuthChannelListChangedV2(band:channel:inOrOut:listFlags:));
 
  - parameter code: Country code with ISO 3166 format, empty string means unknown country.
 */
-- (void)onWifiCountryChanged:(NSString *)code
+- (void)onWifiCountryChanged:(nonnull NSString *)code
 NS_SWIFT_NAME(onWifiCountryChanged(code:));
 
 /**
@@ -177,7 +177,7 @@ NS_SWIFT_NAME(onWifiEnvironmentChanged(environment:));
 
 @interface ArsdkFeatureSkyctrlWifistate : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureSkyctrlWifistateCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeatureSkyctrlWifistateCallback>)callback;
 
 @end
 

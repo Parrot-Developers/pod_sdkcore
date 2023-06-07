@@ -129,7 +129,7 @@ NS_SWIFT_NAME(onReturnHomeMinAltitudeChanged(value:min:max:));
 
 @interface ArsdkFeatureArdrone3Gpssettingsstate : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureArdrone3GpssettingsstateCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeatureArdrone3GpssettingsstateCallback>)callback;
 
 @end
 

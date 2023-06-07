@@ -13,7 +13,7 @@ struct arsdk_cmd;
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))startAlertSoundEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))startAlertSoundEncoder
 NS_SWIFT_NAME(startAlertSoundEncoder());
 
 /**
@@ -21,7 +21,7 @@ NS_SWIFT_NAME(startAlertSoundEncoder());
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))stopAlertSoundEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))stopAlertSoundEncoder
 NS_SWIFT_NAME(stopAlertSoundEncoder());
 
 @end

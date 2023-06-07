@@ -14,7 +14,7 @@ struct arsdk_cmd;
  - parameter enable: 0: Disabled 1: Enabled.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))buzzEncoder:(NSUInteger)enable
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))buzzEncoder:(NSUInteger)enable
 NS_SWIFT_NAME(buzzEncoder(enable:));
 
 @end

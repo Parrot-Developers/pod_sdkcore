@@ -15,7 +15,7 @@ struct arsdk_cmd;
  - parameter calibrate: 1 if the calibration should be started, 0 if it should be aborted
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))magnetoCalibrationEncoder:(NSUInteger)calibrate
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))magnetoCalibrationEncoder:(NSUInteger)calibrate
 NS_SWIFT_NAME(magnetoCalibrationEncoder(calibrate:));
 
 /**
@@ -25,7 +25,7 @@ NS_SWIFT_NAME(magnetoCalibrationEncoder(calibrate:));
  - parameter calibrate: 1 if the calibration should be started, 0 if it should be aborted
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))pitotCalibrationEncoder:(NSUInteger)calibrate
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))pitotCalibrationEncoder:(NSUInteger)calibrate
 NS_SWIFT_NAME(pitotCalibrationEncoder(calibrate:));
 
 @end

@@ -52,7 +52,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureDriSupportedCapabilities) {
 
 + (BOOL)isSet:(ArsdkFeatureDriSupportedCapabilities)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureDriSupportedCapabilities val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureDriSupportedCapabilities val))cb;
 
 @end
 
@@ -142,7 +142,7 @@ NS_SWIFT_NAME(onDriState(mode:));
  - parameter type: 
  - parameter value: 
 */
-- (void)onDroneId:(ArsdkFeatureDriIdType)type value:(NSString *)value
+- (void)onDroneId:(ArsdkFeatureDriIdType)type value:(nonnull NSString *)value
 NS_SWIFT_NAME(onDroneId(type:value:));
 
 /**
@@ -154,7 +154,7 @@ the 3 secure characters which are only used to verify the ID consistency.
  - parameter type: The DRI type the DRI system is configured with.
  - parameter status: The current status of the DRI configuration.
 */
-- (void)onDriType:(NSString *)id type:(ArsdkFeatureDriDriType)type status:(ArsdkFeatureDriStatus)status
+- (void)onDriType:(nonnull NSString *)id type:(ArsdkFeatureDriDriType)type status:(ArsdkFeatureDriStatus)status
 NS_SWIFT_NAME(onDriType(id:type:status:));
 
 
@@ -162,7 +162,7 @@ NS_SWIFT_NAME(onDriType(id:type:status:));
 
 @interface ArsdkFeatureDri : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureDriCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeatureDriCallback>)callback;
 
 /**
  Set DRI mode. 
@@ -170,7 +170,7 @@ NS_SWIFT_NAME(onDriType(id:type:status:));
  - parameter mode: Mode asked by user
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))driModeEncoder:(ArsdkFeatureDriMode)mode
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))driModeEncoder:(ArsdkFeatureDriMode)mode
 NS_SWIFT_NAME(driModeEncoder(mode:));
 
 /**
@@ -181,7 +181,7 @@ NS_SWIFT_NAME(driModeEncoder(mode:));
 For EN4709 type, it should include the 3 secure characters (and the hyphen).
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setDriTypeEncoder:(ArsdkFeatureDriDriType)type id:(NSString *)id
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setDriTypeEncoder:(ArsdkFeatureDriDriType)type id:(nonnull NSString *)id
 NS_SWIFT_NAME(setDriTypeEncoder(type:id:));
 
 @end

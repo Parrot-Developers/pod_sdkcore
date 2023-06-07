@@ -93,7 +93,7 @@ NS_SWIFT_NAME(onAttitudeChanged(q0:q1:q2:q3:));
 
 @interface ArsdkFeatureSkyctrlSkycontrollerstate : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureSkyctrlSkycontrollerstateCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeatureSkyctrlSkycontrollerstateCallback>)callback;
 
 @end
 

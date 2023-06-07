@@ -107,7 +107,7 @@ NS_SWIFT_NAME(onPitotCalibrationStateChanged(state:lasterror:));
 
 @interface ArsdkFeatureCommonCalibrationstate : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureCommonCalibrationstateCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeatureCommonCalibrationstateCallback>)callback;
 
 @end
 

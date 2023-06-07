@@ -50,7 +50,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureArdrone3MediarecordVideov2Record) {
  - parameter mass_storage_id: Mass storage id to take picture
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))pictureEncoder:(NSUInteger)massStorageId
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))pictureEncoder:(NSUInteger)massStorageId
 NS_SWIFT_NAME(pictureEncoder(massStorageId:));
 
 /**
@@ -60,7 +60,7 @@ NS_SWIFT_NAME(pictureEncoder(massStorageId:));
  - parameter mass_storage_id: Mass storage id to record
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))videoEncoder:(ArsdkFeatureArdrone3MediarecordVideoRecord)record massStorageId:(NSUInteger)massStorageId
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))videoEncoder:(ArsdkFeatureArdrone3MediarecordVideoRecord)record massStorageId:(NSUInteger)massStorageId
 NS_SWIFT_NAME(videoEncoder(record:massStorageId:));
 
 /**
@@ -74,7 +74,7 @@ Also, please note that if your picture format is different from snapshot, pictur
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))pictureV2Encoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))pictureV2Encoder
 NS_SWIFT_NAME(pictureV2Encoder());
 
 /**
@@ -86,7 +86,7 @@ Also, please note that if your picture format is different from snapshot, pictur
  - parameter record: 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))videoV2Encoder:(ArsdkFeatureArdrone3MediarecordVideov2Record)record
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))videoV2Encoder:(ArsdkFeatureArdrone3MediarecordVideov2Record)record
 NS_SWIFT_NAME(videoV2Encoder(record:));
 
 @end

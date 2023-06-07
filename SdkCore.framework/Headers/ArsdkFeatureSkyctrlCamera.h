@@ -13,7 +13,7 @@ struct arsdk_cmd;
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))resetOrientationEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))resetOrientationEncoder
 NS_SWIFT_NAME(resetOrientationEncoder());
 
 @end

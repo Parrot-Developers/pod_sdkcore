@@ -86,7 +86,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureCommonMavlinkstateMavlinkplayerrorstatech
  - parameter filepath: flight plan file path from the mavlink ftp root
  - parameter type: 
 */
-- (void)onMavlinkFilePlayingStateChanged:(ArsdkFeatureCommonMavlinkstateMavlinkfileplayingstatechangedState)state filepath:(NSString *)filepath type:(ArsdkFeatureCommonMavlinkstateMavlinkfileplayingstatechangedType)type
+- (void)onMavlinkFilePlayingStateChanged:(ArsdkFeatureCommonMavlinkstateMavlinkfileplayingstatechangedState)state filepath:(nonnull NSString *)filepath type:(ArsdkFeatureCommonMavlinkstateMavlinkfileplayingstatechangedType)type
 NS_SWIFT_NAME(onMavlinkFilePlayingStateChanged(state:filepath:type:));
 
 /**
@@ -111,7 +111,7 @@ NS_SWIFT_NAME(onMissionItemExecuted(idx:));
 
 @interface ArsdkFeatureCommonMavlinkstate : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureCommonMavlinkstateCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeatureCommonMavlinkstateCallback>)callback;
 
 @end
 

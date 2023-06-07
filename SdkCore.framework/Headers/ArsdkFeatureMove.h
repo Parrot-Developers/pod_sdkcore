@@ -98,7 +98,7 @@ Not applicable to Move. */
 
 + (BOOL)isSet:(ArsdkFeatureMoveIndicator)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureMoveIndicator val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureMoveIndicator val))cb;
 
 @end
 
@@ -120,7 +120,7 @@ NS_SWIFT_NAME(onInfo(missingInputsBitField:));
 
 @interface ArsdkFeatureMove : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureMoveCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeatureMoveCallback>)callback;
 
 /**
  Move the drone to a specified location with speeds limited by the value given.
@@ -140,7 +140,7 @@ This value is only used if the orientation mode is 'heading_start' or 'heading_d
  - parameter max_yaw_rotation_speed: Maximum yaw rotation speed in degrees/s.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))extendedMoveToEncoder:(double)latitude longitude:(double)longitude altitude:(double)altitude orientationMode:(ArsdkFeatureMoveOrientationMode)orientationMode heading:(float)heading maxHorizontalSpeed:(float)maxHorizontalSpeed maxVerticalSpeed:(float)maxVerticalSpeed maxYawRotationSpeed:(float)maxYawRotationSpeed
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))extendedMoveToEncoder:(double)latitude longitude:(double)longitude altitude:(double)altitude orientationMode:(ArsdkFeatureMoveOrientationMode)orientationMode heading:(float)heading maxHorizontalSpeed:(float)maxHorizontalSpeed maxVerticalSpeed:(float)maxVerticalSpeed maxYawRotationSpeed:(float)maxYawRotationSpeed
 NS_SWIFT_NAME(extendedMoveToEncoder(latitude:longitude:altitude:orientationMode:heading:maxHorizontalSpeed:maxVerticalSpeed:maxYawRotationSpeed:));
 
 /**
@@ -157,7 +157,7 @@ Also note that the given rotation will not modify the move (i.e. moves are alway
  - parameter max_yaw_rotation_speed: Maximum yaw rotation speed in degrees/s.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))extendedMoveByEncoder:(float)dX dY:(float)dY dZ:(float)dZ dPsi:(float)dPsi maxHorizontalSpeed:(float)maxHorizontalSpeed maxVerticalSpeed:(float)maxVerticalSpeed maxYawRotationSpeed:(float)maxYawRotationSpeed
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))extendedMoveByEncoder:(float)dX dY:(float)dY dZ:(float)dZ dPsi:(float)dPsi maxHorizontalSpeed:(float)maxHorizontalSpeed maxVerticalSpeed:(float)maxVerticalSpeed maxYawRotationSpeed:(float)maxYawRotationSpeed
 NS_SWIFT_NAME(extendedMoveByEncoder(dX:dY:dZ:dPsi:maxHorizontalSpeed:maxVerticalSpeed:maxYawRotationSpeed:));
 
 @end

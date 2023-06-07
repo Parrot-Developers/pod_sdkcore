@@ -35,7 +35,7 @@ The piloting source is automatically reset to SkyController when the controller 
  - parameter source: 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setPilotingSourceEncoder:(ArsdkFeatureSkyctrlCopilotingSetpilotingsourceSource)source
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setPilotingSourceEncoder:(ArsdkFeatureSkyctrlCopilotingSetpilotingsourceSource)source
 NS_SWIFT_NAME(setPilotingSourceEncoder(source:));
 
 @end

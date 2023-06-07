@@ -43,7 +43,7 @@ NS_SWIFT_NAME(onPilotingSource(source:));
 
 @interface ArsdkFeatureSkyctrlCopilotingstate : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureSkyctrlCopilotingstateCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeatureSkyctrlCopilotingstateCallback>)callback;
 
 @end
 

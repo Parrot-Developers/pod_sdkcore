@@ -35,7 +35,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureArdrone3NetworkWifiscanBand) {
  - parameter band: 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))wifiScanEncoder:(ArsdkFeatureArdrone3NetworkWifiscanBand)band
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))wifiScanEncoder:(ArsdkFeatureArdrone3NetworkWifiscanBand)band
 NS_SWIFT_NAME(wifiScanEncoder(band:));
 
 /**
@@ -44,7 +44,7 @@ The list of available Wifi channels is related to the country of the drone. You 
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))wifiAuthChannelEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))wifiAuthChannelEncoder
 NS_SWIFT_NAME(wifiAuthChannelEncoder());
 
 @end

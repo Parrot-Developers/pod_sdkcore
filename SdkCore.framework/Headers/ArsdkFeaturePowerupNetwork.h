@@ -35,7 +35,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeaturePowerupNetworkWifiscanBand) {
  - parameter band: 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))wifiScanEncoder:(ArsdkFeaturePowerupNetworkWifiscanBand)band
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))wifiScanEncoder:(ArsdkFeaturePowerupNetworkWifiscanBand)band
 NS_SWIFT_NAME(wifiScanEncoder(band:));
 
 /**
@@ -43,7 +43,7 @@ NS_SWIFT_NAME(wifiScanEncoder(band:));
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))wifiAuthChannelEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))wifiAuthChannelEncoder
 NS_SWIFT_NAME(wifiAuthChannelEncoder());
 
 @end

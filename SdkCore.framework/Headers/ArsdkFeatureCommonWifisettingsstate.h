@@ -23,7 +23,7 @@ NS_SWIFT_NAME(onOutdoorSettingsChanged(outdoor:));
 
 @interface ArsdkFeatureCommonWifisettingsstate : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureCommonWifisettingsstateCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeatureCommonWifisettingsstateCallback>)callback;
 
 @end
 

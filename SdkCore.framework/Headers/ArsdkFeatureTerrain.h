@@ -64,7 +64,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureTerrainCalibrationIssue) {
 
 + (BOOL)isSet:(ArsdkFeatureTerrainCalibrationIssue)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureTerrainCalibrationIssue val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureTerrainCalibrationIssue val))cb;
 
 @end
 
@@ -99,14 +99,14 @@ NS_SWIFT_NAME(onCalibrationState(state:issueBitField:));
 
 @interface ArsdkFeatureTerrain : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureTerrainCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeatureTerrainCallback>)callback;
 
 /**
  For calibration, the drone will assume that the pilot is at the center of the image seen. Gimbal angles will be corrected accordingly 
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))calibrateEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))calibrateEncoder
 NS_SWIFT_NAME(calibrateEncoder());
 
 /**
@@ -114,7 +114,7 @@ NS_SWIFT_NAME(calibrateEncoder());
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))calibrationResetEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))calibrationResetEncoder
 NS_SWIFT_NAME(calibrationResetEncoder());
 
 /**
@@ -126,8 +126,19 @@ given by Latitude and Longitude.
  - parameter longitude: Longitude of the location (in degrees)
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setAmslReferenceEncoder:(float)elevation latitude:(double)latitude longitude:(double)longitude
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setAmslReferenceEncoder:(float)elevation latitude:(double)latitude longitude:(double)longitude
 NS_SWIFT_NAME(setAmslReferenceEncoder(elevation:latitude:longitude:));
+
+/**
+ Set the drone position in GPS coordinates corresponding to the origin of its global coordinate system 
+
+ - parameter latitude: Origin latitude in decimal degrees
+ - parameter longitude: Origin longitude in decimal degrees
+ - parameter altitude: Origin altitude in meters as AMSL (height above mean sea level)
+ - returns: a block that encodes the command
+*/
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setGlobalOriginEncoder:(double)latitude longitude:(double)longitude altitude:(float)altitude
+NS_SWIFT_NAME(setGlobalOriginEncoder(latitude:longitude:altitude:));
 
 @end
 

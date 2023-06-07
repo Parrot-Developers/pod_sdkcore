@@ -112,7 +112,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureUserStorageV2Attribute) {
 
 + (BOOL)isSet:(ArsdkFeatureUserStorageV2Attribute)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureUserStorageV2Attribute val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureUserStorageV2Attribute val))cb;
 
 @end
 
@@ -186,7 +186,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureUserStorageV2Feature) {
 
 + (BOOL)isSet:(ArsdkFeatureUserStorageV2Feature)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureUserStorageV2Feature val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureUserStorageV2Feature val))cb;
 
 @end
 
@@ -212,7 +212,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureUserStorageV2FormattingType) {
 
 + (BOOL)isSet:(ArsdkFeatureUserStorageV2FormattingType)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureUserStorageV2FormattingType val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureUserStorageV2FormattingType val))cb;
 
 @end
 
@@ -267,7 +267,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureUserStorageV2PasswordUsage) {
  - parameter capacity: The capacity of the media in Bytes.
  - parameter list_flags: 
 */
-- (void)onInfo:(NSUInteger)storageId name:(NSString *)name capacity:(uint64_t)capacity listFlagsBitField:(NSUInteger)listFlagsBitField
+- (void)onInfo:(NSUInteger)storageId name:(nonnull NSString *)name capacity:(uint64_t)capacity listFlagsBitField:(NSUInteger)listFlagsBitField
 NS_SWIFT_NAME(onInfo(storageId:name:capacity:listFlagsBitField:));
 
 /**
@@ -292,7 +292,7 @@ NS_SWIFT_NAME(onMonitor(storageId:availableBytes:listFlagsBitField:));
  - parameter fstype: Details about filesystem type.
  - parameter list_flags: 
 */
-- (void)onState:(NSUInteger)storageId physicalState:(ArsdkFeatureUserStorageV2PhyState)physicalState fileSystemState:(ArsdkFeatureUserStorageV2FsState)fileSystemState attributeBitField:(NSUInteger)attributeBitField monitorEnabled:(NSUInteger)monitorEnabled monitorPeriod:(NSUInteger)monitorPeriod fstype:(NSString *)fstype listFlagsBitField:(NSUInteger)listFlagsBitField
+- (void)onState:(NSUInteger)storageId physicalState:(ArsdkFeatureUserStorageV2PhyState)physicalState fileSystemState:(ArsdkFeatureUserStorageV2FsState)fileSystemState attributeBitField:(NSUInteger)attributeBitField monitorEnabled:(NSUInteger)monitorEnabled monitorPeriod:(NSUInteger)monitorPeriod fstype:(nonnull NSString *)fstype listFlagsBitField:(NSUInteger)listFlagsBitField
 NS_SWIFT_NAME(onState(storageId:physicalState:fileSystemState:attributeBitField:monitorEnabled:monitorPeriod:fstype:listFlagsBitField:));
 
 /**
@@ -354,7 +354,7 @@ NS_SWIFT_NAME(onDecryption(storageId:result:listFlagsBitField:));
  - parameter uuid: Storage UUID
  - parameter list_flags: 
 */
-- (void)onStorageUuid:(NSUInteger)storageId uuid:(NSString *)uuid listFlagsBitField:(NSUInteger)listFlagsBitField
+- (void)onStorageUuid:(NSUInteger)storageId uuid:(nonnull NSString *)uuid listFlagsBitField:(NSUInteger)listFlagsBitField
 NS_SWIFT_NAME(onStorageUuid(storageId:uuid:listFlagsBitField:));
 
 
@@ -362,7 +362,7 @@ NS_SWIFT_NAME(onStorageUuid(storageId:uuid:listFlagsBitField:));
 
 @interface ArsdkFeatureUserStorageV2 : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureUserStorageV2Callback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeatureUserStorageV2Callback>)callback;
 
 /**
  Start format operation on the media. This could imply its repartitioning if needed. Can be done in state `format_needed` or, if [capabilities](#166-8) contains `format_when_ready_allowed` also in state `ready`. 
@@ -371,7 +371,7 @@ NS_SWIFT_NAME(onStorageUuid(storageId:uuid:listFlagsBitField:));
  - parameter label: Label to set to the file system. If empty, label is set to the product name.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))formatEncoder:(NSUInteger)storageId label:(NSString *)label
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))formatEncoder:(NSUInteger)storageId label:(nonnull NSString *)label
 NS_SWIFT_NAME(formatEncoder(storageId:label:));
 
 /**
@@ -381,7 +381,7 @@ NS_SWIFT_NAME(formatEncoder(storageId:label:));
  - parameter period: Period in seconds to send monitor events. If set to 0, period is set to default value (one second).
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))startMonitoringEncoder:(NSUInteger)storageId period:(NSUInteger)period
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))startMonitoringEncoder:(NSUInteger)storageId period:(NSUInteger)period
 NS_SWIFT_NAME(startMonitoringEncoder(storageId:period:));
 
 /**
@@ -390,7 +390,7 @@ NS_SWIFT_NAME(startMonitoringEncoder(storageId:period:));
  - parameter storage_id: Id of the storage.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))stopMonitoringEncoder:(NSUInteger)storageId
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))stopMonitoringEncoder:(NSUInteger)storageId
 NS_SWIFT_NAME(stopMonitoringEncoder(storageId:));
 
 /**
@@ -401,7 +401,7 @@ NS_SWIFT_NAME(stopMonitoringEncoder(storageId:));
  - parameter type: Formatting type.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))formatWithTypeEncoder:(NSUInteger)storageId label:(NSString *)label type:(ArsdkFeatureUserStorageV2FormattingType)type
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))formatWithTypeEncoder:(NSUInteger)storageId label:(nonnull NSString *)label type:(ArsdkFeatureUserStorageV2FormattingType)type
 NS_SWIFT_NAME(formatWithTypeEncoder(storageId:label:type:));
 
 /**
@@ -412,7 +412,7 @@ NS_SWIFT_NAME(formatWithTypeEncoder(storageId:label:type:));
  - parameter type: Reason of password requirement
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))encryptionPasswordEncoder:(NSUInteger)storageId password:(NSString *)password type:(ArsdkFeatureUserStorageV2PasswordUsage)type
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))encryptionPasswordEncoder:(NSUInteger)storageId password:(nonnull NSString *)password type:(ArsdkFeatureUserStorageV2PasswordUsage)type
 NS_SWIFT_NAME(encryptionPasswordEncoder(storageId:password:type:));
 
 /**
@@ -424,7 +424,7 @@ NS_SWIFT_NAME(encryptionPasswordEncoder(storageId:password:type:));
  - parameter type: Formatting type.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))formatWithEncryptionEncoder:(NSUInteger)storageId label:(NSString *)label password:(NSString *)password type:(ArsdkFeatureUserStorageV2FormattingType)type
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))formatWithEncryptionEncoder:(NSUInteger)storageId label:(nonnull NSString *)label password:(nonnull NSString *)password type:(ArsdkFeatureUserStorageV2FormattingType)type
 NS_SWIFT_NAME(formatWithEncryptionEncoder(storageId:label:password:type:));
 
 @end

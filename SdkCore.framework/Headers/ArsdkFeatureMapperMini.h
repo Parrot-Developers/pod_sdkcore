@@ -145,7 +145,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureMapperMiniMode) {
 
 + (BOOL)isSet:(ArsdkFeatureMapperMiniMode)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureMapperMiniMode val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureMapperMiniMode val))cb;
 
 @end
 
@@ -185,7 +185,7 @@ NS_SWIFT_NAME(onAxisMappingItem(uid:modesBitField:action:axis:buttons:listFlagsB
 
 @interface ArsdkFeatureMapperMini : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureMapperMiniCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeatureMapperMiniCallback>)callback;
 
 /**
  An action can only be mapped to one button set.
@@ -197,7 +197,7 @@ Each action can be mapped to different buttons for different modes.
 Set 0 (no button) to unmap an action
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))mapButtonActionEncoder:(NSUInteger)modesBitField action:(ArsdkFeatureMapperMiniButtonAction)action buttons:(NSUInteger)buttons
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))mapButtonActionEncoder:(NSUInteger)modesBitField action:(ArsdkFeatureMapperMiniButtonAction)action buttons:(NSUInteger)buttons
 NS_SWIFT_NAME(mapButtonActionEncoder(modesBitField:action:buttons:));
 
 /**
@@ -212,7 +212,7 @@ Set a negative value to unmap the action.
 Can be zero if no buttons are required.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))mapAxisActionEncoder:(NSUInteger)modesBitField action:(ArsdkFeatureMapperMiniAxisAction)action axis:(NSInteger)axis buttons:(NSUInteger)buttons
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))mapAxisActionEncoder:(NSUInteger)modesBitField action:(ArsdkFeatureMapperMiniAxisAction)action axis:(NSInteger)axis buttons:(NSUInteger)buttons
 NS_SWIFT_NAME(mapAxisActionEncoder(modesBitField:action:axis:buttons:));
 
 /**
@@ -221,7 +221,7 @@ NS_SWIFT_NAME(mapAxisActionEncoder(modesBitField:action:axis:buttons:));
  - parameter modes: The mode(s) to reset.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))resetMappingEncoder:(NSUInteger)modesBitField
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))resetMappingEncoder:(NSUInteger)modesBitField
 NS_SWIFT_NAME(resetMappingEncoder(modesBitField:));
 
 @end

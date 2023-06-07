@@ -126,7 +126,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureArdrone3SettingsstateMotorerrorlasterrorc
  - parameter software: Product Motors software version
  - parameter hardware: Product Motors hardware version
 */
-- (void)onProductMotorVersionListChanged:(NSUInteger)motorNumber type:(NSString *)type software:(NSString *)software hardware:(NSString *)hardware
+- (void)onProductMotorVersionListChanged:(NSUInteger)motorNumber type:(nonnull NSString *)type software:(nonnull NSString *)software hardware:(nonnull NSString *)hardware
 NS_SWIFT_NAME(onProductMotorVersionListChanged(motorNumber:type:software:hardware:));
 
 /**
@@ -135,7 +135,7 @@ NS_SWIFT_NAME(onProductMotorVersionListChanged(motorNumber:type:software:hardwar
  - parameter software: Product GPS software version
  - parameter hardware: Product GPS hardware version
 */
-- (void)onProductGPSVersionChanged:(NSString *)software hardware:(NSString *)hardware
+- (void)onProductGPSVersionChanged:(nonnull NSString *)software hardware:(nonnull NSString *)hardware
 NS_SWIFT_NAME(onProductGPSVersionChanged(software:hardware:));
 
 /**
@@ -157,7 +157,7 @@ NS_SWIFT_NAME(onMotorErrorStateChanged(motorids:motorerror:));
 
  - parameter version: name of the version : dot separated fields (major version - minor version - firmware type - nb motors handled). Firmware types : Release, Debug, Alpha, Test-bench
 */
-- (void)onMotorSoftwareVersionChanged:(NSString *)version
+- (void)onMotorSoftwareVersionChanged:(nonnull NSString *)version
 NS_SWIFT_NAME(onMotorSoftwareVersionChanged(version:));
 
 /**
@@ -184,7 +184,7 @@ NS_SWIFT_NAME(onMotorErrorLastErrorChanged(motorerror:));
 
  - parameter serialID: Product P7ID
 */
-- (void)onP7ID:(NSString *)serialid
+- (void)onP7ID:(nonnull NSString *)serialid
 NS_SWIFT_NAME(onP7ID(serialid:));
 
 /**
@@ -192,7 +192,7 @@ NS_SWIFT_NAME(onP7ID(serialid:));
 
  - parameter id: Product main cpu id
 */
-- (void)onCPUID:(NSString *)id
+- (void)onCPUID:(nonnull NSString *)id
 NS_SWIFT_NAME(onCPUID(id:));
 
 
@@ -200,7 +200,7 @@ NS_SWIFT_NAME(onCPUID(id:));
 
 @interface ArsdkFeatureArdrone3Settingsstate : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureArdrone3SettingsstateCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeatureArdrone3SettingsstateCallback>)callback;
 
 @end
 

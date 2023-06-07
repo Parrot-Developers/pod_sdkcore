@@ -14,7 +14,7 @@ struct arsdk_cmd;
  - parameter enable: 1 to enable, 0 to disable.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))videoEnableEncoder:(NSUInteger)enable
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))videoEnableEncoder:(NSUInteger)enable
 NS_SWIFT_NAME(videoEnableEncoder(enable:));
 
 @end

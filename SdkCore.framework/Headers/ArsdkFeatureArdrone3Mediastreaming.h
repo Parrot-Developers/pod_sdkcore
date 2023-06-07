@@ -35,7 +35,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureArdrone3MediastreamingVideostreammodeMode
  - parameter enable: 1 to enable, 0 to disable.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))videoEnableEncoder:(NSUInteger)enable
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))videoEnableEncoder:(NSUInteger)enable
 NS_SWIFT_NAME(videoEnableEncoder(enable:));
 
 /**
@@ -44,7 +44,7 @@ NS_SWIFT_NAME(videoEnableEncoder(enable:));
  - parameter mode: 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))videoStreamModeEncoder:(ArsdkFeatureArdrone3MediastreamingVideostreammodeMode)mode
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))videoStreamModeEncoder:(ArsdkFeatureArdrone3MediastreamingVideostreammodeMode)mode
 NS_SWIFT_NAME(videoStreamModeEncoder(mode:));
 
 @end

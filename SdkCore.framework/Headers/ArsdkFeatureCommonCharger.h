@@ -35,7 +35,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureCommonChargerSetmaxchargerateRate) {
  - parameter rate: 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setMaxChargeRateEncoder:(ArsdkFeatureCommonChargerSetmaxchargerateRate)rate
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setMaxChargeRateEncoder:(ArsdkFeatureCommonChargerSetmaxchargerateRate)rate
 NS_SWIFT_NAME(setMaxChargeRateEncoder(rate:));
 
 @end

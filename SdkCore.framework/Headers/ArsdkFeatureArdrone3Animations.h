@@ -38,7 +38,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureArdrone3AnimationsFlipDirection) {
  - parameter direction: 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))flipEncoder:(ArsdkFeatureArdrone3AnimationsFlipDirection)direction
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))flipEncoder:(ArsdkFeatureArdrone3AnimationsFlipDirection)direction
 NS_SWIFT_NAME(flipEncoder(direction:));
 
 @end

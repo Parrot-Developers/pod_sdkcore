@@ -123,7 +123,7 @@ NS_SWIFT_NAME(onBatteryStateChanged(percent:));
  - parameter mass_storage_id: Mass storage id (unique)
  - parameter name: Mass storage name
 */
-- (void)onMassStorageStateListChanged:(NSUInteger)massStorageId name:(NSString *)name
+- (void)onMassStorageStateListChanged:(NSUInteger)massStorageId name:(nonnull NSString *)name
 NS_SWIFT_NAME(onMassStorageStateListChanged(massStorageId:name:));
 
 /**
@@ -147,7 +147,7 @@ Corresponds to the latest date set on the drone.
 
  - parameter date: Date with ISO-8601 format
 */
-- (void)onCurrentDateChanged:(NSString *)date
+- (void)onCurrentDateChanged:(nonnull NSString *)date
 NS_SWIFT_NAME(onCurrentDateChanged(date:));
 
 /**
@@ -158,7 +158,7 @@ Corresponds to the latest time set on the drone.
 
  - parameter time: Time with ISO-8601 format
 */
-- (void)onCurrentTimeChanged:(NSString *)time
+- (void)onCurrentTimeChanged:(nonnull NSString *)time
 NS_SWIFT_NAME(onCurrentTimeChanged(time:));
 
 /**
@@ -206,7 +206,7 @@ NS_SWIFT_NAME(onProductModel(model:));
 0x04: Empty: indicate the list is empty (implies First/Last). All other arguments should be ignored.
  - parameter countryCodes: Following of country code with ISO 3166 format, separated by ";". Be careful of the command size allowed by the network used. If necessary, split the list in several commands.
 */
-- (void)onCountryListKnown:(NSUInteger)listflags countrycodes:(NSString *)countrycodes
+- (void)onCountryListKnown:(NSUInteger)listflags countrycodes:(nonnull NSString *)countrycodes
 NS_SWIFT_NAME(onCountryListKnown(listflags:countrycodes:));
 
 /**
@@ -265,7 +265,7 @@ Corresponds to the latest datetime set on the drone.
 
  - parameter datetime: Datetime with the ISO-8601 complete short format: "%Y%m%dT%H%M%S%z"
 */
-- (void)onCurrentDateTimeChanged:(NSString *)datetime
+- (void)onCurrentDateTimeChanged:(nonnull NSString *)datetime
 NS_SWIFT_NAME(onCurrentDateTimeChanged(datetime:));
 
 /**
@@ -287,7 +287,7 @@ Also, each medias contains the Boot Id.
 
  - parameter bootId: Id of the boot
 */
-- (void)onBootId:(NSString *)bootid
+- (void)onBootId:(nonnull NSString *)bootid
 NS_SWIFT_NAME(onBootId(bootid:));
 
 /**
@@ -296,7 +296,7 @@ A Flight Id identifies a drone flight (between takeoff and land).
 
  - parameter flightId: Id of the flight
 */
-- (void)onFlightId:(NSString *)flightid
+- (void)onFlightId:(nonnull NSString *)flightid
 NS_SWIFT_NAME(onFlightId(flightid:));
 
 
@@ -304,7 +304,7 @@ NS_SWIFT_NAME(onFlightId(flightid:));
 
 @interface ArsdkFeatureCommonCommonstate : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureCommonCommonstateCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeatureCommonCommonstateCallback>)callback;
 
 @end
 

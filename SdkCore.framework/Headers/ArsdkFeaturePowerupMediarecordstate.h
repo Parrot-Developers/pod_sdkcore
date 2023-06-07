@@ -129,7 +129,7 @@ NS_SWIFT_NAME(onVideoStateChangedV2(state:error:));
 
 @interface ArsdkFeaturePowerupMediarecordstate : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeaturePowerupMediarecordstateCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeaturePowerupMediarecordstateCallback>)callback;
 
 @end
 

@@ -372,7 +372,7 @@ NS_SWIFT_NAME(onVolatileMappingState(active:));
 
 @interface ArsdkFeatureMapper : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureMapperCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeatureMapperCallback>)callback;
 
 /**
  Grabbed buttons are sent to the app and are not handled by the mapper 
@@ -381,7 +381,7 @@ NS_SWIFT_NAME(onVolatileMappingState(active:));
  - parameter axes: Axes to grab/ungrab (bitfield)
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))grabEncoder:(NSUInteger)buttons axes:(NSUInteger)axes
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))grabEncoder:(NSUInteger)buttons axes:(NSUInteger)axes
 NS_SWIFT_NAME(grabEncoder(buttons:axes:));
 
 /**
@@ -394,7 +394,7 @@ Each action can be mapped to different buttons for different products.
 Set 0 (no button) to unmap an action
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))mapButtonActionEncoder:(NSUInteger)product action:(ArsdkFeatureMapperButtonAction)action buttons:(NSUInteger)buttons
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))mapButtonActionEncoder:(NSUInteger)product action:(ArsdkFeatureMapperButtonAction)action buttons:(NSUInteger)buttons
 NS_SWIFT_NAME(mapButtonActionEncoder(product:action:buttons:));
 
 /**
@@ -409,7 +409,7 @@ Set a negative value to unmap the action.
 Can be zero if no buttons are required.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))mapAxisActionEncoder:(NSUInteger)product action:(ArsdkFeatureMapperAxisAction)action axis:(NSInteger)axis buttons:(NSUInteger)buttons
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))mapAxisActionEncoder:(NSUInteger)product action:(ArsdkFeatureMapperAxisAction)action axis:(NSInteger)axis buttons:(NSUInteger)buttons
 NS_SWIFT_NAME(mapAxisActionEncoder(product:action:axis:buttons:));
 
 /**
@@ -419,7 +419,7 @@ If the product is given as 0 (zero), the all products are reset.
  - parameter product: The product to reset, or 0 to reset all products.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))resetMappingEncoder:(NSUInteger)product
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))resetMappingEncoder:(NSUInteger)product
 NS_SWIFT_NAME(resetMappingEncoder(product:));
 
 /**
@@ -432,7 +432,7 @@ Set to 0 to apply to all products
  - parameter expo: 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setExpoEncoder:(NSUInteger)product axis:(NSInteger)axis expo:(ArsdkFeatureMapperExpoType)expo
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setExpoEncoder:(NSUInteger)product axis:(NSInteger)axis expo:(ArsdkFeatureMapperExpoType)expo
 NS_SWIFT_NAME(setExpoEncoder(product:axis:expo:));
 
 /**
@@ -445,7 +445,7 @@ Set to 0 to apply to all products
 1 : Axis inverted
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setInvertedEncoder:(NSUInteger)product axis:(NSInteger)axis inverted:(NSUInteger)inverted
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setInvertedEncoder:(NSUInteger)product axis:(NSInteger)axis inverted:(NSUInteger)inverted
 NS_SWIFT_NAME(setInvertedEncoder(product:axis:inverted:));
 
 /**
@@ -453,7 +453,7 @@ NS_SWIFT_NAME(setInvertedEncoder(product:axis:inverted:));
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))enterVolatileMappingEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))enterVolatileMappingEncoder
 NS_SWIFT_NAME(enterVolatileMappingEncoder());
 
 /**
@@ -462,7 +462,7 @@ Any current action is canceled, for example PCMD will become null even if PCMD a
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))exitVolatileMappingEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))exitVolatileMappingEncoder
 NS_SWIFT_NAME(exitVolatileMappingEncoder());
 
 @end

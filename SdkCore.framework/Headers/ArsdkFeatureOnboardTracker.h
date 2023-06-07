@@ -120,7 +120,7 @@ NS_SWIFT_NAME(onTrackingEngineState(state:));
 
 @interface ArsdkFeatureOnboardTracker : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureOnboardTrackerCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeatureOnboardTrackerCallback>)callback;
 
 /**
  Tells the drone to start tracking a target from a rectangle. The previous trackings are not stopped. 
@@ -133,7 +133,7 @@ NS_SWIFT_NAME(onTrackingEngineState(state:));
  - parameter cookie: User cookie associated with the target.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))addTargetFromRectEncoder:(uint64_t)timestamp horizontalPosition:(float)horizontalPosition verticalPosition:(float)verticalPosition height:(float)height width:(float)width cookie:(NSUInteger)cookie
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))addTargetFromRectEncoder:(uint64_t)timestamp horizontalPosition:(float)horizontalPosition verticalPosition:(float)verticalPosition height:(float)height width:(float)width cookie:(NSUInteger)cookie
 NS_SWIFT_NAME(addTargetFromRectEncoder(timestamp:horizontalPosition:verticalPosition:height:width:cookie:));
 
 /**
@@ -144,7 +144,7 @@ NS_SWIFT_NAME(addTargetFromRectEncoder(timestamp:horizontalPosition:verticalPosi
  - parameter cookie: User cookie associated with the target.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))addTargetFromProposalEncoder:(uint64_t)timestamp targetId:(NSUInteger)targetId cookie:(NSUInteger)cookie
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))addTargetFromProposalEncoder:(uint64_t)timestamp targetId:(NSUInteger)targetId cookie:(NSUInteger)cookie
 NS_SWIFT_NAME(addTargetFromProposalEncoder(timestamp:targetId:cookie:));
 
 /**
@@ -153,7 +153,7 @@ NS_SWIFT_NAME(addTargetFromProposalEncoder(timestamp:targetId:cookie:));
  - parameter target_id: Id of the target coming from the metadata given by the drone.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))removeTargetEncoder:(NSUInteger)targetId
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))removeTargetEncoder:(NSUInteger)targetId
 NS_SWIFT_NAME(removeTargetEncoder(targetId:));
 
 /**
@@ -167,7 +167,7 @@ NS_SWIFT_NAME(removeTargetEncoder(targetId:));
  - parameter cookie: User cookie associated with the target.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))replaceAllByTargetFromRectEncoder:(uint64_t)timestamp horizontalPosition:(float)horizontalPosition verticalPosition:(float)verticalPosition height:(float)height width:(float)width cookie:(NSUInteger)cookie
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))replaceAllByTargetFromRectEncoder:(uint64_t)timestamp horizontalPosition:(float)horizontalPosition verticalPosition:(float)verticalPosition height:(float)height width:(float)width cookie:(NSUInteger)cookie
 NS_SWIFT_NAME(replaceAllByTargetFromRectEncoder(timestamp:horizontalPosition:verticalPosition:height:width:cookie:));
 
 /**
@@ -178,7 +178,7 @@ NS_SWIFT_NAME(replaceAllByTargetFromRectEncoder(timestamp:horizontalPosition:ver
  - parameter cookie: User cookie associated with the target.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))replaceAllByTargetFromProposalEncoder:(uint64_t)timestamp targetId:(NSUInteger)targetId cookie:(NSUInteger)cookie
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))replaceAllByTargetFromProposalEncoder:(uint64_t)timestamp targetId:(NSUInteger)targetId cookie:(NSUInteger)cookie
 NS_SWIFT_NAME(replaceAllByTargetFromProposalEncoder(timestamp:targetId:cookie:));
 
 /**
@@ -186,7 +186,7 @@ NS_SWIFT_NAME(replaceAllByTargetFromProposalEncoder(timestamp:targetId:cookie:))
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))removeAllTargetsEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))removeAllTargetsEncoder
 NS_SWIFT_NAME(removeAllTargetsEncoder());
 
 /**
@@ -196,7 +196,7 @@ NS_SWIFT_NAME(removeAllTargetsEncoder());
 Boolean: 0: start without box proposals / 1: start with box proposals
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))startTrackingEngineEncoder:(NSUInteger)boxProposals
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))startTrackingEngineEncoder:(NSUInteger)boxProposals
 NS_SWIFT_NAME(startTrackingEngineEncoder(boxProposals:));
 
 /**
@@ -204,7 +204,7 @@ NS_SWIFT_NAME(startTrackingEngineEncoder(boxProposals:));
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))stopTrackingEngineEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))stopTrackingEngineEncoder
 NS_SWIFT_NAME(stopTrackingEngineEncoder());
 
 @end

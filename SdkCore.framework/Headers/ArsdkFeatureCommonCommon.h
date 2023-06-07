@@ -16,7 +16,7 @@ libARController API as this library is handling the connection process for you.*
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))allStatesEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))allStatesEncoder
 NS_SWIFT_NAME(allStatesEncoder());
 
 /**
@@ -30,7 +30,7 @@ libARController API as this library is handling the connection process for you.*
  - parameter date: Date with ISO-8601 format
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))currentDateEncoder:(NSString *)date
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))currentDateEncoder:(nonnull NSString *)date
 NS_SWIFT_NAME(currentDateEncoder(date:));
 
 /**
@@ -44,7 +44,7 @@ libARController API as this library is handling the connection process for you.*
  - parameter time: Time with ISO-8601 format
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))currentTimeEncoder:(NSString *)time
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))currentTimeEncoder:(nonnull NSString *)time
 NS_SWIFT_NAME(currentTimeEncoder(time:));
 
 /**
@@ -53,7 +53,7 @@ The product will accept this command only if is not flying.
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))rebootEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))rebootEncoder
 NS_SWIFT_NAME(rebootEncoder());
 
 /**
@@ -68,7 +68,7 @@ libARController API as this library is handling the connection process for you.*
  - parameter datetime: DateTime with the ISO-8601 complete short format: "%Y%m%dT%H%M%S%z"
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))currentDateTimeEncoder:(NSString *)datetime
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))currentDateTimeEncoder:(nonnull NSString *)datetime
 NS_SWIFT_NAME(currentDateTimeEncoder(datetime:));
 
 @end

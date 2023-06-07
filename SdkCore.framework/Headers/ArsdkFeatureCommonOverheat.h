@@ -13,7 +13,7 @@ struct arsdk_cmd;
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))switchOffEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))switchOffEncoder
 NS_SWIFT_NAME(switchOffEncoder());
 
 /**
@@ -21,7 +21,7 @@ NS_SWIFT_NAME(switchOffEncoder());
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))ventilateEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))ventilateEncoder
 NS_SWIFT_NAME(ventilateEncoder());
 
 @end

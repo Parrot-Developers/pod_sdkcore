@@ -725,7 +725,7 @@ NS_SWIFT_NAME(onIcingLevelChanged(state:));
 
 @interface ArsdkFeatureArdrone3Pilotingstate : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureArdrone3PilotingstateCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeatureArdrone3PilotingstateCallback>)callback;
 
 @end
 

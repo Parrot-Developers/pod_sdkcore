@@ -15,7 +15,7 @@ The controller should clear the local wifi list before sending this command.
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))requestWifiListEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))requestWifiListEncoder
 NS_SWIFT_NAME(requestWifiListEncoder());
 
 /**
@@ -23,7 +23,7 @@ NS_SWIFT_NAME(requestWifiListEncoder());
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))requestCurrentWifiEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))requestCurrentWifiEncoder
 NS_SWIFT_NAME(requestCurrentWifiEncoder());
 
 /**
@@ -35,7 +35,7 @@ If the network is secured, then the passphrase must be set. For non-secure netwo
  - parameter passphrase: Wifi passphrase
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))connectToWifiEncoder:(NSString *)bssid ssid:(NSString *)ssid passphrase:(NSString *)passphrase
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))connectToWifiEncoder:(nonnull NSString *)bssid ssid:(nonnull NSString *)ssid passphrase:(nonnull NSString *)passphrase
 NS_SWIFT_NAME(connectToWifiEncoder(bssid:ssid:passphrase:));
 
 /**
@@ -45,7 +45,7 @@ If the network is the current network, then the SkyController will be disconnect
  - parameter ssid: Wifi ssid
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))forgetWifiEncoder:(NSString *)ssid
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))forgetWifiEncoder:(nonnull NSString *)ssid
 NS_SWIFT_NAME(forgetWifiEncoder(ssid:));
 
 /**
@@ -54,7 +54,7 @@ These channels are valid for the [AccessPointChannel](#4-9-1) command.
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))wifiAuthChannelEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))wifiAuthChannelEncoder
 NS_SWIFT_NAME(wifiAuthChannelEncoder());
 
 @end

@@ -13,7 +13,7 @@ struct arsdk_cmd;
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))getCurrentAxisMappingsEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))getCurrentAxisMappingsEncoder
 NS_SWIFT_NAME(getCurrentAxisMappingsEncoder());
 
 /**
@@ -22,7 +22,7 @@ As this list is static, the controller only need to request this information onc
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))getAvailableAxisMappingsEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))getAvailableAxisMappingsEncoder
 NS_SWIFT_NAME(getAvailableAxisMappingsEncoder());
 
 /**
@@ -34,7 +34,7 @@ Some actions can not be mapped to two different axes at the same time. In this c
  - parameter mapping_uid: The mapping to associate with the axis
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setAxisMappingEncoder:(NSInteger)axisId mappingUid:(NSString *)mappingUid
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setAxisMappingEncoder:(NSInteger)axisId mappingUid:(nonnull NSString *)mappingUid
 NS_SWIFT_NAME(setAxisMappingEncoder(axisId:mappingUid:));
 
 /**
@@ -42,7 +42,7 @@ NS_SWIFT_NAME(setAxisMappingEncoder(axisId:mappingUid:));
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))defaultAxisMappingEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))defaultAxisMappingEncoder
 NS_SWIFT_NAME(defaultAxisMappingEncoder());
 
 @end

@@ -135,7 +135,7 @@ NS_SWIFT_NAME(onVideoEventChanged(event:error:));
 
 @interface ArsdkFeaturePowerupMediarecordevent : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeaturePowerupMediarecordeventCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeaturePowerupMediarecordeventCallback>)callback;
 
 @end
 

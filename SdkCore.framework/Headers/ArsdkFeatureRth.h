@@ -37,7 +37,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureRthHomeType) {
 
 + (BOOL)isSet:(ArsdkFeatureRthHomeType)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureRthHomeType val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureRthHomeType val))cb;
 
 @end
 
@@ -260,7 +260,7 @@ Not applicable to Return home. */
 
 + (BOOL)isSet:(ArsdkFeatureRthIndicator)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureRthIndicator val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureRthIndicator val))cb;
 
 @end
 
@@ -412,7 +412,7 @@ NS_SWIFT_NAME(onInfo(missingInputsBitField:));
 
 @interface ArsdkFeatureRth : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureRthCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeatureRthCallback>)callback;
 
 /**
  Set the preferred home location type. The drone will always choose this home type when available. 
@@ -420,7 +420,7 @@ NS_SWIFT_NAME(onInfo(missingInputsBitField:));
  - parameter type: Preferred home type.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setPreferredHomeTypeEncoder:(ArsdkFeatureRthHomeType)type
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setPreferredHomeTypeEncoder:(ArsdkFeatureRthHomeType)type
 NS_SWIFT_NAME(setPreferredHomeTypeEncoder(type:));
 
 /**
@@ -431,7 +431,7 @@ NS_SWIFT_NAME(setPreferredHomeTypeEncoder(type:));
  - parameter altitude: Altitude of the custom location above takeoff (ATO).
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setCustomLocationEncoder:(double)latitude longitude:(double)longitude altitude:(float)altitude
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setCustomLocationEncoder:(double)latitude longitude:(double)longitude altitude:(float)altitude
 NS_SWIFT_NAME(setCustomLocationEncoder(latitude:longitude:altitude:));
 
 /**
@@ -440,7 +440,7 @@ NS_SWIFT_NAME(setCustomLocationEncoder(latitude:longitude:altitude:));
  - parameter delay: Delay in second
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setDelayEncoder:(NSUInteger)delay
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setDelayEncoder:(NSUInteger)delay
 NS_SWIFT_NAME(setDelayEncoder(delay:));
 
 /**
@@ -448,7 +448,7 @@ NS_SWIFT_NAME(setDelayEncoder(delay:));
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))returnToHomeEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))returnToHomeEncoder
 NS_SWIFT_NAME(returnToHomeEncoder());
 
 /**
@@ -456,7 +456,7 @@ NS_SWIFT_NAME(returnToHomeEncoder());
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))abortEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))abortEncoder
 NS_SWIFT_NAME(abortEncoder());
 
 /**
@@ -464,7 +464,7 @@ NS_SWIFT_NAME(abortEncoder());
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))cancelAutoTriggerEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))cancelAutoTriggerEncoder
 NS_SWIFT_NAME(cancelAutoTriggerEncoder());
 
 /**
@@ -473,7 +473,7 @@ NS_SWIFT_NAME(cancelAutoTriggerEncoder());
  - parameter altitude: Return home min altitude above takeoff (ATO).
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setMinAltitudeEncoder:(float)altitude
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setMinAltitudeEncoder:(float)altitude
 NS_SWIFT_NAME(setMinAltitudeEncoder(altitude:));
 
 /**
@@ -482,7 +482,7 @@ NS_SWIFT_NAME(setMinAltitudeEncoder(altitude:));
  - parameter mode: Mode asked by user
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setAutoTriggerModeEncoder:(ArsdkFeatureRthAutoTriggerMode)mode
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setAutoTriggerModeEncoder:(ArsdkFeatureRthAutoTriggerMode)mode
 NS_SWIFT_NAME(setAutoTriggerModeEncoder(mode:));
 
 /**
@@ -491,7 +491,7 @@ NS_SWIFT_NAME(setAutoTriggerModeEncoder(mode:));
  - parameter ending_behavior: Ending behavior action
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setEndingBehaviorEncoder:(ArsdkFeatureRthEndingBehavior)endingBehavior
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setEndingBehaviorEncoder:(ArsdkFeatureRthEndingBehavior)endingBehavior
 NS_SWIFT_NAME(setEndingBehaviorEncoder(endingBehavior:));
 
 /**
@@ -501,7 +501,7 @@ NS_SWIFT_NAME(setEndingBehaviorEncoder(endingBehavior:));
 This end altitude is AGL (above ground level).
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setEndingHoveringAltitudeEncoder:(float)altitude
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setEndingHoveringAltitudeEncoder:(float)altitude
 NS_SWIFT_NAME(setEndingHoveringAltitudeEncoder(altitude:));
 
 @end

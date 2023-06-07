@@ -91,7 +91,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureSequoiaCamSensorValue) {
 
 + (BOOL)isSet:(ArsdkFeatureSequoiaCamSensorValue)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureSequoiaCamSensorValue val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureSequoiaCamSensorValue val))cb;
 
 @end
 
@@ -138,7 +138,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureSequoiaCamSystemError) {
 
 + (BOOL)isSet:(ArsdkFeatureSequoiaCamSystemError)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureSequoiaCamSystemError val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureSequoiaCamSystemError val))cb;
 
 @end
 
@@ -177,7 +177,7 @@ NS_SWIFT_NAME(onRadiometricCalibResult(camId:value:listFlagsBitField:));
  - parameter live_stitch_path: 
  - parameter list_flags: 
 */
-- (void)onSessionStateChanged:(NSUInteger)camId state:(ArsdkFeatureSequoiaCamSessionStatusValue)state sessionPath:(NSString *)sessionPath liveStitchPath:(NSString *)liveStitchPath listFlagsBitField:(NSUInteger)listFlagsBitField
+- (void)onSessionStateChanged:(NSUInteger)camId state:(ArsdkFeatureSequoiaCamSessionStatusValue)state sessionPath:(nonnull NSString *)sessionPath liveStitchPath:(nonnull NSString *)liveStitchPath listFlagsBitField:(NSUInteger)listFlagsBitField
 NS_SWIFT_NAME(onSessionStateChanged(camId:state:sessionPath:liveStitchPath:listFlagsBitField:));
 
 /**
@@ -247,7 +247,7 @@ NS_SWIFT_NAME(onLiveStitchPicturesInProgressNumberChanged(camId:nbPictures:listF
 
 @interface ArsdkFeatureSequoiaCam : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureSequoiaCamCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeatureSequoiaCamCallback>)callback;
 
 /**
  Launch capture on radiometric calibration mode. This PTP mode is 0x8004 
@@ -255,7 +255,7 @@ NS_SWIFT_NAME(onLiveStitchPicturesInProgressNumberChanged(camId:nbPictures:listF
  - parameter id: Camera id, as given in the [connected accessories](#1-33-0) event.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))radiometricCalibStartEncoder:(NSUInteger)id
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))radiometricCalibStartEncoder:(NSUInteger)id
 NS_SWIFT_NAME(radiometricCalibStartEncoder(id:));
 
 /**
@@ -265,7 +265,7 @@ NS_SWIFT_NAME(radiometricCalibStartEncoder(id:));
  - parameter name: Name of the session, only letters, numbers, '-' and '_' are allowed.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))openSessionEncoder:(NSUInteger)id name:(NSString *)name
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))openSessionEncoder:(NSUInteger)id name:(nonnull NSString *)name
 NS_SWIFT_NAME(openSessionEncoder(id:name:));
 
 /**
@@ -274,7 +274,7 @@ NS_SWIFT_NAME(openSessionEncoder(id:name:));
  - parameter id: Camera id, as given in the [connected accessories](#1-33-0) event.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))closeSessionEncoder:(NSUInteger)id
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))closeSessionEncoder:(NSUInteger)id
 NS_SWIFT_NAME(closeSessionEncoder(id:));
 
 /**
@@ -284,7 +284,7 @@ NS_SWIFT_NAME(closeSessionEncoder(id:));
  - parameter sensors_mask: Sensors to use for live stitch
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setLiveStitchMaskEncoder:(NSUInteger)id sensorsMaskBitField:(NSUInteger)sensorsMaskBitField
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setLiveStitchMaskEncoder:(NSUInteger)id sensorsMaskBitField:(NSUInteger)sensorsMaskBitField
 NS_SWIFT_NAME(setLiveStitchMaskEncoder(id:sensorsMaskBitField:));
 
 /**
@@ -293,7 +293,7 @@ NS_SWIFT_NAME(setLiveStitchMaskEncoder(id:sensorsMaskBitField:));
  - parameter id: Camera id, as given in the [connected accessories](#1-33-0) event.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))getStorageInfosEncoder:(NSUInteger)id
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))getStorageInfosEncoder:(NSUInteger)id
 NS_SWIFT_NAME(getStorageInfosEncoder(id:));
 
 /**
@@ -302,7 +302,7 @@ NS_SWIFT_NAME(getStorageInfosEncoder(id:));
  - parameter id: Camera id, as given in the [connected accessories](#1-33-0) event.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))factoryResetEncoder:(NSUInteger)id
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))factoryResetEncoder:(NSUInteger)id
 NS_SWIFT_NAME(factoryResetEncoder(id:));
 
 @end

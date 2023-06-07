@@ -79,7 +79,7 @@ command to compensate a dive during turn. No unit. */
  - parameter value: value of the given setting
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setEncoder:(ArsdkFeaturePowerupPilotingsettingsSetSetting)setting value:(float)value
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setEncoder:(ArsdkFeaturePowerupPilotingsettingsSetSetting)setting value:(float)value
 NS_SWIFT_NAME(setEncoder(setting:value:));
 
 @end

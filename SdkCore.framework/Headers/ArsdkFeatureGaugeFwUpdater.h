@@ -76,7 +76,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureGaugeFwUpdaterRequirements) {
 
 + (BOOL)isSet:(ArsdkFeatureGaugeFwUpdaterRequirements)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureGaugeFwUpdaterRequirements val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureGaugeFwUpdaterRequirements val))cb;
 
 @end
 
@@ -138,14 +138,14 @@ NS_SWIFT_NAME(onProgress(result:percent:));
 
 @interface ArsdkFeatureGaugeFwUpdater : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureGaugeFwUpdaterCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeatureGaugeFwUpdaterCallback>)callback;
 
 /**
  Prepare Update 
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))prepareEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))prepareEncoder
 NS_SWIFT_NAME(prepareEncoder());
 
 /**
@@ -153,7 +153,7 @@ NS_SWIFT_NAME(prepareEncoder());
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))updateEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))updateEncoder
 NS_SWIFT_NAME(updateEncoder());
 
 @end

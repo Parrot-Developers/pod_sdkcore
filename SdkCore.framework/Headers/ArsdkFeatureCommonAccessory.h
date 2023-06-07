@@ -46,7 +46,7 @@ You can know if it possible with the event [AccessoryDeclarationAvailability](#0
  - parameter accessory: 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))configEncoder:(ArsdkFeatureCommonAccessoryConfigAccessory)accessory
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))configEncoder:(ArsdkFeatureCommonAccessoryConfigAccessory)accessory
 NS_SWIFT_NAME(configEncoder(accessory:));
 
 @end

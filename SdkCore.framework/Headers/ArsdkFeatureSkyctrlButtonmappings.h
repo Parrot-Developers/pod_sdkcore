@@ -13,7 +13,7 @@ struct arsdk_cmd;
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))getCurrentButtonMappingsEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))getCurrentButtonMappingsEncoder
 NS_SWIFT_NAME(getCurrentButtonMappingsEncoder());
 
 /**
@@ -22,7 +22,7 @@ As this list is static, the controller only need to request this information onc
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))getAvailableButtonMappingsEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))getAvailableButtonMappingsEncoder
 NS_SWIFT_NAME(getAvailableButtonMappingsEncoder());
 
 /**
@@ -34,7 +34,7 @@ Some actions can not be mapped to two different buttons at the same time. In thi
  - parameter mapping_uid: The mapping to associate with the key
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setButtonMappingEncoder:(NSInteger)keyId mappingUid:(NSString *)mappingUid
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setButtonMappingEncoder:(NSInteger)keyId mappingUid:(nonnull NSString *)mappingUid
 NS_SWIFT_NAME(setButtonMappingEncoder(keyId:mappingUid:));
 
 /**
@@ -43,7 +43,7 @@ The default values are different for Black Edition SkyControllers
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))defaultButtonMappingEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))defaultButtonMappingEncoder
 NS_SWIFT_NAME(defaultButtonMappingEncoder());
 
 @end

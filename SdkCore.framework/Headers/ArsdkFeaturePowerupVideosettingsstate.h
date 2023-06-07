@@ -49,7 +49,7 @@ NS_SWIFT_NAME(onVideoModeChanged(mode:));
 
 @interface ArsdkFeaturePowerupVideosettingsstate : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeaturePowerupVideosettingsstateCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeaturePowerupVideosettingsstateCallback>)callback;
 
 @end
 

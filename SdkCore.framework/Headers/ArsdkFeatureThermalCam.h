@@ -49,7 +49,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureThermalCamRange) {
 
 + (BOOL)isSet:(ArsdkFeatureThermalCamRange)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureThermalCamRange val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureThermalCamRange val))cb;
 
 @end
 
@@ -191,7 +191,7 @@ NS_SWIFT_NAME(onFlatFieldCalibrationMode(camId:mode:listFlagsBitField:));
 
 @interface ArsdkFeatureThermalCam : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureThermalCamCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeatureThermalCamCallback>)callback;
 
 /**
  Activate a given thermal camera.
@@ -200,7 +200,7 @@ Activating a camera may deactivate others on some drones.
  - parameter cam_id: Thermal camera id, as given in the [connected accessories](#1-33-0) event.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))activateEncoder:(NSUInteger)camId
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))activateEncoder:(NSUInteger)camId
 NS_SWIFT_NAME(activateEncoder(camId:));
 
 /**
@@ -209,7 +209,7 @@ NS_SWIFT_NAME(activateEncoder(camId:));
  - parameter cam_id: Thermal camera id, as given in the [connected accessories](#1-33-0) event.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))deactivateEncoder:(NSUInteger)camId
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))deactivateEncoder:(NSUInteger)camId
 NS_SWIFT_NAME(deactivateEncoder(camId:));
 
 /**
@@ -219,7 +219,7 @@ NS_SWIFT_NAME(deactivateEncoder(camId:));
  - parameter range: 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setSensitivityEncoder:(NSUInteger)camId range:(ArsdkFeatureThermalCamRange)range
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setSensitivityEncoder:(NSUInteger)camId range:(ArsdkFeatureThermalCamRange)range
 NS_SWIFT_NAME(setSensitivityEncoder(camId:range:));
 
 /**
@@ -228,7 +228,7 @@ NS_SWIFT_NAME(setSensitivityEncoder(camId:range:));
  - parameter cam_id: Thermal camera id, as given in the [connected accessories](#1-33-0) event.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))flatFieldCalibrateEncoder:(NSUInteger)camId
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))flatFieldCalibrateEncoder:(NSUInteger)camId
 NS_SWIFT_NAME(flatFieldCalibrateEncoder(camId:));
 
 /**
@@ -238,7 +238,7 @@ NS_SWIFT_NAME(flatFieldCalibrateEncoder(camId:));
  - parameter mode: 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setFlatFieldCalibrationModeEncoder:(NSUInteger)camId mode:(ArsdkFeatureThermalCamFlatFieldCalibrationMode)mode
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setFlatFieldCalibrationModeEncoder:(NSUInteger)camId mode:(ArsdkFeatureThermalCamFlatFieldCalibrationMode)mode
 NS_SWIFT_NAME(setFlatFieldCalibrationModeEncoder(camId:mode:));
 
 @end

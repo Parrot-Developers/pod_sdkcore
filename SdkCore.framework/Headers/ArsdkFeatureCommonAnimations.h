@@ -141,7 +141,7 @@ List of available animations can be retrieved from [AnimationsStateList](#0-25-0
  - parameter anim: 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))startAnimationEncoder:(ArsdkFeatureCommonAnimationsStartanimationAnim)anim
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))startAnimationEncoder:(ArsdkFeatureCommonAnimationsStartanimationAnim)anim
 NS_SWIFT_NAME(startAnimationEncoder(anim:));
 
 /**
@@ -151,7 +151,7 @@ List of running animations can be retrieved from [AnimationsStateList](#0-25-0).
  - parameter anim: 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))stopAnimationEncoder:(ArsdkFeatureCommonAnimationsStopanimationAnim)anim
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))stopAnimationEncoder:(ArsdkFeatureCommonAnimationsStopanimationAnim)anim
 NS_SWIFT_NAME(stopAnimationEncoder(anim:));
 
 /**
@@ -160,7 +160,7 @@ List of running animations can be retrieved from [AnimationsStateList](#0-25-0).
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))stopAllAnimationsEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))stopAllAnimationsEncoder
 NS_SWIFT_NAME(stopAllAnimationsEncoder());
 
 @end

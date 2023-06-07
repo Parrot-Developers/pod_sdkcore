@@ -77,7 +77,7 @@ available, becomes the main controller. */
 
 + (BOOL)isSet:(ArsdkFeatureRcChannelAction)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureRcChannelAction val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureRcChannelAction val))cb;
 
 @end
 
@@ -139,7 +139,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureRcChannelType) {
 
 + (BOOL)isSet:(ArsdkFeatureRcChannelType)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureRcChannelType val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureRcChannelType val))cb;
 
 @end
 
@@ -155,7 +155,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureRcChannelType) {
  - parameter enabled: 1 if enabled, 0 otherwise.
 If enabled, drone will apply values sent by RC receiver.
 */
-- (void)onReceiverState:(ArsdkFeatureRcReceiverState)state protocol:(NSString *)protocol enabled:(NSUInteger)enabled
+- (void)onReceiverState:(ArsdkFeatureRcReceiverState)state protocol:(nonnull NSString *)protocol enabled:(NSUInteger)enabled
 NS_SWIFT_NAME(onReceiverState(state:protocol:enabled:));
 
 /**
@@ -210,7 +210,7 @@ NS_SWIFT_NAME(onChannelActionItem(action:supportedTypeBitField:calibratedType:in
 
 @interface ArsdkFeatureRc : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureRcCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeatureRcCallback>)callback;
 
 /**
  Enable or Disable RC channels monitoring.
@@ -220,7 +220,7 @@ events.
  - parameter enable: 1 for enable / 0 to disable
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))monitorChannelsEncoder:(NSUInteger)enable
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))monitorChannelsEncoder:(NSUInteger)enable
 NS_SWIFT_NAME(monitorChannelsEncoder(enable:));
 
 /**
@@ -233,7 +233,7 @@ only used when calibration_type=min_max.
 only used when calibration_type=min_max.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))startCalibrationEncoder:(ArsdkFeatureRcCalibrationType)calibrationType channelAction:(ArsdkFeatureRcChannelAction)channelAction channelType:(ArsdkFeatureRcChannelType)channelType
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))startCalibrationEncoder:(ArsdkFeatureRcCalibrationType)calibrationType channelAction:(ArsdkFeatureRcChannelAction)channelAction channelType:(ArsdkFeatureRcChannelType)channelType
 NS_SWIFT_NAME(startCalibrationEncoder(calibrationType:channelAction:channelType:));
 
 /**
@@ -243,7 +243,7 @@ NS_SWIFT_NAME(startCalibrationEncoder(calibrationType:channelAction:channelType:
  - parameter flag: 1 to invert channel 0 to restore channel.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))invertChannelEncoder:(ArsdkFeatureRcChannelAction)action flag:(NSUInteger)flag
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))invertChannelEncoder:(ArsdkFeatureRcChannelAction)action flag:(NSUInteger)flag
 NS_SWIFT_NAME(invertChannelEncoder(action:flag:));
 
 /**
@@ -251,7 +251,7 @@ NS_SWIFT_NAME(invertChannelEncoder(action:flag:));
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))abortCalibrationEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))abortCalibrationEncoder
 NS_SWIFT_NAME(abortCalibrationEncoder());
 
 /**
@@ -259,7 +259,7 @@ NS_SWIFT_NAME(abortCalibrationEncoder());
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))resetCalibrationEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))resetCalibrationEncoder
 NS_SWIFT_NAME(resetCalibrationEncoder());
 
 /**
@@ -269,7 +269,7 @@ If enable, drone will apply values sent by RC receiver.
  - parameter enable: 1 for enable / 0 to disable
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))enableReceiverEncoder:(NSUInteger)enable
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))enableReceiverEncoder:(NSUInteger)enable
 NS_SWIFT_NAME(enableReceiverEncoder(enable:));
 
 @end

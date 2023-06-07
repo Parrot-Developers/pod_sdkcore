@@ -34,7 +34,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeaturePowerupPilotingMotormodeMode) {
  - parameter roll: Yaw-roll value. [-100:100]
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))pCMDEncoder:(NSUInteger)flag throttle:(NSUInteger)throttle roll:(NSInteger)roll
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))pCMDEncoder:(NSUInteger)flag throttle:(NSUInteger)throttle roll:(NSInteger)roll
 NS_SWIFT_NAME(pCMDEncoder(flag:throttle:roll:));
 
 /**
@@ -45,7 +45,7 @@ NS_SWIFT_NAME(pCMDEncoder(flag:throttle:roll:));
 - 0 to exit from user take off.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))userTakeOffEncoder:(NSUInteger)state
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))userTakeOffEncoder:(NSUInteger)state
 NS_SWIFT_NAME(userTakeOffEncoder(state:));
 
 /**
@@ -54,7 +54,7 @@ NS_SWIFT_NAME(userTakeOffEncoder(state:));
  - parameter mode: 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))motorModeEncoder:(ArsdkFeaturePowerupPilotingMotormodeMode)mode
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))motorModeEncoder:(ArsdkFeaturePowerupPilotingMotormodeMode)mode
 NS_SWIFT_NAME(motorModeEncoder(mode:));
 
 @end

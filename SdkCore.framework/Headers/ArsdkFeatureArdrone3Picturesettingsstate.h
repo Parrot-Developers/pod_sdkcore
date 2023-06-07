@@ -236,7 +236,7 @@ NS_SWIFT_NAME(onVideoResolutionsChanged(type:));
 
 @interface ArsdkFeatureArdrone3Picturesettingsstate : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureArdrone3PicturesettingsstateCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeatureArdrone3PicturesettingsstateCallback>)callback;
 
 @end
 

@@ -54,7 +54,7 @@ This is used to avoid the video flickering in auto mode. You can get the current
  - parameter frequency: 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))electricFrequencyEncoder:(ArsdkFeatureArdrone3AntiflickeringElectricfrequencyFrequency)frequency
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))electricFrequencyEncoder:(ArsdkFeatureArdrone3AntiflickeringElectricfrequencyFrequency)frequency
 NS_SWIFT_NAME(electricFrequencyEncoder(frequency:));
 
 /**
@@ -66,7 +66,7 @@ Forcing the antiflickering (FixedFiftyHertz or FixedFiftyHertz) can reduce lumin
  - parameter mode: 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setModeEncoder:(ArsdkFeatureArdrone3AntiflickeringSetmodeMode)mode
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setModeEncoder:(ArsdkFeatureArdrone3AntiflickeringSetmodeMode)mode
 NS_SWIFT_NAME(setModeEncoder(mode:));
 
 @end

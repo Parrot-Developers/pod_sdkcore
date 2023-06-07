@@ -16,7 +16,7 @@ libARController API as this library is handling the connection process for you.*
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))allSettingsEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))allSettingsEncoder
 NS_SWIFT_NAME(allSettingsEncoder());
 
 /**
@@ -24,7 +24,7 @@ NS_SWIFT_NAME(allSettingsEncoder());
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))resetEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))resetEncoder
 NS_SWIFT_NAME(resetEncoder());
 
 /**
@@ -34,7 +34,7 @@ It also sets the name of the SSID for Wifi products and advertisement name for B
  - parameter name: Product name
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))productNameEncoder:(NSString *)name
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))productNameEncoder:(nonnull NSString *)name
 NS_SWIFT_NAME(productNameEncoder(name:));
 
 /**
@@ -45,7 +45,7 @@ This can modify Wifi band and/or channel.
  - parameter code: Country code with ISO 3166 format
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))countryEncoder:(NSString *)code
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))countryEncoder:(nonnull NSString *)code
 NS_SWIFT_NAME(countryEncoder(code:));
 
 /**
@@ -56,7 +56,7 @@ If auto-country is set, the drone will guess its Wifi country by itself by check
  - parameter automatic: Boolean : 0 : Manual / 1 : Auto
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))autoCountryEncoder:(NSUInteger)automatic
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))autoCountryEncoder:(NSUInteger)automatic
 NS_SWIFT_NAME(autoCountryEncoder(automatic:));
 
 @end

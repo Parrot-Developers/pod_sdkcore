@@ -42,7 +42,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureCommonUpdatestateUpdatestatechangedStatus
 the version of the update that failed when `status` is one of the failure value.
  - parameter status: 
 */
-- (void)onUpdateStateChanged:(NSString *)sourceversion targetversion:(NSString *)targetversion status:(ArsdkFeatureCommonUpdatestateUpdatestatechangedStatus)status
+- (void)onUpdateStateChanged:(nonnull NSString *)sourceversion targetversion:(nonnull NSString *)targetversion status:(ArsdkFeatureCommonUpdatestateUpdatestatechangedStatus)status
 NS_SWIFT_NAME(onUpdateStateChanged(sourceversion:targetversion:status:));
 
 
@@ -50,7 +50,7 @@ NS_SWIFT_NAME(onUpdateStateChanged(sourceversion:targetversion:status:));
 
 @interface ArsdkFeatureCommonUpdatestate : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureCommonUpdatestateCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeatureCommonUpdatestateCallback>)callback;
 
 @end
 

@@ -204,7 +204,7 @@ NS_SWIFT_NAME(onChargingInfo(phase:rate:intensity:fullchargingtime:));
 
 @interface ArsdkFeatureCommonChargerstate : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureCommonChargerstateCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeatureCommonChargerstateCallback>)callback;
 
 @end
 

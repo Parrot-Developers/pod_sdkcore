@@ -117,7 +117,7 @@ This mode provides better results when the drone is moving slowly. */
 
 + (BOOL)isSet:(ArsdkFeatureCameraExposureMode)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureCameraExposureMode val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureCameraExposureMode val))cb;
 
 @end
 
@@ -245,7 +245,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureCameraShutterSpeed) {
 
 + (BOOL)isSet:(ArsdkFeatureCameraShutterSpeed)val inBitField:(uint64_t)bitfield;
 
-+ (void)forAllSetIn:(uint64_t)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureCameraShutterSpeed val))cb;
++ (void)forAllSetIn:(uint64_t)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureCameraShutterSpeed val))cb;
 
 @end
 
@@ -316,7 +316,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureCameraIsoSensitivity) {
 
 + (BOOL)isSet:(ArsdkFeatureCameraIsoSensitivity)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureCameraIsoSensitivity val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureCameraIsoSensitivity val))cb;
 
 @end
 
@@ -393,7 +393,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureCameraEvCompensation) {
 
 + (BOOL)isSet:(ArsdkFeatureCameraEvCompensation)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureCameraEvCompensation val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureCameraEvCompensation val))cb;
 
 @end
 
@@ -467,7 +467,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureCameraWhiteBalanceMode) {
 
 + (BOOL)isSet:(ArsdkFeatureCameraWhiteBalanceMode)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureCameraWhiteBalanceMode val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureCameraWhiteBalanceMode val))cb;
 
 @end
 
@@ -652,7 +652,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureCameraWhiteBalanceTemperature) {
 
 + (BOOL)isSet:(ArsdkFeatureCameraWhiteBalanceTemperature)val inBitField:(uint64_t)bitfield;
 
-+ (void)forAllSetIn:(uint64_t)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureCameraWhiteBalanceTemperature val))cb;
++ (void)forAllSetIn:(uint64_t)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureCameraWhiteBalanceTemperature val))cb;
 
 @end
 
@@ -684,7 +684,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureCameraStyle) {
 
 + (BOOL)isSet:(ArsdkFeatureCameraStyle)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureCameraStyle val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureCameraStyle val))cb;
 
 @end
 
@@ -710,7 +710,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureCameraCameraMode) {
 
 + (BOOL)isSet:(ArsdkFeatureCameraCameraMode)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureCameraCameraMode val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureCameraCameraMode val))cb;
 
 @end
 
@@ -743,7 +743,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureCameraRecordingMode) {
 
 + (BOOL)isSet:(ArsdkFeatureCameraRecordingMode)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureCameraRecordingMode val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureCameraRecordingMode val))cb;
 
 @end
 
@@ -778,7 +778,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureCameraPhotoMode) {
 
 + (BOOL)isSet:(ArsdkFeatureCameraPhotoMode)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureCameraPhotoMode val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureCameraPhotoMode val))cb;
 
 @end
 
@@ -828,7 +828,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureCameraResolution) {
 
 + (BOOL)isSet:(ArsdkFeatureCameraResolution)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureCameraResolution val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureCameraResolution val))cb;
 
 @end
 
@@ -899,7 +899,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureCameraFramerate) {
 
 + (BOOL)isSet:(ArsdkFeatureCameraFramerate)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureCameraFramerate val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureCameraFramerate val))cb;
 
 @end
 
@@ -925,7 +925,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureCameraPhotoFormat) {
 
 + (BOOL)isSet:(ArsdkFeatureCameraPhotoFormat)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureCameraPhotoFormat val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureCameraPhotoFormat val))cb;
 
 @end
 
@@ -954,7 +954,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureCameraPhotoFileFormat) {
 
 + (BOOL)isSet:(ArsdkFeatureCameraPhotoFileFormat)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureCameraPhotoFileFormat val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureCameraPhotoFileFormat val))cb;
 
 @end
 
@@ -986,7 +986,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureCameraAntiflickerMode) {
 
 + (BOOL)isSet:(ArsdkFeatureCameraAntiflickerMode)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureCameraAntiflickerMode val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureCameraAntiflickerMode val))cb;
 
 @end
 
@@ -1021,7 +1021,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureCameraHyperlapseValue) {
 
 + (BOOL)isSet:(ArsdkFeatureCameraHyperlapseValue)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureCameraHyperlapseValue val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureCameraHyperlapseValue val))cb;
 
 @end
 
@@ -1068,7 +1068,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureCameraBurstValue) {
 
 + (BOOL)isSet:(ArsdkFeatureCameraBurstValue)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureCameraBurstValue val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureCameraBurstValue val))cb;
 
 @end
 
@@ -1109,7 +1109,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureCameraBracketingPreset) {
 
 + (BOOL)isSet:(ArsdkFeatureCameraBracketingPreset)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureCameraBracketingPreset val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureCameraBracketingPreset val))cb;
 
 @end
 
@@ -1140,7 +1140,7 @@ quality is important but not the latency). */
 
 + (BOOL)isSet:(ArsdkFeatureCameraStreamingMode)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureCameraStreamingMode val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureCameraStreamingMode val))cb;
 
 @end
 
@@ -1247,7 +1247,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureCameraAutoExposureMeteringMode) {
 
 + (BOOL)isSet:(ArsdkFeatureCameraAutoExposureMeteringMode)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureCameraAutoExposureMeteringMode val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureCameraAutoExposureMeteringMode val))cb;
 
 @end
 
@@ -1533,7 +1533,7 @@ Other results are errors.
  - parameter photo_count: Only valid when result is `photo_taken`, indicate the number of photo taken in the sequence.
  - parameter media_id: Only valid when result is `photo_saved`, indicate the media id containing taken photo(s).
 */
-- (void)onPhotoProgress:(NSUInteger)camId result:(ArsdkFeatureCameraPhotoResult)result photoCount:(NSUInteger)photoCount mediaId:(NSString *)mediaId
+- (void)onPhotoProgress:(NSUInteger)camId result:(ArsdkFeatureCameraPhotoResult)result photoCount:(NSUInteger)photoCount mediaId:(nonnull NSString *)mediaId
 NS_SWIFT_NAME(onPhotoProgress(camId:result:photoCount:mediaId:));
 
 /**
@@ -1553,7 +1553,7 @@ NS_SWIFT_NAME(onPhotoState(camId:available:state:));
  - parameter result: Current recording result. Indicate if recording has started/stopped.
  - parameter media_id: Recorded media_id. Only valid when result is `stopped` or `stopped_no_storage_space`.
 */
-- (void)onRecordingProgress:(NSUInteger)camId result:(ArsdkFeatureCameraRecordingResult)result mediaId:(NSString *)mediaId
+- (void)onRecordingProgress:(NSUInteger)camId result:(ArsdkFeatureCameraRecordingResult)result mediaId:(nonnull NSString *)mediaId
 NS_SWIFT_NAME(onRecordingProgress(camId:result:mediaId:));
 
 /**
@@ -1619,7 +1619,7 @@ NS_SWIFT_NAME(onAlignmentOffsets(camId:minBoundYaw:maxBoundYaw:currentYaw:minBou
 
 @interface ArsdkFeatureCamera : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureCameraCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeatureCameraCallback>)callback;
 
 /**
  Sets exposure mode, shutter speed, iso sensitivity and maximum iso sensitivity. 
@@ -1633,7 +1633,7 @@ sensitivity the autoexposure engine can use to adjust exposure.
  - parameter metering_mode: Auto Exposure metering mode, ignored if mode is Manual
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setExposureSettingsEncoder:(NSUInteger)camId mode:(ArsdkFeatureCameraExposureMode)mode shutterSpeed:(ArsdkFeatureCameraShutterSpeed)shutterSpeed isoSensitivity:(ArsdkFeatureCameraIsoSensitivity)isoSensitivity maxIsoSensitivity:(ArsdkFeatureCameraIsoSensitivity)maxIsoSensitivity meteringMode:(ArsdkFeatureCameraAutoExposureMeteringMode)meteringMode
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setExposureSettingsEncoder:(NSUInteger)camId mode:(ArsdkFeatureCameraExposureMode)mode shutterSpeed:(ArsdkFeatureCameraShutterSpeed)shutterSpeed isoSensitivity:(ArsdkFeatureCameraIsoSensitivity)isoSensitivity maxIsoSensitivity:(ArsdkFeatureCameraIsoSensitivity)maxIsoSensitivity meteringMode:(ArsdkFeatureCameraAutoExposureMeteringMode)meteringMode
 NS_SWIFT_NAME(setExposureSettingsEncoder(camId:mode:shutterSpeed:isoSensitivity:maxIsoSensitivity:meteringMode:));
 
 /**
@@ -1642,7 +1642,7 @@ NS_SWIFT_NAME(setExposureSettingsEncoder(camId:mode:shutterSpeed:isoSensitivity:
  - parameter cam_id: Id of the camera.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))lockExposureEncoder:(NSUInteger)camId
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))lockExposureEncoder:(NSUInteger)camId
 NS_SWIFT_NAME(lockExposureEncoder(camId:));
 
 /**
@@ -1653,7 +1653,7 @@ NS_SWIFT_NAME(lockExposureEncoder(camId:));
  - parameter roi_center_y: ROI center on y axis. between 0 and 1, relative to streaming image height.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))lockExposureOnRoiEncoder:(NSUInteger)camId roiCenterX:(float)roiCenterX roiCenterY:(float)roiCenterY
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))lockExposureOnRoiEncoder:(NSUInteger)camId roiCenterX:(float)roiCenterX roiCenterY:(float)roiCenterY
 NS_SWIFT_NAME(lockExposureOnRoiEncoder(camId:roiCenterX:roiCenterY:));
 
 /**
@@ -1662,7 +1662,7 @@ NS_SWIFT_NAME(lockExposureOnRoiEncoder(camId:roiCenterX:roiCenterY:));
  - parameter cam_id: Id of the camera.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))unlockExposureEncoder:(NSUInteger)camId
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))unlockExposureEncoder:(NSUInteger)camId
 NS_SWIFT_NAME(unlockExposureEncoder(camId:));
 
 /**
@@ -1673,7 +1673,7 @@ NS_SWIFT_NAME(unlockExposureEncoder(camId:));
  - parameter temperature: Requested white balance temperature when mode is `custom`. Ignored else.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setWhiteBalanceEncoder:(NSUInteger)camId mode:(ArsdkFeatureCameraWhiteBalanceMode)mode temperature:(ArsdkFeatureCameraWhiteBalanceTemperature)temperature
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setWhiteBalanceEncoder:(NSUInteger)camId mode:(ArsdkFeatureCameraWhiteBalanceMode)mode temperature:(ArsdkFeatureCameraWhiteBalanceTemperature)temperature
 NS_SWIFT_NAME(setWhiteBalanceEncoder(camId:mode:temperature:));
 
 /**
@@ -1683,7 +1683,7 @@ NS_SWIFT_NAME(setWhiteBalanceEncoder(camId:mode:temperature:));
  - parameter state: Requested lock state.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setWhiteBalanceLockEncoder:(NSUInteger)camId state:(ArsdkFeatureCameraState)state
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setWhiteBalanceLockEncoder:(NSUInteger)camId state:(ArsdkFeatureCameraState)state
 NS_SWIFT_NAME(setWhiteBalanceLockEncoder(camId:state:));
 
 /**
@@ -1693,7 +1693,7 @@ NS_SWIFT_NAME(setWhiteBalanceLockEncoder(camId:state:));
  - parameter value: Requested EV compensation value.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setEvCompensationEncoder:(NSUInteger)camId value:(ArsdkFeatureCameraEvCompensation)value
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setEvCompensationEncoder:(NSUInteger)camId value:(ArsdkFeatureCameraEvCompensation)value
 NS_SWIFT_NAME(setEvCompensationEncoder(camId:value:));
 
 /**
@@ -1702,7 +1702,7 @@ NS_SWIFT_NAME(setEvCompensationEncoder(camId:value:));
  - parameter mode: Requested anti-flicker mode.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setAntiflickerModeEncoder:(ArsdkFeatureCameraAntiflickerMode)mode
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setAntiflickerModeEncoder:(ArsdkFeatureCameraAntiflickerMode)mode
 NS_SWIFT_NAME(setAntiflickerModeEncoder(mode:));
 
 /**
@@ -1712,7 +1712,7 @@ NS_SWIFT_NAME(setAntiflickerModeEncoder(mode:));
  - parameter style: Style to activate.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setStyleEncoder:(NSUInteger)camId style:(ArsdkFeatureCameraStyle)style
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setStyleEncoder:(NSUInteger)camId style:(ArsdkFeatureCameraStyle)style
 NS_SWIFT_NAME(setStyleEncoder(camId:style:));
 
 /**
@@ -1724,7 +1724,7 @@ NS_SWIFT_NAME(setStyleEncoder(camId:style:));
  - parameter sharpness: Requested sharpness value for this style.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setStyleParamsEncoder:(NSUInteger)camId saturation:(NSInteger)saturation contrast:(NSInteger)contrast sharpness:(NSInteger)sharpness
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setStyleParamsEncoder:(NSUInteger)camId saturation:(NSInteger)saturation contrast:(NSInteger)contrast sharpness:(NSInteger)sharpness
 NS_SWIFT_NAME(setStyleParamsEncoder(camId:saturation:contrast:sharpness:));
 
 /**
@@ -1740,7 +1740,7 @@ Units depend on the `control_mode` value:
 Negative values will produce a zoom out, positive values produce a zoom in.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setZoomTargetEncoder:(NSUInteger)camId controlMode:(ArsdkFeatureCameraZoomControlMode)controlMode target:(float)target
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setZoomTargetEncoder:(NSUInteger)camId controlMode:(ArsdkFeatureCameraZoomControlMode)controlMode target:(float)target
 NS_SWIFT_NAME(setZoomTargetEncoder(camId:controlMode:target:));
 
 /**
@@ -1752,7 +1752,7 @@ You can get bounds using [MaxZoomSpeed](#143-24).
 Expressed as a tan(deg) / sec.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setMaxZoomSpeedEncoder:(NSUInteger)camId max:(float)max
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setMaxZoomSpeedEncoder:(NSUInteger)camId max:(float)max
 NS_SWIFT_NAME(setMaxZoomSpeedEncoder(camId:max:));
 
 /**
@@ -1762,7 +1762,7 @@ NS_SWIFT_NAME(setMaxZoomSpeedEncoder(camId:max:));
  - parameter allow: 1 to allow quality degradation, 0 otherwise.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setZoomVelocityQualityDegradationEncoder:(NSUInteger)camId allow:(NSUInteger)allow
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setZoomVelocityQualityDegradationEncoder:(NSUInteger)camId allow:(NSUInteger)allow
 NS_SWIFT_NAME(setZoomVelocityQualityDegradationEncoder(camId:allow:));
 
 /**
@@ -1772,7 +1772,7 @@ NS_SWIFT_NAME(setZoomVelocityQualityDegradationEncoder(camId:allow:));
  - parameter value: Requested HDR setting value.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setHdrSettingEncoder:(NSUInteger)camId value:(ArsdkFeatureCameraState)value
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setHdrSettingEncoder:(NSUInteger)camId value:(ArsdkFeatureCameraState)value
 NS_SWIFT_NAME(setHdrSettingEncoder(camId:value:));
 
 /**
@@ -1782,7 +1782,7 @@ NS_SWIFT_NAME(setHdrSettingEncoder(camId:value:));
  - parameter value: Requested camera mode.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setCameraModeEncoder:(NSUInteger)camId value:(ArsdkFeatureCameraCameraMode)value
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setCameraModeEncoder:(NSUInteger)camId value:(ArsdkFeatureCameraCameraMode)value
 NS_SWIFT_NAME(setCameraModeEncoder(camId:value:));
 
 /**
@@ -1795,7 +1795,7 @@ NS_SWIFT_NAME(setCameraModeEncoder(camId:value:));
  - parameter hyperlapse: Requested hyperlapse value when the recording mode is hyperlapse. Ignored in other modes
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setRecordingModeEncoder:(NSUInteger)camId mode:(ArsdkFeatureCameraRecordingMode)mode resolution:(ArsdkFeatureCameraResolution)resolution framerate:(ArsdkFeatureCameraFramerate)framerate hyperlapse:(ArsdkFeatureCameraHyperlapseValue)hyperlapse
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setRecordingModeEncoder:(NSUInteger)camId mode:(ArsdkFeatureCameraRecordingMode)mode resolution:(ArsdkFeatureCameraResolution)resolution framerate:(ArsdkFeatureCameraFramerate)framerate hyperlapse:(ArsdkFeatureCameraHyperlapseValue)hyperlapse
 NS_SWIFT_NAME(setRecordingModeEncoder(camId:mode:resolution:framerate:hyperlapse:));
 
 /**
@@ -1812,7 +1812,7 @@ Requested GPS-lapse interval value (in meters) when the photo mode is gps_lapse.
 Ignored in other modes.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setPhotoModeEncoder:(NSUInteger)camId mode:(ArsdkFeatureCameraPhotoMode)mode format:(ArsdkFeatureCameraPhotoFormat)format fileFormat:(ArsdkFeatureCameraPhotoFileFormat)fileFormat burst:(ArsdkFeatureCameraBurstValue)burst bracketing:(ArsdkFeatureCameraBracketingPreset)bracketing captureInterval:(float)captureInterval
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setPhotoModeEncoder:(NSUInteger)camId mode:(ArsdkFeatureCameraPhotoMode)mode format:(ArsdkFeatureCameraPhotoFormat)format fileFormat:(ArsdkFeatureCameraPhotoFileFormat)fileFormat burst:(ArsdkFeatureCameraBurstValue)burst bracketing:(ArsdkFeatureCameraBracketingPreset)bracketing captureInterval:(float)captureInterval
 NS_SWIFT_NAME(setPhotoModeEncoder(camId:mode:format:fileFormat:burst:bracketing:captureInterval:));
 
 /**
@@ -1822,7 +1822,7 @@ NS_SWIFT_NAME(setPhotoModeEncoder(camId:mode:format:fileFormat:burst:bracketing:
  - parameter value: New streaming mode.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setStreamingModeEncoder:(NSUInteger)camId value:(ArsdkFeatureCameraStreamingMode)value
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setStreamingModeEncoder:(NSUInteger)camId value:(ArsdkFeatureCameraStreamingMode)value
 NS_SWIFT_NAME(setStreamingModeEncoder(camId:value:));
 
 /**
@@ -1831,7 +1831,7 @@ NS_SWIFT_NAME(setStreamingModeEncoder(camId:value:));
  - parameter cam_id: Id of the camera.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))takePhotoEncoder:(NSUInteger)camId
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))takePhotoEncoder:(NSUInteger)camId
 NS_SWIFT_NAME(takePhotoEncoder(camId:));
 
 /**
@@ -1840,7 +1840,7 @@ NS_SWIFT_NAME(takePhotoEncoder(camId:));
  - parameter cam_id: Id of the camera.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))startRecordingEncoder:(NSUInteger)camId
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))startRecordingEncoder:(NSUInteger)camId
 NS_SWIFT_NAME(startRecordingEncoder(camId:));
 
 /**
@@ -1849,7 +1849,7 @@ NS_SWIFT_NAME(startRecordingEncoder(camId:));
  - parameter cam_id: Id of the camera.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))stopRecordingEncoder:(NSUInteger)camId
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))stopRecordingEncoder:(NSUInteger)camId
 NS_SWIFT_NAME(stopRecordingEncoder(camId:));
 
 /**
@@ -1859,7 +1859,7 @@ NS_SWIFT_NAME(stopRecordingEncoder(camId:));
  - parameter state: Requested auto-record state.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setAutorecordEncoder:(NSUInteger)camId state:(ArsdkFeatureCameraState)state
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setAutorecordEncoder:(NSUInteger)camId state:(ArsdkFeatureCameraState)state
 NS_SWIFT_NAME(setAutorecordEncoder(camId:state:));
 
 /**
@@ -1868,7 +1868,7 @@ NS_SWIFT_NAME(setAutorecordEncoder(camId:state:));
  - parameter cam_id: id of the camera.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))resetZoomEncoder:(NSUInteger)camId
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))resetZoomEncoder:(NSUInteger)camId
 NS_SWIFT_NAME(resetZoomEncoder(camId:));
 
 /**
@@ -1877,7 +1877,7 @@ NS_SWIFT_NAME(resetZoomEncoder(camId:));
  - parameter cam_id: Id of the camera.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))stopPhotoEncoder:(NSUInteger)camId
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))stopPhotoEncoder:(NSUInteger)camId
 NS_SWIFT_NAME(stopPhotoEncoder(camId:));
 
 /**
@@ -1892,7 +1892,7 @@ This value will be clamped between [alignment_offsets](#143-52) min_bound_pitch 
 This value will be clamped between [alignment_offsets](#143-52) min_bound_roll and max_bound_roll
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setAlignmentOffsetsEncoder:(NSUInteger)camId yaw:(float)yaw pitch:(float)pitch roll:(float)roll
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setAlignmentOffsetsEncoder:(NSUInteger)camId yaw:(float)yaw pitch:(float)pitch roll:(float)roll
 NS_SWIFT_NAME(setAlignmentOffsetsEncoder(camId:yaw:pitch:roll:));
 
 /**
@@ -1901,7 +1901,7 @@ NS_SWIFT_NAME(setAlignmentOffsetsEncoder(camId:yaw:pitch:roll:));
  - parameter cam_id: Id of the camera.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))resetAlignmentOffsetsEncoder:(NSUInteger)camId
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))resetAlignmentOffsetsEncoder:(NSUInteger)camId
 NS_SWIFT_NAME(resetAlignmentOffsetsEncoder(camId:));
 
 @end

@@ -99,7 +99,7 @@ NS_SWIFT_NAME(onMagnetoCalibrationStateV2(state:));
 
 @interface ArsdkFeatureSkyctrlCalibrationstate : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureSkyctrlCalibrationstateCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeatureSkyctrlCalibrationstateCallback>)callback;
 
 @end
 

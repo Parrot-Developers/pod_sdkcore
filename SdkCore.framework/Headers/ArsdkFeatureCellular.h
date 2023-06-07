@@ -25,7 +25,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureCellularSupportedCapabilities) {
 
 + (BOOL)isSet:(ArsdkFeatureCellularSupportedCapabilities)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureCellularSupportedCapabilities val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureCellularSupportedCapabilities val))cb;
 
 @end
 
@@ -253,7 +253,7 @@ NS_SWIFT_NAME(onMode(modemId:mode:));
  - parameter iccid: SIM card serial number.
  - parameter imsi: International Mobile Subscriber Identity.
 */
-- (void)onSimInformation:(NSUInteger)modemId status:(ArsdkFeatureCellularSimStatus)status iccid:(NSString *)iccid imsi:(NSString *)imsi
+- (void)onSimInformation:(NSUInteger)modemId status:(ArsdkFeatureCellularSimStatus)status iccid:(nonnull NSString *)iccid imsi:(nonnull NSString *)imsi
 NS_SWIFT_NAME(onSimInformation(modemId:status:iccid:imsi:));
 
 /**
@@ -264,7 +264,7 @@ NS_SWIFT_NAME(onSimInformation(modemId:status:iccid:imsi:));
  - parameter operator: Operator name.
  - parameter technology: Access technology.
 */
-- (void)onRegistrationInformation:(NSUInteger)modemId status:(ArsdkFeatureCellularRegistrationStatus)status operator:(NSString *)operator technology:(ArsdkFeatureCellularTechnology)technology
+- (void)onRegistrationInformation:(NSUInteger)modemId status:(ArsdkFeatureCellularRegistrationStatus)status operator:(nonnull NSString *)operator technology:(ArsdkFeatureCellularTechnology)technology
 NS_SWIFT_NAME(onRegistrationInformation(modemId:status:operator:technology:));
 
 /**
@@ -292,7 +292,7 @@ NS_SWIFT_NAME(onRoamingAllowed(modemId:roamingAllowed:));
  - parameter status: Modem status.
  - parameter imei: International mobile equipment identity.
 */
-- (void)onModemInformation:(NSUInteger)modemId status:(ArsdkFeatureCellularModemStatus)status imei:(NSString *)imei
+- (void)onModemInformation:(NSUInteger)modemId status:(ArsdkFeatureCellularModemStatus)status imei:(nonnull NSString *)imei
 NS_SWIFT_NAME(onModemInformation(modemId:status:imei:));
 
 /**
@@ -313,7 +313,7 @@ NS_SWIFT_NAME(onNetworkInformation(modemId:status:));
  - parameter username: Access Point Name username.
  - parameter password: Access Point Name password.
 */
-- (void)onApnInformation:(NSUInteger)modemId mode:(NSUInteger)mode url:(NSString *)url username:(NSString *)username password:(NSString *)password
+- (void)onApnInformation:(NSUInteger)modemId mode:(NSUInteger)mode url:(nonnull NSString *)url username:(nonnull NSString *)username password:(nonnull NSString *)password
 NS_SWIFT_NAME(onApnInformation(modemId:mode:url:username:password:));
 
 /**
@@ -338,7 +338,7 @@ NS_SWIFT_NAME(onResetConfigFailed());
 
 @interface ArsdkFeatureCellular : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureCellularCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeatureCellularCallback>)callback;
 
 /**
  Set mode of cellular feature. 
@@ -347,7 +347,7 @@ NS_SWIFT_NAME(onResetConfigFailed());
  - parameter mode: Requested cellular mode.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setModeEncoder:(NSUInteger)modemId mode:(ArsdkFeatureCellularMode)mode
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setModeEncoder:(NSUInteger)modemId mode:(ArsdkFeatureCellularMode)mode
 NS_SWIFT_NAME(setModeEncoder(modemId:mode:));
 
 /**
@@ -357,7 +357,7 @@ NS_SWIFT_NAME(setModeEncoder(modemId:mode:));
  - parameter pin: SIM card PIN code.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setPinCodeEncoder:(NSUInteger)modemId pin:(NSString *)pin
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setPinCodeEncoder:(NSUInteger)modemId pin:(nonnull NSString *)pin
 NS_SWIFT_NAME(setPinCodeEncoder(modemId:pin:));
 
 /**
@@ -367,7 +367,7 @@ NS_SWIFT_NAME(setPinCodeEncoder(modemId:pin:));
  - parameter network_mode: Access technology.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setNetworkModeEncoder:(NSUInteger)modemId networkMode:(ArsdkFeatureCellularNetworkMode)networkMode
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setNetworkModeEncoder:(NSUInteger)modemId networkMode:(ArsdkFeatureCellularNetworkMode)networkMode
 NS_SWIFT_NAME(setNetworkModeEncoder(modemId:networkMode:));
 
 /**
@@ -377,7 +377,7 @@ NS_SWIFT_NAME(setNetworkModeEncoder(modemId:networkMode:));
  - parameter allowed: 1 to allow roaming, 0 to disallow roaming.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setRoamingAllowedEncoder:(NSUInteger)modemId allowed:(NSUInteger)allowed
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setRoamingAllowedEncoder:(NSUInteger)modemId allowed:(NSUInteger)allowed
 NS_SWIFT_NAME(setRoamingAllowedEncoder(modemId:allowed:));
 
 /**
@@ -390,7 +390,7 @@ NS_SWIFT_NAME(setRoamingAllowedEncoder(modemId:allowed:));
  - parameter password: APN password.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setApnEncoder:(NSUInteger)modemId mode:(NSUInteger)mode url:(NSString *)url username:(NSString *)username password:(NSString *)password
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setApnEncoder:(NSUInteger)modemId mode:(NSUInteger)mode url:(nonnull NSString *)url username:(nonnull NSString *)username password:(nonnull NSString *)password
 NS_SWIFT_NAME(setApnEncoder(modemId:mode:url:username:password:));
 
 /**
@@ -398,7 +398,7 @@ NS_SWIFT_NAME(setApnEncoder(modemId:mode:url:username:password:));
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))resetConfigEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))resetConfigEncoder
 NS_SWIFT_NAME(resetConfigEncoder());
 
 @end

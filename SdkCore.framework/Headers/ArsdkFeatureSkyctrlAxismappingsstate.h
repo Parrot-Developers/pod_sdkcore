@@ -17,7 +17,7 @@ A special mapping (NO_ACTION) is attached to unmapped axes.
  - parameter axis_id: The axiscode mapped
  - parameter mapping_uid: The mapping associated
 */
-- (void)onCurrentAxisMappings:(NSInteger)axisId mappingUid:(NSString *)mappingUid
+- (void)onCurrentAxisMappings:(NSInteger)axisId mappingUid:(nonnull NSString *)mappingUid
 NS_SWIFT_NAME(onCurrentAxisMappings(axisId:mappingUid:));
 
 /**
@@ -37,7 +37,7 @@ An [allAvailableAxissMappingsSent](#4-15-3) event is sent at the end of the list
  - parameter mapping_uid: The mapping UID (used in communication with the SkyController)
  - parameter name: Display name for the user
 */
-- (void)onAvailableAxisMappings:(NSString *)mappingUid name:(NSString *)name
+- (void)onAvailableAxisMappings:(nonnull NSString *)mappingUid name:(nonnull NSString *)name
 NS_SWIFT_NAME(onAvailableAxisMappings(mappingUid:name:));
 
 /**
@@ -52,7 +52,7 @@ NS_SWIFT_NAME(onAllAvailableAxisMappingsSent());
 
 @interface ArsdkFeatureSkyctrlAxismappingsstate : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureSkyctrlAxismappingsstateCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeatureSkyctrlAxismappingsstateCallback>)callback;
 
 @end
 

@@ -31,7 +31,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeaturePowerupMediarecordVideov2Record) {
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))pictureV2Encoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))pictureV2Encoder
 NS_SWIFT_NAME(pictureV2Encoder());
 
 /**
@@ -40,7 +40,7 @@ NS_SWIFT_NAME(pictureV2Encoder());
  - parameter record: 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))videoV2Encoder:(ArsdkFeaturePowerupMediarecordVideov2Record)record
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))videoV2Encoder:(ArsdkFeaturePowerupMediarecordVideov2Record)record
 NS_SWIFT_NAME(videoV2Encoder(record:));
 
 @end

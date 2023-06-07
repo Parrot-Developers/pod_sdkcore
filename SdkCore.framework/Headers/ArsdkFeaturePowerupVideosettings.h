@@ -32,7 +32,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeaturePowerupVideosettingsVideomodeMode) {
  - parameter enable: 0: Disabled 1: Enabled.
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))autorecordEncoder:(NSUInteger)enable
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))autorecordEncoder:(NSUInteger)enable
 NS_SWIFT_NAME(autorecordEncoder(enable:));
 
 /**
@@ -41,7 +41,7 @@ NS_SWIFT_NAME(autorecordEncoder(enable:));
  - parameter mode: 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))videoModeEncoder:(ArsdkFeaturePowerupVideosettingsVideomodeMode)mode
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))videoModeEncoder:(ArsdkFeaturePowerupVideosettingsVideomodeMode)mode
 NS_SWIFT_NAME(videoModeEncoder(mode:));
 
 @end

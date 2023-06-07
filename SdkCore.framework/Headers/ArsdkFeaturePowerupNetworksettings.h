@@ -55,7 +55,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeaturePowerupNetworksettingsWifiselectionBand) 
  - parameter channel: The channel (not used in auto mode)
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))wifiSelectionEncoder:(ArsdkFeaturePowerupNetworksettingsWifiselectionType)type band:(ArsdkFeaturePowerupNetworksettingsWifiselectionBand)band channel:(NSUInteger)channel
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))wifiSelectionEncoder:(ArsdkFeaturePowerupNetworksettingsWifiselectionType)type band:(ArsdkFeaturePowerupNetworksettingsWifiselectionBand)band channel:(NSUInteger)channel
 NS_SWIFT_NAME(wifiSelectionEncoder(type:band:channel:));
 
 @end

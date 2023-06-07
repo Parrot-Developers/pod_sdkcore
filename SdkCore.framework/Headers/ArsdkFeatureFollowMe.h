@@ -98,7 +98,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureFollowMeInput) {
 
 + (BOOL)isSet:(ArsdkFeatureFollowMeInput)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureFollowMeInput val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureFollowMeInput val))cb;
 
 @end
 
@@ -127,7 +127,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureFollowMeGeoRelConfigureParam) {
 
 + (BOOL)isSet:(ArsdkFeatureFollowMeGeoRelConfigureParam)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureFollowMeGeoRelConfigureParam val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureFollowMeGeoRelConfigureParam val))cb;
 
 @end
 
@@ -165,7 +165,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureFollowMeAnimation) {
 
 + (BOOL)isSet:(ArsdkFeatureFollowMeAnimation)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureFollowMeAnimation val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureFollowMeAnimation val))cb;
 
 @end
 
@@ -194,7 +194,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureFollowMeHelicoidConfigureParam) {
 
 + (BOOL)isSet:(ArsdkFeatureFollowMeHelicoidConfigureParam)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureFollowMeHelicoidConfigureParam val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureFollowMeHelicoidConfigureParam val))cb;
 
 @end
 
@@ -220,7 +220,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureFollowMeSwingConfigureParam) {
 
 + (BOOL)isSet:(ArsdkFeatureFollowMeSwingConfigureParam)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureFollowMeSwingConfigureParam val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureFollowMeSwingConfigureParam val))cb;
 
 @end
 
@@ -246,7 +246,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureFollowMeBoomerangConfigureParam) {
 
 + (BOOL)isSet:(ArsdkFeatureFollowMeBoomerangConfigureParam)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureFollowMeBoomerangConfigureParam val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureFollowMeBoomerangConfigureParam val))cb;
 
 @end
 
@@ -272,7 +272,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureFollowMeCandleConfigureParam) {
 
 + (BOOL)isSet:(ArsdkFeatureFollowMeCandleConfigureParam)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureFollowMeCandleConfigureParam val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureFollowMeCandleConfigureParam val))cb;
 
 @end
 
@@ -301,7 +301,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureFollowMeDollySlideConfigureParam) {
 
 + (BOOL)isSet:(ArsdkFeatureFollowMeDollySlideConfigureParam)val inBitField:(NSUInteger)bitfield;
 
-+ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^)(ArsdkFeatureFollowMeDollySlideConfigureParam val))cb;
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureFollowMeDollySlideConfigureParam val))cb;
 
 @end
 
@@ -516,7 +516,7 @@ NS_SWIFT_NAME(onLeashConfig(useDefaultBitField:distance:elevation:azimuth:));
 
 @interface ArsdkFeatureFollowMe : NSObject
 
-+ (NSInteger)decode:(struct arsdk_cmd *)command callback:(id<ArsdkFeatureFollowMeCallback>)callback;
++ (NSInteger)decode:(nonnull struct arsdk_cmd *)command callback:(nonnull id<ArsdkFeatureFollowMeCallback>)callback;
 
 /**
  Start a FollowMe with all its params set to the default params.
@@ -525,7 +525,7 @@ Sending this command will stop other running followMe.
  - parameter mode: 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))startEncoder:(ArsdkFeatureFollowMeMode)mode
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))startEncoder:(ArsdkFeatureFollowMeMode)mode
 NS_SWIFT_NAME(startEncoder(mode:));
 
 /**
@@ -533,7 +533,7 @@ NS_SWIFT_NAME(startEncoder(mode:));
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))stopEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))stopEncoder
 NS_SWIFT_NAME(stopEncoder());
 
 /**
@@ -547,7 +547,7 @@ Not used when arg start is at 0
  - parameter azimuth: The azimuth north-leader-follower in rad (not used when arg start is at 0)
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))configureGeographicEncoder:(NSUInteger)useDefaultBitField distance:(float)distance elevation:(float)elevation azimuth:(float)azimuth
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))configureGeographicEncoder:(NSUInteger)useDefaultBitField distance:(float)distance elevation:(float)elevation azimuth:(float)azimuth
 NS_SWIFT_NAME(configureGeographicEncoder(useDefaultBitField:distance:elevation:azimuth:));
 
 /**
@@ -560,7 +560,7 @@ This should only be taken in account if arg behavior in [state](#134-3) is equal
  - parameter azimuth: The azimuth north-leader-follower in rad
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))configureRelativeEncoder:(NSUInteger)useDefaultBitField distance:(float)distance elevation:(float)elevation azimuth:(float)azimuth
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))configureRelativeEncoder:(NSUInteger)useDefaultBitField distance:(float)distance elevation:(float)elevation azimuth:(float)azimuth
 NS_SWIFT_NAME(configureRelativeEncoder(useDefaultBitField:distance:elevation:azimuth:));
 
 /**
@@ -569,7 +569,7 @@ This message has been deprecated. Please use the animation feature.
 
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))stopAnimationEncoder
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))stopAnimationEncoder
 NS_SWIFT_NAME(stopAnimationEncoder());
 
 /**
@@ -588,7 +588,7 @@ Not used when revolutionNb_is_default is 1
 Not used when verticalDistance_is_default is 1
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))startHelicoidAnimEncoder:(NSUInteger)useDefaultBitField speed:(float)speed revolutionNumber:(float)revolutionNumber verticalDistance:(float)verticalDistance
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))startHelicoidAnimEncoder:(NSUInteger)useDefaultBitField speed:(float)speed revolutionNumber:(float)revolutionNumber verticalDistance:(float)verticalDistance
 NS_SWIFT_NAME(startHelicoidAnimEncoder(useDefaultBitField:speed:revolutionNumber:verticalDistance:));
 
 /**
@@ -605,7 +605,7 @@ Not used when verticalDistance_is_default is 1
 Not used when start is 0
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))startSwingAnimEncoder:(NSUInteger)useDefaultBitField speed:(float)speed verticalDistance:(float)verticalDistance
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))startSwingAnimEncoder:(NSUInteger)useDefaultBitField speed:(float)speed verticalDistance:(float)verticalDistance
 NS_SWIFT_NAME(startSwingAnimEncoder(useDefaultBitField:speed:verticalDistance:));
 
 /**
@@ -622,7 +622,7 @@ Not used when distance_is_default is 1
 Not used when start is 0
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))startBoomerangAnimEncoder:(NSUInteger)useDefaultBitField speed:(float)speed distance:(float)distance
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))startBoomerangAnimEncoder:(NSUInteger)useDefaultBitField speed:(float)speed distance:(float)distance
 NS_SWIFT_NAME(startBoomerangAnimEncoder(useDefaultBitField:speed:distance:));
 
 /**
@@ -639,7 +639,7 @@ Not used when verticalDistance_is_default is 1
 Not used when start is 0
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))startCandleAnimEncoder:(NSUInteger)useDefaultBitField speed:(float)speed verticalDistance:(float)verticalDistance
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))startCandleAnimEncoder:(NSUInteger)useDefaultBitField speed:(float)speed verticalDistance:(float)verticalDistance
 NS_SWIFT_NAME(startCandleAnimEncoder(useDefaultBitField:speed:verticalDistance:));
 
 /**
@@ -659,7 +659,7 @@ Not used when horizontalDistance_is_default is 1
 Not used when start is 0
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))startDollySlideAnimEncoder:(NSUInteger)useDefaultBitField speed:(float)speed angle:(float)angle horizontalDistance:(float)horizontalDistance
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))startDollySlideAnimEncoder:(NSUInteger)useDefaultBitField speed:(float)speed angle:(float)angle horizontalDistance:(float)horizontalDistance
 NS_SWIFT_NAME(startDollySlideAnimEncoder(useDefaultBitField:speed:angle:horizontalDistance:));
 
 /**
@@ -669,7 +669,7 @@ NS_SWIFT_NAME(startDollySlideAnimEncoder(useDefaultBitField:speed:angle:horizont
  - parameter vertical: Vertical position in the video (in %, from bottom to top)
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))targetFramingPositionEncoder:(NSInteger)horizontal vertical:(NSInteger)vertical
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))targetFramingPositionEncoder:(NSInteger)horizontal vertical:(NSInteger)vertical
 NS_SWIFT_NAME(targetFramingPositionEncoder(horizontal:vertical:));
 
 /**
@@ -683,7 +683,7 @@ NS_SWIFT_NAME(targetFramingPositionEncoder(horizontal:vertical:));
  - parameter timestamp: Acquisition time of processed picture in millisecond
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))targetImageDetectionEncoder:(float)targetAzimuth targetElevation:(float)targetElevation changeOfScale:(float)changeOfScale confidenceIndex:(NSUInteger)confidenceIndex isNewSelection:(NSUInteger)isNewSelection timestamp:(uint64_t)timestamp
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))targetImageDetectionEncoder:(float)targetAzimuth targetElevation:(float)targetElevation changeOfScale:(float)changeOfScale confidenceIndex:(NSUInteger)confidenceIndex isNewSelection:(NSUInteger)isNewSelection timestamp:(uint64_t)timestamp
 NS_SWIFT_NAME(targetImageDetectionEncoder(targetAzimuth:targetElevation:changeOfScale:confidenceIndex:isNewSelection:timestamp:));
 
 /**
@@ -692,7 +692,7 @@ NS_SWIFT_NAME(targetImageDetectionEncoder(targetAzimuth:targetElevation:changeOf
  - parameter target_is_controller: Boolean. 1 if the target is the controller, 0 otherwise
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))setTargetIsControllerEncoder:(NSUInteger)targetIsController
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setTargetIsControllerEncoder:(NSUInteger)targetIsController
 NS_SWIFT_NAME(setTargetIsControllerEncoder(targetIsController:));
 
 /**
@@ -705,7 +705,7 @@ This should only be taken in account if arg behavior in [state](#134-3) is equal
  - parameter azimuth: The azimuth north-leader-follower in rad
  - returns: a block that encodes the command
 */
-+ (int (^)(struct arsdk_cmd *))configureLeashEncoder:(NSUInteger)useDefaultBitField distance:(float)distance elevation:(float)elevation azimuth:(float)azimuth
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))configureLeashEncoder:(NSUInteger)useDefaultBitField distance:(float)distance elevation:(float)elevation azimuth:(float)azimuth
 NS_SWIFT_NAME(configureLeashEncoder(useDefaultBitField:distance:elevation:azimuth:));
 
 @end
