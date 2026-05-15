@@ -29,11 +29,12 @@
 
 #import <Foundation/Foundation.h>
 #import "ArsdkBackendController.h"
+#import "ArsdkServiceDiscovery.h"
 
 /**
  Wifi backend controller
  */
-@interface ArsdkWifiBackendController : ArsdkBackendController
+@interface ArsdkWifiBackendController : ArsdkBackendController <ArsdkServiceDiscoveryBrowser>
 
 - (nonnull instancetype)initWithSupportedDeviceTypes:(nonnull NSSet<NSNumber *> *)deviceTypes;
 

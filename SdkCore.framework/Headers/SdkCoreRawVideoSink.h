@@ -79,4 +79,7 @@
 /** Stops the sink. */
 - (void)stop;
 
+/** Sets the media id of the sink. */
+- (void)setMediaId:(unsigned int)mediaId;
+
 @end

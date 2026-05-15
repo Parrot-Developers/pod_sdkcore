@@ -44,19 +44,19 @@ typedef NS_ENUM(NSInteger, ArsdkNoAckCmdType) {
 typedef ArsdkCommandEncoder _Nullable (^NoAckStorageEncoderBlock)(void);
 
 /**
-Storage of an ArsdkCommandEncoder block registered in the NoAck Command Loop
-
-This container class is used to store "NoAckCde Encoders blocks" in an array.
-
-The type of a "Command Block" is : `ArsdkCommandEncoder (^encoderBlock)(void)`
-These blocks are stored at the ArsdkEngine level (DeviceController.swift) in an Array.
-
-To give this array of closures (from Swift) to an array of blocks (Objective-C), it is necessary to encapsulate
-each block in this class.
-
-It seems that Swift closures and Objective-C blocks are not exactly identical (although they are closely related).
-If the Swift closure / Objective-C block interoperability seems to work well for a function parameter or a property,
-this is obviously not the case for a closure array.
+ Storage of an ArsdkCommandEncoder block registered in the NoAck Command Loop
+ 
+ This container class is used to store "NoAckCde Encoders blocks" in an array.
+ 
+ The type of a "Command Block" is : `ArsdkCommandEncoder (^encoderBlock)(void)`
+ These blocks are stored at the ArsdkEngine level (DeviceController.swift) in an Array.
+ 
+ To give this array of closures (from Swift) to an array of blocks (Objective-C), it is necessary to encapsulate
+ each block in this class.
+ 
+ It seems that Swift closures and Objective-C blocks are not exactly identical (although they are closely related).
+ If the Swift closure / Objective-C block interoperability seems to work well for a function parameter or a property,
+ this is obviously not the case for a closure array.
  */
 @interface NoAckStorage : NSObject
 

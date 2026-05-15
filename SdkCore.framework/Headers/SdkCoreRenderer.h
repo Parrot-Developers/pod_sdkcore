@@ -30,6 +30,9 @@
 #import <Foundation/Foundation.h>
 #import <CoreGraphics/CoreGraphics.h>
 #import "ArsdkCore.h"
+#import "ArsdkCore+Stream.h"
+
+@class ArsdkStream;
 
 /** Rendering Fill Mode */
 typedef NS_ENUM(NSInteger, SdkCoreStreamRenderingFillMode) {
@@ -156,6 +159,12 @@ typedef NS_ENUM(NSInteger, SdkCoreStreamRenderingFillMode) {
 /** Frame metadata handle; pointer to const struct vmeta_frame. */
 @property (nonatomic, readonly, nullable) const void *frameMetadataHandle;
 
+/** Byte buffer of the current frame metadata. */
+@property (nonatomic, readonly, nullable) const NSData *frameMetadataBuffer;
+
+/** Current frame timestamp in microseconds. */
+@property (nonatomic, readonly) uint64_t frameTimestamp;
+
 /** Histogram. */
 @property (nonatomic, strong, readonly, nonnull) SdkCoreHistogram *histogram;
 
@@ -188,6 +197,7 @@ typedef NS_ENUM(NSInteger, SdkCoreStreamRenderingFillMode) {
  Init renderer.
 
  @param pdraw: Pdraw instance.
+ @param stream: ArsdkStream instance.
  @param renderZone: rendering area.
  @param fillMode: rendering fill mode.
  @param zebrasEnabled: 'true' to enable the zebras of overexposure zone.
@@ -202,6 +212,7 @@ typedef NS_ENUM(NSInteger, SdkCoreStreamRenderingFillMode) {
  @param listener: renderer listener.
  */
 - (nonnull instancetype)initWithPdraw:(nonnull /*struct pdraw **/void *)pdraw
+                               stream:(nonnull ArsdkStream *)stream
                                  zone:(CGRect)renderZone
                              fillMode:(SdkCoreStreamRenderingFillMode)fillMode
                         zebrasEnabled:(BOOL)zebrasEnabled

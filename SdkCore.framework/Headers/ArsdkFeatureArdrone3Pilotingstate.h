@@ -278,8 +278,11 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureArdrone3PilotingstatePilotedpoiv2Mode) {
     /** Gimbal is freely controllable */
     ArsdkFeatureArdrone3PilotingstatePilotedpoiv2ModeFreeGimbal = 2,
 
+    /** Gimbal is locked on the POI once, then the piloted POI is exited */
+    ArsdkFeatureArdrone3PilotingstatePilotedpoiv2ModeLockedOnceGimbalAndExit = 3,
+
 };
-#define ArsdkFeatureArdrone3PilotingstatePilotedpoiv2ModeCnt 3
+#define ArsdkFeatureArdrone3PilotingstatePilotedpoiv2ModeCnt 4
 
 /** Status of the Piloted POI */
 typedef NS_ENUM(NSInteger, ArsdkFeatureArdrone3PilotingstatePilotedpoiv2Status) {
@@ -383,8 +386,17 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureArdrone3PilotingstateForcedlandingautotri
     /** ESC (motor) is too hot, so forced landing auto trigger is planned. */
     ArsdkFeatureArdrone3PilotingstateForcedlandingautotriggerReasonEscTooHot = 5,
 
+    /** Battery cell voltage is too low, so forced landing auto trigger is planned. */
+    ArsdkFeatureArdrone3PilotingstateForcedlandingautotriggerReasonCellVoltageTooLow = 6,
+
+    /** A defective sensor has been detected, so forced landing auto trigger is planned. */
+    ArsdkFeatureArdrone3PilotingstateForcedlandingautotriggerReasonDefectiveSensor = 7,
+
+    /** A flyaway has been detected, so forced landing auto trigger is planned. */
+    ArsdkFeatureArdrone3PilotingstateForcedlandingautotriggerReasonFlyawayDetected = 8,
+
 };
-#define ArsdkFeatureArdrone3PilotingstateForcedlandingautotriggerReasonCnt 6
+#define ArsdkFeatureArdrone3PilotingstateForcedlandingautotriggerReasonCnt 9
 
 /** Drone wind state */
 typedef NS_ENUM(NSInteger, ArsdkFeatureArdrone3PilotingstateWindstatechangedState) {

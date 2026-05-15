@@ -43,6 +43,8 @@ typedef NS_ENUM(NSInteger, ConverterResult) {
 
 + (ConverterResult)convert:(nonnull NSString *)inFile
                    outFile:(nonnull NSString *)outFile
-                    format:(FileFormat)format;
+                    format:(FileFormat)format
+                privateKey:(nullable NSString *)privateKey
+                publicKey:(nullable NSString *)publicKey;
 
 @end

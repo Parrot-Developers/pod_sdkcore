@@ -57,8 +57,14 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureTerrainCalibrationIssue) {
     /** Drone is too low to perform accurate calibration */
     ArsdkFeatureTerrainCalibrationIssueTooLow = 1,
 
+    /** Controller coordinates are invalid */
+    ArsdkFeatureTerrainCalibrationIssueInvalidControllerCoords = 2,
+
+    /** Drone gimbal pitch is not adequate */
+    ArsdkFeatureTerrainCalibrationIssueBadPitch = 3,
+
 };
-#define ArsdkFeatureTerrainCalibrationIssueCnt 2
+#define ArsdkFeatureTerrainCalibrationIssueCnt 4
 
 @interface ArsdkFeatureTerrainCalibrationIssueBitField : NSObject
 
@@ -67,6 +73,53 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureTerrainCalibrationIssue) {
 + (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureTerrainCalibrationIssue val))cb;
 
 @end
+
+/**  */
+typedef NS_ENUM(NSInteger, ArsdkFeatureTerrainCalibrateResultReason) {
+    /**
+     Unknown value from SdkCore.
+     Only used if the received value cannot be matched with a declared value.
+     This might occur when the drone or rc has a different sdk base from the controller.
+     */
+    ArsdkFeatureTerrainCalibrateResultReasonSdkCoreUnknown = -1,
+
+    /** At least one calibration_issue is still declared at the command reception */
+    ArsdkFeatureTerrainCalibrateResultReasonUnmetPositionRequirements = 0,
+
+    /** Drone's and/or pilot's locations are not precise enough for calibration */
+    ArsdkFeatureTerrainCalibrateResultReasonImpreciseLocation = 1,
+
+    /** Gimbal pitch is incoherent with the expected range */
+    ArsdkFeatureTerrainCalibrateResultReasonTooLargePitchOffset = 2,
+
+};
+#define ArsdkFeatureTerrainCalibrateResultReasonCnt 3
+
+@interface ArsdkFeatureTerrainCalibrateResultReasonBitField : NSObject
+
++ (BOOL)isSet:(ArsdkFeatureTerrainCalibrateResultReason)val inBitField:(NSUInteger)bitfield;
+
++ (void)forAllSetIn:(NSUInteger)bitfield execute:(void (NS_NOESCAPE ^ _Nonnull)(ArsdkFeatureTerrainCalibrateResultReason val))cb;
+
+@end
+
+/**  */
+typedef NS_ENUM(NSInteger, ArsdkFeatureTerrainCalibrateResult) {
+    /**
+     Unknown value from SdkCore.
+     Only used if the received value cannot be matched with a declared value.
+     This might occur when the drone or rc has a different sdk base from the controller.
+     */
+    ArsdkFeatureTerrainCalibrateResultSdkCoreUnknown = -1,
+
+    /** calibrate procedure is a success. */
+    ArsdkFeatureTerrainCalibrateResultSuccess = 0,
+
+    /** calibrate procedure has failed. */
+    ArsdkFeatureTerrainCalibrateResultFailure = 1,
+
+};
+#define ArsdkFeatureTerrainCalibrateResultCnt 2
 
 @protocol ArsdkFeatureTerrainCallback<NSObject>
 
@@ -93,6 +146,15 @@ it indicates the reason of the failure.
 */
 - (void)onCalibrationState:(ArsdkFeatureTerrainCalibrationState)state issueBitField:(NSUInteger)issueBitField
 NS_SWIFT_NAME(onCalibrationState(state:issueBitField:));
+
+/**
+  
+
+ - parameter result: The success (or failure) of the calibrate command.
+ - parameter failure_reason: Reported reason for drone calibration failure. 0 if success.
+*/
+- (void)onCalibrateResult:(ArsdkFeatureTerrainCalibrateResult)result failureReasonBitField:(NSUInteger)failureReasonBitField
+NS_SWIFT_NAME(onCalibrateResult(result:failureReasonBitField:));
 
 
 @end
@@ -128,17 +190,6 @@ given by Latitude and Longitude.
 */
 + (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setAmslReferenceEncoder:(float)elevation latitude:(double)latitude longitude:(double)longitude
 NS_SWIFT_NAME(setAmslReferenceEncoder(elevation:latitude:longitude:));
-
-/**
- Set the drone position in GPS coordinates corresponding to the origin of its global coordinate system 
-
- - parameter latitude: Origin latitude in decimal degrees
- - parameter longitude: Origin longitude in decimal degrees
- - parameter altitude: Origin altitude in meters as AMSL (height above mean sea level)
- - returns: a block that encodes the command
-*/
-+ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setGlobalOriginEncoder:(double)latitude longitude:(double)longitude altitude:(float)altitude
-NS_SWIFT_NAME(setGlobalOriginEncoder(latitude:longitude:altitude:));
 
 @end
 

@@ -71,5 +71,14 @@ libARController API as this library is handling the connection process for you.*
 + (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))currentDateTimeEncoder:(nonnull NSString *)datetime
 NS_SWIFT_NAME(currentDateTimeEncoder(datetime:));
 
+/**
+ Shutdown and power off the product.
+The product will accept this command only if is not flying. 
+
+ - returns: a block that encodes the command
+*/
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))powerOffEncoder
+NS_SWIFT_NAME(powerOffEncoder());
+
 @end
 

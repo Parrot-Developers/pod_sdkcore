@@ -83,13 +83,13 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureDriDriType) {
      */
     ArsdkFeatureDriDriTypeSdkCoreUnknown = -1,
 
-    /** DRI wifi beacon respects the french regulation */
+    /** DRI beacon respects the french regulation */
     ArsdkFeatureDriDriTypeFrench = 0,
 
-    /** DRI wifi beacon respects the EN4709-002 european regulation */
+    /** DRI beacon respects the EN4709-002 european regulation */
     ArsdkFeatureDriDriTypeEn4709_002 = 1,
 
-    /** DRI wifi beacon respects the ASTN F341122 US regulation */
+    /** DRI beacon respects the ASTN F341122 US regulation */
     ArsdkFeatureDriDriTypeAstmF3411 = 2,
 
 };

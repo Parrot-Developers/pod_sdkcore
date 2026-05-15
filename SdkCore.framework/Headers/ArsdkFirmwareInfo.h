@@ -57,6 +57,10 @@ typedef NS_ENUM(NSInteger, ArsdkFirmwareVersionType) {
 @property (nonatomic, assign, readonly) NSInteger patch;
 /** Build version */
 @property (nonatomic, assign, readonly) NSInteger build;
+/** Version custom name, `nil` if custom part is absent */
+@property (nonatomic, strong, readonly, nullable) NSString *customName;
+/** Version custom number, `0` if custom part is absent, `>0` otherwise */
+@property (nonatomic, assign, readonly) NSInteger customNumber;
 
 /**
  Constructor

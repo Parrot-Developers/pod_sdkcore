@@ -107,8 +107,14 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureRthStateReason) {
     /** Return to home triggered by battery lost comm event (available->in_progress) */
     ArsdkFeatureRthStateReasonBatteryLostComm = 10,
 
+    /** Return to home triggered by motor down event (available->in_progress) */
+    ArsdkFeatureRthStateReasonMotorDown = 11,
+
+    /** Return to home triggered by battery too hot event (available->in_progress) */
+    ArsdkFeatureRthStateReasonBatteryTooHot = 12,
+
 };
-#define ArsdkFeatureRthStateReasonCnt 11
+#define ArsdkFeatureRthStateReasonCnt 13
 
 /** Home reachability */
 typedef NS_ENUM(NSInteger, ArsdkFeatureRthHomeReachability) {
@@ -150,8 +156,11 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureRthAutoTriggerReason) {
     /** Battery will soon be critical. */
     ArsdkFeatureRthAutoTriggerReasonBatteryCriticalSoon = 1,
 
+    /** Return home is triggered because of motor_down. */
+    ArsdkFeatureRthAutoTriggerReasonMotorDown = 2,
+
 };
-#define ArsdkFeatureRthAutoTriggerReasonCnt 2
+#define ArsdkFeatureRthAutoTriggerReasonCnt 3
 
 /** RTH auto-trigger mode */
 typedef NS_ENUM(NSInteger, ArsdkFeatureRthAutoTriggerMode) {
@@ -406,6 +415,26 @@ If at least one input is missing, drone won't be able to return home.
 */
 - (void)onInfo:(NSUInteger)missingInputsBitField
 NS_SWIFT_NAME(onInfo(missingInputsBitField:));
+
+/**
+  
+
+ - parameter latitude: Latitude of the pilot location.
+ - parameter longitude: Longitude of the pilot location.
+ - parameter altitude: Altitude of the pilot location (ATO).
+*/
+- (void)onPilotLocation:(double)latitude longitude:(double)longitude altitude:(float)altitude
+NS_SWIFT_NAME(onPilotLocation(latitude:longitude:altitude:));
+
+/**
+  
+
+ - parameter latitude: Latitude of the home location
+ - parameter longitude: Longitude of the home location
+ - parameter altitude: Altitude of the home location above takeoff (ATO).
+*/
+- (void)onHomeLocation:(double)latitude longitude:(double)longitude altitude:(float)altitude
+NS_SWIFT_NAME(onHomeLocation(latitude:longitude:altitude:));
 
 
 @end

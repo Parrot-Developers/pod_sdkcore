@@ -32,6 +32,7 @@
 #import "SdkCoreMediaInfo.h"
 #import "SdkCoreRenderer.h"
 #import "SdkCoreRawVideoSink.h"
+#import "SdkCoreDemuxerMedia.h"
 
 // Forward declaration.
 @class ArsdkStream;
@@ -55,8 +56,10 @@ typedef NS_ENUM(NSInteger, ArsdkStreamState) {
 @property (nonatomic, readonly) int64_t duration;
 /** Current reading position in microseconds. */
 @property (nonatomic, readonly) int64_t position;
-/** Stream speed, is a multiplier. */
+/** Playback speed multiplier (raw value returned by pdraw); not necessarily `0` when playback is paused. */
 @property (nonatomic, readonly) double speed;
+/** Whether playback is curretly ongoing; may be 'true' at end of stream; `nil` if not initialized. */
+@property (nonatomic, readonly, nullable) NSNumber *playing;
 
 @end
 
@@ -83,6 +86,13 @@ typedef void(^ArsdkStreamCmdCb)(int status);
  */
 - (void)streamPlaybackStateDidChange:(nonnull ArsdkStream *)stream
                        playbackState:(nonnull id<ArsdkStreamPlaybackState>)playbackState;
+
+/**
+ Called when media list or media selection changed for the stream.
+
+ @param medias: array of demuxer media
+ */
+- (void)mediaListDidChange:(nonnull NSArray<SdkCoreDemuxerMedia *> *)medias;
 
 /**
  Called when a new media is available for the stream.
@@ -115,15 +125,35 @@ typedef void(^ArsdkStreamCmdCb)(int status);
 /** `YES` if the stream is busy and no command can be executed, `NO` if the stream is ready to a new command. */
 @property (nonatomic, assign, readonly) BOOL busy;
 
+/** List of currently available media for a live stream. */
+@property (nonatomic, strong, nullable) NSArray<SdkCoreDemuxerMedia *> *liveMedias;
+
 /** Information of the media availables. */
 @property (nonatomic, strong, readonly, nonnull) NSDictionary<NSNumber*, SdkCoreMediaInfo*> *medias;
 
 /**
  Creates a native video stream.
- 
+
  @param pompLoopUtil: pomp loop utility
  */
 - (nonnull instancetype)initWithPompLoopUtil:(nonnull PompLoopUtil *)pompLoopUtil;
+
+/**
+ Retrieves the Pdraw instance.
+
+ The internal reference counter is incremented and must be decremented by
+ calling unrefPraw.
+
+ @return the Pdraw instance, if available.
+ */
+- (nullable struct pdraw *) refAndGetPdraw;
+
+/**
+ Decrements the internal reference counter for the internal PDRAW instance.
+
+ @param pdraw: the Pdraw instance.
+ */
+- (void)unrefPdraw:(nullable struct pdraw *)pdraw;
 
 /**
  Opens the stream.
@@ -158,9 +188,41 @@ typedef void(^ArsdkStreamCmdCb)(int status);
  The stream `state` must be `ArsdkStreamStateOpened` and `busy` must be`NO`.
 
  @param position: position in milliseconds.
+ @param exact `true` means seek to the sample closest to the position, `false` means seek to the nearest
+ synchronization sample preceding the position
  @param completion: completion block called at the command end
  */
-- (void)seekTo:(int)position completion:(nonnull ArsdkStreamCmdCb)completion;
+- (void)seekTo:(int)position exact:(BOOL)exact completion:(nonnull ArsdkStreamCmdCb)completion;
+
+/**
+ Gets the available demuxer media list.
+ This function returns the media list. If no media are available, -ENOENT is
+ returned. Otherwise, the media_list is allocated (must be freed once no
+ longer used) and media_count is set to the number of media.
+ */
+- (void)getMediaList;
+
+/**
+ Selects a media.
+ This function dynamically selects the media to use from a running demuxer. If
+ the demuxer is opening or closing, -EPROTO is returned.
+
+ @param cameraType: the camera type to select.
+ */
+- (void)selectMedia:(ArsdkSourceLiveCameraType)cameraType
+             source:(nonnull id<SdkCoreSource>)source;
+
+/**
+ Handles media list change.
+ This function Called when media list or media selection changes.
+
+ @param mediaList: available media array.
+ @param mediaCount: available media count
+ @param selectedMedia: bitfield of the identifiers of the currently selected medias
+ */
+- (void)handleMediaListChange:(nonnull const struct pdraw_demuxer_media *)mediaList
+                        count:(size_t)mediaCount
+                selectedMedia:(uint32_t)selectedMedias;
 
 /**
  Closes the stream.

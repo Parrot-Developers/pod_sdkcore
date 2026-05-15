@@ -62,7 +62,7 @@ NS_SWIFT_NAME(onMaxAltitudeChanged(current:min:max:));
 
 /**
  Max pitch/roll.
-The drone will not fly higher than this altitude (above take off point). 
+The drone will not angle itself more than this value. 
 
  - parameter current: Current max tilt
  - parameter min: Range min of tilt
@@ -165,6 +165,17 @@ NS_SWIFT_NAME(onPitchModeChanged(value:));
 */
 - (void)onMotionDetection:(NSUInteger)enabled
 NS_SWIFT_NAME(onMotionDetection(enabled:));
+
+/**
+ Max horizontal speed.
+The drone will not fly faster than this speed in manual flight. 
+
+ - parameter current: Current max horizontal speed in meters/second
+ - parameter min: Range min of horizontal speed in meters/second
+ - parameter max: Range max of horizontal speed in meters/second
+*/
+- (void)onMaxHorizontalSpeedChanged:(float)current min:(float)min max:(float)max
+NS_SWIFT_NAME(onMaxHorizontalSpeedChanged(current:min:max:));
 
 
 @end

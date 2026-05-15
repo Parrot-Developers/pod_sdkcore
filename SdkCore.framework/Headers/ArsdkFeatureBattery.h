@@ -153,6 +153,24 @@ NS_SWIFT_NAME(onCellVoltage(index:cellVoltage:));
 - (void)onVersion:(NSUInteger)hwRevision fwVersion:(nonnull NSString *)fwVersion gaugeVersion:(nonnull NSString *)gaugeVersion usbVersion:(nonnull NSString *)usbVersion
 NS_SWIFT_NAME(onVersion(hwRevision:fwVersion:gaugeVersion:usbVersion:));
 
+/**
+ Whether the [BatteryStateChanged](#0-5-1) is reliable or not. 
+
+ - parameter is_charge_level_reliable: 1 if battery state is reliable, 0 if not.
+*/
+- (void)onReliability:(NSUInteger)isChargeLevelReliable
+NS_SWIFT_NAME(onReliability(isChargeLevelReliable:));
+
+/**
+  
+
+ - parameter config: Battery cell config
+ - parameter series: Battery cells in series
+ - parameter parallel: Battery cells in parallel
+*/
+- (void)onCellConfig:(nonnull NSString *)config series:(NSUInteger)series parallel:(NSUInteger)parallel
+NS_SWIFT_NAME(onCellConfig(config:series:parallel:));
+
 
 @end
 

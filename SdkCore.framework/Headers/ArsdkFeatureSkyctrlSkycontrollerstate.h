@@ -33,6 +33,33 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureSkyctrlSkycontrollerstateBatterystateStat
 };
 #define ArsdkFeatureSkyctrlSkycontrollerstateBatterystateStateCnt 5
 
+/** Current battery state */
+typedef NS_ENUM(NSInteger, ArsdkFeatureSkyctrlSkycontrollerstateChargertypeType) {
+    /**
+     Unknown value from SdkCore.
+     Only used if the received value cannot be matched with a declared value.
+     This might occur when the drone or rc has a different sdk base from the controller.
+     */
+    ArsdkFeatureSkyctrlSkycontrollerstateChargertypeTypeSdkCoreUnknown = -1,
+
+    /** No charger connected */
+    ArsdkFeatureSkyctrlSkycontrollerstateChargertypeTypeDisconnected = 0,
+
+    /** Standard Downstream Port charger (Slow speed) */
+    ArsdkFeatureSkyctrlSkycontrollerstateChargertypeTypeSdp = 1,
+
+    /** Charging Downstream Port charger (Slow speed) */
+    ArsdkFeatureSkyctrlSkycontrollerstateChargertypeTypeCdp = 2,
+
+    /** Dedicated Charging Port charger (Normal speed) */
+    ArsdkFeatureSkyctrlSkycontrollerstateChargertypeTypeDcp = 3,
+
+    /** Power Delivery charger (Fast speed) */
+    ArsdkFeatureSkyctrlSkycontrollerstateChargertypeTypePowerDelivery = 4,
+
+};
+#define ArsdkFeatureSkyctrlSkycontrollerstateChargertypeTypeCnt 5
+
 @protocol ArsdkFeatureSkyctrlSkycontrollerstateCallback<NSObject>
 
 @optional
@@ -87,6 +114,22 @@ Attitude is provided as a quaternion.
 */
 - (void)onAttitudeChanged:(float)q0 q1:(float)q1 q2:(float)q2 q3:(float)q3
 NS_SWIFT_NAME(onAttitudeChanged(q0:q1:q2:q3:));
+
+/**
+ The type of charger connected to the controller 
+
+ - parameter type: 
+*/
+- (void)onChargerType:(ArsdkFeatureSkyctrlSkycontrollerstateChargertypeType)type
+NS_SWIFT_NAME(onChargerType(type:));
+
+/**
+ Time left in minute until the controller is fully charged 
+
+ - parameter time: Time left (in minutes) until controller is fully charged
+*/
+- (void)onChargeTimeLeft:(NSUInteger)time
+NS_SWIFT_NAME(onChargeTimeLeft(time:));
 
 
 @end

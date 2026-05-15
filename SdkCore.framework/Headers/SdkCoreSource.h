@@ -40,7 +40,7 @@
  @param mux: Mux context to use, `NULL` if not needed.
  @return 0 on success, a negative error code otherwise.
  */
-- (int)open:(nonnull NSString *)url mux:(/* nullable struct mux_ctx * */nullable void *)mux;
+- (int)open:(nonnull NSString *)url mux:(/* nullable struct mux_ctx * */ nullable void *)mux;
 
 @end
 
@@ -63,10 +63,12 @@
 
  @param medias: Media available list.
  @param count: Number of the media available in the list.
+ @param selected_medias: Bitfield of the identifiers of the currently selected medias.
  @return The media id selected or `0` to select default media or `-ECANCELED` to cancel the source opening.
  */
-- (int)selectMedia:(/* nonnull const struct pdraw_demuxer_media * */nonnull const void *)medias
-             count:(size_t)count;
+- (int)selectMedia:(/* nonnull const struct pdraw_demuxer_media * */ nonnull const void *)medias
+             count:(size_t)count
+   selected_medias:(uint32_t)selected_medias;
 
 /**
  Closes the Source.

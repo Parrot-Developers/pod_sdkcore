@@ -75,10 +75,11 @@ NS_SWIFT_NAME(update(mediaInfo:metadata:));
 /** Position from location.
 
  @param location: the location
+ @param altitudeAto: altitude above takeoff (m)
  @param error: If an error occurs, upon return contains an NSError object with code `SdkCoreLicError` that describes the problem.
  @return the position in the frame or `nil` if an error occured and the position could not be retrieved.
  */
-- (nullable LicPosition *)positionFromLocation:(nonnull CLLocation *)location
+- (nullable LicPosition *)positionFromLocation:(nonnull CLLocation *)location altitudeAto:(double)altitudeAto
                                          error:(NSError *_Nullable*_Nullable)error;
 
 /** Location from position.

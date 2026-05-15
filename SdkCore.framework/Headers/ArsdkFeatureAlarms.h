@@ -48,8 +48,17 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureAlarmsType) {
     /** Video Signal Processing is not available. */
     ArsdkFeatureAlarmsTypeVideoDspFault = 10,
 
+    /** Pitot tube is defective. */
+    ArsdkFeatureAlarmsTypePitotDefective = 11,
+
+    /** Autopilot internal error. */
+    ArsdkFeatureAlarmsTypeAutopilotInternalError = 12,
+
+    /** Error from the external autopilot. */
+    ArsdkFeatureAlarmsTypeExternalAutopilotError = 13,
+
 };
-#define ArsdkFeatureAlarmsTypeCnt 11
+#define ArsdkFeatureAlarmsTypeCnt 14
 
 /** takeoff readiness checks. */
 typedef NS_ENUM(NSInteger, ArsdkFeatureAlarmsTakeoffChecklistType) {
@@ -117,8 +126,26 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureAlarmsTakeoffChecklistType) {
     /** Drone Remote Identification check. */
     ArsdkFeatureAlarmsTakeoffChecklistTypeDri = 18,
 
+    /** Motor down control mode has been triggered. */
+    ArsdkFeatureAlarmsTakeoffChecklistTypeMotorDown = 19,
+
+    /** Smartbattery is needed. */
+    ArsdkFeatureAlarmsTakeoffChecklistTypeNoSmartbattery = 20,
+
+    /** Takeoff is forbidden by Battery. */
+    ArsdkFeatureAlarmsTakeoffChecklistTypeTakeoffForbiddenByBattery = 21,
+
+    /** Autopilot configuration failed. */
+    ArsdkFeatureAlarmsTakeoffChecklistTypeAutopilotConfiguration = 22,
+
+    /** Pitot tube check. */
+    ArsdkFeatureAlarmsTakeoffChecklistTypePitot = 23,
+
+    /** Autopilot not available. */
+    ArsdkFeatureAlarmsTakeoffChecklistTypeAutopilotUnavailable = 24,
+
 };
-#define ArsdkFeatureAlarmsTakeoffChecklistTypeCnt 19
+#define ArsdkFeatureAlarmsTakeoffChecklistTypeCnt 25
 
 /** Alarm state. */
 typedef NS_ENUM(NSInteger, ArsdkFeatureAlarmsState) {

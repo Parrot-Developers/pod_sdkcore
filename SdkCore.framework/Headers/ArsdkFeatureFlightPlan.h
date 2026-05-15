@@ -65,14 +65,17 @@ Not applicable to Flight plan. */
 Not applicable to Flight plan. */
     ArsdkFeatureFlightPlanIndicatorTargetAltitudeAccuracy = 12,
 
-    /** Drone battery is insufficient. */
+    /** Drone battery power level is insufficient. */
     ArsdkFeatureFlightPlanIndicatorDroneBattery = 13,
 
     /** Drone is not in a valid state. */
     ArsdkFeatureFlightPlanIndicatorDroneState = 14,
 
+    /** Drone battery temperature is too high. */
+    ArsdkFeatureFlightPlanIndicatorDroneBatteryTooHot = 15,
+
 };
-#define ArsdkFeatureFlightPlanIndicatorCnt 15
+#define ArsdkFeatureFlightPlanIndicatorCnt 16
 
 @interface ArsdkFeatureFlightPlanIndicatorBitField : NSObject
 
@@ -169,6 +172,14 @@ NS_SWIFT_NAME(onCapabilities(supportedCapabilitiesBitField:));
 */
 - (void)onRecoveryInfo:(nonnull NSString *)flightplanId customId:(nonnull NSString *)customId item:(NSUInteger)item runningTime:(NSUInteger)runningTime resourceId:(nonnull NSString *)resourceId
 NS_SWIFT_NAME(onRecoveryInfo(flightplanId:customId:item:runningTime:resourceId:));
+
+/**
+ Whether the flight plan feature is supported or not. 
+
+ - parameter value: Boolean: 1 if flight plan is supported, 0 otherwise
+*/
+- (void)onSupportedFeature:(NSUInteger)value
+NS_SWIFT_NAME(onSupportedFeature(value:));
 
 
 @end

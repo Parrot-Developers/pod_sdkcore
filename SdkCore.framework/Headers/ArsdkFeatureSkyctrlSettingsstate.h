@@ -15,16 +15,26 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureSkyctrlSettingsstateProductvariantchanged
      */
     ArsdkFeatureSkyctrlSettingsstateProductvariantchangedVariantSdkCoreUnknown = -1,
 
-    /** SkyController of the bebop generation.
+    /** SkyController 1 of the Bebop drone generation.
 (Bebop battery, original key layout, red/blue/yellow) */
     ArsdkFeatureSkyctrlSettingsstateProductvariantchangedVariantBebop = 0,
 
-    /** SkyController of the bebop2 generation.
+    /** SkyController 1 of the Bebop2 generation.
 (Bebop2 battery, updated key layout, black) */
     ArsdkFeatureSkyctrlSettingsstateProductvariantchangedVariantBebop2 = 1,
 
+    /** SkyController standard variant (with either MARS
+or Wifi radio). */
+    ArsdkFeatureSkyctrlSettingsstateProductvariantchangedVariantStandard = 2,
+
+    /** SkyController mission variant (without radio). */
+    ArsdkFeatureSkyctrlSettingsstateProductvariantchangedVariantMission = 3,
+
+    /** SkyController MEE variant (for remote antenna usage). */
+    ArsdkFeatureSkyctrlSettingsstateProductvariantchangedVariantMee = 4,
+
 };
-#define ArsdkFeatureSkyctrlSettingsstateProductvariantchangedVariantCnt 2
+#define ArsdkFeatureSkyctrlSettingsstateProductvariantchangedVariantCnt 5
 
 @protocol ArsdkFeatureSkyctrlSettingsstateCallback<NSObject>
 
@@ -53,7 +63,7 @@ NS_SWIFT_NAME(onResetChanged());
 NS_SWIFT_NAME(onProductSerialChanged(serialnumber:));
 
 /**
- This event allow differentiation between original (red/blue/yellow) SkyControllers, and the Black Edition SkyControllers. 
+ This event allow differentiation between SkyController variants of a same model. 
 
  - parameter variant: 
 */

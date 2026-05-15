@@ -97,7 +97,7 @@ Obstacle avoidance is unavailable and state is inactive. */
 Obstacle avoidance is unavailable and state is inactive. */
     ArsdkFeatureObstacleAvoidanceAlertTooDark = 5,
 
-    /** GPS and vertical camera do not provide reliable data.
+    /** Position sensors do not provide reliable data.
 Obstacle avoidance is unavailable and state is inactive. */
     ArsdkFeatureObstacleAvoidanceAlertEstimationUnreliable = 6,
 
@@ -126,8 +126,12 @@ Obstacle avoidance mode needs to be set to disabled for the drone to move again.
 Obstacle avoidance is unavailable and state is inactive. */
     ArsdkFeatureObstacleAvoidanceAlertFreeze = 12,
 
+    /** Stereo used for navigation.
+Obstacle avoidance is unavailable and state is inactive. */
+    ArsdkFeatureObstacleAvoidanceAlertStereoUnavailable = 13,
+
 };
-#define ArsdkFeatureObstacleAvoidanceAlertCnt 13
+#define ArsdkFeatureObstacleAvoidanceAlertCnt 14
 
 @interface ArsdkFeatureObstacleAvoidanceAlertBitField : NSObject
 

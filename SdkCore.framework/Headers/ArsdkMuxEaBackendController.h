@@ -29,11 +29,12 @@
 
 #import <Foundation/Foundation.h>
 #import "ArsdkBackendController.h"
+#import "ArsdkServiceDiscovery.h"
 
 /**
  External accessory mux backend controller
  */
-@interface ArsdkMuxEaBackendController : ArsdkBackendController
+@interface ArsdkMuxEaBackendController : ArsdkBackendController <ArsdkServiceDiscoveryBrowser>
 
 - (nonnull instancetype)initWithSupportedDeviceTypes:(nonnull NSSet<NSNumber *> *)deviceTypes;
 

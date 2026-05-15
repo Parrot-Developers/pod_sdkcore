@@ -62,7 +62,7 @@ NS_SWIFT_NAME(maxAltitudeEncoder(current:));
 /**
  Set max pitch/roll.
 This represent the max inclination allowed by the drone.
-You can get the bounds with the commands [MaxPitchRoll](#1-6-1). 
+You can get the bounds with the commands [MaxTiltChanged](#1-6-1). 
 
  - parameter current: Current tilt max in degree
  - returns: a block that encodes the command
@@ -173,6 +173,17 @@ If the motion detection is enabled, the drone will send its [MotionState](#1-4-1
 */
 + (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setMotionDetectionModeEncoder:(NSUInteger)enable
 NS_SWIFT_NAME(setMotionDetectionModeEncoder(enable:));
+
+/**
+ Set max horizontal speed.
+This represent the max speed allowed by the drone.
+You can get the bounds with the commands [MaxHorizontalSpeed](#1-6-17). 
+
+ - parameter current: Current horizontal max speed in meters/second
+ - returns: a block that encodes the command
+*/
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))maxHorizontalSpeedEncoder:(float)current
+NS_SWIFT_NAME(maxHorizontalSpeedEncoder(current:));
 
 @end
 

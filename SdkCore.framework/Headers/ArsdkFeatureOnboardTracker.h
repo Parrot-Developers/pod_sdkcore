@@ -26,8 +26,12 @@ This is a terminal state for the target, which will remain in the
 tracking state map until explicitely removed. */
     ArsdkFeatureOnboardTrackerTargetTrackingStateAbandon = 2,
 
+    /** The tracking is temporarily inactive on user request, by using yaw or pitch for example.
+It'll resume in searching mode. */
+    ArsdkFeatureOnboardTrackerTargetTrackingStatePause = 3,
+
 };
-#define ArsdkFeatureOnboardTrackerTargetTrackingStateCnt 3
+#define ArsdkFeatureOnboardTrackerTargetTrackingStateCnt 4
 
 /** Tracking answer. */
 typedef NS_ENUM(NSInteger, ArsdkFeatureOnboardTrackerTrackingAnswer) {

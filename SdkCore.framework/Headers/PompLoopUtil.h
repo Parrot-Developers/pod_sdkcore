@@ -48,8 +48,8 @@
 - (void)runLoop;
 
 /**
-Stop the loop
-The caller must be in the same thread as the one used during the init
+ Stop the loop
+ The caller must be in the same thread as the one used during the init
  */
 - (void)stopRun;
 

@@ -36,8 +36,11 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureLedsSupportedCapabilities) {
     /** Possibility to activate or deactivate the switch */
     ArsdkFeatureLedsSupportedCapabilitiesOnOff = 0,
 
+    /** Possibility to set the infrared led state */
+    ArsdkFeatureLedsSupportedCapabilitiesInfrared = 1,
+
 };
-#define ArsdkFeatureLedsSupportedCapabilitiesCnt 1
+#define ArsdkFeatureLedsSupportedCapabilitiesCnt 2
 
 @interface ArsdkFeatureLedsSupportedCapabilitiesBitField : NSObject
 
@@ -67,6 +70,14 @@ NS_SWIFT_NAME(onCapabilities(supportedCapabilitiesBitField:));
 - (void)onSwitchState:(ArsdkFeatureLedsSwitchState)switchState
 NS_SWIFT_NAME(onSwitchState(switchState:));
 
+/**
+  
+
+ - parameter led_state: Infrared LED state.
+*/
+- (void)onIrState:(ArsdkFeatureLedsSwitchState)ledState
+NS_SWIFT_NAME(onIrState(ledState:));
+
 
 @end
 
@@ -89,6 +100,15 @@ NS_SWIFT_NAME(activateEncoder());
 */
 + (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))deactivateEncoder
 NS_SWIFT_NAME(deactivateEncoder());
+
+/**
+ Enable or disable infrared LED 
+
+ - parameter led_state: Desired infrared LED state.
+ - returns: a block that encodes the command
+*/
++ (int (^ _Nonnull)(struct arsdk_cmd * _Nonnull))setIrStateEncoder:(ArsdkFeatureLedsSwitchState)ledState
+NS_SWIFT_NAME(setIrStateEncoder(ledState:));
 
 @end
 

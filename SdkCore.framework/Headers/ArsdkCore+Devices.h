@@ -83,6 +83,11 @@ typedef NS_ENUM(NSInteger, ArsdkConnCancelReason) {
 NS_SWIFT_NAME(onConnected(api:));
 
 /**
+ Called when main link-level connection is lost but backup link is active. For testing purpose only.
+ */
+- (void)onBackupLink;
+
+/**
  Called when device has been disconnected
 
  @param removing: true if the device has been disconnected because it's about to be removed
@@ -170,7 +175,7 @@ extern short const ARSDK_INVALID_DEVICE_HANDLE;
  Set a array of blocks to be executed continuously in the loop, each returning an ArsdkCommandEncoder.
  This "new array" replace any previous array.
 
-  - warning closure is called in a separate thread. This closure must not block.
+ - warning closure is called in a separate thread. This closure must not block.
 
  @param encoders: The array of NoAck commands, each stored in a NoAckStorage Object
  @param handle: device handle to which send the command
@@ -190,6 +195,19 @@ NS_SWIFT_NAME(setNoAckCommands(encoders:handle:));
  */
 - (void)createTcpProxy:(int16_t)handle deviceType:(NSInteger)deviceType port:(uint16_t)port
             completion:(nonnull ArsdkTcpProxyCreationCompletion)completion;
+
+/**
+ Creates a tcp proxy on a device by url.
+
+ @param handle: the device handle
+ @param url: url that the proxy should address
+ @param port: port to access
+ @param completion: completion callback. This callback will be called on the caller thread. If an error occurred, it will
+                    be called with nil as address parameter.
+ */
+- (void)createTcpProxy:(int16_t)handle url:(nonnull NSString *)url port:(uint16_t)port
+            completion:(nonnull ArsdkTcpProxyCreationCompletion)completion;
+
 
 @end
 

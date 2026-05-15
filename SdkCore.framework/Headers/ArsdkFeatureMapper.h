@@ -116,8 +116,20 @@ In record mode: start/stop record */
     /** toggle between internal and external antenna */
     ArsdkFeatureMapperButtonActionToggleAntenna = 32,
 
+    /** Switch between thermal display modes */
+    ArsdkFeatureMapperButtonActionChangeSpectrum = 33,
+
+    /** Take a screen capture on device */
+    ArsdkFeatureMapperButtonActionScreenshot = 34,
+
+    /** Switch between piloting modes: loitering, manual */
+    ArsdkFeatureMapperButtonActionPilotingMode = 35,
+
+    /** Switch between assistance modes: attitude, altitude */
+    ArsdkFeatureMapperButtonActionAssistanceMode = 36,
+
 };
-#define ArsdkFeatureMapperButtonActionCnt 33
+#define ArsdkFeatureMapperButtonActionCnt 37
 
 /** The action (mapped on an axis) */
 typedef NS_ENUM(NSInteger, ArsdkFeatureMapperAxisAction) {

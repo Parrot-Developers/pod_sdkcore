@@ -30,6 +30,7 @@
 #import <Foundation/Foundation.h>
 #import "ArsdkBackendType.h"
 #import "ArsdkApiCapabilities.h"
+#import "PompLoopUtil.h"
 
 /**
  ArsdkCore listener, notified when a device has been added/removed form arsdk
@@ -97,6 +98,13 @@ struct arsdk_cmd;
                                           listener:(nonnull id<ArsdkCoreListener>)listener
                               controllerDescriptor:(nonnull NSString *)controllerDescriptor
                                  controllerVersion:(nonnull NSString *)controllerVersion;
+
+/**
+ Retrieves the pomp loop utility.
+
+ @return pomp loop utility
+ */
+- (nonnull PompLoopUtil *)pompLoopUtil;
 
 /**
  Start the backend controllers and run the loop

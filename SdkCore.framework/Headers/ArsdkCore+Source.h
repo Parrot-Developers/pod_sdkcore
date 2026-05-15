@@ -51,23 +51,48 @@
 
 /** Stream live camera type. */
 typedef NS_ENUM(NSInteger, ArsdkSourceLiveCameraType) {
-    /// Unspecified camera type.
+
+    // Unspecified camera.
     ArsdkSourceLiveCameraTypeUnspecified = 0,
 
-    /// Front camera video stream.
-    ArsdkSourceLiveCameraTypeFrontCamera = 1,
+    // Front camera.
+    ArsdkSourceLiveCameraTypeFront = 1,
 
-    /// Stereo camera left video stream.
-    ArsdkSourceLiveCameraTypeFrontStereoCameraLeft = 2,
+    // Front stereo camera.
+    ArsdkSourceLiveCameraTypeFrontStereo = 2,
 
-    /// Stereo camera right video stream.
-    ArsdkSourceLiveCameraTypeFrontStereoCameraRight = 3,
+    // Front stereo left camera.
+    ArsdkSourceLiveCameraTypeFrontStereoLeft = 3,
 
-    /// Vertical camera video stream.
-    ArsdkSourceLiveCameraTypeVerticalCamera = 4,
+    // Front stereo right camera.
+    ArsdkSourceLiveCameraTypeFrontStereoRight = 4,
 
-    /// Disparity video stream.
-    ArsdkSourceLiveCameraTypeDisparity = 5,
+    // Vertical camera.
+    ArsdkSourceLiveCameraTypeVertical = 5,
+
+    // Disparity camera.
+    ArsdkSourceLiveCameraTypeDisparity = 6,
+
+    // Horizontal stereo camera.
+    ArsdkSourceLiveCameraTypeHorizontalStereo = 7,
+
+    // Horizontal stereo left camera.
+    ArsdkSourceLiveCameraTypeHorizontalStereoLeft = 8,
+
+    // Horizontal stereo right camera.
+    ArsdkSourceLiveCameraTypeHorizontalStereoRight = 9,
+
+    // Down stereo camera.
+    ArsdkSourceLiveCameraTypeDownStereo = 10,
+
+    // Down stereo left camera.
+    ArsdkSourceLiveCameraTypeDownStereoLeft = 11,
+
+    // Down stereo right camera.
+    ArsdkSourceLiveCameraTypeDownStereoRight = 12,
+
+    // External camera.
+    ArsdkSourceLiveCameraTypeExternal = 13
 };
 
 /** Live camera stream source. */
@@ -87,7 +112,8 @@ typedef NS_ENUM(NSInteger, ArsdkSourceLiveCameraType) {
 
  @return a stream live source object
  */
-- (nonnull ArsdkSourceLive *)createVideoSourceLive:(int16_t)handle cameraType:(ArsdkSourceLiveCameraType)cameraType;
+- (nonnull ArsdkSourceLive *)createVideoSourceLive:(int16_t)handle
+                                        cameraType:(ArsdkSourceLiveCameraType)cameraType;
 
 /**
  Create a native video media source.
@@ -98,7 +124,8 @@ typedef NS_ENUM(NSInteger, ArsdkSourceLiveCameraType) {
  
  @return a stream media source object
  */
-- (nonnull ArsdkSourceMedia *)createVideoSourceMedia:(int16_t)handle url:(nonnull NSString *)url
+- (nonnull ArsdkSourceMedia *)createVideoSourceMedia:(int16_t)handle
+                                                 url:(nonnull NSString *)url
                                            trackName:(nullable NSString *)trackName;
 
 @end

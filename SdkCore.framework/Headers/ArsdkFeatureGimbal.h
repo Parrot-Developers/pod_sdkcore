@@ -41,8 +41,11 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureGimbalState) {
     /** Feature is currently active. */
     ArsdkFeatureGimbalStateActive = 1,
 
+    /** Feature is partially active. */
+    ArsdkFeatureGimbalStatePartial = 2,
+
 };
-#define ArsdkFeatureGimbalStateCnt 2
+#define ArsdkFeatureGimbalStateCnt 3
 
 /** Gimbal error. */
 typedef NS_ENUM(NSInteger, ArsdkFeatureGimbalError) {

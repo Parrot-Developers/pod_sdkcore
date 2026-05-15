@@ -40,9 +40,16 @@
  */
 @property (nonatomic, strong, nullable) NSURL *outputDir;
 /**
+ Unique identifier for the logging session.
+ This should be a UUID generated at the start of the application. The given value will
+ be truncated to 36 characters (length of a hyphenated UUID)
+ If empty or `nil`, an internally generated UUID will be used.
+ */
+@property (nonatomic, strong, nullable) NSString *bootID;
+/**
  Maximum space that may be used by recorded log files.
  Value in bytes; 0 disables limit
- Default value 20971520
+ Default value 209715200 (200MB)
  */
 @property (nonatomic, assign) unsigned long maxUsedSpace;
 /**
@@ -52,7 +59,7 @@
 /**
  Maximum allowed size for a single log file
  Value in bytes; 0 disables limit
- Default value 262144
+ Default value 20971520 (20MB)
  */
 @property (nonatomic, assign) unsigned long maxLogSize;
 /**
