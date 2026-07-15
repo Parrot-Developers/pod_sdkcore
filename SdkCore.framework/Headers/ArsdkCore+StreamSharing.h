@@ -135,23 +135,25 @@ typedef NS_ENUM(NSInteger, ArsdkStreamRecordStopReason) {
 
 /** Stream sharing overlay recording resolution */
 typedef NS_ENUM(NSInteger, ArsdkStreamOverlayResolution) {
-	ArsdkStreamOverlayResolutionUnknown = 0,
+    ArsdkStreamOverlayResolutionUnknown = 0,
 
-	ArsdkStreamOverlayResolutionVideo720p = 1,
+    ArsdkStreamOverlayResolutionVideo720p = 1,
 
-	ArsdkStreamOverlayResolutionVideo1080p = 2,
+    ArsdkStreamOverlayResolutionVideo1080p = 2,
 
-	ArsdkStreamOverlayResolutionVideo2160p = 3,
+    ArsdkStreamOverlayResolutionVideo2160p = 3,
 
-	ArsdkStreamOverlayResolutionVideo4320p = 4,
+    ArsdkStreamOverlayResolutionVideo4320p = 4,
 
-	ArsdkStreamOverlayResolutionPhoto12Mpx = 5,
+    ArsdkStreamOverlayResolutionPhoto12Mpx = 5,
 
-	ArsdkStreamOverlayResolutionPhoto21Mpx = 6,
+    ArsdkStreamOverlayResolutionPhoto12_5Mpx = 6,
 
-	ArsdkStreamOverlayResolutionPhoto48Mpx = 7,
+    ArsdkStreamOverlayResolutionPhoto21Mpx = 7,
 
-	ArsdkStreamOverlayResolutionPhoto50Mpx = 8
+    ArsdkStreamOverlayResolutionPhoto48Mpx = 8,
+
+    ArsdkStreamOverlayResolutionPhoto50Mpx = 9
 };
 
 @protocol ArsdkStreamSharingDelegate
