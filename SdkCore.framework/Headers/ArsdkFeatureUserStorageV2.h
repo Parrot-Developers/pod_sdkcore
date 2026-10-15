@@ -18,7 +18,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureUserStorageV2StorageType) {
     /** The internal storage. */
     ArsdkFeatureUserStorageV2StorageTypeInternalStorage = 0,
 
-    /** The SDcard. */
+    /** The SD card. */
     ArsdkFeatureUserStorageV2StorageTypeRemovableStorage = 1,
 
 };
@@ -78,7 +78,7 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureUserStorageV2FsState) {
     /** The media file system needs a password for decryption. */
     ArsdkFeatureUserStorageV2FsStatePasswordNeeded = 5,
 
-    /** The media file system is being checked */
+    /** The media file system is being checked. */
     ArsdkFeatureUserStorageV2FsStateChecking = 6,
 
     /** The media file system is not managed by the drone itself but accessible by external means. */
@@ -125,13 +125,13 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureUserStorageV2FormattingResult) {
      */
     ArsdkFeatureUserStorageV2FormattingResultSdkCoreUnknown = -1,
 
-    /** The last formatting command failed */
+    /** The last formatting command failed. */
     ArsdkFeatureUserStorageV2FormattingResultError = 0,
 
-    /** The last formatting command was denied */
+    /** The last formatting command was denied. */
     ArsdkFeatureUserStorageV2FormattingResultDenied = 1,
 
-    /** The last formatting command succeeded */
+    /** The last formatting command succeeded. */
     ArsdkFeatureUserStorageV2FormattingResultSuccess = 2,
 
 };
@@ -146,13 +146,13 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureUserStorageV2PasswordResult) {
      */
     ArsdkFeatureUserStorageV2PasswordResultSdkCoreUnknown = -1,
 
-    /** The transmitted password is wrong */
+    /** The transmitted password is wrong. */
     ArsdkFeatureUserStorageV2PasswordResultWrongPassword = 0,
 
-    /** The transmitted password is correct */
+    /** The transmitted password is correct. */
     ArsdkFeatureUserStorageV2PasswordResultSuccess = 1,
 
-    /** The usage specified with the password does not match with the current drone context (RECORD or MASS STORAGE) */
+    /** The usage specified with the password does not match with the current drone context (RECORD or MASS STORAGE). */
     ArsdkFeatureUserStorageV2PasswordResultWrongUsage = 2,
 
 };
@@ -246,10 +246,10 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureUserStorageV2PasswordUsage) {
      */
     ArsdkFeatureUserStorageV2PasswordUsageSdkCoreUnknown = -1,
 
-    /** Send password for record requirement */
+    /** Send password for record requirement. */
     ArsdkFeatureUserStorageV2PasswordUsageRecord = 0,
 
-    /** Send password for usb mass storage requirement */
+    /** Send password for usb mass storage requirement. */
     ArsdkFeatureUserStorageV2PasswordUsageUsb = 1,
 
 };

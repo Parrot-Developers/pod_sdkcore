@@ -195,6 +195,9 @@ typedef NS_ENUM(NSInteger, ArsdkStreamOverlayResolution) {
             unitSystem:(ArsdkStreamUnitSystem)unitSystem
       coordinateSystem:(ArsdkStreamCoordinateSystem)coordinateSystem;
 
+- (void)addRecordChapter:(nonnull NSString *)chapterName
+               timestamp:(uint64_t)timestamp;
+
 - (void)stopRecording;
 
 - (void)createRecord;
@@ -202,12 +205,13 @@ typedef NS_ENUM(NSInteger, ArsdkStreamOverlayResolution) {
 - (void)finalizeRecord:(ArsdkStreamRecordStopReason)reason;
 
 - (void)startStream:(nonnull NSString *)url
-          resolution:(ArsdkStreamResolution)resolution
-          maxBitrate:(int)maxBitrate
-             overlay:(BOOL)overlay
-          unitSystem:(ArsdkStreamUnitSystem)unitSystem
-    coordinateSystem:(ArsdkStreamCoordinateSystem)coordinateSystem
-       rtspTransport:(ArsdkStreamRtspTransport)rtspTransport;
+         resolution:(ArsdkStreamResolution)resolution
+         maxBitrate:(int)maxBitrate
+            overlay:(BOOL)overlay
+         unitSystem:(ArsdkStreamUnitSystem)unitSystem
+   coordinateSystem:(ArsdkStreamCoordinateSystem)coordinateSystem
+      rtspTransport:(ArsdkStreamRtspTransport)rtspTransport
+          muxCtxPtr:(intptr_t)muxCtxPtr;
 
 - (void)stopStream;
 

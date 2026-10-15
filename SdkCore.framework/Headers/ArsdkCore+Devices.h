@@ -31,6 +31,7 @@
 #import "ArsdkCore.h"
 
 struct arsdk_cmd;
+struct mux_ctx;
 @class ArsdkTcpProxy, NoAckStorage;
 
 /**
@@ -132,6 +133,15 @@ extern short const ARSDK_INVALID_DEVICE_HANDLE;
  Retained until callback disconnected or canceled is called
  */
 - (void)connectDevice:(int16_t)handle deviceListener:(nonnull id<ArsdkCoreDeviceListener>)deviceListener;
+
+/**
+ Gets the MUX (USB) channel used to reach this device, if any.
+
+ @param handle: the handle of the device
+ @return the MUX channel used to reach the device, or NULL if the device is
+ not connected through a MUX backend
+ */
+- (struct mux_ctx * _Nullable)getMuxCtx:(int16_t)handle;
 
 /**
  Disconnect from a device

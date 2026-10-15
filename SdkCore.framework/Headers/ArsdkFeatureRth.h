@@ -30,8 +30,11 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureRthHomeType) {
     /** The drone will return to the pilot position */
     ArsdkFeatureRthHomeTypePilot = 4,
 
+    /** The drone will return to the vehicle position */
+    ArsdkFeatureRthHomeTypeVehicle = 5,
+
 };
-#define ArsdkFeatureRthHomeTypeCnt 5
+#define ArsdkFeatureRthHomeTypeCnt 6
 
 @interface ArsdkFeatureRthHomeTypeBitField : NSObject
 
@@ -113,8 +116,17 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureRthStateReason) {
     /** Return to home triggered by battery too hot event (available->in_progress) */
     ArsdkFeatureRthStateReasonBatteryTooHot = 12,
 
+    /** Return to vehicle has been stopped since the vehicle was not found (in_progress->available) */
+    ArsdkFeatureRthStateReasonVehicleNotFound = 13,
+
+    /** Return to vehicle has been stopped since the landing zone was not found (in_progress->available) */
+    ArsdkFeatureRthStateReasonLandingZoneNotFound = 14,
+
+    /** Return to home triggered by geofence violation event (available->in_progress) */
+    ArsdkFeatureRthStateReasonGeofenceViolation = 15,
+
 };
-#define ArsdkFeatureRthStateReasonCnt 13
+#define ArsdkFeatureRthStateReasonCnt 16
 
 /** Home reachability */
 typedef NS_ENUM(NSInteger, ArsdkFeatureRthHomeReachability) {

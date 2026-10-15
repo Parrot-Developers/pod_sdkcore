@@ -1,11 +1,11 @@
 Pod::Spec.new do |s|
   s.name                  = "SdkCore"
-  s.version               = "8.4.2"
+  s.version               = "8.5.0"
   s.summary               = "Parrot Drone SDK, low level implementation"
   s.homepage              = "https://developer.parrot.com"
   s.license               = "{ :type => 'BSD 3-Clause License', :file => 'LICENSE' }"
   s.author                = "Parrot Drone SAS"
-  s.source                = { :git => 'https://github.com/Parrot-Developers/pod_sdkcore.git', :tag => "8.4.2" }
+  s.source                = { :git => 'https://github.com/Parrot-Developers/pod_sdkcore.git', :tag => "8.5.0" }
   s.platform              = :ios
   s.ios.deployment_target = '15.0'
   s.vendored_frameworks   = 'SdkCore.framework'

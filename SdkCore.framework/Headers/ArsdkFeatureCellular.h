@@ -74,8 +74,11 @@ typedef NS_ENUM(NSInteger, ArsdkFeatureCellularSimStatus) {
     /** SIM card is ready. */
     ArsdkFeatureCellularSimStatusReady = 4,
 
+    /** eSIM card with no activated profile. */
+    ArsdkFeatureCellularSimStatusNoProfile = 5,
+
 };
-#define ArsdkFeatureCellularSimStatusCnt 5
+#define ArsdkFeatureCellularSimStatusCnt 6
 
 /** Modem status. */
 typedef NS_ENUM(NSInteger, ArsdkFeatureCellularModemStatus) {
